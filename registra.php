@@ -10,7 +10,9 @@
 <header>
   <?php
   include("header.html");
+  include("conexiones/conexion.inc");
   ?>
+  
 </header>
 <body>
 
@@ -48,11 +50,55 @@
           
         </div>
         <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary col-3" >Iniciar sesión</button>
+        <button type="submit" class="btn btn-primary col-3" >Registrarse</button>
        
         </div>
       </form>
 </div>
+<?php 
+  include("funciones.php");
+  if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email=$_POST['email'];
+    $contrasena=$_POST['contrasena'];
+    $contrasena2=$_POST['contrasena2'];
+    $nombre=$_POST['nombre'];
+    $apellido=$_POST['apellido'];
+    $fechaNacimiento=$_POST['fechaNacimiento'];
+    $tipoUsuario=$_POST['tipoUsuario'];
+    if ($contrasena==$contrasena2){
+      if (mailExiste($email)==FALSE){
+        $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
+      if($tipoUsuario=='cliente'){
+        $categoriaCliente='inicial';
+        $estado='';
+      }else{
+        $categoriaCliente='';
+        $estado='pendiente';
+      }
+      
+      $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	
+
+      values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";
+      mysqli_query($link, $query) or die (mysqli_error($link));
+      echo("Usuario registrado con éxito");
+      echo ("<A href='login.php'>Iniciar sesión</A>");
+      // Cerrar la conexion
+      mysqli_close($link);
+      } else{
+        echo("El mail ingresado ya está registrado");
+      }
+      
+    }else{
+      echo ("Las contraseñas ingresadas no coinciden");
+
+    }
+
+   
+
+
+  }
+
+?>
 </body>
 <footer>
 <?php
