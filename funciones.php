@@ -17,4 +17,16 @@ function mailExiste($email){
 
 
 }
+
+function existecookie(){
+    if(isset($_COOKIE['mantenerSesionIniciada'])) {
+        $_SESSION['usuario'] = $_COOKIE['usuario'];
+        if($_COOKIE['tipoUsuario']=='cliente'){
+          $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
+          $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];}
+        return TRUE;
+      }else{
+        return FALSE;
+      }
+}
 ?>

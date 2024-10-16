@@ -9,7 +9,7 @@
 </head>
 <header>
   <?php
-  include("header.html");
+  include("header.php");
   include("conexiones/conexion.inc");
   ?>
   
@@ -56,7 +56,7 @@
       </form>
 </div>
 <?php 
-  include("funciones.php");
+  include_once("funciones.php");
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $email=$_POST['email'];
     $contrasena=$_POST['contrasena'];

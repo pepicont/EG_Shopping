@@ -1,14 +1,53 @@
 <?php
 
 // Verificar si hay una cookie para mantener la sesión iniciada
-ini_set('session.cookie_lifetime',0);
-if(isset($_COOKIE['mantenerSesionIniciada']) && $_COOKIE['mantenerSesionIniciada'] == 'si') {
   session_start();
-  $_SESSION['usuario'] = $_COOKIE['usuario'];
+include_once("funciones.php");
+if(existecookie()) {
   header("Location:home.php");
   exit();
 }
 ?>
+<?php 
+    include("conexiones/conexion.inc");
+    if(isset($_POST['enviar'])) {
+      
+      $email = $_POST['email'];
+      $contrasena = $_POST['contrasena'];
+      $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
+      $mantenerSesionIniciada = $_POST['mantenerSesionIniciada'];
+      $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
+      $vResultado = mysqli_query($link, $query) or die (mysqli_error($link));
+      $fila = mysqli_fetch_array($vResultado);
+      if(mysqli_num_rows($vResultado) == 0) {
+      echo ("Usuario Inexistente, intentelo de nuevo o registrese <br>");}
+      else{
+        if (password_verify($contrasena, $fila['claveUsuario'])){
+          $tipoUsuario=$fila['tipoUsuario'];
+          if ($tipoUsuario=='cliente'){
+              $categoriaCliente=$fila['categoriaCliente'];
+          }
+          if($mantenerSesionIniciada=='no'){
+            $_SESSION['usuario'] = $email;
+            $_SESSION['tipoUsuario'] = $tipoUsuario;
+            $_SESSION['categoriaCliente'] = $categoriaCliente;
+          }else{
+            
+            setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
+            setcookie('usuario',$email,time()+(60*60*24*365));
+            setcookie('tipoUsuario',$tipoUsuario,time()+(60*60*24*365));
+            setcookie('categoriaCliente',$categoriaCliente,time()+(60*60*24*365));
+
+          }
+           /* Esto también lo tenemos que pasar seguro */
+          echo '<meta http-equiv="refresh" content="0;url=home.php">';
+          exit();
+        }else{
+          echo("Contrasena incorrecta");
+        }
+        }
+      }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +58,8 @@ if(isset($_COOKIE['mantenerSesionIniciada']) && $_COOKIE['mantenerSesionIniciada
 </head>
 <header>
   <?php
-  include("header.html");
+  define('HEADER_INCLUDED', TRUE);
+  include("header.php");
   ?>
 </header>
 <body>
@@ -40,7 +80,7 @@ if(isset($_COOKIE['mantenerSesionIniciada']) && $_COOKIE['mantenerSesionIniciada
           <label class="form-check-label" for="mantenerSesionIniciada">Mantener sesión iniciada</label>
         </div>
         <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary col-3" >Iniciar sesión</button>
+        <button type="submit" class="btn btn-primary col-3" name="enviar" >Iniciar sesión</button>
        
         </div>
       </form>
@@ -48,46 +88,7 @@ if(isset($_COOKIE['mantenerSesionIniciada']) && $_COOKIE['mantenerSesionIniciada
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <?php 
-    include("conexiones/conexion.inc");
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      
-      $email = $_POST['email'];
-      $contrasena = $_POST['contrasena'];
-      $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
-      $mantenerSesionIniciada = $_POST['mantenerSesionIniciada'];
-      $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
-      $vResultado = mysqli_query($link, $query) or die (mysqli_error($link));
-      $fila = mysqli_fetch_array($vResultado);
-      if(mysqli_num_rows($vResultado) == 0) {
-      echo ("Usuario Inexistente, intentelo de nuevo o registrese <br>");}
-      else{
-        if (password_verify($contrasena, $fila['claveUsuario'])){
-          $tipoUsuario=$fila['tipoUsuario'];
-          if ($tipoUsuario=='cliente'){
-              $categoriaCliente=$fila['categoriaCliente'];
-          }
-          if($mantenerSesionIniciada=='no'){
-            
-          }else{
-            
-            setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
-            setcookie('usuario',$email,time()+(60*60*24*365));
-          }
-          
-          $_SESSION['codigo']=$fila['codUsuario'];
-          $_SESSION['usuario']=$email;
-          $_SESSION['contrasena']=$contrasenaEncriptada;
-          $_SESSION['tipoUsuario']=$tipoUsuario;
-          $_SESSION['categoriaCliente']=$categoriaCliente;
-          echo '<meta http-equiv="refresh" content="0;url=home.php">';
-          exit();
-        }else{
-          echo("Contrasena incorrecta");
-        }
-        }
-      }
-    ?>
+    
 </body>
 <footer>
 <?php

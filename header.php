@@ -1,3 +1,22 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+include_once("funciones.php");
+existecookie();
+if (isset($_SESSION['tipoUsuario'])){
+    $tipoUsuario=$_SESSION['tipoUsuario'];
+    
+    if ($tipoUsuario=='cliente'){
+        $categoriaCliente=$_SESSION['categoriaCliente'];}
+    $usuario=$_SESSION['usuario'];
+    $login=TRUE;
+} else{
+    $login=FALSE;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +27,25 @@
     <link href="estilos/style1.css" rel="stylesheet">
 </head>
 <body>
+
     <!-- navbar del mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
         <div class="container-fluid mx-auto px-auto">
             <a class="navbar-brand" href="home.php"><img alt="">*Mundo Shopping*</a>
-            <a href="login.php" class="login-button ms-auto d-lg-none">Ingresar sesión</a>
+            <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
+                if($login==FALSE){
+                    
+                
+             ?>
+             <?php if (!defined('HEADER_INCLUDED')) { ?> 
+                <a href="login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
+            <?php } ?>
+            
+            <?php } else{
+                if($tipoUsuario=='Administrador')
+            
+                    echo('<a href="perfil.php" class="user-info ms-auto d-lg-none">Administrador</a> ');
+            } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -30,7 +63,8 @@
                     </li>
                     
                 </ul>
-                <ul class="navbar-nav ms-auto">
+               
+                <ul class="navbar-nav ms-auto  <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Cuenta
@@ -38,13 +72,15 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
+
                             <li><a class="dropdown-item" href="logOut.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
-            <a href="login.php" class="login-button ms-auto d-none d-lg-block">Ingresar sesión</a>
-
+            <?php if (!defined('HEADER_INCLUDED')) { ?> 
+                <a href="login.php" class="login-button ms-auto d-none d-lg-block  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
+            <?php } ?> 
             
             
         </div>
