@@ -10,3 +10,32 @@
     padding: 4px;
     margin: 8px;
 }
+
+.login-button{
+    background-color: hsl(242, 68%, 50%);
+    color: aliceblue;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 32px; /* radio del borde */
+    transition: 0.3s background-color; /*  duración del efecto de transición y atributo afectado*/
+    text-decoration: none; /* le saca el subrayado al link */
+
+}
+.login-button:hover{
+    background-color: hsl(242, 68%, 60%);
+    
+
+}
+.navbar-toggler{
+    border: none;
+    font-size: 1.25rem; 
+    border-radius: 8px;
+}
+.navbar-toggler:focus{
+    box-shadow: none; /* le saca la sombra fea cuando lo apretas */
+    outline: none; /* le saca el borde feo cuando lo apretas  */
+}
+.nav-item{
+    font-weight: 500;
+    margin: 8px 15px;
+}
