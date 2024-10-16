@@ -39,3 +39,12 @@
     font-weight: 500;
     margin: 8px 15px;
 }
+.user-info{
+    background-color: hsl(242, 68%, 50%);
+    color: aliceblue;
+    font-size: 14px;
+    padding: 8px 20px;
+    border-radius: 32px; /* radio del borde */
+    text-decoration: none; /* le saca el subrayado al link */
+
+}

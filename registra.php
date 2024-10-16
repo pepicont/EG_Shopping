@@ -9,7 +9,7 @@
 </head>
 <header>
   <?php
-  include("header.html");
+  include("header.php");
   include("conexiones/conexion.inc");
   ?>
   
