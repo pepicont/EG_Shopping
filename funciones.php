@@ -14,17 +14,18 @@ function mailExiste($email){
       else{
         return TRUE;
       }
-
-
 }
 
 function existecookie(){
+  if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+  }
     if(isset($_COOKIE['mantenerSesionIniciada'])) {
         $_SESSION['usuario'] = $_COOKIE['usuario'];
+        $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
         if($_COOKIE['tipoUsuario']=='cliente'){
-          $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
           $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];}
-        return TRUE;
+          return TRUE;
       }else{
         return FALSE;
       }
