@@ -2,10 +2,8 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(isset($_COOKIE['mantenerSesionIniciada'])) {
-    $_SESSION['usuario'] = $_COOKIE['usuario'];
-    $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
-    $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];}
+include_once("funciones.php");
+existecookie();
 if (isset($_SESSION['tipoUsuario'])){
     $tipoUsuario=$_SESSION['tipoUsuario'];
     
@@ -39,7 +37,10 @@ if (isset($_SESSION['tipoUsuario'])){
                     
                 
              ?>
-            <a href="login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
+             <?php if (!defined('HEADER_INCLUDED')) { ?> 
+                <a href="login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
+            <?php } ?>
+            
             <?php } else{
                 if($tipoUsuario=='Administrador')
             
@@ -77,8 +78,9 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
                 </ul>
             </div>
-            <a href="login.php" class="login-button ms-auto d-none d-lg-block  <?php if($login==TRUE || (basename(__FILE__)=='login.php')){ echo("d-lg-none");} ?>"> <?php $ruta=__FILE__ ;echo(''.$ruta.'')?>Iniciar sesión</a>
-
+            <?php if (!defined('HEADER_INCLUDED')) { ?> 
+                <a href="login.php" class="login-button ms-auto d-none d-lg-block  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
+            <?php } ?> 
             
             
         </div>

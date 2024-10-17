@@ -56,7 +56,7 @@
       </form>
 </div>
 <?php 
-  include("funciones.php");
+  include_once("funciones.php");
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     $email=$_POST['email'];
     $contrasena=$_POST['contrasena'];

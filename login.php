@@ -2,10 +2,15 @@
 
 // Verificar si hay una cookie para mantener la sesión iniciada
   session_start();
+<<<<<<< HEAD
 if(isset($_COOKIE['mantenerSesionIniciada'])) {
   $_SESSION['usuario'] = $_COOKIE['usuario'];
   $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
   $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];
+=======
+include_once("funciones.php");
+if(existecookie()) {
+>>>>>>> 39b26a8c787fc1d7c4be605dedda0b4bc52c444d
   header("Location:home.php");
   exit();
 }
@@ -60,6 +65,10 @@ if(isset($_COOKIE['mantenerSesionIniciada'])) {
 </head>
 <header>
   <?php
+<<<<<<< HEAD
+=======
+  define('HEADER_INCLUDED', TRUE);
+>>>>>>> 39b26a8c787fc1d7c4be605dedda0b4bc52c444d
   include("header.php");
   ?>
 </header>
