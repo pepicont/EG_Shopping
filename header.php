@@ -29,6 +29,9 @@ if (isset($_SESSION['tipoUsuario'])){
     <?php /* $ruta=__DIR__; 
         $ruta=str_replace("\\", "/", $ruta);
         echo "$ruta"; */
+        if(!isset($lugar)){
+            $lugar="";
+        }
         if($lugar=="admin" or $lugar=="dueñoDeLocal" or $lugar=="cliente")
             $ruta="../";
         else{
@@ -40,12 +43,12 @@ if (isset($_SESSION['tipoUsuario'])){
     <!-- navbar del mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
         <div class="container-fluid mx-auto px-auto">
-            <a class="navbar-brand" href="home.php"><img src= "<?php echo("$ruta");?>assets/Mundo_Shopping.png" alt="Mundo Shopping"></a>
+            <a class="navbar-brand" href="<?php echo("$ruta");?>home.php"><img src= "<?php echo("$ruta");?>assets/Mundo_Shopping.png" alt="Mundo Shopping"></a>
             <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
                 if($login==FALSE){
              ?>
              <?php if (!defined('HEADER_INCLUDED')) { ?> 
-                <a href="login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
+                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
             <?php } ?>
             
             <?php } else{

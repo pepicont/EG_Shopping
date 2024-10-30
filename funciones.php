@@ -3,9 +3,11 @@
 <?php 
 /* Documento que contiene funciones frecuentemente utilizadas */
 
+
+
 function consultaSQL($query){
   $link=mysqli_connect("localhost","root","","shopping") or die("Hubo un error al conectarse con la base de datos");
-  $resultados=mysqli_query($link,$query);
+  $resultados = mysqli_query($link,$query);
   mysqli_close($link);
   return $resultados;
 
