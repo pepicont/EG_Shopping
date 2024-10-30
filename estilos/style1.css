@@ -50,15 +50,33 @@
 }
 .btn-primary{ /*fijarse si anda esto de cambiar de color los botones*/
     background-color: violet;
-    color: violet;
+    
 }
-.btn{ /*fijarse si anda esto de cambiar de color los botones*/
-    background-color: violet;
-    color: violet;
+.btn-primary:hover{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: rgb(236, 86, 236);
+    
 }
+
 .a{
     border-color:#26014be1
 }
 .rosa{
     background-color: rgb(164, 88, 236);
+}
+.filtros{
+    margin-left: 35px;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 6%;
+    text-decoration: none;
+    padding-bottom: 15px;
+
+    
+
+}
+.listado{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    height: fit-content;
+    
 }

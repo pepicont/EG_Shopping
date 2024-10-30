@@ -23,20 +23,20 @@ if(existecookie()) {
       else{
         if (password_verify($contrasena, $fila['claveUsuario'])){
           $tipoUsuario=$fila['tipoUsuario'];
+          $idUsuario=$fila['codUsuario'];
           if ($tipoUsuario=='cliente'){
-              $categoriaCliente=$fila['categoriaCliente'];
+            $_SESSION['categoriaCliente'] = $fila['categoriaCliente'];
           }
           if($mantenerSesionIniciada=='no'){
             $_SESSION['usuario'] = $email;
             $_SESSION['tipoUsuario'] = $tipoUsuario;
-            $_SESSION['categoriaCliente'] = $categoriaCliente;
+            $_SESSION['idUsuario'] = $idUsuario;
           }else{
-            
             setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
             setcookie('usuario',$email,time()+(60*60*24*365));
             setcookie('tipoUsuario',$tipoUsuario,time()+(60*60*24*365));
             setcookie('categoriaCliente',$categoriaCliente,time()+(60*60*24*365));
-
+            setcookie('idUsuario',$idUsuario,time()+(60*60*24*365));
           }
            /* Esto también lo tenemos que pasar seguro */
           echo '<meta http-equiv="refresh" content="0;url=home.php">';

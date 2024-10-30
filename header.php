@@ -32,7 +32,7 @@ if (isset($_SESSION['tipoUsuario'])){
         if(!isset($lugar)){
             $lugar="";
         }
-        if($lugar=="admin" or $lugar=="dueñoDeLocal" or $lugar=="cliente")
+        if($lugar=="admin" or $lugar=="duenoLocal" or $lugar=="cliente")
             $ruta="../";
         else{
             $ruta="";

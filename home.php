@@ -48,7 +48,7 @@
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="#" class="btn btn-login btn-primary w-100">
+            <a href="Admin/informeDesceuntos.php" class="btn btn-login btn-primary w-100">
                 Informe de descuentos
             </a>
         </div>
@@ -64,6 +64,36 @@
         <div class="col-auto w-100">
             <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100">
                 Gestionar novedades
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="#" class="btn btn-primary w-100">
+                Gestionar locales
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="duenoLocal") echo"d-none";?>">
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="duenoLocales/gestionDescuentos.php" class="btn btn-login btn-primary w-100">
+                Gestion de descuentos
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="#" class="btn btn-primary w-100">
+                Ver informe de descuentos.
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100">
+                Ver solicitud de descuentos.
             </a>
         </div>
     </div>
