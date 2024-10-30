@@ -12,6 +12,8 @@ function consultaSQL($query){
 
 }
 
+
+
 function mailExiste($email){
     $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
     $vResultado = consultaSQL($query);

@@ -48,3 +48,17 @@
     text-decoration: none; /* le saca el subrayado al link */
 
 }
+.btn-primary{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: violet;
+    color: violet;
+}
+.btn{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: violet;
+    color: violet;
+}
+.a{
+    border-color:#26014be1
+}
+.rosa{
+    background-color: rgb(164, 88, 236);
+}

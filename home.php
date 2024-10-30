@@ -10,6 +10,7 @@
 </head>
 <header>
         <?php 
+        $lugar="home";
         include("header.php");
         include_once("funciones.php");
         ?>
@@ -61,7 +62,7 @@
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="#" class="btn btn-primary w-100">
+            <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100">
                 Gestionar novedades
             </a>
         </div>

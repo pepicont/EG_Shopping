@@ -26,11 +26,21 @@ if (isset($_SESSION['tipoUsuario'])){
     <link href="estilos/style1.css" rel="stylesheet">
 </head>
 <body>
+    <?php /* $ruta=__DIR__; 
+        $ruta=str_replace("\\", "/", $ruta);
+        echo "$ruta"; */
+        if($lugar=="admin" or $lugar=="dueñoDeLocal" or $lugar=="cliente")
+            $ruta="../";
+        else{
+            $ruta="";
+        }
 
+    ?>
+    
     <!-- navbar del mobile -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
         <div class="container-fluid mx-auto px-auto">
-            <a class="navbar-brand" href="home.php"><img alt="">*Mundo Shopping*</a>
+            <a class="navbar-brand" href="home.php"><img src= "<?php echo("$ruta");?>assets/Mundo_Shopping.png" alt="Mundo Shopping"></a>
             <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
                 if($login==FALSE){
              ?>
@@ -46,7 +56,8 @@ if (isset($_SESSION['tipoUsuario'])){
                         $mostrarUsuario="Cliente";
                     if($tipoUsuario=="administrador")
                         $mostrarUsuario="Administrador";
-                    echo "<a href='perfil.php' class='user-info ms-auto d-lg-none'>".$mostrarUsuario."</a>";
+                    echo "<a href='".$ruta."perfil.php' class='user-info ms-auto d-lg-none'>".$mostrarUsuario."</a>";
+                    
             } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -75,13 +86,13 @@ if (isset($_SESSION['tipoUsuario'])){
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
 
-                            <li><a class="dropdown-item" href="logOut.php">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="<?php echo("$ruta");?>logOut.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>
             </div>
             <?php if (!defined('HEADER_INCLUDED')) { ?> 
-                <a href="login.php" class="login-button ms-auto d-none d-lg-block  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
+                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-none d-lg-block  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
             <?php } ?> 
             
             
@@ -90,7 +101,7 @@ if (isset($_SESSION['tipoUsuario'])){
 
     
     
-    <div class="container"></div>
+    
 
 
 
