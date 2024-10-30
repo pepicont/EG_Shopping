@@ -88,6 +88,7 @@
                                 <p class="card-text">Categoria de caliente: <?php echo($fila2["categoriaCliente"]) ?> </p>
                                 <p class="card-text">Del local: <?php echo ($fila["nombreLocal"]) ?> </p>
                                 <!-- <p class="card-text">Dias de la semana <?php //echo($fila["dia de la semana"]) ?> </p> -->
+                                <a href="eliminarDescuento.php?cod=<?php echo($fila2['cod']) ?>" class="btn btn-primary w-100 m-1">Eliminar descuento</a>
                             </div>
                         </div>
         

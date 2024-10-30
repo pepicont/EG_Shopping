@@ -79,13 +79,13 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
                     
                 </ul>
-                <?php echo "<a style='float:right' href='".$ruta."perfil.php' class='user-info ms-auto d-none d-lg-block'>".$mostrarUsuario."</a>";?>
-                <ul class="navbar-nav ms-auto  <?php if($login==FALSE){ echo("d-none");} ?>">
+                <?php echo "<a style='float:right; margin-right: 20px;' href='".$ruta."perfil.php' class='user-info ms-auto d-none d-lg-block'>".$mostrarUsuario."</a>";?>
+                <ul class="navbar-nav   <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" style="" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Cuenta
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <ul class="dropdown-menu  dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
 
