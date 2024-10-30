@@ -6,7 +6,6 @@ include_once("funciones.php");
 existecookie();
 if (isset($_SESSION['tipoUsuario'])){
     $tipoUsuario=$_SESSION['tipoUsuario'];
-    
     if ($tipoUsuario=='cliente'){
         $categoriaCliente=$_SESSION['categoriaCliente'];}
     $usuario=$_SESSION['usuario'];
@@ -34,8 +33,6 @@ if (isset($_SESSION['tipoUsuario'])){
             <a class="navbar-brand" href="home.php"><img alt="">*Mundo Shopping*</a>
             <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
                 if($login==FALSE){
-                    
-                
              ?>
              <?php if (!defined('HEADER_INCLUDED')) { ?> 
                 <a href="login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>

@@ -29,7 +29,9 @@ if(existecookie()) {
           if($mantenerSesionIniciada=='no'){
             $_SESSION['usuario'] = $email;
             $_SESSION['tipoUsuario'] = $tipoUsuario;
-            $_SESSION['categoriaCliente'] = $categoriaCliente;
+            if($tipoUsuario=='cliente'){
+              $_SESSION['categoriaCliente'] = $categoriaCliente;
+            }
           }else{
             
             setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
