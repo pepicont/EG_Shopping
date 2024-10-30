@@ -48,7 +48,7 @@
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="Admin/informeDesceuntos.php" class="btn btn-login btn-primary w-100">
+            <a href="Admin/informeDescuentos.php" class="btn btn-login btn-primary w-100">
                 Informe de descuentos
             </a>
         </div>
