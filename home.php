@@ -11,6 +11,7 @@
 <header>
         <?php 
         include("header.php");
+        include_once("funciones.php");
         ?>
     </header>
     
@@ -43,18 +44,35 @@
     </button>
 </div>
 
-<div class="container">
-    <div class="row align-item-center">
-        <div class="col-12 align-self-center"><h2>Novedades</h2></div>
-
+<div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="#" class="btn btn-login btn-primary w-100">
+                Informe de descuentos
+            </a>
+        </div>
     </div>
-    <div class="row">
-        <!-- Aca van a ir un php que genere los carteles con las novedades que haya
-         según el tipo de usuario  -->
-         Novedad1 ,Novedad2
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="#" class="btn btn-primary w-100">
+                Gestionar descuentos
+            </a>
+        </div>
     </div>
-
-
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="#" class="btn btn-primary w-100">
+                Gestionar novedades
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="#" class="btn btn-primary w-100">
+                Gestionar locales
+            </a>
+        </div>
+    </div>
 </div>
 
  </body>
@@ -62,7 +80,7 @@
   
 <footer>
         <?php 
-        include("footer.html");
+        include("footer.php");
         ?>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

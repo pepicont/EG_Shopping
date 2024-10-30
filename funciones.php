@@ -3,11 +3,18 @@
 <?php 
 /* Documento que contiene funciones frecuentemente utilizadas */
 
+function consultaSQL($query){
+  $link=mysqli_connect("localhost","root","","shopping") or die("Hubo un error al conectarse con la base de datos");
+  $resultados=mysqli_query($link,$query);
+  mysqli_close($link);
+  return $resultados;
+
+
+}
 
 function mailExiste($email){
-    include("conexiones/conexion.inc");
     $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
-    $vResultado = mysqli_query($link, $query) or die (mysqli_error($link));
+    $vResultado = consultaSQL($query);
       $fila = mysqli_fetch_array($vResultado);
       if(mysqli_num_rows($vResultado) == 0) {
       return FALSE;}
@@ -29,4 +36,6 @@ function existecookie(){
         return FALSE;
       }
 }
+
+
 ?>

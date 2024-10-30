@@ -2,21 +2,13 @@
 
 // Verificar si hay una cookie para mantener la sesión iniciada
   session_start();
-<<<<<<< HEAD
-if(isset($_COOKIE['mantenerSesionIniciada'])) {
-  $_SESSION['usuario'] = $_COOKIE['usuario'];
-  $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
-  $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];
-=======
 include_once("funciones.php");
 if(existecookie()) {
->>>>>>> 39b26a8c787fc1d7c4be605dedda0b4bc52c444d
   header("Location:home.php");
   exit();
 }
 ?>
 <?php 
-    include("conexiones/conexion.inc");
     if(isset($_POST['enviar'])) {
       
       $email = $_POST['email'];
@@ -24,7 +16,7 @@ if(existecookie()) {
       $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
       $mantenerSesionIniciada = $_POST['mantenerSesionIniciada'];
       $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
-      $vResultado = mysqli_query($link, $query) or die (mysqli_error($link));
+      $vResultado = consultaSQL($query) or die (mysqli_error($link));
       $fila = mysqli_fetch_array($vResultado);
       if(mysqli_num_rows($vResultado) == 0) {
       echo ("Usuario Inexistente, intentelo de nuevo o registrese <br>");}
@@ -65,10 +57,7 @@ if(existecookie()) {
 </head>
 <header>
   <?php
-<<<<<<< HEAD
-=======
   define('HEADER_INCLUDED', TRUE);
->>>>>>> 39b26a8c787fc1d7c4be605dedda0b4bc52c444d
   include("header.php");
   ?>
 </header>
@@ -102,7 +91,7 @@ if(existecookie()) {
 </body>
 <footer>
 <?php
-  include("footer.html");
+  include("footer.php");
   ?>
 </footer>
 </html>

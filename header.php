@@ -42,9 +42,14 @@ if (isset($_SESSION['tipoUsuario'])){
             <?php } ?>
             
             <?php } else{
-                if($tipoUsuario=='Administrador')
-            
-                    echo('<a href="perfil.php" class="user-info ms-auto d-lg-none">Administrador</a> ');
+
+                   if($tipoUsuario=="duenoLocal")
+                        $mostrarUsuario="Dueño de local";
+                    if($tipoUsuario=="cliente")
+                        $mostrarUsuario="Cliente";
+                    if($tipoUsuario=="administrador")
+                        $mostrarUsuario="Administrador";
+                    echo "<a href='perfil.php' class='user-info ms-auto d-lg-none'>".$mostrarUsuario."</a>";
             } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

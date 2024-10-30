@@ -10,7 +10,7 @@
 <header>
   <?php
   include("header.php");
-  include("conexiones/conexion.inc");
+  include_once("funciones.php");
   ?>
   
 </header>
@@ -79,11 +79,9 @@
       $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	
 
       values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";
-      mysqli_query($link, $query) or die (mysqli_error($link));
+      consultaSQL($query) or die (mysqli_error($link));
       echo("Usuario registrado con éxito");
       echo ("<A href='login.php'>Iniciar sesión</A>");
-      // Cerrar la conexion
-      mysqli_close($link);
       } else{
         echo("El mail ingresado ya está registrado");
       }
@@ -102,7 +100,7 @@
 </body>
 <footer>
 <?php
-  include("footer.html");
+  include("footer.php");
   ?>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
