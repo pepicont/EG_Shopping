@@ -35,6 +35,7 @@ function existecookie(){
         $_SESSION['usuario'] = $_COOKIE['usuario'];
         $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
         $_SESSION['idUsuario'] = $_COOKIE['idUsuario'];
+        
         if($_COOKIE['tipoUsuario']=='cliente'){
           $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];
         }

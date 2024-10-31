@@ -46,6 +46,7 @@ if (isset($_SESSION['tipoUsuario'])){
             <a class="navbar-brand" href="<?php echo("$ruta");?>home.php"><img src= "<?php echo("$ruta");?>assets/Mundo_Shopping.png" alt="Mundo Shopping"></a>
             <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
                 if($login==FALSE){
+
              ?>
              <?php if (!defined('HEADER_INCLUDED')) { ?> 
                 <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
@@ -79,7 +80,9 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
                     
                 </ul>
-                <?php echo "<a style='float:right' href='".$ruta."perfil.php' class='user-info ms-auto d-none d-lg-block'>".$mostrarUsuario."</a>";?>
+                
+                <?php if($login==TRUE){
+                echo "<a style='float:right' href='".$ruta."perfil.php' class='user-info ms-auto d-none d-lg-block'>".$mostrarUsuario."</a>";}?>
                 <ul class="navbar-nav ms-auto  <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
