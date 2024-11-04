@@ -50,17 +50,17 @@
                         <h3 class="mt-4 ">Filtros de busqueda:</h3>
                         <form action="listarNovedades.php" method="GET">
                             <div class="form-group mx-4 p-2" style="width: fit-content">
-                                <label name="filtro1"for="filtro1">Filtro 1</label>
-                                <input type="checkbox" class="form-check-input" name="filtro1"></br>
+                                <label  for="inicial">Inicial</label>
+                                <input type="checkbox" class="form-check-input" name="inicial"></br>
                             </div>
                             <div class="form-group mx-4 p-2" style="width: fit-content">
-                                <label name="filtro2" for="filtro2">Filtro 2</label>
-                                <input type="checkbox" class="form-check-input" name="filtro2"></br>
+                                <label for="medium">Medium</label>
+                                <input type="checkbox" class="form-check-input" name="medium"></br>
 
                             </div>
                             <div class="form-group mx-4 p-2" style="width: fit-content">
-                                <label name="filtro3" for="filtro3">Filtro 3</label>
-                                <input type="checkbox" class="form-check-input" name="filtro3"></br>
+                                <label for="premium">Premium</label>
+                                <input type="checkbox" class="form-check-input" name="premium"></br>
 
                             </div>
                             <div class="form-group mx-auto mx-4 p-2" style="width: fit-content">
@@ -77,75 +77,11 @@
                         
                         <!--Antes de traernos todas las novedades, eliminamos alguna que haya sido seleccionada-->
                         <div class="container listado"> 
-                        <?php 
-                        $query="SELECT * FROM novedades WHERE estado='activa'";
-                        $resultados=consultaSQL($query);
-                        if(mysqli_num_rows($resultados)>0){
-                            while($fila=mysqli_fetch_array($resultados)){
-                                if(!empty($_GET['idEditar'])){
-                                    if($_GET['idEditar']==$fila['cod']){
-                                        echo("<div class='card' style=' margin: 15px; width: 18rem;'>");
-                                        echo("<div class='card-body'>");
-                                        echo("<form method='GET' action='procesarNovedad.php'>");
-                                            echo("<h5 class='card-title'><input name='nombreNovedad' type='text' class='form-group' value='".$_GET['nombreNovedad']."' required></h5>");
-                                            echo("<h6 class='card-subtitle mb-2 text-muted'><select name='tipoUsuario' value='".$_GET['tipoUsuario']."'><option value='inicial'>Incial</option><option value='medium'>Medium</option><option value='premium'>Premium</option></select></h6>");
-                                            echo("<p class='card-text'><input type='text' name='textoNovedad' class='form-group' value='".$_GET['textoNovedad']."' required></p>");
-                                            echo("<input type='hidden' name='cod' value='".$fila['cod']."'>");
-                                            echo("<input type='submit' name='novedadEditada' class='btn btn-success card-link' value='Guardar' />");
-                                            echo("<input type='reset' class='btn btn-warning card-link' value='Limpiar' />");
-                                            echo("</form>");
-                                        echo("</div>");
-                                        echo("</div>");
-                                    }
-
-                                }else{ 
-                                    echo("<div class='card' style='width: 18rem;'>");
-                                    echo("<div class='card-body'>");
-                                    echo("<h5 class='card-title'>".$fila["nombreNovedad"]."</h5>");
-                                    echo("<h6 class='card-subtitle mb-2 text-muted'>Categoría cliente: ".$fila["tipoUsuario"]."</h6>");
-                                    echo("<p class='card-text'>".$fila["textoNovedad"]."</p>");
-                                    echo("<a href='gestionarNovedades.php?idEditar=".$fila["cod"]."&nombreNovedad=".$fila["nombreNovedad"]."&tipoUsuario=".$fila["tipoUsuario"]."&textoNovedad=".$fila["textoNovedad"]."' class='btn btn-warning card-link'> Editar</a>");
-                                    echo("<button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal".$fila["cod"]."'>Eliminar</button>");
-                                    /*modal */
-                                    echo("<div class='modal fade' id='deleteModal".$fila["cod"]."' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>");
-                                    echo("<div class='modal-dialog' role='document'>");
-                                    echo("<div class='modal-content'>");
-                                    echo("<div class='modal-header'>");
-                                    echo("<h5 class='modal-title' id='exampleModalLabel'>¿Esta seguro que desea borrar la novedad?</h5>");
-                                    echo("<button type='button' class='close' data-dismiss='modal' aria-label='Close'>");
-                                    echo("<span aria-hidden='true'>&times;</span>");
-                                    echo("</button>");
-                                    echo("</div>");
-                                    echo("<div class='modal-body'>");
-                                    echo("<p>Nombre:'".$fila["nombreNovedad"]."'</p></br>");
-                                    echo("<p>Tipo de usuario:'".$fila["tipoUsuario"]."'</p></br>");
-                                    echo("<p>texto:'".$fila["textoNovedad"]."'</p></br>");
-                                    echo("</div>");
-                                    echo("<div class='modal-footer'>");
-                                    echo("<button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>");
-                                    echo("<button type='button' class='btn btn-danger'><a href='procesarNovedad.php?idEliminar=".$fila["cod"]."' class='btn btn-danger<!--card-link -->'>Confirmar</a></button>");
-                                    echo("</div>");
-                                    echo("</div>");
-                                    echo("</div>");
-                                    echo("</div>");
-                                    /* modal cierre*/
-                                    echo("</div>");
-                                    echo("</div>"); 
-
-                                }
-                                   
-                                
-                           
-                                
-                            }
-                        }
-                        else{
-                            echo"No hay novedades cargadas activas";
-                        }
-
-                     
-                     ?>
-                    </div> 
+                           <?php 
+                           include_once("listarNovedades.php");
+                           mostrarNovedades();
+                           ?>
+                        </div>
                      
                 </div>
             </div>

@@ -85,7 +85,7 @@
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="#" class="btn btn-primary w-100">
+            <a href="duenoLocales/verInformeDescuentos.php" class="btn btn-primary w-100">
                 Ver informe de descuentos.
             </a>
         </div>
