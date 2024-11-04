@@ -55,7 +55,7 @@
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="#" class="btn btn-primary w-100">
+            <a href="Admin/gestionarDescuentos.php" class="btn btn-primary w-100">
                 Gestionar descuentos
             </a>
         </div>
@@ -92,15 +92,8 @@
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100">
+            <a href="duenoLocales/verSolicitudDescuentos.php" class="btn btn-primary w-100">
                 Ver solicitud de descuentos.
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="#" class="btn btn-primary w-100">
-                Gestionar locales
             </a>
         </div>
     </div>

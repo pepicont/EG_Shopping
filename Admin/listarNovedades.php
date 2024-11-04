@@ -1,7 +1,29 @@
 <?php
-function mostrarNovedades(){
+    $busqueda = "estado='activa' "; 
+    $contador=0;
+    if(!empty($_GET['enviar'])){   
+        if(!empty($_GET['inicial'])){
+            $busqueda .= "AND tipoUsuario = '" . $_GET["inicial"] . "' ";
+            $contador++;
+        }
+        if(!empty($_GET['medium'])){
+            if ($contador>0){
+                $operador="OR ";
+            }else{$operador="AND ";}
+            $busqueda .= "".$operador."tipoUsuario = '".$_GET["medium"]."' ";
+            $contador++;
+        }   
+        if(!empty($_GET['premium'])){
+            if($contador>0){
+                $operador="OR ";
+            }else{$operador="AND ";}
+            
+            $busqueda .= "".$operador."tipoUsuario = '".$_GET["premium"]."' ";}
+        
+        }
     
-    $query="SELECT * FROM novedades WHERE estado='activa'";
+    
+    $query="SELECT * FROM novedades WHERE ".$busqueda."";
     $resultados=consultaSQL($query);
     if(mysqli_num_rows($resultados)>0){
         while($fila=mysqli_fetch_array($resultados)){
@@ -73,5 +95,5 @@ function mostrarNovedades(){
         echo "No hay novedades cargadas activas";
     }
     
-}
+
 ?>

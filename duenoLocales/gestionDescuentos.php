@@ -32,7 +32,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="agregarDesceunto.php" method="GET" >
+                    <form action="agregarDescuento.php" method="GET" >
                         <div class="form-group">
                             Texto de la promo: <input type="text" require id="textpro" name="textpro">
                         </div>
@@ -44,13 +44,20 @@
                         </div>
                         <div class="form-group">
                             Dia de la semana: <br>
+                            Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
+                            Martes: <input type="checkbox" name="dia[]" value="mmartes"> <br>
+                            Miércoles: <input type="checkbox" name="dia[]" value="miercoles"> <br>
+                            Jueves: <input type="checkbox" name="dia[]" value="jueves"> <br>
+                            Viernes: <input type="checkbox" name="dia[]" value="viernes"> <br>
+                            Sábado: <input type="checkbox" name="dia[]" value="sabado"> <br>
+                            Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
                         </div>
                         <div class="form-group">
                             <hr>
-                            Categoria de descuento segun cliente: <br> 
-                                Inicial: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="inicial" name="categoria[]"> <br>
-                                Medium: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="medium" name="categoria[]"> <br>
-                                Premium: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="premium" name="categoria[]"> <br>
+                            Categoria de descuento según cliente: <br> 
+                            Inicial: <input type="radio" class="form-checkinput" aria-describedby="helpId" value="inicial" name="categoria"> <br>
+                            Medium: <input type="radio" class="form-checkinput" aria-describedby="helpId" value="medium" name="categoria"> <br>
+                            Premium: <input type="radio" class="form-checkinput" aria-describedby="helpId" value="premium" name="categoria"> <br>
                         </div>
                         <div class="form-group">
                             Ingrese el codigo de local: <input type="number" id="id" name="id" require>
@@ -61,10 +68,6 @@
                         </div>
                     </form>
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
                 </div>
             </div>
             </div>
