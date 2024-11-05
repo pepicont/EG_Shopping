@@ -33,13 +33,13 @@ if($estoy == "verSolicitudDescuentos"){
     <div class="form-group ">
         </hr>
         Dia de la semana: <br>
-        Lunes: <input type="checkbox" name="dia[]" value="l"> <br>
-        Martes: <input type="checkbox" name="dia[]" value="m"> <br>
-        Miércoles: <input type="checkbox" name="dia[]" value="mi"> <br>
-        Jueves: <input type="checkbox" name="dia[]" value="j"> <br>
-        Viernes: <input type="checkbox" name="dia[]" value="v"> <br>
-        Sábado: <input type="checkbox" name="dia[]" value="s"> <br>
-        Domingo: <input type="checkbox" name="dia[]" value="d"> <br>
+        Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
+        Martes: <input type="checkbox" name="dia[]" value="martes"> <br>
+        Miércoles: <input type="checkbox" name="dia[]" value="miercoles"> <br>
+        Jueves: <input type="checkbox" name="dia[]" value="jueves"> <br>
+        Viernes: <input type="checkbox" name="dia[]" value="viernes"> <br>
+        Sábado: <input type="checkbox" name="dia[]" value="sabado"> <br>
+        Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
     </div>
     <br> 
     <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between">

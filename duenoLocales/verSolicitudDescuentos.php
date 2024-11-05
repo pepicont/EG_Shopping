@@ -30,26 +30,7 @@ $lugar = "duenoLocal";
             $estoy = "verSolicitudDescuentos";
             include("filtros.php"); 
              $busqueda = ""; 
-             if(isset($_GET["submit"])){   
-                 if(isset($_GET["codDes"]) && $_GET["codDes"] != ""){
-                     $busqueda .= "AND cod = '" . $_GET["codDes"] . "' ";
-                 }
-                 if(isset($_GET["fechaDes"]) && $_GET["fechaDes"] != ""){
-                     $busqueda .= "AND fechaDesde >= '".$_GET["fechaDes"]."' ";
-                 }   
-                 if(isset($_GET["fechaHas"]) && $_GET["fechaHas"] != ""){
-                     $busqueda .= "AND fechaHasta <= '".$_GET["fechaHas"]."' ";
-                 }
-                 if(isset($_GET['categoria']) && $_GET['categoria'] != "0"){
-                     $busqueda .= "AND categoriaCliente = '" . $_GET["categoria"] . "' ";
-                         
-                 }
-                 if(!empty($_GET['diaSemana'])){
-                     // $diasSeleccionados = implode(",", $_GET['dia']);
-                     // $busqueda .= "AND diaSemana = '".$diasSeleccionados."' ";  
-                     // $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda";
-                 }
-             } 
+             include("validaciones.php") 
             ?>
         </div>
         <div class="listado col-8 d-flex flex-wrap justify-content-center mx-auto">

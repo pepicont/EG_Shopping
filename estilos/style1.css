@@ -67,9 +67,10 @@
 .filtros{
     margin-left: 35px;
     border: 1px solid rgb(0, 0, 0);
-    border-radius: 6%;
+    border-radius: 16px;;
     text-decoration: none;
     padding-bottom: 15px;
+    background-color: rgb(224, 198, 224);
 
     
 
