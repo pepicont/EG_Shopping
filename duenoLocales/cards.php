@@ -4,36 +4,29 @@ if(isset($_GET["submit"])){
     if(isset($_GET["codDes"]) && $_GET["codDes"] != ""){
         $busqueda .= "AND cod = '" . $_GET["codDes"] . "' ";
     }
-    if($_GET["fechaDes"] != "" && isset($_GET["fechaDes"])){
+    if(isset($_GET["fechaDes"]) && $_GET["fechaDes"] != ""){
         $busqueda .= "AND fechaDesde >= '".$_GET["fechaDes"]."' ";
     }   
-    if($_GET["fechaHas"] != "" && isset($_GET["fechaHas"])){
+    if(isset($_GET["fechaHas"]) && $_GET["fechaHas"] != ""){
         $busqueda .= "AND fechaHasta <= '".$_GET["fechaHas"]."' ";
     }
-    if(!empty($_GET['inicial'])){
-            $busqueda .= "AND categoriaCliente = '" . $_GET["inicial"] . "' ";
-            $contador++;
-        }
-        if(!empty($_GET['medium'])){
-            if ($contador>0){
-                $operador="OR ";
-            }else{$operador="AND ";}
-            $busqueda .= "".$operador."categoriaCliente = '".$_GET["medium"]."' ";
-            $contador++;
-        }   
-        if(!empty($_GET['premium'])){
-            if($contador>0){
-                $operador="OR ";
-            }else{$operador="AND ";}
+    if(isset($_GET['categoria']) && $_GET['categoria'] != "0"){
+        $busqueda .= "AND categoriaCliente = '" . $_GET["categoria"] . "' ";
             
-            $busqueda .= "".$operador."categoriaCliente = '".$_GET["premium"]."' ";}
     }
+    if(!empty($_GET['diaSemana'])){
+        // $diasSeleccionados = implode(",", $_GET['dia']);
+        // $busqueda .= "AND diaSemana = '".$diasSeleccionados."' ";  
+        // $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda";
+    }
+}
+
 $query = "SELECT * FROM locales WHERE codUsuario = $idusuario";
 $vresultado = consultaSQL($query);
 if (mysqli_num_rows($vresultado) > 0) {
     while ($fila = mysqli_fetch_array($vresultado)){
         $codLocal = $fila["codLocal"];
-        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda"; 
+        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal AND estadoPromo != 'eliminado' $busqueda"; 
         $vresultado2 = consultaSQL($query2);
     if(mysqli_num_rows($vresultado2)>0){
         while ($fila2 = mysqli_fetch_array($vresultado2)) { 
@@ -42,10 +35,11 @@ if (mysqli_num_rows($vresultado) > 0) {
                 <div class="card-body">
                     <h5 class="card-title">Cod descuento: <?php echo($fila2["cod"]) ?></h5>
                     <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo($fila2["textoPromo"]) ?> </h6>
-                    <p class="card-text">Categoria de caliente: <?php echo($fila2["categoriaCliente"]) ?> </p>
+                    <p class="card-text">Categoria de cliente: <?php echo($fila2["categoriaCliente"]) ?> </p>
                     <p class="card-text">Del local: <?php echo ($fila["nombreLocal"]) ?> </p>
-                    <p class="card-text">Dias de la semana <?php echo($fila["diaSemana"]) ?> </p> 
-                    <p class="card-text">Estado: <?php echo($fila["estadoPromo"]) ?> </p>
+                    <p class="card-text">Dias de la semana: <?php echo($fila2["diaSemana"]) ?> </p>
+                    <p class="card-text" >Plazo: <?php echo($fila2["fechaDesde"]); echo(" --- "); echo($fila2["fechaHasta"])?> </p> 
+                    <p class="card-text">Estado: <?php echo($fila2["estadoPromo"]) ?> </p>
                     <button type="button" class="btn btn-primary w-100 m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         Eliminar descuento
                     </button>

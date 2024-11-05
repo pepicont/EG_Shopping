@@ -17,13 +17,14 @@ $vresultado1 = consultaSQL($query1);
         $query2 = "SELECT * FROM locales WHERE codUsuario = '".$idusuario."' && codLocal = '".$id."' "; 
         $vresultado2 = consultaSQL($query2);
         if(mysqli_num_rows($vresultado2)>0){
-            $query = "INSERT INTO promociones (textoPromo,fechaDesde,fechaHasta,categoriaCliente,diaSemana,estadoPromo,codLocal) VALUES 
+            $query3 = "INSERT INTO promociones (textoPromo,fechaDesde,fechaHasta,categoriaCliente,diaSemana,estadoPromo,codLocal) VALUES 
             ('".$text."','".$fechades."','".$fechahas."','".$categoria."','".$diasSeleccionados."','pendiente','".$id."')";
-            consultaSQL($query) or die (mysqli_error($link));
+            consultaSQL($query3) or die (mysqli_error($link));
+            echo("Se ha ingresado correctamente el descuento");
         }else{
           echo("Ha ingresado mal el codigo del local");
         }
       }
-header("Location:gestionDescuento.php");
-exit();
+  header("Location:gestionDescuentos.php");
+  exit();
 ?>

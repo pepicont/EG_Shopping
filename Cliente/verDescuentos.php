@@ -40,16 +40,18 @@
                         <div class="form-group mx-4 p-2" style="width: fit-content">
 
                         <label name="rubros"for="rubros">Rubros: </label>
-                        <select name="dia" id="dia">
-                                <option value="">Selecciona un día:</option>
-                                <option value="lunes">Lunes</option>
-                                <option value="martes">Martes</option>
-                                <option value="miércoles">Miércoles</option>
-                                <option value="jueves">Jueves</option>
-                                <option value="viernes">Viernes</option>
-                                <option value="sabado">Sábado</option>
-                                <option value="domingo">Domingo</option>
-                        </select>
+                        <div class="form-group ">
+                            </hr>
+                            Dia de la semana: <br>
+                            Lunes: <input type="checkbox" name="dia[]" value="l"> <br>
+                            Martes: <input type="checkbox" name="dia[]" value="m"> <br>
+                            Miércoles: <input type="checkbox" name="dia[]" value="mi"> <br>
+                            Jueves: <input type="checkbox" name="dia[]" value="j"> <br>
+                            Viernes: <input type="checkbox" name="dia[]" value="v"> <br>
+                            Sábado: <input type="checkbox" name="dia[]" value="s"> <br>
+                            Domingo: <input type="checkbox" name="dia[]" value="d"> <br>
+                        </div>
+                        <br> 
 
                         <div class="form-group mx-auto mx-4 p-2" style="width: fit-content">
                             <input type="submit" name="nuevaNovedad" class="btn btn-primary px-4 py-2" value="filtrar">

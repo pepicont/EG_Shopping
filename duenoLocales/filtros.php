@@ -1,4 +1,11 @@
 <h3>Filtros:  </h3>
+<?php
+if($estoy == "verSolicitudDescuentos"){
+    $borrar = "verSolicitudDescuentos.php";
+}else{
+    $borrar = "gestionDescuentos.php";
+}
+?>
 <form method="GET" >
     <div class="form-group">
         Codigo de promo: <input type="text" id="codDes" name="conDes" > </br> 
@@ -37,6 +44,6 @@
     <br> 
     <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between">
         <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
-        <a href="gestionDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
+        <a href="<?php echo($borrar)?>" class="btn btn-primary w-100 m-1">Borrar filtros</a>
     </div>
 </form>

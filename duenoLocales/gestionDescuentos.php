@@ -71,9 +71,11 @@
                 </div>
             </div>
             </div>
-        <br>
-        <br>
-           <?php include("filtros.php"); ?>
+            <br>
+            <br>
+           <?php 
+              $estoy = "gestionDescuentos";
+            include("filtros.php"); ?>
         </div>
         <div class="listado  d-flex col-8 mx-auto ">
             <?php include("cards.php"); ?>
