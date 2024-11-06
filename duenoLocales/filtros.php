@@ -1,4 +1,4 @@
-<h3>Filtros:  </h3>
+
 <?php
 if($estoy == "verSolicitudDescuentos"){
     $borrar = "verSolicitudDescuentos.php";
@@ -6,9 +6,17 @@ if($estoy == "verSolicitudDescuentos"){
     $borrar = "gestionDescuentos.php";
 }
 ?>
-<form method="GET" >
-    <div class="form-group">
-        Codigo de promo: <input type="text" id="codDes" name="conDes" > </br> 
+<div class="container">
+    <?php
+    if($estoy == "gestionDescuentos"){
+        include("agregarDescuento.php");
+        }
+        ?>
+    <form method="GET" >
+        <br>
+    <h3>Filtros:  </h3>
+    <div class="form-group ">
+        Codigo de promo: <input type="text" id="codDes" name="codDes" > </br> 
         <hr>
     </div>
     <div class="form-group">
@@ -47,3 +55,4 @@ if($estoy == "verSolicitudDescuentos"){
         <a href="<?php echo($borrar)?>" class="btn btn-primary w-100 m-1">Borrar filtros</a>
     </div>
 </form>
+</div>

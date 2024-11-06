@@ -48,10 +48,10 @@
     text-decoration: none; /* le saca el subrayado al link */
 
 }
-.btn-primary{ /*fijarse si anda esto de cambiar de color los botones*/
+.btn-primary.filtros-desplegados{ /*fijarse si anda esto de cambiar de color los botones*/
     background-color: violet;
     border-color: violet;
-    
+        
 }
 .btn-primary:hover{ /*fijarse si anda esto de cambiar de color los botones*/
     background-color: rgb(236, 86, 236);
@@ -84,11 +84,16 @@
 }
 
 .modal-footer{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
 }
 
 .alert{
-    width: fit-content;
+    width: fit-content; 
+}
+.bot-filtros{
+    z-index: 1050; /* Orden de objetos */
+    width: 20px; /* Ancho fijo */
+
 }
