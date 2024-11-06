@@ -1,5 +1,4 @@
 <?php
-
 $lugar = "duenoLocal";
 include_once("../funciones.php");
     $cod = $_GET['cod'];
@@ -14,5 +13,5 @@ include_once("../funciones.php");
     $resultados = consultaSQL($query);
     exit(header("Location: verSolicitudDescuentos.php"));
 
-
+    
 ?>

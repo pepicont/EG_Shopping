@@ -6,6 +6,4 @@ include_once("../funciones.php");
     $query = "UPDATE promociones SET estadoPromo='eliminado' WHERE cod='".$cod."'";
     $resultados = consultaSQL($query);
     exit(header("Location: gestionDescuentos.php"));
-
-
 ?>

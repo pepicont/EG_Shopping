@@ -6,6 +6,7 @@ $lugar = "duenoLocal";
         header("Location: ../index.php");
         exit();
     }
+    $idUsuario= $_SESSION["idUsuario"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,48 +30,12 @@ $lugar = "duenoLocal";
             <?php 
             $estoy = "verSolicitudDescuentos";
             include("filtros.php"); 
-             $busqueda = ""; 
-             include("validaciones.php") 
+            $busqueda = "";
+            include("validaciones.php") 
             ?>
         </div>
         <div class="listado col-8 d-flex flex-wrap justify-content-center mx-auto">
-        <?php
-        if (mysqli_num_rows($vresultado) > 0) {
-            while ($fila = mysqli_fetch_array($vresultado)){
-            $codLocal= $fila["codLocal"];
-            $query2 = "SELECT * FROM promociones WHERE codLocal = '".$codLocal."' '".$busqueda."'";
-            $vresultado2 = consultaSQL($query2);
-            if(mysqli_num_rows($vresultado) > 0){
-                while($fila2 = mysqli_fetch_array($vresultado2)){
-                $codPromo = $fila2["cod"];
-                $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$codPromo."' AND estado = 'pendiente'";
-                $vresultado3 = consultaSQL($query3);
-                if(mysqli_num_rows($vresultado3) > 0){
-                    while($fila3 = mysqli_fetch_array($vresultado3)){
-                    ?>
-                    <div class="card bg-color-primary" style="margin: 15px; width: 18rem; display: flex; flex-direction: column; justify-content: space-between;">
-                        <div class="card-body">
-                        <h5 class="card-title">Codigo Promo: <?php echo($codPromo); ?></h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo($fila2["textoPromo"]); ?> </h6>
-                        <p class="card-text">codigo del cliente:<?php echo($fila3["codCliente"])?> </p>
-                        <p class="card-text">Categoria de caliente: <?php echo($fila2["categoriaCliente"]); ?> </p>
-                        <p class="card-text">Del local: <?php echo ($fila["nombreLocal"]); ?> </p>
-                        <p class="card-text">Dias de la semana: <?php echo($fila2["diaSemana"]); ?> </p> 
-                        </div>
-                        <div class="card-footer d-flex justify-content-between" style="border-top: 0px;">
-                            <a href="cambiarEstadoPromo.php?cod=<?php echo("1");?>&promo=<?php echo("".$codPromo."")?>" class="btn btn-primary m-1">Aceptar solicitud</a>
-                            <a href="cambiarEstadoPromo.php?cod=<?php echo("2"); ?>&promo=<?php echo("".$codPromo."")?>" class="btn btn-primary m-1">Denegar solicitud</a>
-                        </div>
-                    </div>
-                    <?php
-                    }
-                }
-                }   
-            }
-            }
-        }
-        
-        ?>
+            <?php include("cards.php"); ?> 
         </div>
     </div>
 </body>
