@@ -97,3 +97,17 @@
     width: 100px; /* Ancho fijo */
     opacity: 0,5;
 }
+
+#menuPrincipal{
+    font-weight: bold;
+    color: hsl(242, 68%, 40%);
+    background-color: hsl(242, 68%, 90%);
+    padding: 10px;
+    border-radius: 8px;
+}
+.titulo{
+    font-weight: bold;
+    color: hsl(242, 68%, 40%);
+    padding: 10px;
+    text-decoration: underline;
+}

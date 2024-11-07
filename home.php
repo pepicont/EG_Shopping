@@ -46,7 +46,7 @@
 </div>
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
-    <div class="row mb-3 justify-content-center">
+<!--     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
             <a href="Admin/informeDescuentos.php" class="btn btn-login btn-primary w-100">
                 Informe de descuentos
@@ -72,6 +72,66 @@
             <a href="Admin/gestionarLocales.php" class="btn btn-primary w-100">
                 Gestionar locales
             </a>
+        </div>
+    </div> -->
+    <div class="row">
+        <!-- Div donde van a ir las opciones del admin -->
+        <div class="col-12 col-sm-3 col-lg-6">
+            <div class="row">
+                <div class="col-12 col-md-6 m-2">
+                    <a href="Admin/informeDescuentos.php" class="btn btn-login btn-primary w-100" id="menuPrincipal">
+                        Informe de descuentos
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 m-2">
+                    <a href="Admin/gestionarDescuentos.php" class="btn btn-primary w-100" id="menuPrincipal">
+                        Gestionar descuentos
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 m-2">
+                    <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100" id="menuPrincipal">
+                        Gestionar novedades
+                    </a>
+                </div>
+                <div class="col-12 col-md-6 m-2">
+                    <a href="Admin/gestionarLocales.php" class="btn btn-primary w-100" id="menuPrincipal">
+                        Gestionar locales
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Div donde van a ir las solicitudes de dueños de local -->
+        <div class="col-12 col-sm-4 col-lg-6">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="titulo">Solicitudes de dueños de local</h3>
+                </div>
+            </div>
+            <div class="row">
+            
+                <div class="col-12 col-sm-6 listado">
+                    
+                    <?php
+                        $sql="SELECT * FROM usuarios WHERE estado='1' AND tipoUsuario='duenoLocal'";
+                        $resultado=consultaSQL($sql);
+                        if(mysqli_num_rows($resultado)==0){
+                            echo("No hay solicitudes de dueños de locales");
+                        }else{
+                        while($usuario=mysqli_fetch_array($resultado)){ 
+                    ?>
+                        <div class="card" style=" margin: 10px; width: 14em; ">
+                            <div class="card-body">
+                                <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
+                                <h6 class="card-subtitle mb-2 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
+                                <p class="card-text">Fecha de nacimiento: <?php echo($usuario['fechaNacimiento']) ?> </p>
+                                
+                            </div>
+                        </div>
+                        <?php
+                        }}?>     
+                
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -1,52 +1,14 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-  session_start();
-}
-include_once("../funciones.php");
-$idusuario = $_SESSION["idUsuario"];
-$seCreo = null;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="estilos/style1.css" rel="stylesheet">
+</head>
+<body>
 
-if(isset($_POST['submit'])){
-  $query1 = "SELECT * FROM usuarios WHERE codUsuario = '".$idusuario."'"; 
-  $vresultado1 = consultaSQL($query1);
-  if (mysqli_num_rows($vresultado1) > 0) {
-    $id = $_POST['id'];
-    $text = $_POST["textpro"];
-    $fechades = $_POST["fechaini"];
-    $fechahas = $_POST["fechahas"]; 
-    $categoria = $_POST["categoria"];
-    if (isset($_POST['dia'])) {
-      // Convertir el arreglo a una cadena separada por comas
-      $diasSeleccionados = implode(",", $_POST['dia']);
-    } else {
-      $seCreo = '2';
-    }
-    $query2 = "SELECT * FROM locales WHERE codUsuario = '".$idusuario."' && codLocal = '".$id."'"; 
-    $vresultado2 = consultaSQL($query2);
-    if (mysqli_num_rows($vresultado2) > 0) {
-      $query3 = "INSERT INTO promociones (textoPromo, fechaDesde, fechaHasta, categoriaCliente, diaSemana, estadoPromo, codLocal) VALUES 
-      ('".$text."', '".$fechades."', '".$fechahas."', '".$categoria."', '".$diasSeleccionados."', 'pendiente', '".$id."')";
-      consultaSQL($query3) or die(mysqli_error($link));
-      $seCreo = '1';
-    } else {
-      $seCreo = '2';
-    }
-  }
-  if(isset($seCreo)){
-    if($seCreo == '1' ){
-      $_SESSION['message'] = '<div class="alert alert-primary mt-3" style="width: fit-content" role="alert">
-      El descuento fue creado con éxito
-      </div>';
-    } elseif($seCreo == '2'){
-      $_SESSION['message'] = '<div class="alert alert-secondary mt-3" style="width: fit-content" role="alert">
-      El descuento no se ha podido crear.
-      </div>';
-    } 
-  }
-  header("Location: gestionDescuentos.php");
-  exit();
-}
-?>
 <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear descuento</button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -97,3 +59,10 @@ if(isset($_POST['submit'])){
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</html>

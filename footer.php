@@ -1,49 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title>       
-</head>
-<body>
-    <div class="container px-auto d-flex justify-content-center ">
+<!-- cambiar a form-group-->
+<div class="container-fluid" style="margin-top: 100px; background-color: pink; display: flex; justify-content: space-between"">
+    <div class="container">
+        <p style="display:flex; justify-content: center; font-size: 24px;">Información adicional</p>
         </hr>
-        <footer class="py-5 " style="width: 95%;">
-            <div class="row">
-
-            <div class="col-6 col-md-2 mb-3">
-                <h5>Section</h5>
-                <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Home</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Features</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">Pricing</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">FAQs</a></li>
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-body-secondary">About</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-5 offset-md-1 mb-3">
-                <form>
-                <h5>Subscribe to our newsletter</h5>
-                <p>Monthly digest of what's new and exciting from us.</p>
-                <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                    <label for="newsletter1" class="visually-hidden">Email address</label>
-                    <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                    <button class="btn btn-primary" type="button">Subscribe</button>
-                </div>
-                </form>
-            </div>
-            </div>
-            <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
-            <p>© 2024 Company, Inc. All rights reserved.</p>
-            <ul class="list-unstyled d-flex">
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-                <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
-            </ul>
-            </div>
-        </footer>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet esse nulla, possimus voluptatem excepturi sint accusantium officiis aut quaerat minima cupiditate! Ut, placeat veniam nihil molestias cumque laborum laboriosam.</p>
+    </div>
+    <div class="container">
+        <p style="display:flex; justify-content: center; font-size: 24px;">Formulario de contacto</p> 
+        <form action="" method="POST" style="display:flex; flex-direction: column; align-items: center; padding: 20px;">
+            <label for="email" style="align-self: center">Email: </label>
+            <input type="email" name="email" id="email" placeholder="juanperez@gmail.com" required style="margin-bottom: 10px; ">    
+            <label for="asunto" style="align-self: center">Asunto: </label>
+            <input type="text" name="asunto" id="asunto" placeholder="Descuentos medium" required style="margin-bottom: 10px; ">
+            <label for="cuerpo" style="align-self: center">Cuerpo del mail: </label>
+            <textarea required name="cuerpo" placeholder="Me gustaría preguntar acerca de... " cols="40" rows="5" style="resize: none; margin-bottom: 10px; "></textarea>
+            <input type="submit" value="enviar" style="border-radius: 16px; border-style: solid; border-color:#ff66ff">
+        </form> 
+    </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-</body>
-</html>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+

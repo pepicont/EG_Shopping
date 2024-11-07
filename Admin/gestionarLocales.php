@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row">  
                 <div class="col-3 ">
-                    <h2>Solicitudes de dueños</h2>
+                    <h2>Solicitud de dueños</h2>
                     <div class="listado">
                         <?php
                             $sql="SELECT * FROM usuarios WHERE estado='1' AND tipoUsuario='duenoLocal'";
@@ -45,7 +45,7 @@
                             }}?>
                     </div>
                 </div>
-                <div class="col-auto">
+                <div class="col-8">
                     <h2>Locales</h2>
                     <div class="listado">
                         <?php
@@ -58,8 +58,8 @@
                             
                         ?>
                             <!-- Esta es la tarjeta común de los locales -->
-                            <div class="card " style=" margin: 10px; width: 18em; ">
-                                <img src="../assets/local.jpg" class="card-img-top" alt="..."><!-- Acá iría la imagen del local -->
+                            <div class="card " style=" margin: 10px; width:fit-content; ">
+                                <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
                                 <div class="card-body">
                                     <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
                                     <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
