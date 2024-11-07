@@ -197,7 +197,7 @@
     </div>    
     <?php }
     else{
-        echo "Solo los administradores tienen acceso a esta sección";
+        exit(header("Location: ../home.php"));
     }?>
 
     <?php include("../footer.php");?>

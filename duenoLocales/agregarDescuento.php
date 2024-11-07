@@ -5,8 +5,21 @@ if (session_status() == PHP_SESSION_NONE) {
 include_once("../funciones.php");
 $idusuario = $_SESSION["idUsuario"];
 
+$seCreo = null;
+if(isset($seCreo)){
+  if($seCreo == '1' ){
+    echo '<div class="alert alert-primary mt-3" style="width: fit-content" role="alert">
+    El descuento fue creado con éxito
+    </div>';
+  } elseif($seCreo == '2'){
+    echo '<div class="alert alert-secondary mt-3" style="width: fit-content" role="alert">
+    El descuento no se ha podido crear.
+    </div>';
+  } 
+}
 ?>
 <button type="button" class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Crear descuento</button>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -25,16 +38,17 @@ $idusuario = $_SESSION["idUsuario"];
           <div class="form-group">
             Fecha de fin: <input type="date" required id="fechahas" name="fechahas">
           </div>
-            <div class="form-group">
-            Dia de la semana: <br>
-            Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
-            Martes: <input type="checkbox" name="dia[]" value="martes"> <br>
-            Miércoles: <input type="checkbox" name="dia[]" value="miercoles"> <br>
-            Jueves: <input type="checkbox" name="dia[]" value="jueves"> <br>
-            Viernes: <input type="checkbox" name="dia[]" value="viernes"> <br>
-            Sábado: <input type="checkbox" name="dia[]" value="sabado"> <br>
-            Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
+            <div class="checkbox-group required">
+              Dia de la semana: <br>
+              Lunes: <input type="checkbox" name="dia[]" value="lunes" > <br>
+              Martes: <input type="checkbox" name="dia[]" value="martes" > <br>
+              Miércoles: <input type="checkbox" name="dia[]" value="miercoles" > <br>
+              Jueves: <input type="checkbox" name="dia[]" value="jueves" > <br>
+              Viernes: <input type="checkbox" name="dia[]" value="viernes" > <br>
+              Sábado: <input type="checkbox" name="dia[]" value="sabado" > <br>
+              Domingo: <input type="checkbox" name="dia[]" value="domingo" > <br>
             </div>
+            
           <div class="form-group">
             <hr>
             Categoria de descuento según cliente: <br>
@@ -68,16 +82,16 @@ if(isset($_POST['submit'])){
     if (isset($_POST['dia'])) {
       // Convertir el arreglo a una cadena separada por comas
       $diasSeleccionados = implode(",", $_POST['dia']);
-    }
+    }else{$seCreo='2'; }
     $query2 = "SELECT * FROM locales WHERE codUsuario = '".$idusuario."' && codLocal = '".$id."'"; 
     $vresultado2 = consultaSQL($query2);
     if (mysqli_num_rows($vresultado2) > 0) {
       $query3 = "INSERT INTO promociones (textoPromo, fechaDesde, fechaHasta, categoriaCliente, diaSemana, estadoPromo, codLocal) VALUES 
       ('".$text."', '".$fechades."', '".$fechahas."', '".$categoria."', '".$diasSeleccionados."', 'pendiente', '".$id."')";
       consultaSQL($query3) or die(mysqli_error($link));
-      echo("Se ha ingresado correctamente el descuento");
+      $seCreo='1';
     } else {
-      echo("Ha ingresado mal el codigo del local");
+      $seCreo='2';
     }
   }
   header("Location: gestionDescuentos.php");

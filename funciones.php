@@ -39,13 +39,10 @@ function existecookie(){
         if($_COOKIE['tipoUsuario']=='cliente'){
           $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];
         }
-        
-       
           return TRUE;
       }else{
         return FALSE;
       }
 }
-
-
 ?>
+

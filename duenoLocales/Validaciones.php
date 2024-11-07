@@ -1,5 +1,6 @@
 <?php
-if(isset($_GET["submit"])){   
+if(isset($_GET["submit"])){  
+    $busqueda = ""; 
     if(isset($_GET["codDes"]) && $_GET["codDes"] != ""){
         $busqueda .= "AND cod = '" . $_GET["codDes"] . "' ";
     }

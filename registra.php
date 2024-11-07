@@ -70,10 +70,10 @@
         $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
       if($tipoUsuario=='cliente'){
         $categoriaCliente='inicial';
-        $estado='';
+        $estado=0;
       }else{
         $categoriaCliente='';
-        $estado='pendiente';
+        $estado=1;
       }
       
       $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	

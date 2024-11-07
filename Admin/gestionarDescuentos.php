@@ -16,66 +16,67 @@
     ?>
     
     <div class="container mt-4">
-        <div class="row w-100">
-            <div class="col-4">
-                <div class="row">
-                        <h3>Filtros:</h3>
-                        <form method="GET" >
-                            <div class="form-group">
-                                Codigo de promo: <input type="text" id="codDes" name="conDes" > </br> 
-                                <hr>
-                            </div>
-                            <div class="form-group">
-                                Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes"> </br> </br>
-                            </div>
-                            <div class="form-group">
-                                Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 
-                                <hr>
-                            </div>
-                            <div class="form-group">
-                                </hr>
-                                <label for="categoria">Categoria de la promocion:</label>
-                                </br> 
-                                <select name="categoria" id="categoria" class="form-control">
-                                    <option value="0">Selecciona una opcion:</option>
-                                    <option value="inicial">Inicial</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="premium">Premium</option>
-                                </select>
-                                <hr>
-                            </div>
-                            <div class="form-group ">
-                                </hr>
-                                Dia de la semana: <br>
-                                Lunes: <input type="checkbox" name="dia[]" value="l"> <br>
-                                Martes: <input type="checkbox" name="dia[]" value="m"> <br>
-                                Miércoles: <input type="checkbox" name="dia[]" value="mi"> <br>
-                                Jueves: <input type="checkbox" name="dia[]" value="j"> <br>
-                                Viernes: <input type="checkbox" name="dia[]" value="v"> <br>
-                                Sábado: <input type="checkbox" name="dia[]" value="s"> <br>
-                                Domingo: <input type="checkbox" name="dia[]" value="d"> <br>
-                            </div>
-                            <br> 
-                            <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between">
-                                <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
-                                <a href="gestionDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
-                            </div>
-                        </form>
+        <div class="row ">
+            <div class="col-3">
+                <div class="filtros p-2" style="height: fit-content;">
+                    <h3>Filtros:</h3>
+                    <form method="GET" >
+                        <hr>
+                        <div class="form-group">
+                        
+                            Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes"> </br> </br>
+                        </div>
+                        <div class="form-group">
+                            Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 
+                            <hr>
+                        </div>
+                        <div class="form-group">
+                            </hr>
+                            <label for="categoria">Categoria de la promocion:</label>
+                            </br> 
+                            <select name="categoria" id="categoria" class="form-control">
+                                <option value="0">Selecciona una opcion:</option>
+                                <option value="inicial">Inicial</option>
+                                <option value="medium">Medium</option>
+                                <option value="premium">Premium</option>
+                            </select>
+                            <hr>
+                        </div>
+                        <div class="form-group ">
+                            </hr>
+                            Dia de la semana: <br>
+                            Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
+                            Martes: <input type="checkbox" name="dia[]" value="martes"> <br>
+                            Miércoles: <input type="checkbox" name="dia[]" value="miércoles"> <br>
+                            Jueves: <input type="checkbox" name="dia[]" value="jueves"> <br>
+                            Viernes: <input type="checkbox" name="dia[]" value="viernes"> <br>
+                            Sábado: <input type="checkbox" name="dia[]" value="sábado"> <br>
+                            Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
+                        </div>
+                        <br> 
+                        <div class="form-group text-center d-flex justify-content-between">
+                            <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary">
+                            <a href="gestionarDescuentos.php" class="btn btn-secondary " style="margin-left: 4px;">Restablecer</a>
+                        </div>
+                    </form>
                 </div>
+                        
             </div>
-            <div class="col-7">
-                <div class="row">
+            
+            <div class="col-8">
                     <div class="container ml-4">
-                        <h3>Descuentos pendientes</h3>
+                        <h3 style="margin-left: auto;">Descuentos pendientes</h3>
                         <div class="container listado">
                             <?php
-                            $query="SELECT * FROM promociones WHERE estadoPromo='pendiente'";
+                            $busqueda="";
+                            include('../duenoLocales/Validaciones.php');
+                            $query="SELECT * FROM promociones WHERE estadoPromo='pendiente' $busqueda";                            
                             $resultados=consultaSQL($query);
                             if(mysqli_num_rows($resultados)!=0){
                                 while($fila=mysqli_fetch_array($resultados)){?>
-                                        <div class='card' style='width: 18rem;'>
+                                        <div class='card' style='margin: 10px; width: 14em;'>
                                             <div class='card-body'>
-                                                <h5 class='card-title'>Código de promoción: <?php echo($fila['cod']); ?></h5>
+                                                <h5 class='card-title'>Código: <?php echo($fila['cod']); ?></h5>
                                                 <h6 class='card-subtitle mb-2 text-muted'><?php echo($fila["categoriaCliente"]); ?></h6>
                                                 <p class='card-text'><?php echo($fila["textoPromo"]); ?></p>
                                                 <p>Desde: <?php echo($fila["fechaDesde"]); ?> </br>Hasta: <?php echo($fila["fechaHasta"]); ?></p>
@@ -119,7 +120,7 @@
                             ?>
                         </div>
                     </div>
-                </div>
+                
 
             </div>
         </div>
@@ -131,11 +132,14 @@
 
     <?php
     }else{
-        echo "Solo los administradores tienen acceso a esta sección";
+        exit(header("Location: ../home.php"));
     }
 
-     include("../footer.php");?>
+     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
 </body>
+    <footer>
+        <?php include("../footer.php"); ?>
+    </footer>
 </html>

@@ -6,11 +6,11 @@ if($estoy == "verSolicitudDescuentos"){
     $borrar = "gestionDescuentos.php";
 }
 ?>
-<div class="container">
+<div class="container" >
     <?php
     if($estoy == "gestionDescuentos"){
         include("agregarDescuento.php");
-        }
+    }
         ?>
     <form method="GET" >
         <br>

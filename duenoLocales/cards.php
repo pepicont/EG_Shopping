@@ -11,14 +11,12 @@ if (mysqli_num_rows($vresultado) > 0) {
         $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda"; 
         $cont = 0;
         $vresultado2 = consultaSQL($query2);
-
         if (mysqli_num_rows($vresultado2) > 0) {
             $cantprocaract++;
             while ($fila2 = mysqli_fetch_array($vresultado2)) { 
                 if ($estoy == "informeDescuentos") {
                     $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada'";
                     $vresultado3 = consultaSQL($query3);
-
                     if (mysqli_num_rows($vresultado3) > 0) {
                         while ($fila3 = mysqli_fetch_array($vresultado3)) {
                             $cont++;
@@ -26,18 +24,15 @@ if (mysqli_num_rows($vresultado) > 0) {
                     }
                     mostrarcards($fila, $fila2, $estoy, $cont);
                 }
-
                 if ($estoy == "verSolicitudDescuentos") {
                     $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'pendiente'";
                     $vresultado3 = consultaSQL($query3);
-
                     if (mysqli_num_rows($vresultado3) > 0) {
                         while ($cont = mysqli_fetch_array($vresultado3)) {
                             mostrarcards($fila, $fila2, $estoy, $cont);
                         }
                     }
                 }
-
                 if ($estoy == "gestionDescuentos") {
                     mostrarcards($fila, $fila2, $estoy, $cont);
                 }
@@ -56,7 +51,7 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
     ?>
     <div class="card" style="margin: 15px; width: 18rem;">
         <div class="card-body">
-            <div style="width: 250px;">
+            <div style="height:80%">
                 <h5 class="card-title">Cod descuento: <?php echo($fila2["cod"]) ?></h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo($fila2["textoPromo"]) ?></h6>
                 <p class="card-text">Categoria de cliente: <?php echo($fila2["categoriaCliente"]) ?></p>

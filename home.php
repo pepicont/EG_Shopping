@@ -69,7 +69,7 @@
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="#" class="btn btn-primary w-100">
+            <a href="Admin/gestionarLocales.php" class="btn btn-primary w-100">
                 Gestionar locales
             </a>
         </div>
@@ -98,15 +98,11 @@
         </div>
     </div>
 </div>
-
- </body>
-
-  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <footer>
-        <?php 
-        include("footer.php");
-        ?>
+    <?php 
+      /*   include("footer.php"); */
+    ?> 
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 </html>
