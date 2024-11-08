@@ -7,12 +7,12 @@
         
 
         <div class="container" >
-            <h3 style="display:flex; margin-bottom:15px; color:violet; font-weight:600; justify-content: center; font-size: 24px;">Información adicional</h3>
+            <h3 style="display:flex; margin-bottom:15px; color:rgb(235, 103, 235); font-weight:600; justify-content: center; font-size: 24px;">Información adicional</h3>
             </hr>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet esse nulla, possimus voluptatem excepturi sint accusantium officiis aut quaerat minima cupiditate! Ut, placeat veniam nihil molestias cumque laborum laboriosam.</p>
         </div>
         <div class="container">
-            <p style="display:flex; justify-content: center; font-size: 24px; color:violet; font-weight:600;">Formulario de contacto</p> 
+            <p style="display:flex; justify-content: center; font-size: 24px; color:rgb(235, 103, 235); font-weight:600;">Formulario de contacto</p> 
             <form action="" method="POST" style="display:flex; flex-direction: column; align-items: center; padding: 20px;">
                 <div class="form-group"> Email: 
                     <input type="email" name="email" id="email" placeholder="juanperez@gmail.com" required style="margin-bottom: 10px;" >

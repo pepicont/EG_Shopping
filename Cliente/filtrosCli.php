@@ -1,10 +1,9 @@
 <?php
-    $busqueda="";
     if(isset($_GET["filtrar"])){
        
         if(isset($_GET['rubros'])){
-            $diasSeleccionados = "";
-            $numDias = count($_GET['rubros']);
+            $rubrosSelec = "";
+            $cantRubros = count($_GET['rubros']);
             for($t = 0; $t < $numDias; $t++){
                 if($t == 0){
                     $busqueda .= "AND ";
@@ -29,7 +28,10 @@
          }
     }
 
-    $query= "SELECT * FROM tabla where "
+    $query= "SELECT * FROM tabla where estado='activa' ".$busqueda."";
+    $rta=consultaSQL($query);
+    
+
 
 
 

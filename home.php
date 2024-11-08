@@ -46,70 +46,42 @@
 </div>
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
-<!--     <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="Admin/informeDescuentos.php" class="btn btn-login btn-primary w-100">
-                Informe de descuentos
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="Admin/gestionarDescuentos.php" class="btn btn-primary w-100">
-                Gestionar descuentos
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100">
-                Gestionar novedades
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="Admin/gestionarLocales.php" class="btn btn-primary w-100">
-                Gestionar locales
-            </a>
-        </div>
-    </div> -->
     <div class="row">
         <!-- Div donde van a ir las opciones del admin -->
-        <div class="col-12 col-sm-3 col-lg-6">
+        <div class="col-12 col-md-6 col-lg-4">
             <div class="row">
-                <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/informeDescuentos.php" class="btn btn-login btn-primary w-100" id="menuPrincipal">
+                <div class="col-12 col-md-6 m-2" >
+                    <a href="Admin/informeDescuentos.php" class="btn btn-admin w-100" id="menuPrincipal">
                         Informe de descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarDescuentos.php" class="btn btn-primary w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin w-100" id="menuPrincipal">
                         Gestionar descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarNovedades.php" class="btn btn-primary w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin w-100" id="menuPrincipal">
                         Gestionar novedades
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarLocales.php" class="btn btn-primary w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarLocales.php" class="btn btn-admin  w-100" id="menuPrincipal">
                         Gestionar locales
                     </a>
                 </div>
             </div>
         </div>
         <!-- Div donde van a ir las solicitudes de dueños de local -->
-        <div class="col-12 col-sm-4 col-lg-6">
-            <div class="row">
+        <div class="col-12 col-md-6 col-lg-8">
+            <div class="row text-center">
                 <div class="col-12">
                     <h3 class="titulo">Solicitudes de dueños de local</h3>
                 </div>
             </div>
             <div class="row">
             
-                <div class="col-12 col-sm-6 listado">
+                <div class="col-12">
                     
                     <?php
                         $sql="SELECT * FROM usuarios WHERE estado='1' AND tipoUsuario='duenoLocal'";
@@ -119,16 +91,17 @@
                         }else{
                         while($usuario=mysqli_fetch_array($resultado)){ 
                     ?>
+                        <!-- Tarjetas de solicitud de dueño de local para crearse una cuenta -->
                         <div class="card" style=" margin: 10px; width:max ">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
                                 <p class="card-text">Fecha de nacimiento: <?php echo($usuario['fechaNacimiento']) ?> </p>
-                                <div class="listado">
+                                <div class="listado " style="justify-content:flex-end">
                                     <a href="Admin/ABMSolicitudes.php?idAprobar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-primary">Aprobar</a>
                                     <a href="Admin/ABMSolicitudes.php?idRechazar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-danger" >Rechazar</a>
                                 </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <?php
@@ -138,13 +111,14 @@
             </div>
             <div class="row">
                 <div class="col-12">
+                    <!-- Muestra las alertas cuando se acepta o se rechaza una solicitud -->
                     <?php if(!empty($_GET['success'])){
-                            if($_GET['success']=='aceptada'){
-                                echo '<div class="alert alert-primary mt-3" style="width: fit-content" role="alert">
+                            if($_GET['success']=='aprobada'){
+                                echo '<div class="alert alert-primary mt-3" style="width:80vh" role="alert">
                                     Solicitud  aceptada
                                 </div>';
-                            } elseif($_GET['success']=='denegada'){
-                                echo '<div class="alert alert-danger mt-3" style="width: fit-content" role="alert">
+                            } elseif($_GET['success']=='rechazada'){
+                                echo '<div class="alert alert-danger mt-3" style="width:80vh" role="alert">
                                     Solicitud rechazada
                                 </div>';
                             }

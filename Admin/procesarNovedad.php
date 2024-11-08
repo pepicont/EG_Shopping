@@ -10,8 +10,8 @@
         $query="UPDATE novedades SET nombreNovedad='".$nombre."' ,tipoUsuario='".$tipo."' ,textoNovedad='".$texto."' WHERE cod='".$cod."'";
         $resultado=consultaSQL($query);
 
-        exit(header("Location: gestionarNovedades.php?success=2"));
-        
+        header("Location: gestionarNovedades.php?success=2");
+        exit();
         
         
     

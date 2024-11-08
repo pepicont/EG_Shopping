@@ -1,3 +1,10 @@
+
+<?php
+    $lugar="admin";
+    include_once("../funciones.php");
+    include("../header.php");
+    if ($login==true && $tipoUsuario=="administrador"){
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +15,7 @@
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
 <body>
-    <?php
-    $lugar="admin";
-    include_once("../funciones.php");
-    include("../header.php");
-    if ($login==true && $tipoUsuario=="administrador"){
-    ?>
+
     
     <div class="container mt-4">
         <div class="row ">
@@ -83,7 +85,8 @@
                                                 <p><?php echo($fila["diaSemana"]); ?></p>
 
                                                 <a href='ABMDescuentos.php?codAlta=<?php echo($fila['cod']); ?>' class='btn btn-primary card-link'>Aceptar</a>
-                                                <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $fila["cod"]; ?>'>Rechazar</button>
+                                                <button type='button' class='btn btn-danger
+                                                ' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $fila["cod"]; ?>'>Rechazar</button>
                                                 <!-- Modal -->
                                                 <div class='modal fade' id='deleteModal<?php echo $fila["cod"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                                     <div class='modal-dialog' role='document'>
@@ -103,7 +106,7 @@
                                                             <div class='modal-footer'>
                                                                 <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
                                                                 <button type='button' class='btn btn-danger'>
-                                                                    <a href='ABMDescuentos.php?codBaja=<?php echo($fila['cod']);?> class='btn btn-danger' style="color:white">Confirmar</a>
+                                                                    <a href='ABMDescuentos.php?codBaja=<?php echo($fila['cod']);?>' style="color: black; text-decoration: none;">Confirmar</a>
                                                                 </button>
                                                             </div>
                                                         </div>

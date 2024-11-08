@@ -8,14 +8,14 @@ if($estoy == "verSolicitudDescuentos"){
 ?>
     <?php
     if($estoy == "gestionDescuentos"){
-        $lugar = 'escritorio';
+        $lugar = 'mobile';
         include("agregarDescuento.php");
     }
         ?>
     
         <br>
-    <form method="GET" >
-        <input type="hidden" name="form_type" value="aplicar_filtros">    
+<form method="GET" >
+<input type="hidden" name="form_type" value="mobile">
     <h3>Filtros:  </h3>
     <div class="form-group ">
         Codigo de promo: <input type="text" id="codDes" name="codDes" > </br> 
@@ -53,8 +53,9 @@ if($estoy == "verSolicitudDescuentos"){
     </div>
     <br> 
     <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between">
-        <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
+        <input type="submit" name="submit-mobile" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
         <a href="<?php echo($borrar)?>" class="btn btn-primary w-100 m-1">Borrar filtros</a>
     </div>
+</form>
 
 

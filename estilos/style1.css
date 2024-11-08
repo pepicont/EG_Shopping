@@ -59,37 +59,67 @@ body{
     text-decoration: none; /* le saca el subrayado al link */
 
 }
+
 .btn-primary.filtros-desplegados{ /*fijarse si anda esto de cambiar de color los botones*/
-    background-color: violet;
-    border-color: violet;
+    background-color: rgb(235, 103, 235);
+    border-color: rgb(235, 103, 235);
         
 }
 .btn-primary{ /*fijarse si anda esto de cambiar de color los botones*/
     background-color: rgb(255, 255, 255);
-    color:  violet;
-    border-color: violet;
+    border-width: 2px;
+    color:  rgb(235, 103, 235);
+    border-color: rgb(235, 103, 235);
     font-weight: 600;
     
 }
 .btn-primary:hover{ /*fijarse si anda esto de cambiar de color los botones*/
-    background-color: violet;
+    background-color: rgb(235, 103, 235);
     color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
     
+}
+.btn-admin{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: rgb(255, 255, 255);
+    color:  hsl(242, 68%, 60%);
+    border-color: hsl(242, 68%, 60%);
+    font-weight: 600;}
+.btn-admin:hover{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: hsl(242, 68%, 60%);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);}
+
+.btn-primary:active{
+    background-color: rgb(235, 103, 235);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
 }
 .btn-danger{ /*fijarse si anda esto de cambiar de color los botones*/
     background-color: rgb(255, 255, 255);
-    color:  rgb(206, 74, 74);
-    border-color: rgb(207, 34, 34);
+    color:  rgba(199, 1, 1, 0.842);
+    border-color: rgba(199, 1, 1, 0.842);
+    border-width: 2px;
     
 }
-.btn-dange:hover{ /*fijarse si anda esto de cambiar de color los botones*/
-    background-color: rgb(207, 34, 34);
+.btn-danger:hover{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: rgba(199, 1, 1, 0.842);
     color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
     
 }
-
+.btn-warning{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: rgb(255, 255, 255);
+    color:  hsl(242, 68%, 60%);
+    border-color: hsl(242, 68%, 60%);
+    border-width: 2px;
+    
+}
+.btn-warning:hover{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color:hsl(242, 68%, 60%);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    
+}
 .a{
     border-color:violet;
 }

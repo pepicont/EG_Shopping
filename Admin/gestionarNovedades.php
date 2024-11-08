@@ -1,3 +1,9 @@
+<?php
+    $lugar="admin";
+    include_once("../funciones.php");
+    include("../header.php");
+    if ($login==true && $tipoUsuario=="administrador"){
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +14,12 @@
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
 <body>
-    <?php
-    $lugar="admin";
-    include_once("../funciones.php");
-    include("../header.php");
-    if ($login==true && $tipoUsuario=="administrador"){
-    ?>
+
     
     <!-- Your content here -->
     <div class="container mt-4">
-        <div class="row w-100" style="display:flex; justify-content: space-around">
-            <div class="col-4 ">
+        <div class="row w-100" >
+            <div class="col-4 filtros ">
                 <div class="row">
                     <h3>Crear novedad</h3>
                         <form action="procesarNovedad.php" method="GET">
@@ -44,8 +45,9 @@
                             </div>
                         </form>
                 </div>
+                <hr>
                 <div class="row">
-                    <div class="container mt-2" style="border: 2px solid #26014be1; border-radius:20px;">
+                    <div class="container mt-2">
                         <h3 class="mt-4 ">Filtros de busqueda:</h3>
                         <form method="GET">
                             <div class="form-group mx-4 p-2" style="width: fit-content">

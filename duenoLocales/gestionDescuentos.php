@@ -22,15 +22,26 @@ $estoy = "gestionDescuentos";
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="../estilos/style1.css">
+    <style>
+        .modal-backdrop {
+            z-index: 1040 !important;
+            }
+        .modal {
+            z-index: 1050 !important;
+        }
+    </style>
 </head>
 <body>
     
     <div class="row">
         <div class="col-3 filtros d-none d-lg-block" style="height:fit-content;" action="card.php">
             <br>
-            <?php 
-                include("filtros.php"); 
-            ?>
+            
+
+                <?php 
+                    include("filtros.php"); 
+                ?>
+
         </div>
         <div class="listado d-flex col-lg-8 col-12 mx-auto justify-content-center">
             <?php 
@@ -45,14 +56,13 @@ $estoy = "gestionDescuentos";
     <button class="btn btn-primary fixed-bottom end-0 m-3 bot-filtros" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" >FILTROS:</button>
     <div class="offcanvas offcanvas-start filtros-desplegados" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <?php
-
-                include("filtros.php");
-            ?>
+                <?php 
+                    include("filtros.php"); 
+                ?>
         </div>
     </div>
 </div>
