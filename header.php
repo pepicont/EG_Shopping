@@ -39,10 +39,10 @@ if (isset($_SESSION['tipoUsuario'])){
         }
 
     ?>
-    
+
     <!-- navbar del mobile -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-        <div class="container-fluid mx-auto px-auto">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center" style="position:sticky; top:0;">
+        <div class="container-fluid mx-auto px-auto" style="background-color: white; margin-top:-10px; border-bottom:2px solid violet; ">
             <a class="navbar-brand" href="<?php echo("$ruta");?>home.php"><img src= "<?php echo("$ruta");?>assets/Mundo_Shopping.png" alt="Mundo Shopping"></a>
             <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
                 if($login==FALSE){

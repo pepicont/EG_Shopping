@@ -63,7 +63,7 @@ if(existecookie()) {
   ?>
 </header>
 <body>
-    <div class="container">
+    <div class="container" style="min-height: 30vh; margin-top:2rem;">
     <form action="login.php" method="POST">
         <div class="form-group">
           <label for="email">Email</label>
