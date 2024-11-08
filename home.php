@@ -97,7 +97,7 @@
                                 <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
                                 <p class="card-text">Fecha de nacimiento: <?php echo($usuario['fechaNacimiento']) ?> </p>
-                                <div class="listado " style="justify-content:flex-end">
+                                <div class="listado " style="justify-content:flex-end; margin-bottom:0">
                                     <a href="Admin/ABMSolicitudes.php?idAprobar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-primary">Aprobar</a>
                                     <a href="Admin/ABMSolicitudes.php?idRechazar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-danger" >Rechazar</a>
                                 </div>

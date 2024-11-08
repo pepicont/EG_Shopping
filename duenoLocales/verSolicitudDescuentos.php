@@ -26,7 +26,7 @@ $lugar = "duenoLocal";
     
     ?>
     <div class="row">
-        <div class="filtros col-3 d-none d-lg-block">
+        <div class="filtros col-3 d-none d-lg-block" style="height:fit-content;">
             <?php 
             $estoy = "verSolicitudDescuentos";
             include("filtros.php"); 

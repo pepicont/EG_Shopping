@@ -32,21 +32,39 @@ $estoy = "gestionDescuentos";
     </style>
 </head>
 <body>
+    <?php
+
+    
+    if(isset($_GET['seCreo'])){
+        $seCreo = $_GET['seCreo'];
+        if($seCreo == '1' ){
+            echo'<div class="alert alert-primary alert-dismissible fade show mt-3 w-100 text-center mx-auto" style="max-width: 90%;" role="alert"> El descuento fue creado con éxito 
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        }elseif($seCreo == '2'){
+            echo'<div class="alert alert-secondary alert-dismissible fade show mt-3 w-100 text-center mx-auto" style="max-width: 90%;" role="alert"> El descuento no se ha podido crear.
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        } 
+    }
+        
+    ?>
+    <div class="row"> 
+        <div class="col-lg-3 col-8 mx-auto bot-crear" > 
+                <?php include("agregarDescuento.php"); ?>
+        </div>
+        <div class="col-lg-9 col-none"></div>
+    </div>
     
     <div class="row">
-        <div class="col-3 filtros d-none d-lg-block" style="height:fit-content;" action="card.php">
+        <div class="col-3 filtros d-none d-lg-block"  style="height:fit-content;" action="card.php">
             <br>
-            
-
                 <?php 
                     include("filtros.php"); 
                 ?>
-
         </div>
         <div class="listado d-flex col-lg-8 col-12 mx-auto justify-content-center">
             <?php 
                 $busqueda = "AND estadoPromo != 'eliminado'";
-                include("cards.php"); 
+                include("cards.php");
             ?>
         </div>
     </div>

@@ -6,12 +6,7 @@ if($estoy == "verSolicitudDescuentos"){
     $borrar = "gestionDescuentos.php";
 }
 ?>
-    <?php
-    if($estoy == "gestionDescuentos"){
-        $lugar = 'escritorio';
-        include("agregarDescuento.php");
-    }
-        ?>
+    
     
         <br>
     <form method="GET" >
@@ -56,5 +51,5 @@ if($estoy == "verSolicitudDescuentos"){
         <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
         <a href="<?php echo($borrar)?>" class="btn btn-primary w-100 m-1">Borrar filtros</a>
     </div>
-
+</form>
 

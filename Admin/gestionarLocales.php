@@ -21,50 +21,119 @@
     }
     ?>
         <div class="container">
-            <div class="row">  
-                <div class="col-3 ">
-                    <h2>Solicitud de dueños</h2>
-                    <div class="listado">
-                        <?php
-                            $sql="SELECT * FROM usuarios WHERE estado='1' AND tipoUsuario='duenoLocal'";
-                            $resultado=consultaSQL($sql);
-                            if(mysqli_num_rows($resultado)==0){
-                                echo("No hay solicitudes de dueños de locales");
-                            }else{
-                            while($usuario=mysqli_fetch_array($resultado)){ 
-                        ?>
-                            <div class="card " style=" margin: 10px; width: 14em; ">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
-                                    <h6 class="card-subtitle mb-2 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
-                                    <p class="card-text">Fecha de nacimiento: <?php echo($usuario['fechaNacimiento']) ?> </p>
-                                    
-                                </div>
-                            </div>
-                            <?php
-                            }}?>
-                    </div>
+            <div class="row">
+                <div class="col-12">
+                    <?php if(!empty($_GET['success'])){
+                        if($_GET['success']=='editado'){
+                            echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
+                                Local Editado con éxito
+                            </div>';
+                        } elseif($_GET['success']=='eliminado'){
+                            echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
+                            Local dado de baja
+                            </div>';
+                        
+                    }}
+                    ?>
                 </div>
-                <div class="col-8">
+            </div>
+            <div class="row">  
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="filtros d-md-block d-flex justify-content-center" >
+                        <form method="GET">
+                                <div class="form-group p-2" style="width: fit-content">
+                                    <label for="codigoLocal" style="text-decoration:underline">Codigo: </label>
+                                    <input type="text" name="codigoLocal" class="form-control" id="codigoLocal" placeholder="1...">
+                                </div>
+                                <div class="form-group p-2" style="width: fit-content">
+                                    <label for="nombreLocal" style="text-decoration:underline">Nombre del local: </label>
+                                    <input type="text" name="nombreLocal" class="form-control" id="nombreLocal" placeholder="Sport 78">
+                                </div>
+
+                                <div class="form-group p-2" style="width: fit-content">
+                                    <label for="ubicacionLocal" style="text-decoration:underline">Ubicación: </label>
+                                    <input type="text" name="ubicacionLocal" class="form-control" id="ubicacionLocal" placeholder="Ala Sur">
+                                </div>
+
+                                
+                                <div class="form-group p-2" style="width: fit-content">
+                                    <label name="rubros"for="rubros" style="text-decoration:underline">Rubros: </label></br>
+                                    <label for="rubros1">Ropa </label>
+                                    <input type="checkbox" name="rubros[]" id="rubros1" value="ropa"> <br>
+                                    
+                                    <label for="rubros2">Maquillaje </label>
+                                    <input type="checkbox" name="rubros[]" id="rubros2" value="maquillaje"> <br>
+
+                                    <label for="rubros3">Calzado </label>
+                                    <input type="checkbox" name="rubros[]" id="rubros3" value="calzado"> <br>
+
+                                    <label for="rubros4">perfumeria </label>
+                                    <input type="checkbox" name="rubros[]" id="rubros4"value="perfumeria"> <br>
+
+                                </div>
+
+
+                                <div class="form-group mx-auto p-2" style="width: fit-content">
+                                    <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="buscar">
+                                </div>
+
+
+                                
+                        </form>
+                    </div>
+                    
+                </div>
+                <div class="col-12 col-md-8 col-lg-9 text-center">
                     <h2>Locales</h2>
-                    <div class="listado">
+                    <div class="listado px-auto">
                         <?php
-                            $sql="SELECT * FROM locales WHERE estado='activo'";
+                            $busqueda="";
+                            include_once("../duenoLocales/Validaciones.php");
+                            $sql="SELECT * FROM locales WHERE estado='activo' $busqueda";
                             $resultado=consultaSQL($sql);
                             if(mysqli_num_rows($resultado)==0){
                                 echo("No hay locales");
                             }else{
                             while($local=mysqli_fetch_array($resultado)){ 
+                                if(!empty($_GET['idEditar']) && $_GET['idEditar']==$local['codLocal']){
+                            
                             
                         ?>
                             <!-- Esta es la tarjeta común de los locales -->
-                            <div class="card " style=" margin: 10px; width:fit-content; ">
+                            <div class="card mx-auto" style="width:13em; ">
                                 <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
-                                <div class="card-body">
+                                <div class="card-body text-center">
+                                    <form action='procesarLocal.php' method='POST'>
+                                        <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
+                                        <div class='form-group'>
+                                            <label for='nombreLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Nombre del local:</label>
+                                            <input type='text' class='form-control' id='nombreLocal<?php echo $local["codLocal"]; ?>' name='nombreLocal' value='<?php echo $local["nombreLocal"]; ?>'>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='ubicacionLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Ubicación:</label>
+                                            <input type='text' class='form-control' id='ubicacionLocal<?php echo $local["codLocal"]; ?>' name='ubicacionLocal' value='<?php echo $local["ubicacionLocal"]; ?>'>
+                                        </div>
+                                        <div class='form-group'>
+                                            <label for='rubroLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Rubro:</label>
+                                            <input type='text' class='form-control' id='rubroLocal<?php echo $local["codLocal"]; ?>' name='rubroLocal' value='<?php echo $local["rubroLocal"]; ?>'>
+                                        </div>
+                    
+                                        <button type='submit' name='editar' class='btn btn-primary'>Guardar</button>
+                                    </form>
+                                    </form>
+                                </div>
+                            </div>
+                            <?php }else{ ?>
+
+                            <div class="card " style=" margin: 10px; width:13em; ">
+                                
+                                <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;">
+                                <h5><?php echo($local['codLocal']) ?></h5><!-- Acá iría la imagen del local -->
+                                <div class="card-body pt-0">
                                     <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
                                     <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
-                                    <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>&nombreLocal=<?php echo $local["nombreLocal"]; ?>&ubicacionLocal=<?php echo $local["ubicacionLocal"]; ?>&rubroLocal=<?php echo $local["rubroLocal"]; ?>&codUsuario=<?php echo $local["codUsuario"]; ?>' class='btn btn-primary card-link'>Editar</a>
-                                    <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $fila["cod"]; ?>'>Eliminar</button>
+                                    <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>' class='btn btn-primary card-link'>Editar</a>
+                                    <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $local["codLocal"]; ?>'>Eliminar</button>
                                     <!-- Modal que popea cuando aprieta eliminar-->
                                     <div class='modal fade' id='deleteModal<?php echo $local["codLocal"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                         <div class='modal-dialog' role='document'>
@@ -83,7 +152,7 @@
                                                 <div class='modal-footer'>
                                                     <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
                                                     <button type='button' class='btn btn-danger'>
-                                                        <a href='procesarLocal.php?idEliminar=<?php echo $local["codLocal"]; ?>' class='btn btn-danger'>Confirmar</a>
+                                                        <a href='procesarLocal.php?idEliminar=<?php echo $local["codLocal"];?>' style="text: white; text-decoration:none; ">Confirmar</a>
                                                     </button>
                                                 </div>
                                             </div>
@@ -92,13 +161,14 @@
                                     <!-- Modal cierre -->
                                 </div>
                             </div>
+                            <!-- Tarjeta cierre -->
                     
 
 
 
 
                 
-                        <?php }} ?>
+                        <?php }}} ?>
                 </div>
 
             </div>
