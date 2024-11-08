@@ -119,18 +119,39 @@
                         }else{
                         while($usuario=mysqli_fetch_array($resultado)){ 
                     ?>
-                        <div class="card" style=" margin: 10px; width: 14em; ">
+                        <div class="card" style=" margin: 10px; width:max ">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
                                 <h6 class="card-subtitle mb-2 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
                                 <p class="card-text">Fecha de nacimiento: <?php echo($usuario['fechaNacimiento']) ?> </p>
-                                
+                                <div class="listado">
+                                    <a href="Admin/ABMSolicitudes.php?idAprobar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-primary">Aprobar</a>
+                                    <a href="Admin/ABMSolicitudes.php?idRechazar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-danger" >Rechazar</a>
+                                </div>
+                                </div>
                             </div>
                         </div>
                         <?php
                         }}?>     
                 
                 </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <?php if(!empty($_GET['success'])){
+                            if($_GET['success']=='aceptada'){
+                                echo '<div class="alert alert-primary mt-3" style="width: fit-content" role="alert">
+                                    Solicitud  aceptada
+                                </div>';
+                            } elseif($_GET['success']=='denegada'){
+                                echo '<div class="alert alert-danger mt-3" style="width: fit-content" role="alert">
+                                    Solicitud rechazada
+                                </div>';
+                            }
+                        }
+                    ?>
+                    </div>
+
             </div>
         </div>
     </div>
@@ -158,10 +179,10 @@
         </div>
     </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 <footer>
     <?php 
-      /*   include("footer.php"); */
+      include("footer.php");
     ?> 
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

@@ -8,7 +8,7 @@
 <body>
 
 <?php
-    $lugar = "Cliente";
+    $lugar = "cliente";
     include_once("../funciones.php");
     include("../header.php");
     if($_SESSION["tipoUsuario"] != "cliente"){
@@ -26,21 +26,21 @@
                     <form action="filtrosCli.php" method="GET">
                         <div class="form-group mx-4 p-2" style="width: fit-content">
 
-                            <label name="rubros"for="rubros">Rubros: </label>
-                            <select name="rubros" id="rubros">
-                                <option value="">Selecciona un rubro</option>
-                                <option value="tecnologia">Tecnología</option>
-                                <option value="ropa">Ropa</option>
-                                <option value="maquillaje">Maquillaje</option>
-                                <option value="perfumeria">Perfumería</option>
-                            </select>
+                            Rubros: <br>
+                            Ropa: <input type="checkbox" name="rubros[]" value="ropa"> <br>
+                            Maquillaje: <input type="checkbox" name="rubros[]" value="maquillaje"> <br>
+                            Calzado: <input type="checkbox" name="rubros[]" value="calzado"> <br>
+                            Perfumería: <input type="checkbox" name="rubros[]" value="perfumeria"> <br>
 
                         </div>
 
                         <div class="form-group mx-4 p-2" style="width: fit-content">
 
-                        <label name="rubros"for="rubros">Rubros: </label>
+
+
                         <div class="form-group ">
+                        
+                            <label name="rubros"for="rubros">Rubros: </label>
                             </hr>
                             Dia de la semana: <br>
                             Lunes: <input type="checkbox" name="dia[]" value="l"> <br>
@@ -50,6 +50,7 @@
                             Viernes: <input type="checkbox" name="dia[]" value="v"> <br>
                             Sábado: <input type="checkbox" name="dia[]" value="s"> <br>
                             Domingo: <input type="checkbox" name="dia[]" value="d"> <br>
+
                         </div>
                         <br> 
 

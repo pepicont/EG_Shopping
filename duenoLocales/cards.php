@@ -62,7 +62,7 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
                 <p class="card-text">Estado: <?php echo($fila2["estadoPromo"]) ?></p>
             </div>
             <div style="height: 65px;">
-                <button type="button" class="btn btn-primary w-100 m-1 <?php if ($estoy != "gestionDescuentos") echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-danger w-100 m-1 <?php if ($estoy != "gestionDescuentos") echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Eliminar descuento
                 </button>
                 <p class="card-text <?php if ($estoy != "informeDescuentos") echo "d-none" ?>">Se utilizo: <?php echo($cont) ?>  </p>

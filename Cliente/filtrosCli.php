@@ -1,23 +1,35 @@
 <?php
     $busqueda="";
     if(isset($_GET["filtrar"])){
-        if(isset($_GET["codDes"]) && $_GET["codDes"] != ""){
-            $busqueda .= "AND cod = '" . $_GET["codDes"] . "' ";
-        }
-        if($_GET["fechaDes"] != "" && isset($_GET["fechaDes"])){
-            $busqueda .= "AND fechaDesde >= '".$_GET["fechaDes"]."' ";
-        }   
-        if($_GET["fechaHas"] != "" && isset($_GET["fechaHas"])){
-            $busqueda .= "AND fechaHasta <= '".$_GET["fechaHas"]."' ";
-        }
-        if($_GET["categoria"] != "" && isset($_GET["categoria"]) && $_GET["categoria"] != "0"){
-            $busqueda .= "AND categoriaCliente = '".$_GET["categoria"]."' ";
-        }
+       
+        if(isset($_GET['rubros'])){
+            $diasSeleccionados = "";
+            $numDias = count($_GET['rubros']);
+            for($t = 0; $t < $numDias; $t++){
+                if($t == 0){
+                    $busqueda .= "AND ";
+                }else{
+                    $busqueda .= "OR ";
+                }
+                $busqueda .= "diaSemana LIKE '%" . $_GET['rubros'][$t] . "%'  ";
+            }
+         }
 
-
+        if(isset($_GET['dia'])){
+            $diasSeleccionados = "";
+            $numDias = count($_GET['dia']);
+            for($i = 0; $i < $numDias; $i++){
+                if($i == 0){
+                    $busqueda .= "AND ";
+                }else{
+                    $busqueda .= "OR ";
+                }
+                $busqueda .= "diaSemana LIKE '%" . $_GET['dia'][$i] . "%'  ";
+            }
+         }
     }
 
-
+    $query= "SELECT * FROM tabla where "
 
 
 

@@ -7,6 +7,7 @@
         header("Location: ../index.php");
         exit();
     }
+$estoy = "gestionDescuentos";
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +29,6 @@
         <div class="col-3 filtros d-none d-lg-block" style="height:fit-content;" action="card.php">
             <br>
             <?php 
-                $estoy = "gestionDescuentos";
                 include("filtros.php"); 
             ?>
         </div>
@@ -50,6 +50,7 @@
         </div>
         <div class="offcanvas-body">
             <?php
+
                 include("filtros.php");
             ?>
         </div>

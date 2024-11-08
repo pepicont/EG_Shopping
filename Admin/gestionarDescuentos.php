@@ -54,7 +54,7 @@
                             Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
                         </div>
                         <br> 
-                        <div class="form-group text-center d-flex justify-content-between">
+                        <div class="form-group text-center d-flex justify-content-between wrap">
                             <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary">
                             <a href="gestionarDescuentos.php" class="btn btn-secondary " style="margin-left: 4px;">Restablecer</a>
                         </div>
@@ -63,7 +63,7 @@
                         
             </div>
             
-            <div class="col-8">
+            <div class="col-9">
                     <div class="container ml-4">
                         <h3 style="margin-left: auto;">Descuentos pendientes</h3>
                         <div class="container listado">
@@ -112,17 +112,16 @@
                                                 <!-- Modal cierre -->
                                             </div>
                                         </div>
-                           <?php }
-                           }else{
-                            echo("No existen solicitudes de promoción");
-                           }
-                        
-                            ?>
-                        </div>
+                       <?php }
+                       }else{
+                        echo("No existen solicitudes de promoción");
+                       }
+                    
+                        ?>
                     </div>
-                
-
             </div>
+            
+            
         </div>
     </div>
 
