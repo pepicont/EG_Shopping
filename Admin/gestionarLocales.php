@@ -100,7 +100,7 @@
                             
                         ?>
                             <!-- Esta es la tarjeta común de los locales -->
-                            <div class="card mx-auto" style="width:13em; ">
+                            <div class="card mx-auto" style="width:210px; ">
                                 <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
                                 <div class="card-body text-center">
                                     <form action='procesarLocal.php' method='POST'>
@@ -120,12 +120,12 @@
                     
                                         <button type='submit' name='editar' class='btn btn-primary'>Guardar</button>
                                     </form>
-                                    </form>
+                                    
                                 </div>
                             </div>
                             <?php }else{ ?>
 
-                            <div class="card " style=" margin: 10px; width:13em; ">
+                            <div class="card " style=" margin: 10px; width:210px; ">
                                 
                                 <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;">
                                 <h5><?php echo($local['codLocal']) ?></h5><!-- Acá iría la imagen del local -->
@@ -161,13 +161,9 @@
                                     <!-- Modal cierre -->
                                 </div>
                             </div>
-                            <!-- Tarjeta cierre -->
                     
-
-
-
-
-                
+                            <!-- Tarjeta cierre -->
+                  
                         <?php }}} ?>
                 </div>
 

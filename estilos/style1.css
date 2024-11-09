@@ -181,3 +181,28 @@ body{
     padding: 10px;
     text-decoration: underline;
 }
+
+.creacion{
+    border: 1px solid rgb(238, 96, 219);
+    border-radius: 16px;
+    background-color: rgb(250, 223, 250);
+}
+
+.page-link{
+    background-color: hsl(240, 2%, 84%);
+    border: 1px solid hsl(242, 68%, 40%);
+    color: hsl(242, 68%, 40%);
+    border-radius: 8px;
+    margin: 4px;
+}
+.page-link:hover{
+    background-color: hsl(242, 68%, 40%);
+    border:1px solid hsl(242, 68%, 90%);
+    color: hsl(242, 68%, 90%);
+    
+}
+.page-link:active{
+    background-color: hsl(242, 68%, 40%);
+    color: hsl(242, 68%, 90%);
+}
+

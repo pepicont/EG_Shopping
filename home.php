@@ -153,6 +153,30 @@
         </div>
     </div>
 </div>
+
+<div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="cliente") echo"d-none";?>">
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="Cliente/verDescuentos.php" class="btn btn-login btn-primary w-100">
+                Ver descuentos
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="Cliente/verDescuentosUtilizados.php" class="btn btn-primary w-100">
+                Ver descuentos utilizados.
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="Cliente/verNovedades.php" class="btn btn-primary w-100">
+                Ver novedades.
+            </a>
+        </div>
+    </div>
+</div>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 <footer>
     <?php 

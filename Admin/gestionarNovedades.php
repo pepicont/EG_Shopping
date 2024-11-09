@@ -19,51 +19,52 @@
     <!-- Your content here -->
     <div class="container mt-4">
         <div class="row w-100" >
-            <div class="col-4 filtros ">
+            <div class="col-12 col-md-4 col-lg-3">
                 <div class="row">
-                    <h3>Crear novedad</h3>
-                        <form action="procesarNovedad.php" method="GET">
-                            <div class="form-group mx-4 p-2" style="width: fit-content">
-                                <label name="nombreNovedad"for="nombreNovedad">Nombre: </label>
-                                <input type="text" class="form-group" name="nombreNovedad"></br>
+                    <div class="creacion">
+                        <h3 class="text-center">Crear novedad</h3>
+                        <form   action="procesarNovedad.php" method="GET">
+                            <div class="form-group mx-auto" style="width: fit-content">
+                                <label for="nombreNovedad">Nombre: </label>
+                                <input type="text" class="form-control" name="nombreNovedad" id="nombreNovedad"></br>
                             </div>
-                            <div class="form-group mx-4 p-2" style="width: fit-content">
-                                <label name="tipoUsuario" for="tipoUsuario">Tipo de Usuario: </label>
-                                <select name='tipoUsuario' value="inicial">
-                                    <option name='tipoUsuario' value='inicial'>Inicial</option>
-                                    <option name='tipoUsuario' value='medium'>Medium</option>
-                                    <option name='tipoUsuario' value='premium'>Premium</option>
+
+                            <div class="form-group mx-auto" style="width: fit-content">
+                                <label for="tipoUsuario">Tipo de Usuario: </label>
+                                <select name='tipoUsuario' id='tipoUsuario' class="form-control" value="inicial">
+                                    <option value='inicial'>Inicial</option>
+                                    <option value='medium'>Medium</option>
+                                    <option value='premium'>Premium</option>
                                 </select>
                             </div>
-                            <div class="form-group mx-4 p-2" style="width: fit-content">
-                                <label name="textoNovedad"for="textoNovedad">Texto: </label>
-                                <textarea name="textoNovedad" id="texto" style="resize: none; vertical-align: top; margin-top: 5px; margin-bottom: 5px;" cols="21" rows="4"></textarea>
+
+                            <div class="form-group mx-auto " style="width: fit-content">
+                                <label for="textoNovedad">Texto: </label>
+                                <textarea name="textoNovedad" id="textoNovedad" class="form-control" style="resize: none; vertical-align: top; margin-top: 5px; margin-bottom: 5px;" cols="21" rows="4"></textarea>
 
                             </div>
+
                             <div class="form-group mx-auto mx-4 p-2" style="width: fit-content">
                                 <input type="submit" name="nuevaNovedad" class="btn btn-primary px-4 py-2" value="Crear">
                             </div>
+                            
                         </form>
+                    </div>
                 </div>
                 <hr>
                 <div class="row">
-                    <div class="container mt-2">
-                        <h3 class="mt-4 ">Filtros de busqueda:</h3>
+                    <div class="filtros" style="margin-left: 0;">
+                        <h3 class="text-center mt-4">Filtros de busqueda:</h3>
                         <form method="GET">
-                            <div class="form-group mx-4 p-2" style="width: fit-content">
+                            <div class="form-group mx-auto " style="width: fit-content">
                                 <label  for="inicial">Inicial</label>
-                                <input type="checkbox" class="form-check-input" name="inicial" value="inicial"></br>
-                            </div>
-                            <div class="form-group mx-4 p-2" style="width: fit-content">
+                                <input type="checkbox" class="form-check-input" name="inicial" id="inicial" value="inicial"></br>
                                 <label for="medium">Medium</label>
-                                <input type="checkbox" class="form-check-input" name="medium" value="medium"></br>
-
-                            </div>
-                            <div class="form-group mx-4 p-2" style="width: fit-content">
+                                <input type="checkbox" class="form-check-input" name="medium" id="medium" value="medium"></br>
                                 <label for="premium">Premium</label>
-                                <input type="checkbox" class="form-check-input" name="premium" value="premium"></br>
-
+                                <input type="checkbox" class="form-check-input" name="premium" id="premium" value="premium"></br>
                             </div>
+                            
                             <div class="form-group mx-auto mx-4 p-2" style="width: fit-content">
                                 <input type="submit" class="btn btn-primary px-4 py-2" name="enviar" value="Aplicar">
                             </div>
@@ -71,13 +72,13 @@
                     </div>
                 </div>
             </div>
-            <div class="col-7  p-1 ml-4">
+            <div class="col-12 col-md-8 col-lg-9 text-center">
                <div class="container ml-4">
                     <h3>Lista de novedades</h3>
                     <!-- generador de tarjetas para aprobar/denegar -->
                         
                         <!--Antes de traernos todas las novedades, eliminamos alguna que haya sido seleccionada-->
-                        <div class="container listado"> 
+                        <div class="listado px-auto"> 
                             <?php 
                              include_once("../funciones.php");
                              $busqueda = "estado='activa' "; 

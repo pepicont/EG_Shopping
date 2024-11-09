@@ -6,14 +6,21 @@ if(mysqli_num_rows($resultado) > 0){
         $query1 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."' " . $busqueda2;
         $resultado1 = consultaSQL($query1);
         while($fila1 = mysqli_fetch_array($resultado1)){
-            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' ";
+            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' AND estado = 'aceptada'";
             $resultado2 = consultaSQL($query2);
             if(mysqli_num_rows($resultado2) > 0){
-                $encontro = 1;
+                if($estoy == 'verDescuentosUtilizados'){
+                    $encontro = 1;
+                    mostrarcards($fila,$fila1, $encontro);    
+                }
+                
             }else{
+                if($estoy == 'verDescuentos'){
                 $encontro = 0;
+                mostrarcards($fila,$fila1, $encontro);
+                }
             }
-            mostrarcards($fila,$fila1, $encontro);
+            
         }
     }
 }
@@ -30,10 +37,9 @@ function mostrarcards($fila,$fila1,$encontro,){ ?>
                 <p class="card-text">Plazo: <?php echo($fila["fechaDesde"]); echo(" --- "); echo($fila["fechaHasta"]) ?></p> 
             </div>
             <div style="height: 65px;">
-                <button type="button" class="btn btn-danger w-100 m-1 <?php if ($encontro == 0) echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary w-100 m-1 <?php if ($encontro != 0) echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Utilizar descuento
                 </button>
-                <p class="card-text <?php if ($encontro == 1 ) echo "d-none" ?>"><br> Ya has utilizado esta promocion. </p>
             </div>
         </div>
     </div>

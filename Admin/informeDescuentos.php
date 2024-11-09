@@ -16,145 +16,195 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="filtros col-3" style="height:fit-content">
-                    <h2>Filtros: </h2>
-                    <form method="GET">
-                        <div class="form-group">
-                        Fechas desde:
-                        <input type="date" name="fechades" id="fechades" class="form-control" aria-describedby="helpId">
-                        </div>
-                        <div class="form-group">
-                        Fecha hasta:
-                        <input type="date" name="fechahas" id="fechahas" class="form-control"  aria-describedby="helpId">
-                        </div>
-                        <div class="form-group">
-                            <label for="estado">Estado de la promocion:</label>
-                            <select name="estado" id="estado" class="form-control">
-                                <option value="0">Selecciona una opcion:</option>
-                                <option value="2">Activo</option>
-                                <option value="1">Vencido</option>
+                <div class="col-12 col-md-4 col-lg-3" style="height:fit-content">
+                    <div class="filtros text-center">
+                        <h2 class="mt-4">Filtros: </h2>
+                        <form class="mx-auto"method="GET">
+                            <div class="form-group">
+                            Fechas desde:
+                            <input type="date" name="fechades" id="fechades" class="form-control" aria-describedby="helpId">
+                            </div>
+                            <div class="form-group">
+                            Fecha hasta:
+                            <input type="date" name="fechahas" id="fechahas" class="form-control"  aria-describedby="helpId">
+                            </div>
+                            <div class="form-group">
+                                <label for="estado">Estado de la promocion:</label>
+                                <select name="estado" id="estado" class="form-control">
+                                    <option value="0">Selecciona una opcion:</option>
+                                    <option value="2">Activo</option>
+                                    <option value="1">Vencido</option>
+                                    
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <hr>
+                                Categoria de descuento segun cliente: <br> 
                                 
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <hr>
-                            Categoria de descuento segun cliente: <br> 
-                            
-                            Inicial: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="inicial" name="categoria[]"> <br>
-                            Medium: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="medium" name="categoria[]"> <br>
-                            Premium: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="premium" name="categoria[]"> <br>
-                            
-                        </div>
-                        <div class="form-group">
-                            <hr>
-                            Dia de la semana: <br>
-                
-                            Lunes: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="l"> <br>
-                            Martes: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="m"><br>
-                            Miercoles: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="mi"> <br>
-                            Jueves: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="j"> <br>
-                            Viernes: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="v"><br>
-                            Sabado: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="s"><br>
-                            Domingo: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="d"><br>
-                        </div>
-                        <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between" >
-                            <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
-                            <a href="informeDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
-                        </div>
-                    </form>
+                                Inicial: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="inicial" name="categoria[]"> <br>
+                                Medium: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="medium" name="categoria[]"> <br>
+                                Premium: <input type="checkbox" class="form-checkinput" aria-describedby="helpId" value="premium" name="categoria[]"> <br>
+                                
+                            </div>
+                            <div class="form-group">
+                                <hr>
+                                Dia de la semana: <br>
+                    
+                                Lunes: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="lunes"> <br>
+                                Martes: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="martes"><br>
+                                Miercoles: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="miercoles"> <br>
+                                Jueves: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="jueves"> <br>
+                                Viernes: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="viernes"><br>
+                                Sabado: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="sabado"><br>
+                                Domingo: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="domingo"><br>
+                            </div>
+                            <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between" >
+                                <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
+                                <a href="informeDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
+                            </div>
+                        </form>
+                    </div>
                 </div>
                 
-                <div class="listado col-8" >
+                <div class="col-12 col-md-8 col-lg-9 text-center" >
+                    <div class="row listado">
             
-                    <?php 
-                    $busqueda = "" ;
-                    $fecha_hoy = date('Y-m-d');
-                    $cat = 0;
-                    $concat = 0;
-                    
-                    if(isset($_GET["submit"])){
-                        $busqueda = "WHERE ";
-                        if (isset($_GET["fechades"]) && !empty($_GET["fechades"])){
-                            $busqueda .= "fechaDesde >= '". $_GET["fechades"]. "'";
-                            $concat++;
-                        }
-                        if (isset($_GET["fechahas"]) && !empty($_GET["fechahas"])){
-                            if($concat > 0 ){
-                                $busqueda .= " AND ";
-                            } else {
-                                $concat++;
-                            }
-                            $busqueda .= "fechaHasta >= " . $_GET["fechahas"];
-                        }
-                        if (isset($_GET["estado"]) && $_GET["estado"] == "1"){
-                            if($concat > 0 ){
-                                $busqueda .= " AND ";
-                            } else {
-                                $concat++;
-                            }
-                            $busqueda .= " fechaHasta < " . $fecha_hoy ;
-                        }
-                        if (isset($_GET["estado"]) && $_GET["estado"] == "2"){
-                            if($concat > 0 ){
-                                $busqueda .= " AND ";
-                            } else {
-                                $concat++;
-                            }
-                            $busqueda .= " fechaHasta > " . $fecha_hoy ;
-                        }
-                        if (isset($_GET['categoria'])) {
-                            if($concat > 0 ){
-                                $busqueda .= " AND ";
-                            }
-                            $busqueda .= "(";
-                            $categorias_seleccionadas = $_GET['categoria'];
-                            foreach ($categorias_seleccionadas as $index => $categoria) {
-                                if ($index > 0) {
-                                    $busqueda .= " OR ";
+                            <?php 
+                            $busqueda = "" ;
+                            $fecha_hoy = date('Y-m-d');
+                            $cat = 0;
+                            $concat = 0;
+                            
+                            if(!empty($_GET["submit"]) && empty($_GET['pagina'])){
+
+                                $busqueda = "WHERE ";
+                                if (isset($_GET["fechades"]) && !empty($_GET["fechades"])){
+                                    $busqueda .= "fechaDesde >= '". $_GET["fechades"]. "'";
+                                    $concat++;
                                 }
-                                $busqueda .= "categoriaCliente = '" . $categoria . "'";
-                            }
-                            $busqueda .= ")";
-                        }
-                        // Hay que poner lo de los dias que todavia no pusimos los dias en la tabla. 
-
-                    }
-                
-                    $query = "SELECT * FROM promociones $busqueda";  
-                    $vresultado = consultaSQL($query);
-                    if (mysqli_num_rows($vresultado)>0) {
-                        while ($fila = mysqli_fetch_array($vresultado)) {
-                            $cont=0;
-                            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."'";
-                            $resultado2 = consultaSQL($query2);
-                            $cont = mysqli_num_rows($resultado2);
-                            $query3 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."'";
-                            $resultado3 = consultaSQL($query3);
-                            $fila3 = mysqli_fetch_array($resultado3);
-
-                        ?>
-                        
-                            <div class="card " style=" margin: 10px; width: 14em; ">
-                                <div class="card-body ">
-                                    <h5 class="card-title "><?php echo($fila3["nombreLocal"]) ?></h5>
-                                    <hr>
-                                    <h6 class="card-subtitle  text-body-secondary"><?php echo($fila["categoriaCliente"]) ?> </h6>
-                                    <p class="card-text"><?php echo($fila["textoPromo"]) ?> </p>
-                                    <p class="card-text">Se utilizó: <?php if($cont==1) echo("$cont vez"); else echo("$cont veces");?></p>
+                                if (isset($_GET["fechahas"]) && !empty($_GET["fechahas"])){
+                                    if($concat > 0 ){
+                                        $busqueda .= " AND ";
+                                    } else {
+                                        $concat++;
+                                    }
+                                    $busqueda .= "fechaHasta >= " . $_GET["fechahas"];
+                                }
+                                if (isset($_GET["estado"]) && $_GET["estado"] == "1"){
+                                    if($concat > 0 ){
+                                        $busqueda .= " AND ";
+                                    } else {
+                                        $concat++;
+                                    }
+                                    $busqueda .= " fechaHasta < " . $fecha_hoy ;
+                                }
+                                if (isset($_GET["estado"]) && $_GET["estado"] == "2"){
+                                    if($concat > 0 ){
+                                        $busqueda .= " AND ";
+                                    } else {
+                                        $concat++;
+                                    }
+                                    $busqueda .= " fechaHasta > " . $fecha_hoy ;
+                                }
+                                if (isset($_GET['categoria'])) {
+                                    if($concat > 0 ){
+                                        $busqueda .= " AND ";
+                                    }
                                     
-                                </div>
-                            </div>
-                            
+                                    $categorias_seleccionadas = $_GET['categoria'];
+                                    foreach ($categorias_seleccionadas as $index => $categoria) {
+                                        if ($index > 0) {
+                                            $busqueda .= " OR ";
+                                        }
+                                        $busqueda .= "categoriaCliente = '" . $categoria . "'";
+                                    }
+                                    
+                                }
+                                // Hay que poner lo de los dias que todavia no pusimos los dias en la tabla. 
+                                if(isset($_GET['dia'])){
+                                    if($concat > 0){
+                                        $busqueda .= " AND ";
+                                    }
+                                    $busqueda .= "(";
+                                    $diasSeleccionados = $_GET['dia'];
+                                    $numDias = count($diasSeleccionados);
+                                    for($i = 0; $i < $numDias; $i++){
+                                        if($i > 0){
+                                            $busqueda .= " OR ";
+                                        }
+                                        $busqueda .= "diaSemana LIKE '%" . $diasSeleccionados[$i] . "%'";
+                                    }
+                                    $busqueda .= ")";
+                                }
+
+                            }
                         
+                            // Logica de la paginación
+                            $limite = 8; // cantidad de resultados que se muestran en la página
+                            if (isset($_GET["pagina"])) {
+                                $pagina  = $_GET["pagina"];
+                            } else {
+                                $pagina = 1;
+                            }
+                            $principio = ($pagina - 1) * $limite; // el número del primer resultado que se mostrará en la página actual. Esto va a ir cambiando a medida que se avance de página
+
+                            $query = "SELECT * FROM promociones $busqueda LIMIT $principio, $limite";  //Lo que hace el Limit es que solo muestra los resultados que estan entre el principio y el limite
+                            $vresultado = consultaSQL($query);
+                            if (mysqli_num_rows($vresultado) > 0) {
+                                while ($fila = mysqli_fetch_array($vresultado)) {
+                                    $cont = 0;
+                                    $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."'";
+                                    $resultado2 = consultaSQL($query2);
+                                    $cont = mysqli_num_rows($resultado2);
+                                    $query3 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."'";
+                                    $resultado3 = consultaSQL($query3);
+                                    $fila3 = mysqli_fetch_array($resultado3);
+                                ?>
                             
-                        <?php
-                            
-                        }
+                                    <div class="card " style=" margin: 10px; width: 14em; ">
+                                        <div class="card-body ">
+                                            <h5 class="card-title "><?php echo($fila3["nombreLocal"]) ?></h5>
+                                            <hr>
+                                            <h6 class="card-subtitle  text-body-secondary"><?php echo($fila["categoriaCliente"]) ?> </h6>
+                                            <p class="card-text"><?php echo($fila["textoPromo"]) ?> </p>
+                                            <p class="card-text">Se utilizó: <?php if($cont == 1) echo("$cont vez"); else echo("$cont veces");?></p>
+                                        </div>
+                                    </div>
+                                    <?php
+                                        }
+                                    ?>
+                    </div>
+                
+                    
+
+                    <!-- Links de paginación -->
+                    <div class="row">
+                        <nav aria-label="Navegación de páginas"  >
+                            <ul class="pagination d-flex justify-content-center">
+                                <?php
+                                $query = "SELECT COUNT(*) FROM promociones $busqueda"; //Cuenta la cantidad de resultados que hay en la tabla
+                                $rs_result = consultaSQL($query);
+                                $row = mysqli_fetch_row($rs_result);
+                                $total_records = $row[0];
+                                $total_pages = ceil($total_records / $limite);
+                                $query_params = $_GET;
+                                unset($query_params['pagina']);
+                                $query_string = http_build_query($query_params);
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    echo "<li class=\"page-item";
+                                    if ($pagina == $i) echo " active";
+                                    echo "\"><a class=\"page-link\" href='?" . $query_string . "&pagina=$i'>$i</a></li>";
+                                    }
+                                ?>
+                            </ul>
+                        </nav>
+                    </div>
+                    <?php
                     } else {
                         echo "No se encontraron promociones.";
                         echo $busqueda;
-                    }   
-                    
+                    }
+                            
                     ?>
 
 

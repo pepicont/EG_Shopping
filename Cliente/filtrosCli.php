@@ -45,9 +45,13 @@
 
 <?php
 $categoria = $_SESSION["categoriaCliente"];
-
-$busqueda = "AND categoriaCliente = '".$categoria."' ";
-
+if($categoria == 'inicial'){
+    $busqueda = "AND categoriaCliente = '".$categoria."' ";
+}elseif($categoria =='medium'){
+    $busqueda = "AND categoriaCliente != 'premium' ";
+}else{
+    $busqueda = "";
+}
 $busqueda2 = "";
 
 if (isset($_GET["filtrar"])) {

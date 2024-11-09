@@ -7,7 +7,6 @@
         header("Location: ../index.php");
         exit();
     }
-    $estoy = "gestionDescuentos";
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +29,9 @@
             <?php include("filtrosCli.php"); ?>
         </div>
         <div class="listado d-flex col-lg-8 col-12 mx-auto justify-content-center">
-            <?php include("cardsdes.php"); ?>
+            <?php 
+            $estoy = 'verDescuentosUtilizados';
+            include("cardsdes.php"); ?>
         </div>
     </div>
     <div class=" d-block d-lg-none"> 

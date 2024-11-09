@@ -21,7 +21,7 @@
         <div class="row ">
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="filtros d-md-block d-flex justify-content-center" style="height: fit-content;">
-                    <h3 class="mx-auto">Filtros:</h3>
+                    
                     <form method="GET" >
                         <div class="form-group p-2">
                         
