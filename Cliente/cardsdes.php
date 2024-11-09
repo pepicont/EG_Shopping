@@ -3,6 +3,9 @@ $query = "SELECT * FROM promociones WHERE estadoPromo = 'activa'" . $busqueda;
 $resultado = consultaSQL($query);
 if(mysqli_num_rows($resultado) > 0){
     while($fila = mysqli_fetch_array($resultado)){
+        $query1 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."' ";
+        $resultado1 = consultaSQL($query1);
+        $fila1 = mysqli_fetch_array($resultado1)
         $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' ";
         $resultado2 = consultaSQL($query2);
         if(mysqli_num_rows($resultado2) > 0){
@@ -10,17 +13,18 @@ if(mysqli_num_rows($resultado) > 0){
         }else{
             $encontro = 0;
         }
-        mostrarcards($fila, $encontro);
+        mostrarcards($fila,$fila1, $encontro);
+        
     }
 }
 
-function mostrarcards($fila,$encontro,){ ?>
+function mostrarcards($fila,$fila1,$encontro,){ ?>
     <div class="card" style="margin: 15px; width: 18rem;">
         <div class="card-body">
             <div style="height:80%">
                 <h5 class="card-title">Cod descuento: <?php echo($fila["cod"]) ?></h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo($fila["textoPromo"]) ?></h6>
-                <p class="card-text">Del local: <?php echo ($fila["nombreLocal"]) ?></p>
+                <p class="card-text">Del local: <?php echo ($fila1["nombreLocal"]) ?></p>
                 <p class="card-text">Dias de la semana: <?php echo($fila["diaSemana"]) ?></p>
                 <p class="card-text">Plazo: <?php echo($fila["fechaDesde"]); echo(" --- "); echo($fila["fechaHasta"]) ?></p> 
             </div>
