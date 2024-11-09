@@ -19,21 +19,20 @@
     
     <div class="container mt-4">
         <div class="row ">
-            <div class="col-3">
-                <div class="filtros p-2" style="height: fit-content;">
-                    <h3>Filtros:</h3>
+            <div class="col-12 col-md-4 col-lg-3">
+                <div class="filtros d-md-block d-flex justify-content-center" style="height: fit-content;">
+                    <h3 class="mx-auto">Filtros:</h3>
                     <form method="GET" >
-                        <hr>
-                        <div class="form-group">
+                        <div class="form-group p-2">
                         
-                            Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes"> </br> </br>
+                            Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group p-2">
                             Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 
-                            <hr>
+                            
                         </div>
-                        <div class="form-group">
-                            </hr>
+                        <div class="form-group p-2">
+                            
                             <label for="categoria">Categoria de la promocion:</label>
                             </br> 
                             <select name="categoria" id="categoria" class="form-control">
@@ -42,10 +41,10 @@
                                 <option value="medium">Medium</option>
                                 <option value="premium">Premium</option>
                             </select>
-                            <hr>
+                            
                         </div>
-                        <div class="form-group ">
-                            </hr>
+                        <div class="form-group p-2 ">
+                            
                             Dia de la semana: <br>
                             Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
                             Martes: <input type="checkbox" name="dia[]" value="martes"> <br>
@@ -56,16 +55,16 @@
                             Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
                         </div>
                         <br> 
-                        <div class="form-group text-center d-flex justify-content-between wrap">
-                            <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary">
-                            <a href="gestionarDescuentos.php" class="btn btn-secondary " style="margin-left: 4px;">Restablecer</a>
+                        <div class="form-group d-flex justify-content-center flex-lg-nowrap flex-wrap p-1">
+                            <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary ">
+                            <input type="reset" value="Restablecer" class="btn btn-secondary ">
                         </div>
                     </form>
                 </div>
                         
             </div>
             
-            <div class="col-9">
+            <div class="col-12 col-md-8 col-lg-9 text-center">
                     <div class="container ml-4">
                         <h3 style="margin-left: auto;">Descuentos pendientes</h3>
                         <div class="container listado">

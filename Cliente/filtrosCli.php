@@ -1,9 +1,5 @@
 <h3>Filtros:</h3> </br>
-<form  method="GET">
-    <div class="form-group p-2" style="width: fit-content">
-        <label for="codigoLocal" style="text-decoration:underline">Codigo de local: </label>
-        <input type="text" name="codigoLocal" class="form-control" id="codigoLocal" placeholder="1...">
-    </div>
+<form method="GET">
     <div class="form-group p-2" style="width: fit-content">
         <label for="nombreLocal" style="text-decoration:underline">Nombre del local: </label>
         <input type="text" name="nombreLocal" class="form-control" id="nombreLocal" placeholder="Sport 78">
@@ -32,36 +28,57 @@
     </div>
     <div class="form-group" style="width: fit-content">
         Dia de la semana: <br>
-        Lunes: <input type="checkbox" name="dia[]" value="l"> <br>
-        Martes: <input type="checkbox" name="dia[]" value="m"> <br>
-        Miércoles: <input type="checkbox" name="dia[]" value="mi"> <br>
-        Jueves: <input type="checkbox" name="dia[]" value="j"> <br>
-        Viernes: <input type="checkbox" name="dia[]" value="v"> <br>
-        Sábado: <input type="checkbox" name="dia[]" value="s"> <br>
-        Domingo: <input type="checkbox" name="dia[]" value="d"> <br>
+        Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
+        Martes: <input type="checkbox" name="dia[]" value="martes"> <br>
+        Miércoles: <input type="checkbox" name="dia[]" value="miercoles"> <br>
+        Jueves: <input type="checkbox" name="dia[]" value="jueves"> <br>
+        Viernes: <input type="checkbox" name="dia[]" value="viernes"> <br>
+        Sábado: <input type="checkbox" name="dia[]" value="sabado"> <br>
+        Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
     </div>
     <br> 
     <div class="form-group mx-auto" style="width: fit-content">
         <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="filtrar">
+        <a href="verDEscuentos2.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
     </div>
 </form>
 
 <?php
 $categoria = $_SESSION["categoriaCliente"];
+
 $busqueda = "AND categoriaCliente = '".$categoria."' ";
+
+$busqueda2 = "";
+
 if (isset($_GET["filtrar"])) {
-    if (isset($_GET['rubros'])) {
+    if (isset($_GET['rubros']) && !empty($_GET['rubros'])) {
         $cantRubros = count($_GET['rubros']);
         for ($t = 0; $t < $cantRubros; $t++) {
             if ($t == 0) {
-                $busqueda .= "AND ";
+                $busqueda2 .= "AND ";
             } else {
-                $busqueda .= "OR ";
+                $busqueda2 .= "OR ";
             }
-            $busqueda .= "rubros LIKE '%" . $_GET['rubros'][$t] . "%' ";
+            $busqueda2 .= "rubroLocal LIKE '%" . $_GET['rubros'][$t] . "%' ";
         }
     }
-    if (isset($_GET['dia'])) {
+    if (isset($_GET['nombreLocal']) && !empty($_GET['nombreLocal'])) {
+        $busqueda2 .= "AND nombreLocal LIKE '%" . $_GET['nombreLocal'] . "%' ";
+    }
+    if (isset($_GET['ubicacionLocal']) && !empty($_GET['ubicacionLocal'])) {
+        $busqueda2 .= "AND ubicacionLocal LIKE '%" . $_GET['ubicacionLocal'] . "%' ";
+        
+    }
+    if (isset($_GET['codDes']) && !empty($_GET['codDes'])) {
+        $busqueda .= "AND cod = '" . $_GET['codDes'] . "' ";
+    }
+    if (isset($_GET['fechaDes']) && !empty($_GET['fechaDes'])) {
+        $busqueda .= "AND fechaDesde <= '" . $_GET['fechaDes'] . "' ";
+    }
+    if (isset($_GET['fechaHas']) && !empty($_GET['fechaHas'])) {
+        $busqueda .= "AND fechaHasta >= '" . $_GET['fechaHas'] . "' ";
+    }
+    if (isset($_GET['dia']) && !empty($_GET['dia'])) {
         $numDias = count($_GET['dia']);
         for ($i = 0; $i < $numDias; $i++) {
             if ($i == 0) {
@@ -72,16 +89,10 @@ if (isset($_GET["filtrar"])) {
             $busqueda .= "diaSemana LIKE '%" . $_GET['dia'][$i] . "%' ";
         }
     }
-    $query = "SELECT * FROM promociones WHERE estado = 'activa' " . $busqueda;
-    $rta = consultaSQL($query);
-
 }
-    
-
-
-
-
-
-
-
 ?>
+
+
+
+
+

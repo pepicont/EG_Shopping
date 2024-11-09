@@ -135,9 +135,10 @@
                         ?>
                         
                             <div class="card " style=" margin: 10px; width: 14em; ">
-                                <div class="card-body">
-                                    <h5 class="card-title"><?php echo($fila3["nombreLocal"]) ?></h5>
-                                    <h6 class="card-subtitle mb-2 text-body-secondary">Código del local: <?php echo($fila["cod"]) ?> </h6>
+                                <div class="card-body ">
+                                    <h5 class="card-title "><?php echo($fila3["nombreLocal"]) ?></h5>
+                                    <hr>
+                                    <h6 class="card-subtitle  text-body-secondary"><?php echo($fila["categoriaCliente"]) ?> </h6>
                                     <p class="card-text"><?php echo($fila["textoPromo"]) ?> </p>
                                     <p class="card-text">Se utilizó: <?php if($cont==1) echo("$cont vez"); else echo("$cont veces");?></p>
                                     

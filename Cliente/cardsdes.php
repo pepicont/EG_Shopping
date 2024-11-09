@@ -3,18 +3,18 @@ $query = "SELECT * FROM promociones WHERE estadoPromo = 'activa'" . $busqueda;
 $resultado = consultaSQL($query);
 if(mysqli_num_rows($resultado) > 0){
     while($fila = mysqli_fetch_array($resultado)){
-        $query1 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."' ";
+        $query1 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."' " . $busqueda2;
         $resultado1 = consultaSQL($query1);
-        $fila1 = mysqli_fetch_array($resultado1)
-        $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' ";
-        $resultado2 = consultaSQL($query2);
-        if(mysqli_num_rows($resultado2) > 0){
-            $encontro = 1;
-        }else{
-            $encontro = 0;
+        while($fila1 = mysqli_fetch_array($resultado1)){
+            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' ";
+            $resultado2 = consultaSQL($query2);
+            if(mysqli_num_rows($resultado2) > 0){
+                $encontro = 1;
+            }else{
+                $encontro = 0;
+            }
+            mostrarcards($fila,$fila1, $encontro);
         }
-        mostrarcards($fila,$fila1, $encontro);
-        
     }
 }
 
@@ -25,6 +25,7 @@ function mostrarcards($fila,$fila1,$encontro,){ ?>
                 <h5 class="card-title">Cod descuento: <?php echo($fila["cod"]) ?></h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo($fila["textoPromo"]) ?></h6>
                 <p class="card-text">Del local: <?php echo ($fila1["nombreLocal"]) ?></p>
+                <p class="card-text">Rubro: <?php echo($fila1["rubroLocal"]) ?></p>
                 <p class="card-text">Dias de la semana: <?php echo($fila["diaSemana"]) ?></p>
                 <p class="card-text">Plazo: <?php echo($fila["fechaDesde"]); echo(" --- "); echo($fila["fechaHasta"]) ?></p> 
             </div>
@@ -32,7 +33,7 @@ function mostrarcards($fila,$fila1,$encontro,){ ?>
                 <button type="button" class="btn btn-danger w-100 m-1 <?php if ($encontro == 0) echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Utilizar descuento
                 </button>
-                <p class="card-text <?php if ($encontro == 1 ) echo "d-none" ?>"> Ya has utilizado esta promocion. <?php echo($cont) ?>  </p>
+                <p class="card-text <?php if ($encontro == 1 ) echo "d-none" ?>"><br> Ya has utilizado esta promocion. </p>
             </div>
         </div>
     </div>
@@ -44,7 +45,7 @@ function mostrarcards($fila,$fila1,$encontro,){ ?>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-footer mx-auto text-center w-100 p-2 d-flex justify-content-between">
-                    <a href="utilizarDescuento.php?cod=<?php echo($fila['cod']) ?>" class="btn btn-primary m-1">Utilizar descuento</a>
+                    <a href="utilizarDescuento.php?cod=<?php echo($fila['cod'])?>" class="btn btn-primary m-1">Utilizar descuento</a>
                     <button type="button" class="btn btn-secundary m-1" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
