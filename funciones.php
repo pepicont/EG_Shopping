@@ -17,7 +17,7 @@ function consultaSQL($query){
   return $resultados;
 
 
-}
+}}
 
 
 
