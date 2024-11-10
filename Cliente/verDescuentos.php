@@ -44,6 +44,13 @@
         </div>
     </div>
 </div>
+<div class="container">
+<?php if(!empty($_GET['success'])){
+            if($_GET['success']==1){
+                echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
+                    Descuento solicitado con éxito
+                    </div>';}}?>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <?php include('../footer.php') ?>
 </html>
