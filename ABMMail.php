@@ -1,7 +1,8 @@
 <?php
-    if(!empty($_POST['enviar'])){
+use PHPMailer\PHPMailer\PHPMailer;
+
+if(!empty($_POST['enviar'])){
    require 'vendor/autoload.php';
-   use PHPMailer\PHPMailer\PHPMailer;
    $mail = new PHPMailer;
    $mail->isSMTP();
    $mail->SMTPDebug = 2;
