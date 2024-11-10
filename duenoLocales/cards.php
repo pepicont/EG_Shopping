@@ -1,27 +1,56 @@
-<?php 
+<?php
+// variabls para paginacion 
+$registros_por_pagina = 3; // Cantidad de registros por página
+$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; // Página actual
+$offset = ($pagina - 1) * $registros_por_pagina; // Offset de la consulta
+if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
+    
+    $paginacion2="LIMIT $offset , $registros_por_pagina"; // offset de donde arranca la consulta y cuantos registros va a mostrar
+    $paginacion = "";
+} else {
+    $paginacion2 = "";
+    $paginacion="LIMIT $offset , $registros_por_pagina";  // hay dos paginaciones poruque dependiendo del menu debe contar las cards de una forma u otra
+}
+
+if(isset($codLocalPaginacio)){ // Si es la primera vez que se entra a la pagina declara la variable asi despues concatena los codigoa para contar las cards a mostrar
+}else{
+    $codLocalPaginacion = "";
+}
+if(isset($codPromoPaginacion)){
+}else{
+    $codPromoPaginacion = "";
+}
+
+
+
 include("validaciones.php");
 $idusuario = $_SESSION["idUsuario"];
 $query = "SELECT * FROM locales WHERE codUsuario = $idusuario";
 $vresultado = consultaSQL($query);
-$registros_por_pagina = 5;
-$pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-$offset = ($pagina - 1) * $registros_por_pagina;
-$paginacion = $paginacion2 = $busqueda;
-if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
-    $paginacion2.= 'LIMIT '.$offset.', '.$registros_por_pagina;
-} else {
-    $paginacion = 'LIMIT '.$offset.', '.$registros_por_pagina;
-}
-
 if (mysqli_num_rows($vresultado) > 0) {
     while ($fila = mysqli_fetch_array($vresultado)) {
         $codLocal = $fila["codLocal"];
-        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $paginacion2"; 
+        $codLocalPaginacion .= " OR codLocal = '".$codLocal."'";
+        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda $paginacion2"; 
         $cont = 0;
         $vresultado2 = consultaSQL($query2);
         if (mysqli_num_rows($vresultado2) > 0) {
             while ($fila2 = mysqli_fetch_array($vresultado2)) { 
-                if ($estoy == "informeDescuentos") {
+                
+                if ($estoy == "verSolicitudDescuentos") { // si estoy en ver solicitudes de descuentos muestro las solicitudes pendientes
+                    $codPromo = $fila2["cod"];
+                    $codPromoPaginacion .= " OR codPromo = '".$codPromo."'";
+                    $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'pendiente' $paginacion";
+                    $vresultado3 = consultaSQL($query3);
+                    if (mysqli_num_rows($vresultado3) > 0) {
+                        while ($cont = mysqli_fetch_array($vresultado3)) {
+                            mostrarcards($fila, $fila2, $estoy, $cont);
+                        }
+                    }
+
+                }
+
+                if ($estoy == "informeDescuentos") { // si estoy en informe descuentos cuento cuantas veces usaron el descuento
                     $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada' ";
                     $vresultado3 = consultaSQL($query3);
                     if (mysqli_num_rows($vresultado3) > 0) {
@@ -31,48 +60,41 @@ if (mysqli_num_rows($vresultado) > 0) {
                     }
                     mostrarcards($fila, $fila2, $estoy, $cont);
                 }
-                if ($estoy == "verSolicitudDescuentos") {
-                    $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'pendiente' ".$paginacion;
-                    $vresultado3 = consultaSQL($query3);
-                    if (mysqli_num_rows($vresultado3) > 0) {
-                        while ($cont = mysqli_fetch_array($vresultado3)) {
-                            mostrarcards($fila, $fila2, $estoy, $cont);
-                        }
-                    }
-                }
-                if ($estoy == "gestionDescuentos") {
+                if ($estoy == "gestionDescuentos") { // si estoy en gestion de descuentos muestro los descuentos activos de los locales propios
                     mostrarcards($fila, $fila2, $estoy, $cont);
                 }
             }
         }
     }
-    if ($estoy == "informeDescuentos") {
-        $sql_total = "SELECT COUNT(*) AS total FROM promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada' ".$busqueda;
-    } elseif ($estoy == "verSolicitudDescuentos") {
-        $sql_total = "SELECT COUNT(*) AS total FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'pendiente' ".$busqueda;
-    } elseif ($estoy == "gestionDescuentos") {
-        $sql_total = "SELECT COUNT(*) AS total FROM promociones WHERE codLocal = '".$fila['codLocal']."' $busqueda";
+}
+    if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
+        $sql_total = "SELECT COUNT(*) AS total FROM promociones WHERE (codLocal = $codLocal $codLocalPaginacion) $busqueda"; //cuenta las cards a msotrar con todos los cod de los locales propios y con los filtors aplicados
+    } else {
+        $sql_total = "SELECT COUNT(*) AS total FROM uso_promociones WHERE (estado = 'pendiente') and (codPromo = '' $codPromoPaginacion)";
     }
-    $total_resultado = consultaSQL($sql_total)->fetch_assoc(); 
-    echo $total_resultado['total'];
-    $total_paginas = ceil($total_resultado['total'] / $registros_por_pagina);
+    $total_resultado = consultaSQL($sql_total)->fetch_assoc();  //calcula la cantidad de cards a mostrar
+    $total_paginas = ceil($total_resultado['total'] / $registros_por_pagina); //calcula la cantidad de paginas a mostrar
     ?>
-    <?php if ($total_paginas > 1) { ?>
+
+
+
+
+    <?php if ($total_paginas > 1) { ?> <!-- Muestra la paginacion si hay mas de una pagina -->
         <div class="container w-100 d-flex justify-content-center">
             <nav aria-label="..." class="mx-auto" style="width:fit-content">
                 <ul class="pagination justify-content-center" style="width:fit-content">
-                    <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else { echo $_SERVER['REQUEST_URI'] . "&pagina=" . ($pagina - 1); } ?>">Previous</a>
+                    <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>"> 
+                        <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina - 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Previous</a>
                     </li>
                     <?php
                     for ($i = 1; $i <= $total_paginas; $i++) {
                         echo "<li class=\"page-item";
                         if ($pagina == $i) echo " active";
-                        echo "\"><a class=\"page-link\" href='" . $_SERVER['REQUEST_URI'] . "&pagina=$i'>$i</a></li>";
+                        $query = $_GET; $query['pagina'] = $i;
+                        echo "\"><a class=\"page-link\" href='" . strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query) . "'>$i</a></li>";
                     }
                     ?>
-                    <li class="page-item <?php if($pagina >= $total_paginas){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pagina >= $total_paginas){ echo '#'; } else { echo $_SERVER['REQUEST_URI'] . "&pagina=" . ($pagina + 1); } ?>">Next</a>
+                    <a class="page-link" href="<?php if($pagina >= $total_paginas){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina + 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -80,9 +102,13 @@ if (mysqli_num_rows($vresultado) > 0) {
     <?php } ?>
     </div>
     <?php
-} else { 
-    echo("No hay promociones activas");
-} 
+
+
+
+
+
+
+
 
 function mostrarcards($fila, $fila2, $estoy, $cont) {
     ?>

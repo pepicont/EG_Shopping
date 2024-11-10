@@ -65,15 +65,27 @@
             </div>
             
             <div class="col-12 col-md-8 col-lg-9 text-center">
+                <div class="row">
                     <div class="container ml-4">
                         <h3 style="margin-left: auto;">Descuentos pendientes</h3>
                         <div class="container listado">
                             <?php
+                            // Logica de la paginación
+                            $limite = 6; // cantidad de resultados que se muestran en la página
+                            if (isset($_GET["pagina"])) {
+                                $pagina  = $_GET["pagina"];
+                            } else {
+                                $pagina = 1;
+                            }
+                            $principio = ($pagina - 1) * $limite; // el número del primer resultado que se mostrará en la página actual. Esto va a ir cambiando a medida que se avance de página
+
+                              //Lo que hace el Limit es que solo muestra los resultados que estan entre el principio y el limite
                             $busqueda="";
                             include('../duenoLocales/Validaciones.php');
-                            $query="SELECT * FROM promociones WHERE estadoPromo='pendiente' $busqueda";                            
+                            $query="SELECT * FROM promociones WHERE estadoPromo='pendiente' $busqueda LIMIT $principio, $limite";                            
                             $resultados=consultaSQL($query);
                             if(mysqli_num_rows($resultados)!=0){
+                                $noHayResultados=false;
                                 while($fila=mysqli_fetch_array($resultados)){?>
                                         <div class='card' style='margin: 10px; width: 14em;'>
                                             <div class='card-body'>
@@ -117,10 +129,45 @@
                        <?php }
                        }else{
                         echo("No existen solicitudes de promoción");
+                        $noHayResultados=true;
                        }
                     
                         ?>
                     </div>
+                </div>
+                <div class="row">
+                <?php if($noHayResultados==false){?>
+                    <nav aria-label="Navegación de páginas"  >
+                        <ul class="pagination d-flex justify-content-center">
+                            <?php
+                            $query = "SELECT * FROM promociones WHERE estadoPromo='pendiente' $busqueda"; //Cuenta la cantidad de resultados que hay en la tabla
+                            $resultados = consultaSQL($query);
+                            $totalResultados = mysqli_num_rows($resultados);
+                            $total_pages = ceil($totalResultados / $limite);
+                            $query = $_GET;
+                            if(isset($_GET['pagina']))
+                                $pagina=$_GET['pagina'];
+                            unset($query['pagina']);
+                            $query_string = http_build_query($query);
+                            ?>
+                            <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>"> 
+                            <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else {$paginaAnterior=$pagina-1;;echo("?".$query_string."&pagina=".$paginaAnterior.""); } ?>">Atras</a>
+                            </li>
+                            <?php
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                                echo "<li class=\"page-item";
+                                if ($pagina == $i) echo " active";
+                                echo "\"><a class=\"page-link\" href='?" . $query_string . "&pagina=$i'>$i</a></li>";
+                                }
+                            ?>
+                            <li class="page-item <?php if($pagina == $total_pages){ echo 'disabled'; } ?>"> 
+                            <a class="page-link" href="<?php if($pagina == $total_pages){ echo '#'; } else {$paginaPosterior=$pagina+1;echo("?".$query_string."&pagina=".$paginaPosterior.""); } ?>">Adelante</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <?php } ?>
+                </div>
+                
             </div>
             
             

@@ -2,25 +2,55 @@
 // Conexión a la base de datos
 // Parámetros de paginación
 include 'funciones.php';
-$registros_por_pagina = 5;
+$registros_por_pagina = 1; // Cambiado a 3 registros por página
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $offset = ($pagina - 1) * $registros_por_pagina;
 $busqueda = 'WHERE estadoPromo = "activa"'; // Suponiendo que 'cod' es el valor que estás buscando
-$paginacion = "LIMIT $offset, $registros_por_pagina";
+$paginacion = "";
+$concat = "";
 // Consultar la base de datos con WHERE y LIMIT para paginación
 $cod = 'cod'; // Suponiendo que 'cod' es el valor que estás buscando
 $query = "SELECT * FROM promociones $busqueda $paginacion";
 $resultado = consultaSQL($query);
 
-// Mostrar los resultados
+// Almacenar los resultados en un array
+$promociones = [];
 if (mysqli_num_rows($resultado) > 0) {
     while ($fila = mysqli_fetch_array($resultado)) {
-        echo $fila['cod'] . '<br>';
+        $promociones[] = $fila;
+        $concat .= " OR codLocal = '".$fila["codLocal"]."'";
     }
 }
 
+// Consultar los locales con paginación
+$query2 = "SELECT * FROM locales WHERE (codLocal = '' $concat) AND estado = 'activo' LIMIT $registros_por_pagina OFFSET $offset";
+$resultado2 = consultaSQL($query2);
+
+if (mysqli_num_rows($resultado2) > 0) {
+    while ($fila2 = mysqli_fetch_array($resultado2)) {
+        foreach ($promociones as $fila) {
+            echo $fila['textoPromo'] . '<br>';
+            echo $fila2['nombreLocal'] . '<br>';
+        }
+    }
+}
+// Mostrar los resultados
+if (mysqli_num_rows($resultado) > 0) {
+    while ($fila = mysqli_fetch_array($resultado)) {
+        $concat .= " OR codLocal = '".$fila["codLocal"]."'";
+        $query2 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."' AND estado = 'activo'";
+        $resultado2 = consultaSQL($query2);
+        if (mysqli_num_rows($resultado2) > 0) {
+            while ($fila2 = mysqli_fetch_array($resultado2)) {
+                echo $fila2['nombreLocal'] . '<br>';
+            }
+        }
+    }
+}
+
+
 // Calcular el total de páginas
-$sql_total = "SELECT COUNT(*) AS total FROM promociones $busqueda";
+$sql_total = "SELECT COUNT(*) AS total FROM locales WHERE (codLocal = '' $concat) and estado = 'activo'";
 $total_resultado = consultaSQL($sql_total)->fetch_assoc();
 $total_paginas = ceil($total_resultado['total'] / $registros_por_pagina);
 

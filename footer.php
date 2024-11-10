@@ -15,13 +15,13 @@
             <p style="display:flex; justify-content: center; font-size: 24px; color:rgb(235, 103, 235); font-weight:600;">Formulario de contacto</p> 
             <form action="" method="POST" style="display:flex; flex-direction: column; align-items: center; padding: 20px;">
                 <div class="form-group"> Email: 
-                    <input type="email" name="email" id="email" placeholder="juanperez@gmail.com" required style="margin-bottom: 10px;" >
+                    <input class="form-control" type="email" name="email" id="email" placeholder="juanperez@gmail.com" required style="margin-bottom: 10px;" >
                 </div>
                 <div class="form-group"> Asunto: 
-                    <input type="text" name="asunto" id="asunto" placeholder="Descuentos medium" required style="margin-bottom: 10px;" >
+                    <input class="form-control" type="text" name="asunto" id="asunto" placeholder="Descuentos medium" required style="margin-bottom: 10px;" >
                 </div>
                 <div class="form-group" style="display:flex; align-items:flex-start;"> Cuerpo:     
-                    <textarea name="cuerpo" id="cuerpo" placeholder="Me gustaría saber más acerca de..." cols="40" rows="5" style="resize: none; margin-bottom: 10px; margin-left: 10px"></textarea>
+                    <textarea class="form-control" name="cuerpo" id="cuerpo" placeholder="Me gustaría saber más acerca de..." cols="40" rows="5" style="resize: none; margin-bottom: 10px; margin-left: 10px"></textarea>
                 </div>
                 <div class="form-group">
                     <input type="submit" name="enviar" id="enviar" value="Enviar" class="btn btn-primary">

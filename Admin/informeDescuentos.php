@@ -59,7 +59,7 @@
                                 Domingo: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="domingo"><br>
                             </div>
                             <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between" >
-                                <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
+                                <input type="submit" name="submit" value="Aplicar" class="btn btn-primary w-100 m-1">
                                 <a href="informeDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
                             </div>
                         </form>
@@ -70,12 +70,13 @@
                     <div class="row listado">
             
                             <?php 
-                            $busqueda = "" ;
+                           
                             $fecha_hoy = date('Y-m-d');
                             $cat = 0;
                             $concat = 0;
                             
-                            if(!empty($_GET["submit"]) && empty($_GET['pagina'])){
+                            if(!empty($_GET["submit"])){
+                                $busqueda = "" ;
 
                                 $busqueda = "WHERE ";
                                 if (isset($_GET["fechades"]) && !empty($_GET["fechades"])){
@@ -137,7 +138,7 @@
                                     $busqueda .= ")";
                                 }
 
-                            }
+                            }else{$busqueda = "";}
                         
                             // Logica de la paginación
                             $limite = 8; // cantidad de resultados que se muestran en la página
@@ -167,6 +168,7 @@
                                             <hr>
                                             <h6 class="card-subtitle  text-body-secondary"><?php echo($fila["categoriaCliente"]) ?> </h6>
                                             <p class="card-text"><?php echo($fila["textoPromo"]) ?> </p>
+                                            <p class="card-text"><?php echo($fila["diaSemana"]) ?> </p>
                                             <p class="card-text">Se utilizó: <?php if($cont == 1) echo("$cont vez"); else echo("$cont veces");?></p>
                                         </div>
                                     </div>
@@ -182,20 +184,30 @@
                         <nav aria-label="Navegación de páginas"  >
                             <ul class="pagination d-flex justify-content-center">
                                 <?php
-                                $query = "SELECT COUNT(*) FROM promociones $busqueda"; //Cuenta la cantidad de resultados que hay en la tabla
-                                $rs_result = consultaSQL($query);
-                                $row = mysqli_fetch_row($rs_result);
-                                $total_records = $row[0];
-                                $total_pages = ceil($total_records / $limite);
-                                $query_params = $_GET;
-                                unset($query_params['pagina']);
-                                $query_string = http_build_query($query_params);
+                                $query = "SELECT * FROM promociones $busqueda"; //Cuenta la cantidad de resultados que hay en la tabla
+                                $resultados = consultaSQL($query);
+                                //$row = mysqli_fetch_row($rs_result);
+                                $totalResultados = mysqli_num_rows($resultados);
+                                $total_pages = ceil($totalResultados / $limite);
+                                $query = $_GET;
+                                if(isset($_GET['pagina']))
+                                    $pagina=$_GET['pagina'];
+                                unset($query['pagina']);
+                                $query_string = http_build_query($query);
+                                ?>
+                                <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>"> 
+                                <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else {$paginaAnterior=$pagina-1;;echo("?".$query_string."&pagina=".$paginaAnterior.""); } ?>">Atras</a>
+                                </li>
+                                <?php
                                 for ($i = 1; $i <= $total_pages; $i++) {
                                     echo "<li class=\"page-item";
                                     if ($pagina == $i) echo " active";
                                     echo "\"><a class=\"page-link\" href='?" . $query_string . "&pagina=$i'>$i</a></li>";
                                     }
                                 ?>
+                                <li class="page-item <?php if($pagina == $total_pages){ echo 'disabled'; } ?>"> 
+                                <a class="page-link" href="<?php if($pagina == $total_pages){ echo '#'; } else {$paginaPosterior=$pagina+1;echo("?".$query_string."&pagina=".$paginaPosterior.""); } ?>">Adelante</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
