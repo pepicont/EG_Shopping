@@ -10,7 +10,7 @@
 </head>
 <header>
         <?php 
-        $lugar="home";
+        $lugar="index";
         include("header.php");
         include_once("funciones.php");
         ?>

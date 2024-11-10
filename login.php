@@ -4,7 +4,7 @@
   session_start();
 include_once("funciones.php");
 if(existecookie()) {
-  header("Location:home.php");
+  header("Location:index.php");
   exit();
 }
 ?>
@@ -40,7 +40,7 @@ if(existecookie()) {
             setcookie('idUsuario',$idUsuario,time()+(60*60*24*365));
           }
            /* Esto también lo tenemos que pasar seguro */
-          echo '<meta http-equiv="refresh" content="0;url=home.php">';
+          echo '<meta http-equiv="refresh" content="0;url=index.php">';
           exit();
         }else{
           echo("Contrasena incorrecta");

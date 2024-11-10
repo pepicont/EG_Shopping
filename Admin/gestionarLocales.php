@@ -17,7 +17,7 @@
         
     <?php }
     else{
-        exit(header("Location: ../home.php"));
+        exit(header("Location: index.php"));
     }
     ?>
         <div class="container">

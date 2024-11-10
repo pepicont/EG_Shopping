@@ -51,7 +51,4 @@ if(!empty($_GET['filtrar'])){
         }
     }
 }
-    
-
-
 ?>

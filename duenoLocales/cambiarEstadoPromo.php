@@ -11,7 +11,7 @@ include_once("../funciones.php");
     }
     $query = "UPDATE uso_promociones SET estado='".$estado."' WHERE codPromo='".$codPromo."'";
     $resultados = consultaSQL($query);
-    exit(header("Location: verSolicitudDescuentos.php"));
+    exit(header("Location: index.php"));
 
     
 ?>

@@ -1,4 +1,3 @@
-
 <?php
     $lugar="admin";
     include_once("../funciones.php");
@@ -180,7 +179,7 @@
 
     <?php
     }else{
-        exit(header("Location: ../home.php"));
+        exit(header("Location: ../index.php"));
     }
 
      ?>

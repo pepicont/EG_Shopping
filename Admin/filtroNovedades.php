@@ -1,5 +1,3 @@
 <?php
-
-   
-    header("Location: gestionarNovedades.php");
-    ?>
+header("Location: gestionarNovedades.php");
+?>

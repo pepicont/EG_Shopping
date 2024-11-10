@@ -81,7 +81,7 @@
       values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";
       consultaSQL($query) or die (mysqli_error($link));
       echo("Usuario registrado con éxito");
-      echo ("<A href='login.php'>Iniciar sesión</A>");
+      echo ("<A href='index.php'>Iniciar sesión</A>");
       } else{
         echo("El mail ingresado ya está registrado");
       }

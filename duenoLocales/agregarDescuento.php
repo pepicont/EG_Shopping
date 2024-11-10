@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
       }
     } 
     }
-    header("Location: gestionDescuentos.php?seCreo=" . $seCreo);
+    header("Location: index.php");
     exit();
   }
 ?>
@@ -100,4 +100,4 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </div>
-  
+

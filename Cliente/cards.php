@@ -58,3 +58,7 @@ function mostrarcards($fila,$fila1,$encontro,){ ?>
         </div>
     </div>
 <?php } ?>
+
+<?php
+header("Location: index.php");
+?>

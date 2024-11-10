@@ -95,5 +95,5 @@
         echo "No hay novedades cargadas activas";
     }
     
-
+    header("Location: index.php");
 ?>
