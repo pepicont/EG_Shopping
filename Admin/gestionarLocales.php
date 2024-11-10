@@ -84,88 +84,136 @@
                     
                 </div>
                 <div class="col-12 col-md-8 col-lg-9 text-center">
-                    <h2>Locales</h2>
-                    <div class="listado px-auto">
-                        <?php
-                            $busqueda="";
-                            include_once("../duenoLocales/Validaciones.php");
-                            $sql="SELECT * FROM locales WHERE estado='activo' $busqueda";
-                            $resultado=consultaSQL($sql);
-                            if(mysqli_num_rows($resultado)==0){
-                                echo("No hay locales");
-                            }else{
-                            while($local=mysqli_fetch_array($resultado)){ 
-                                if(!empty($_GET['idEditar']) && $_GET['idEditar']==$local['codLocal']){
-                            
-                            
-                        ?>
-                            <!-- Esta es la tarjeta común de los locales -->
-                            <div class="card mx-auto" style="width:210px; ">
-                                <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
-                                <div class="card-body text-center">
-                                    <form action='procesarLocal.php' method='POST'>
-                                        <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
-                                        <div class='form-group'>
-                                            <label for='nombreLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Nombre del local:</label>
-                                            <input type='text' class='form-control' id='nombreLocal<?php echo $local["codLocal"]; ?>' name='nombreLocal' value='<?php echo $local["nombreLocal"]; ?>'>
-                                        </div>
-                                        <div class='form-group'>
-                                            <label for='ubicacionLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Ubicación:</label>
-                                            <input type='text' class='form-control' id='ubicacionLocal<?php echo $local["codLocal"]; ?>' name='ubicacionLocal' value='<?php echo $local["ubicacionLocal"]; ?>'>
-                                        </div>
-                                        <div class='form-group'>
-                                            <label for='rubroLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Rubro:</label>
-                                            <input type='text' class='form-control' id='rubroLocal<?php echo $local["codLocal"]; ?>' name='rubroLocal' value='<?php echo $local["rubroLocal"]; ?>'>
-                                        </div>
-                    
-                                        <button type='submit' name='editar' class='btn btn-primary'>Guardar</button>
-                                    </form>
-                                    
-                                </div>
-                            </div>
-                            <?php }else{ ?>
+                    <div class="row">
+                        <h2>Locales</h2>
+                        <div class="listado px-auto">
+                            <?php
+                                // Logica de la paginación
+                                $limite = 6; // cantidad de resultados que se muestran en la página
+                                if (isset($_GET["pagina"])) {
+                                    $pagina  = $_GET["pagina"];
+                                } else {
+                                    $pagina = 1;
+                                }
+                                $principio = ($pagina - 1) * $limite; // el número del primer resultado que se mostrará en la página actual. Esto va a ir cambiando a medida que se avance de página
 
-                            <div class="card " style=" margin: 10px; width:210px; ">
+                                 //Lo que hace el Limit es que solo muestra los resultados que estan entre el principio y el limite
+                                $busqueda="";
+                                include_once("../duenoLocales/Validaciones.php");
+                                $sql="SELECT * FROM locales WHERE estado='activo' $busqueda LIMIT $principio, $limite";
+                                $resultado=consultaSQL($sql);
+                                if(mysqli_num_rows($resultado)==0){
+                                    echo("No hay locales");
+                                    $noHayResultados=true;
+                                }else{
+                                    $noHayResultados=false;
+                                while($local=mysqli_fetch_array($resultado)){ 
+                                    if(!empty($_GET['idEditar']) && $_GET['idEditar']==$local['codLocal']){
                                 
-                                <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;">
-                                <h5><?php echo($local['codLocal']) ?></h5><!-- Acá iría la imagen del local -->
-                                <div class="card-body pt-0">
-                                    <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
-                                    <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
-                                    <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>' class='btn btn-primary card-link'>Editar</a>
-                                    <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $local["codLocal"]; ?>'>Eliminar</button>
-                                    <!-- Modal que popea cuando aprieta eliminar-->
-                                    <div class='modal fade' id='deleteModal<?php echo $local["codLocal"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                        <div class='modal-dialog' role='document'>
-                                            <div class='modal-content'>
-                                                <div class='modal-header'>
-                                                    <h5 class='modal-title' id='exampleModalLabel'>¿Está seguro que desea borrar el local?</h5>
-                                                    <button type='button' class='close' data-bs-dismiss='modal' aria-label='Close'>
-                                                        <span aria-hidden='true'>&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class='modal-body'>
-                                                    <p>Nombre: <?php echo $local["nombreLocal"]; ?></p>
-                                                    <p>Ubicación: <?php echo $local["ubicacionLocal"]; ?></p>
-                                                    <p>Rubro: <?php echo $local["rubroLocal"]; ?></p>
-                                                </div>
-                                                <div class='modal-footer'>
-                                                    <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
-                                                    <button type='button' class='btn btn-danger'>
-                                                        <a href='procesarLocal.php?idEliminar=<?php echo $local["codLocal"];?>' style="text: white; text-decoration:none; ">Confirmar</a>
-                                                    </button>
+                                
+                            ?>
+                                <!-- Esta es la tarjeta común de los locales -->
+                                <div class="card mx-auto" style="width:210px; ">
+                                    <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
+                                    <div class="card-body text-center">
+                                        <form action='procesarLocal.php' method='POST'>
+                                            <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
+                                            <div class='form-group'>
+                                                <label for='nombreLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Nombre del local:</label>
+                                                <input type='text' class='form-control' id='nombreLocal<?php echo $local["codLocal"]; ?>' name='nombreLocal' value='<?php echo $local["nombreLocal"]; ?>'>
+                                            </div>
+                                            <div class='form-group'>
+                                                <label for='ubicacionLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Ubicación:</label>
+                                                <input type='text' class='form-control' id='ubicacionLocal<?php echo $local["codLocal"]; ?>' name='ubicacionLocal' value='<?php echo $local["ubicacionLocal"]; ?>'>
+                                            </div>
+                                            <div class='form-group'>
+                                                <label for='rubroLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Rubro:</label>
+                                                <input type='text' class='form-control' id='rubroLocal<?php echo $local["codLocal"]; ?>' name='rubroLocal' value='<?php echo $local["rubroLocal"]; ?>'>
+                                            </div>
+                        
+                                            <button type='submit' name='editar' class='btn btn-primary'>Guardar</button>
+                                        </form>
+                                        
+                                    </div>
+                                </div>
+                                <?php }else{ ?>
+
+                                <div class="card " style=" margin: 10px; width:210px; ">
+                                    
+                                    <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;">
+                                    <h5><?php echo($local['codLocal']) ?></h5><!-- Acá iría la imagen del local -->
+                                    <div class="card-body pt-0">
+                                        <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
+                                        <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
+                                        <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>' class='btn btn-primary card-link'>Editar</a>
+                                        <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $local["codLocal"]; ?>'>Eliminar</button>
+                                        <!-- Modal que popea cuando aprieta eliminar-->
+                                        <div class='modal fade' id='deleteModal<?php echo $local["codLocal"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                            <div class='modal-dialog' role='document'>
+                                                <div class='modal-content'>
+                                                    <div class='modal-header'>
+                                                        <h5 class='modal-title' id='exampleModalLabel'>¿Está seguro que desea borrar el local?</h5>
+                                                        <button type='button' class='close' data-bs-dismiss='modal' aria-label='Close'>
+                                                            <span aria-hidden='true'>&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class='modal-body'>
+                                                        <p>Nombre: <?php echo $local["nombreLocal"]; ?></p>
+                                                        <p>Ubicación: <?php echo $local["ubicacionLocal"]; ?></p>
+                                                        <p>Rubro: <?php echo $local["rubroLocal"]; ?></p>
+                                                    </div>
+                                                    <div class='modal-footer'>
+                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
+                                                        <button type='button' class='btn btn-danger'>
+                                                            <a href='procesarLocal.php?idEliminar=<?php echo $local["codLocal"];?>' style="text: white; text-decoration:none; ">Confirmar</a>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <!-- Modal cierre -->
                                     </div>
-                                    <!-- Modal cierre -->
                                 </div>
-                            </div>
+                        
+                                <!-- Tarjeta cierre -->
                     
-                            <!-- Tarjeta cierre -->
-                  
-                        <?php }}} ?>
-                </div>
+                            <?php }}} ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                    <?php if($noHayResultados==false){?>
+                        <nav aria-label="Navegación de páginas"  >
+                            <ul class="pagination d-flex justify-content-center">
+                                <?php
+                                $query = "SELECT * FROM locales WHERE estado='activo' $busqueda"; //Cuenta la cantidad de resultados que hay en la tabla
+                                $resultados = consultaSQL($query);
+                                //$row = mysqli_fetch_row($rs_result);
+                                $totalResultados = mysqli_num_rows($resultados);
+                                $total_pages = ceil($totalResultados / $limite);
+                                $query = $_GET;
+                                if(isset($_GET['pagina']))
+                                    $pagina=$_GET['pagina'];
+                                unset($query['pagina']);
+                                $query_string = http_build_query($query);
+                                ?>
+                                <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>"> 
+                                <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else {$paginaAnterior=$pagina-1;;echo("?".$query_string."&pagina=".$paginaAnterior.""); } ?>">Atras</a>
+                                </li>
+                                <?php
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    echo "<li class=\"page-item";
+                                    if ($pagina == $i) echo " active";
+                                    echo "\"><a class=\"page-link\" href='?" . $query_string . "&pagina=$i'>$i</a></li>";
+                                    }
+                                ?>
+                                <li class="page-item <?php if($pagina == $total_pages){ echo 'disabled'; } ?>"> 
+                                <a class="page-link" href="<?php if($pagina == $total_pages){ echo '#'; } else {$paginaPosterior=$pagina+1;echo("?".$query_string."&pagina=".$paginaPosterior.""); } ?>">Adelante</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <?php }?>
+                    </div>
+
 
             </div>
         </div>
