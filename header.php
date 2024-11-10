@@ -60,15 +60,16 @@ if (isset($_SESSION['tipoUsuario'])){
                         $mostrarUsuario="Cliente";
                     if($tipoUsuario=="administrador")
                         $mostrarUsuario="Administrador";
-                    echo "<a href='".$ruta."perfil.php' class='user-info ms-auto d-lg-none'>".$mostrarUsuario."</a>";
-                    
+                    ?>
+                    <a href='#' class='user-info ms-auto d-lg-none'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/$categoriaCliente.png");} ?>" alt="categoría del cliente"><?php echo $mostrarUsuario ?></a>
+                    <?php
             } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <div class="collapse navbar-collapse  px-auto " id="navbarNav">
-                <ul class="navbar-nav mx-auto px-auto  ">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-lg-30 mx-auto px-auto  ">
                     <li class="nav-item ">
                         <a class="nav-link active" aria-current="page" href="#">Locales</a>
                     </li>
@@ -81,8 +82,9 @@ if (isset($_SESSION['tipoUsuario'])){
                     
                 </ul>
                 
-                <?php if($login==TRUE){
-                echo "<a style='float:right; margin-right: 20px;' href='".$ruta."perfil.php' class='user-info ms-auto d-none d-lg-block'>".$mostrarUsuario."</a>";}?>
+                <?php if($login==TRUE){?>
+                <a style='float:right; margin-right: 20px;' href='#' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/$categoriaCliente.png");} ?>" alt="categoría del cliente"><?php echo $mostrarUsuario ?></a>
+                <?php } ?>
                 <ul class="navbar-nav   <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

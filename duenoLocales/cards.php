@@ -1,53 +1,46 @@
 <?php
 // variabls para paginacion 
-$registros_por_pagina = 3; // Cantidad de registros por página
+$registros_por_pagina = 5; // Cantidad de registros por página
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; // Página actual
 $offset = ($pagina - 1) * $registros_por_pagina; // Offset de la consulta
+$paginacion = "";
+
 if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
-    
-    $paginacion2="LIMIT $offset , $registros_por_pagina"; // offset de donde arranca la consulta y cuantos registros va a mostrar
-    $paginacion = "";
-} else {
-    $paginacion2 = "";
-    $paginacion="LIMIT $offset , $registros_por_pagina";  // hay dos paginaciones poruque dependiendo del menu debe contar las cards de una forma u otra
+    $paginacion="LIMIT $offset , $registros_por_pagina"; // offset de donde arranca la consulta y cuantos registros va a mostrar
 }
 
-if(isset($codLocalPaginacio)){ // Si es la primera vez que se entra a la pagina declara la variable asi despues concatena los codigoa para contar las cards a mostrar
-}else{
-    $codLocalPaginacion = "";
-}
-if(isset($codPromoPaginacion)){
-}else{
-    $codPromoPaginacion = "";
-}
-
+// Si es la primera vez que se entra a la pagina declara la variable asi despues concatena los codigoa para contar las cards a mostrar
+$codLocalPaginacion = isset($codLocalPaginacion) ? $codLocalPaginacion : "";
+$codPromoPaginacion = isset($codPromoPaginacion) ? $codPromoPaginacion : "";
 
 
 include("validaciones.php");
 $idusuario = $_SESSION["idUsuario"];
 $query = "SELECT * FROM locales WHERE codUsuario = $idusuario";
 $vresultado = consultaSQL($query);
+$total_uso_promociones = 0;
 if (mysqli_num_rows($vresultado) > 0) {
     while ($fila = mysqli_fetch_array($vresultado)) {
         $codLocal = $fila["codLocal"];
         $codLocalPaginacion .= " OR codLocal = '".$codLocal."'";
-        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda $paginacion2"; 
+        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda $paginacion"; 
         $cont = 0;
         $vresultado2 = consultaSQL($query2);
         if (mysqli_num_rows($vresultado2) > 0) {
             while ($fila2 = mysqli_fetch_array($vresultado2)) { 
-                
                 if ($estoy == "verSolicitudDescuentos") { // si estoy en ver solicitudes de descuentos muestro las solicitudes pendientes
                     $codPromo = $fila2["cod"];
                     $codPromoPaginacion .= " OR codPromo = '".$codPromo."'";
-                    $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'pendiente' $paginacion";
+                    $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'pendiente' ";
                     $vresultado3 = consultaSQL($query3);
                     if (mysqli_num_rows($vresultado3) > 0) {
                         while ($cont = mysqli_fetch_array($vresultado3)) {
-                            mostrarcards($fila, $fila2, $estoy, $cont);
+                            $filaPaMostrar[] = $fila;
+                            $fila2PaMostrar[] = $fila2;
+                            $contPaMostrar[]= $cont;
+                            $total_uso_promociones++;
                         }
                     }
-
                 }
 
                 if ($estoy == "informeDescuentos") { // si estoy en informe descuentos cuento cuantas veces usaron el descuento
@@ -69,11 +62,21 @@ if (mysqli_num_rows($vresultado) > 0) {
 }
     if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
         $sql_total = "SELECT COUNT(*) AS total FROM promociones WHERE (codLocal = $codLocal $codLocalPaginacion) $busqueda"; //cuenta las cards a msotrar con todos los cod de los locales propios y con los filtors aplicados
+        $total_resultado = consultaSQL($sql_total)->fetch_assoc();  //calcula la cantidad de cards a mostrar
+        $total_paginas = ceil($total_resultado['total'] / $registros_por_pagina); //calcula la cantidad de paginas a mostrar
     } else {
-        $sql_total = "SELECT COUNT(*) AS total FROM uso_promociones WHERE (estado = 'pendiente') and (codPromo = '' $codPromoPaginacion)";
+        // Calcular la cantidad de páginas
+        $total_paginas = ceil($total_uso_promociones / $registros_por_pagina);
+
+        // Mostrar las cards de la página actual
+        $uso_promociones_pagina = array_slice($filaPaMostrar, $offset, $registros_por_pagina);
+        $fila2_pagina = array_slice($fila2PaMostrar, $offset, $registros_por_pagina);
+        $cont_pagina = array_slice($contPaMostrar, $offset, $registros_por_pagina);
+        for($i = 0 ; $i < count($uso_promociones_pagina); $i++) {
+            mostrarcards($uso_promociones_pagina[$i], $fila2_pagina[$i], $estoy, $cont_pagina[$i]);
+        }
     }
-    $total_resultado = consultaSQL($sql_total)->fetch_assoc();  //calcula la cantidad de cards a mostrar
-    $total_paginas = ceil($total_resultado['total'] / $registros_por_pagina); //calcula la cantidad de paginas a mostrar
+    
     ?>
 
 

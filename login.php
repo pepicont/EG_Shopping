@@ -11,11 +11,11 @@ if(existecookie()) {
 <?php 
     if(isset($_POST['enviar'])) {
       
-      $email = $_POST['email'];
-      $contrasena = $_POST['contrasena'];
-      $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
-      $mantenerSesionIniciada = $_POST['mantenerSesionIniciada'];
-      //$categoriaCliente=$_POST['categoriaCliente'];
+      $email = trim($_POST['email']);
+      $contrasena = trim($_POST['contrasena']);
+      $contrasenaEncriptada = trim(password_hash($contrasena, PASSWORD_DEFAULT));
+      //$categoriaCliente = trim($_POST['categoriaCliente']);
+      $mantenerSesionIniciada = trim($_POST['mantenerSesionIniciada']);
       $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
       $vResultado = consultaSQL($query) or die (mysqli_error($link));
       $fila = mysqli_fetch_array($vResultado);
@@ -36,7 +36,7 @@ if(existecookie()) {
             setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
             setcookie('usuario',$email,time()+(60*60*24*365));
             setcookie('tipoUsuario',$tipoUsuario,time()+(60*60*24*365));
-            setcookie('categoriaCliente',$categoriaCliente,time()+(60*60*24*365));
+            setcookie('categoriaCliente',$fila['categoriaCliente'],time()+(60*60*24*365));
             setcookie('idUsuario',$idUsuario,time()+(60*60*24*365));
           }
            /* Esto también lo tenemos que pasar seguro */

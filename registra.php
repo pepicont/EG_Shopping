@@ -58,14 +58,15 @@
 <?php 
   include_once("funciones.php");
   if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email=$_POST['email'];
-    $contrasena=$_POST['contrasena'];
-    $contrasena2=$_POST['contrasena2'];
-    $nombre=$_POST['nombre'];
-    $apellido=$_POST['apellido'];
-    $fechaNacimiento=$_POST['fechaNacimiento'];
-    $tipoUsuario=$_POST['tipoUsuario'];
-    if ($contrasena==$contrasena2){
+    $email=trim($_POST['email']);
+    
+    $contrasena=trim($_POST['contrasena']);
+    $contrasena2=trim($_POST['contrasena2']);
+    $nombre=trim($_POST['nombre']);
+    $apellido=trim($_POST['apellido']);
+    $fechaNacimiento=trim($_POST['fechaNacimiento']);
+    $tipoUsuario=trim($_POST['tipoUsuario']);
+    if ($contrasena==$contrasena2 and $contrasena!=""){
       if (mailExiste($email)==FALSE){
         $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
       if($tipoUsuario=='cliente'){

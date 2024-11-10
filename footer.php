@@ -9,11 +9,21 @@
         <div class="container" >
             <h3 style="display:flex; margin-bottom:15px; color:rgb(235, 103, 235); font-weight:600; justify-content: center; font-size: 24px;">Información adicional</h3>
             </hr>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique amet esse nulla, possimus voluptatem excepturi sint accusantium officiis aut quaerat minima cupiditate! Ut, placeat veniam nihil molestias cumque laborum laboriosam.</p>
+            <p> Ubicación: Rosario, Santa Fe - Junín 501
+                <br> </br>
+            Copyright © 2024-2024 Mundo Shopping S.R.L.
+            <br> </br>
+            *Imagenes de referencia. Descuentos válidos en la República Argentina en productos seleccionados de acuerdo a disponibilidad y condiciones 
+            establecidas en cada promoción a cargo de cada dueño de local. Válido exclusivamente para pagos presenciales de productos seleccionados, con tarjetas de 
+            crédito Mastercard, Visa, Cabal y American Express bancarias únicamente emitidas y administradas por bancos autorizados en la República Argentina, y que se 
+            encuentren vigentes y en estado de cumplimiento. Toda promoción solicitada deberá ser aceptada por el dueño de local respectivo. Mundo Shopping S.R.L, 
+           
+
+            </p>
         </div>
         <div class="container">
             <p style="display:flex; justify-content: center; font-size: 24px; color:rgb(235, 103, 235); font-weight:600;">Formulario de contacto</p> 
-            <form action="" method="POST" style="display:flex; flex-direction: column; align-items: center; padding: 20px;">
+            <form action="ABMMail.php" method="POST" style="display:flex; flex-direction: column; align-items: center; padding: 20px;">
                 <div class="form-group"> Email: 
                     <input class="form-control" type="email" name="email" id="email" placeholder="juanperez@gmail.com" required style="margin-bottom: 10px;" >
                 </div>
