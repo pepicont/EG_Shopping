@@ -27,7 +27,7 @@
         
             <?php 
                 $estoy = 'verDescuentos';
-                include("cardsdes.php"); ?>
+                include("cards.php"); ?>
         </div>
     </div>
     <div class=" d-block d-lg-none"> 
