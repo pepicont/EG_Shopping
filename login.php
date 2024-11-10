@@ -12,7 +12,7 @@ if(existecookie()) {
     if(isset($_POST['enviar'])) {
       
       $email = trim($_POST['email']);
-      $contrasena = trim($_POST['contrasena']);
+      $contrasena =$_POST['contrasena'];
       $contrasenaEncriptada =password_hash($contrasena, PASSWORD_DEFAULT);
       //$categoriaCliente = trim($_POST['categoriaCliente']);
       $mantenerSesionIniciada = $_POST['mantenerSesionIniciada'];
