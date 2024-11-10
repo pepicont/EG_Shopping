@@ -61,7 +61,7 @@ if (isset($_SESSION['tipoUsuario'])){
                     if($tipoUsuario=="administrador")
                         $mostrarUsuario="Administrador";
                     ?>
-                    <a href='#' class='user-info ms-auto d-lg-none'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/$categoriaCliente.png");} ?>" style="max-width: 10px; max-height: 10px;" style="max-width:30px; max-height:30px;" alt="categoría del cliente"><?php echo $mostrarUsuario ?></a>
+                    <a href='#' class='user-info ms-auto d-lg-none'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/$categoriaCliente.png"); ?>" style="max-width:30px; max-height:30px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
                     <?php
             } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -83,7 +83,7 @@ if (isset($_SESSION['tipoUsuario'])){
                 </ul>
                 
                 <?php if($login==TRUE){?>
-                <a style='float:right; margin-right: 20px;' href='#' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/$categoriaCliente.png");} ?>" style="max-width:30px; max-height:30px;" alt="categoría del cliente"><?php echo $mostrarUsuario ?></a>
+                <a style='float:right; margin-right: 20px;' href='#' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/$categoriaCliente.png");?>" style="max-width:30px; max-height:30px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
                 <?php } ?>
                 <ul class="navbar-nav   <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">

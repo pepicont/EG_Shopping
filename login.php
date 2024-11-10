@@ -13,9 +13,9 @@ if(existecookie()) {
       
       $email = trim($_POST['email']);
       $contrasena = trim($_POST['contrasena']);
-      $contrasenaEncriptada = trim(password_hash($contrasena, PASSWORD_DEFAULT));
+      $contrasenaEncriptada =password_hash($contrasena, PASSWORD_DEFAULT);
       //$categoriaCliente = trim($_POST['categoriaCliente']);
-      $mantenerSesionIniciada = trim($_POST['mantenerSesionIniciada']);
+      $mantenerSesionIniciada = $_POST['mantenerSesionIniciada'];
       $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
       $vResultado = consultaSQL($query) or die (mysqli_error($link));
       $fila = mysqli_fetch_array($vResultado);
