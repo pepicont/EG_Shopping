@@ -1,12 +1,23 @@
 <?php
-$query = "SELECT * FROM promociones WHERE estadoPromo = 'activa'" . $busqueda;
+// Logica de la paginación
+$limite = 8; // cantidad de resultados que se muestran en la página
+if (isset($_GET["pagina"])) {
+    $pagina  = $_GET["pagina"];
+} else {
+    $pagina = 1;
+}
+$principio = ($pagina - 1) * $limite; // el número del primer resultado que se mostrará en la página actual. Esto va a ir cambiando a medida que se avance de página
+
+  //Lo que hace el Limit es que solo muestra los resultados que estan entre el principio y el limite
+//fin de lógica
+$query = "SELECT * FROM promociones WHERE estadoPromo = 'activa' $busqueda ";
 $resultado = consultaSQL($query);
 if(mysqli_num_rows($resultado) > 0){
     while($fila = mysqli_fetch_array($resultado)){
         $query1 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."' " . $busqueda2;
         $resultado1 = consultaSQL($query1);
         while($fila1 = mysqli_fetch_array($resultado1)){
-            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' AND estado = 'aceptada'";
+            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila["cod"]."' AND estado = 'aceptada' LIMIT $principio, $limite";
             $resultado2 = consultaSQL($query2);
             if(mysqli_num_rows($resultado2) > 0){
                 if($estoy == 'verDescuentosUtilizados'){
@@ -18,6 +29,39 @@ if(mysqli_num_rows($resultado) > 0){
                 if($estoy == 'verDescuentos'){
                 $encontro = 0;
                 mostrarcards($fila,$fila1, $encontro);
+                ?>
+                <div class="row">
+                        <nav aria-label="Navegación de páginas"  >
+                            <ul class="pagination d-flex justify-content-center">
+                                <?php
+                                $query = "SELECT * FROM promociones WHERE estadoPromo = 'activa' $busqueda "; //Cuenta la cantidad de resultados que hay en la tabla
+                                $resultados = consultaSQL($query);
+                                //$row = mysqli_fetch_row($rs_result);
+                                $totalResultados = mysqli_num_rows($resultados);
+                                $total_pages = ceil($totalResultados / $limite);
+                                $query = $_GET;
+                                if(isset($_GET['pagina']))
+                                    $pagina=$_GET['pagina'];
+                                unset($query['pagina']);
+                                $query_string = http_build_query($query);
+                                ?>
+                                <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>"> 
+                                <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else {$paginaAnterior=$pagina-1;;echo("?".$query_string."&pagina=".$paginaAnterior.""); } ?>">Atras</a>
+                                </li>
+                                <?php
+                                for ($i = 1; $i <= $total_pages; $i++) {
+                                    echo "<li class=\"page-item";
+                                    if ($pagina == $i) echo " active";
+                                    echo "\"><a class=\"page-link\" href='?" . $query_string . "&pagina=$i'>$i</a></li>";
+                                    }
+                                ?>
+                                <li class="page-item <?php if($pagina == $total_pages){ echo 'disabled'; } ?>"> 
+                                <a class="page-link" href="<?php if($pagina == $total_pages){ echo '#'; } else {$paginaPosterior=$pagina+1;echo("?".$query_string."&pagina=".$paginaPosterior.""); } ?>">Adelante</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                <?php
                 }
             }
             

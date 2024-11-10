@@ -151,6 +151,7 @@
 
                             $query = "SELECT * FROM promociones $busqueda LIMIT $principio, $limite";  //Lo que hace el Limit es que solo muestra los resultados que estan entre el principio y el limite
                             $vresultado = consultaSQL($query);
+                            //fin de lógica
                             if (mysqli_num_rows($vresultado) > 0) {
                                 while ($fila = mysqli_fetch_array($vresultado)) {
                                     $cont = 0;
