@@ -6,7 +6,12 @@
 
 
 function consultaSQL($query){
-  $link=mysqli_connect("localhost","root","","shopping") or die("Hubo un error al conectarse con la base de datos");
+  $local=false;
+  if($local){
+    $link=mysqli_connect("localhost","root","","local") or die("Hubo un error al conectarse con la base de datos");
+  }else{
+    $link=mysqli_connect("server1661","u174220854_eg_shopping",'6qAGB$Hhtq&@ma+',"u174220854_shopping") or die("Hubo un error al conectarse con la base de datos");
+  
   $resultados = mysqli_query($link,$query) or die("Hubo un error con la transacción:".mysqli_error($link));
   mysqli_close($link);
   return $resultados;
