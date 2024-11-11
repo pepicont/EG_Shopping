@@ -41,12 +41,57 @@
                             Local dado de baja
                             </div>';
                         
-                    }}
+                    } elseif($_GET['success']=='creado'){
+                        echo '<div class="alert alert-success mt-3 mx-auto" style="width: fit-content" role="alert">
+                        Local dado de baja
+                        </div>';}
+                }
                     ?>
                 </div>
             </div>
             <div class="row">  
                 <div class="col-12 col-md-4 col-lg-3">
+                    <!-- div que va a contener el form de crear locales -->
+                     <div class="filtros d-md-block d-flex justify-content-center" >
+
+                        <form method="POST" action="procesarLocal.php">
+                            <div class="form-group p-2" style="width: fit-content">
+  
+                                <label for="nombreLocal" style="text-decoration:underline">Nombre: </label>
+                                <input type="text" name="nombreLocal" class="form-control" id="nombreLocal" required>
+
+                            </div>
+                            <div class="form-group p-2" style="width: fit-content">
+  
+                                    <label for="imagenLocal" style="text-decoration:underline">Imagen del local: </label>
+                                    <input type="file" name="imagenLocal" class="form-control" id="imagenLocal" required accept="image/*">
+
+                            </div>
+                            <div class="form-group p-2" style="width: fit-content">
+  
+                                <label for="ubiacionLocal" style="text-decoration:underline">Ubicación: </label>
+                                <textarea class="form-control" name="ubicacionLocal" id="ubicacionLocal" placeholder="Primer piso, Ala sur" cols="25" rows="3" required style="resize: none; margin-bottom: 10px; margin-left: 10px"></textarea>
+
+                            </div>
+                            <div class="form-group p-2" style="width: fit-content">
+  
+                                <label for="rubroLocal" style="text-decoration:underline">Rubro: </label>
+                                <input type="text" name="rubroLocal" class="form-control" id="rubroLocal" required>
+
+                            </div>
+                            <input type="hidden" name="codDueno" value="<?php echo $_SESSION['idUsuario']?>">
+                            <input type="hidden" name="estado" value="activo">
+
+                            <div class="form-group mx-auto p-2" style="width: fit-content">
+                                    <input type="submit" name="crearLocal" class="btn btn-primary px-4 py-2" value="Crear">
+                            </div>
+
+                            
+
+                        </form>
+
+                    </div>
+                               
                     <div class="filtros d-md-block d-flex justify-content-center" >
                         <form method="GET">
                                 <div class="form-group p-2" style="width: fit-content">

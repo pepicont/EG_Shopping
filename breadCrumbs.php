@@ -75,3 +75,11 @@
             break;
         }
     } 
+    if($estoy=="perfil"){
+        echo '<li class="breadcrumb-item active" active aria-current="Perfil"><a class="migasDePan" href="perfil.php" >PERFIL</a></li>';
+    }
+
+    ?>
+    </ol>
+    </nav>
+

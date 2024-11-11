@@ -107,7 +107,7 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
 
                     <?php } if($tipoUsuario=="administrador"){?>
-                    <?php if($lugar=="index")
+                    <?php if($lugar=="index" or $lugar=="perfil")
                                 $ruta2="Admin/";
                             else
                                 $ruta2="";
@@ -128,7 +128,7 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
 
                     <?php } if($tipoUsuario=="cliente"){?>
-                        <?php if($lugar=="index")
+                        <?php if($lugar=="index" or $lugar=="perfil")
                                 $ruta2="Cliente/";
                             else
                                 $ruta2="";
@@ -156,10 +156,14 @@ if (isset($_SESSION['tipoUsuario'])){
                             Cuenta
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
+                            <?php if ($lugar=="index" or $lugar=="perfil")
+                                        $ruta2="";
+                                    else 
+                                        $ruta2="../";?>
+                            <li><a class="dropdown-item" href="<?php echo $ruta2 ?>perfil.php">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
 
-                            <li><a class="dropdown-item" href="<?php echo("$ruta");?>logOut.php">Cerrar sesión</a></li>
+                            <li><a class="dropdown-item" href="<?php echo("$ruta2");?>logOut.php">Cerrar sesión</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -174,13 +178,6 @@ if (isset($_SESSION['tipoUsuario'])){
             
         </div>
     </nav>
-
-    
-    
-    
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>
