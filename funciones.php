@@ -48,5 +48,31 @@ function existecookie(){
         return FALSE;
       }
 }
+
+function actualizarNovedades(){
+  
+$query= "SELECT * FROM novedades WHERE estado='activa' AND fechaHasta>'".date('Y-m-d')."'";
+$rta=consultaSQL($query);
+if(mysqli_num_rows($rta)>0){
+  while($fila=mysqli_fetch_array($rta)){
+    $query2="UPDATE novedades SET estado='inactiva' WHERE cod='".$fila['cod']."'";
+    $rta2= consultaSQL($query2);
+  }
+
+}
+}
+
+function actualizarDescuentos(){
+  
+  $query= "SELECT * FROM promociones WHERE estadoPromo='activa' AND fechaHasta>'".date('Y-m-d')."'";
+  $rta=consultaSQL($query);
+  if(mysqli_num_rows($rta)>0){
+    while($fila=mysqli_fetch_array($rta)){
+      $query2="UPDATE promociones SET estado='inactiva' WHERE cod='".$fila['cod']."'";
+      $rta2= consultaSQL($query2);
+    }
+  
+  }
+  }
 ?>
 
