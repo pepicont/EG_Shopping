@@ -42,7 +42,7 @@ $total_paginas = ceil($totalpromociones / $limite);
 $promociones_pagina = array_slice($muestrafila1 , $principio, $limite);
 $fila_pagina = array_slice($muestrafila, $principio, $limite);
 for ($i = 0; $i < count($promociones_pagina); $i++) {
-    mostrarcards($promociones_pagina[$i], $fila _pagina[$i], $encontro);
+    mostrarcards($promociones_pagina[$i], $fila_pagina[$i], $encontro);
 }
 if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una página -->
     <div class="container w-100 d-flex justify-content-center">
