@@ -1,8 +1,11 @@
 <?php
-use PHPMailer\PHPMailer\PHPMailer;
+      require 'vendor/autoload.php';
+   use PHPMailer\PHPMailer\PHPMailer;
+   use PHPMailer\PHPMailer\Exception;
 
 if(!empty($_POST['enviar'])){
-   require 'vendor/autoload.php';
+
+
    $mail = new PHPMailer;
    $mail->isSMTP();
    $mail->SMTPDebug = 2;
