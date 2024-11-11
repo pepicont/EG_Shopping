@@ -41,7 +41,7 @@ $paginacion = "LIMIT $offset, $registros_por_pagina";
     </div>
     <h1 class="text-center my-4">Novedades</h1>
     <?php 
-        $query = "SELECT * FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "' AND estado = 'activo'  $paginacion";
+        $query = "SELECT * FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "' AND estado = 'activa'  $paginacion";
         $resultado = consultaSQL($query);
         while ($fila = mysqli_fetch_array($resultado)) {
     ?>  
@@ -56,7 +56,7 @@ $paginacion = "LIMIT $offset, $registros_por_pagina";
     <?php
         }
         // Calcular el total de páginas
-        $sql_total = "SELECT COUNT(*) AS total FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "' AND estado = 'activo' ";
+        $sql_total = "SELECT COUNT(*) AS total FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "' AND estado = 'activa' ";
         $total_resultado = consultaSQL($sql_total)->fetch_assoc();
         $total_paginas = ceil($total_resultado['total'] / $registros_por_pagina);
 

@@ -45,6 +45,7 @@
 
 <?php
 $busqueda2 = "";
+$busqueda ="";
 
 if (isset($_GET["filtrar"])) {
     if (isset($_GET['rubros']) && !empty($_GET['rubros'])) {

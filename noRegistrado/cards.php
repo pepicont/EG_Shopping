@@ -17,42 +17,28 @@ if (mysqli_num_rows($resultado) > 0) {
         $query1 = "SELECT * FROM promociones WHERE  estadoPromo = 'activa' AND  codLocal =  '".$fila['codLocal']."' $busqueda ";
         $resultado1 = consultaSQL($query1);
         while ($fila1 = mysqli_fetch_array($resultado1)) {
-            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '" . $fila1["cod"] . "' AND estado = 'aceptada'";
-            $resultado2 = consultaSQL($query2);
-            if (mysqli_num_rows($resultado2) > 0) {
-                if ($estoy == 'verDescuentosUtilizados') {
-                    $encontro = 1;
                     $muestrafila1[] = $fila1;
                     $muestrafila[] = $fila;
                     $totalpromociones++;
-                }
-            } else {
-                if ($estoy == 'verDescuentos') {
-                    $muestrafila1[] = $fila1;
-                    $muestrafila[] = $fila;
-                    $totalpromociones++;
-                    $encontro = 0;
-                }
             }
         }
     }
-}
 
 $total_paginas = ceil($totalpromociones / $limite);
 $promociones_pagina = array_slice($muestrafila1 , $principio, $limite);
 $fila_pagina = array_slice($muestrafila, $principio, $limite);
 for ($i = 0; $i < count($promociones_pagina); $i++) {
-    mostrarcards($promociones_pagina[$i], $fila ,$pagina[$i], $encontro);
+    mostrarcards($muestrafila1[$i], $muestrafila[$i] ,$fila_pagina[$i]);
 }
 if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una página -->
     <div class="container w-100 d-flex justify-content-center">
         <nav aria-label="..." class="mx-auto" style="width:fit-content">
             <ul class="pagination justify-content-center" style="width:fit-content">
-                <li class="p <!-- Muestra la paginación si hay más de una página -->
+                <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>">
                     <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina - 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Previous</a>
                 </li>
                 <?php
-                for ($i = 1; $i <= $total_pagnas; $i++) { 
+                for ($i = 1; $i <= $total_paginas; $i++) { 
                     echo "<li class=\"page-item";
                     if ($pagina == $i) echo " active";
                     $query = $_GET; $query['pagina'] = $i;
@@ -69,7 +55,7 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
 
 <?php
 
-function mostrarcards($fila, $fila1, $encontro)
+function mostrarcards($fila, $fila1)
 { ?>
     <div class="card" style="margin: 15px; width: 18rem;">
 
