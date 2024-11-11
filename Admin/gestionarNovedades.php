@@ -2,6 +2,7 @@
     $lugar="admin";
     include_once("../funciones.php");
     include("../header.php");
+    actualizarNovedades();
     if ($login==true && $tipoUsuario=="administrador"){
         $estoy="gestionarNovedades";
     ?>

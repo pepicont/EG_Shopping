@@ -2,6 +2,8 @@
     $lugar = "duenoLocal";
     include_once("../funciones.php");
     include("../header.php");
+    actualizarDescuentos();
+    
     $idusuario= $_SESSION["idUsuario"];
     if($_SESSION["tipoUsuario"] != "duenoLocal"){
         header("Location: ../index.php");
@@ -51,6 +53,7 @@ $estoy = "gestionDescuentos";
         <div class="col-12">
             <?php 
             include("../breadCrumbs.php");
+            actualizarDescuentos();
             ?>
         </div>
     </div>

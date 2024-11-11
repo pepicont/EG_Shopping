@@ -2,6 +2,7 @@
     $lugar="admin";
     include_once("../funciones.php");
     include("../header.php");
+    actualizarDescuentos();
     if ($login==true && $tipoUsuario=="administrador"){
         $estoy="gestionarDescuentos";
     ?>

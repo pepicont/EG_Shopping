@@ -2,6 +2,7 @@
 $lugar ="cliente";
 session_start();
 include_once("../funciones.php");
+actualizarNovedades();
 include("../header.php");
 if ($_SESSION["tipoUsuario"] != "cliente") {
         header("Location: ../index.php");

@@ -3,6 +3,7 @@
     include_once("../funciones.php");
     include("../header.php");
     $estoy = "informeDescuentos";
+    actualizarDescuentos();
 ?>
 <!DOCTYPE html>
 <html lang="en">

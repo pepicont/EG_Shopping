@@ -3,6 +3,7 @@
     include_once("../funciones.php");
     include("../header.php");
     $idusuario= $_SESSION["idUsuario"];
+    actualizarDescuentos();
     if($_SESSION["tipoUsuario"] != "cliente"){
         header("Location: ../index.php");
         exit();

@@ -7,6 +7,7 @@
         header("Location: ../index.php");
         exit();
     }
+    actualizarDescuentos();
 ?>
 
 <!DOCTYPE html>

@@ -8,6 +8,7 @@ $lugar = "duenoLocal";
     }
     $idUsuario= $_SESSION["idUsuario"];
     $estoy = "verSolicitudDescuentos";
+    actualizarDescuentos();
 ?>
 <!DOCTYPE html>
 <html lang="en">
