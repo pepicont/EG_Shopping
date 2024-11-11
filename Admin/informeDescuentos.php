@@ -2,6 +2,7 @@
     $lugar="admin";
     include_once("../funciones.php");
     include("../header.php");
+    $estoy = "informeDescuentos";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,13 @@
 <?php if ($login==true && $tipoUsuario=="administrador"){?>
     <body>
         <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <?php 
+                    include("../breadCrumbs.php");
+                    ?>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-12 col-md-4 col-lg-3" style="height:fit-content">
                     <div class="filtros text-center">
@@ -141,7 +149,7 @@
                             }else{$busqueda = "";}
                         
                             // Logica de la paginación
-                            $limite = 8; // cantidad de resultados que se muestran en la página
+                            $limite = 6; // cantidad de resultados que se muestran en la página
                             if (isset($_GET["pagina"])) {
                                 $pagina  = $_GET["pagina"];
                             } else {

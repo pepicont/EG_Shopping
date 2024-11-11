@@ -3,6 +3,7 @@
     include_once("../funciones.php");
     include("../header.php");
     if ($login==true && $tipoUsuario=="administrador"){
+        $estoy="gestionarDescuentos";
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +18,13 @@
 
     
     <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <?php 
+                include("../breadCrumbs.php");
+                ?>
+            </div>
+        </div>
         <div class="row ">
             <div class="col-12 col-md-4 col-lg-3">
                 <div class="filtros d-md-block d-flex justify-content-center" style="height: fit-content;">

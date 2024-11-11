@@ -7,6 +7,7 @@ $lugar = "duenoLocal";
         exit();
     }
     $idUsuario= $_SESSION["idUsuario"];
+    $estoy = "verSolicitudDescuentos";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,9 +27,15 @@ $lugar = "duenoLocal";
     
     ?>
     <div class="row">
+        <div class="col-12">
+            <?php 
+            include("../breadCrumbs.php");
+            ?>
+        </div>
+    </div>
+    <div class="row">
         <div class="filtros col-3 d-none d-lg-block" style="height:fit-content;">
             <?php 
-            $estoy = "verSolicitudDescuentos";
             include("filtros.php"); 
             $busqueda = "";
             include("validaciones.php") 

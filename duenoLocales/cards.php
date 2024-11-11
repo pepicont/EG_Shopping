@@ -133,8 +133,8 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
                 </button>
                 <p class="card-text <?php if ($estoy != "informeDescuentos") echo "d-none" ?>">Se utilizo: <?php echo($cont) ?>  </p>
                 <div class="card-footer d-flex justify-content-between <?php if ($estoy != "verSolicitudDescuentos") echo "d-none" ?>" style="border-top: 0px;">
-                    <a href="cambiarEstadoPromo.php?cod=<?php echo("1");?>&promo=<?php echo("".$fila2['cod']."")?>" class="btn btn-primary m-1">Aceptar solicitud</a>
-                    <a href="cambiarEstadoPromo.php?cod=<?php echo("2"); ?>&promo=<?php echo("".$fila2['cod']."")?>" class="btn btn-primary m-1">Denegar solicitud</a>
+                    <a href="cambiarEstadoPromo.php?cod=<?php echo("1");?>&promo=<?php echo("".$fila2['cod']."")?>&codCli= <?php echo("".$cont('codCliente')."")?>" class="btn btn-primary m-1">Aceptar solicitud</a>
+                    <a href="cambiarEstadoPromo.php?cod=<?php echo("2"); ?>&promo=<?php echo("".$fila2['cod']."")?>&codCli= <?php echo("".$cont('codCliente')."")?>" class="btn btn-primary m-1">Denegar solicitud</a>
                 </div>
             </div>
         </div>

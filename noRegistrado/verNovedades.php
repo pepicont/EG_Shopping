@@ -1,20 +1,8 @@
 <?php
-$lugar ="cliente";
 session_start();
 include_once("../funciones.php");
 include("../header.php");
-if ($_SESSION["tipoUsuario"] != "cliente") {
-        header("Location: ../index.php");
-        exit();
-    }
-$catUsuario = $_SESSION["categoriaCliente"];
-if ($catUsuario == "premium") {
-    $busqueda = "WHERE (tipoUsuario = 'premium' or tipoUsuario = 'inicial' or tipoUsuario = 'medium')";
-} elseif ($catUsuario == "inicial") {
-    $busqueda = "WHERE tipoUsuario = 'inicial'";
-} else {
-    $busqueda = "WHERE tipoUsuario != 'premium'";
-}
+    
 
 // Paginacion 
 $registros_por_pagina = 6;

@@ -206,3 +206,13 @@ body{
     color: hsl(242, 68%, 90%);
 }
 
+li a.migasDePan{
+    color:hsl(242, 68%, 40%);
+    text-decoration: none;
+}
+li a.migasDePan:hover{
+    color:rgb(244, 69, 221);
+}
+li.active a.migasDePan{
+    text-decoration: underline;
+}

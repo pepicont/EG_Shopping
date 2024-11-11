@@ -39,7 +39,7 @@
     <br> 
     <div class="form-group mx-auto" style="width: fit-content">
         <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="filtrar">
-        <a href="verDEscuentos2.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
+        <a href="verDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
     </div>
 </form>
 

@@ -70,16 +70,49 @@ if (isset($_SESSION['tipoUsuario'])){
             
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-30 mx-auto px-auto  ">
-                    <li class="nav-item ">
-                        <a class="nav-link active" aria-current="page" href="#">Locales</a>
+                    <?php if($login==FALSE){
+                    ?><li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="noRegistrado/verLocales.php">Locales</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Promocionesgis</a>
+                        <a class="nav-link" href="noRegistrado/verDescuentos.php">Descuentos</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Acerca de</a>
-                    </li>
+
+                    <?php } else{?>
                     
+                    <?php if($tipoUsuario=="duenoLocal"){?><li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="duenoLocales/gestionDescuentos.php">Gestion de descuentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="duenoLocales/verInformeDescuento.php">Informe descuentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="duenoLocales/verSolicitudDescuentos.php">Solicitud descuentos</a>
+                    </li>
+
+                    <?php } if($tipoUsuario=="administrador"){?><li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="Admin/gestionarDescuentos.php">Informe descuentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Admin/informeDescuentos.php">Gestionar descuentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Admin/gestionarNovedades.php">Gestionar novedades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Admin/gestionarLocales.php">Gestionar locales</a>
+                    </li>
+
+                    <?php } if($tipoUsuario=="cliente"){?><li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="Cliente/verDescuentos.php">Descuentos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cliente/verDescuentosUtilizados.php">Descuentos utilizados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Cliente/verNovedades.php">Novedades</a>
+                    </li>
+                    <?php }}?>
                 </ul>
                 
                 <?php if($login==TRUE){?>

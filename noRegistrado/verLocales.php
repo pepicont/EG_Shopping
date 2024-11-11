@@ -1,19 +1,19 @@
 <?php
-    $lugar="admin";
+    
     include_once("../funciones.php");
     include("../header.php");
-    $estoy="gestionarLocales";
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InformeDescuentos</title>
+    <title>Locales</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
-<?php if ($login==true && $tipoUsuario=="administrador"){?>
+<?php if ($login==false){?>
     <body>
         
     <?php }
@@ -26,22 +26,6 @@
                 <div class="col-12">
                     <?php 
                     include("../breadCrumbs.php");
-                    ?>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <?php if(!empty($_GET['success'])){
-                        if($_GET['success']=='editado'){
-                            echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
-                                Local Editado con éxito
-                            </div>';
-                        } elseif($_GET['success']=='eliminado'){
-                            echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
-                            Local dado de baja
-                            </div>';
-                        
-                    }}
                     ?>
                 </div>
             </div>
@@ -116,35 +100,7 @@
                                 }else{
                                     $noHayResultados=false;
                                 while($local=mysqli_fetch_array($resultado)){ 
-                                    if(!empty($_GET['idEditar']) && $_GET['idEditar']==$local['codLocal']){
-                                
-                                
-                            ?>
-                                <!-- Esta es la tarjeta común de los locales -->
-                                <div class="card mx-auto" style="width:210px; ">
-                                    <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
-                                    <div class="card-body text-center">
-                                        <form action='procesarLocal.php' method='POST'>
-                                            <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
-                                            <div class='form-group'>
-                                                <label for='nombreLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Nombre del local:</label>
-                                                <input type='text' class='form-control' id='nombreLocal<?php echo $local["codLocal"]; ?>' name='nombreLocal' value='<?php echo $local["nombreLocal"]; ?>'>
-                                            </div>
-                                            <div class='form-group'>
-                                                <label for='ubicacionLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Ubicación:</label>
-                                                <input type='text' class='form-control' id='ubicacionLocal<?php echo $local["codLocal"]; ?>' name='ubicacionLocal' value='<?php echo $local["ubicacionLocal"]; ?>'>
-                                            </div>
-                                            <div class='form-group'>
-                                                <label for='rubroLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Rubro:</label>
-                                                <input type='text' class='form-control' id='rubroLocal<?php echo $local["codLocal"]; ?>' name='rubroLocal' value='<?php echo $local["rubroLocal"]; ?>'>
-                                            </div>
-                        
-                                            <button type='submit' name='editar' class='btn btn-primary'>Guardar</button>
-                                        </form>
-                                        
-                                    </div>
-                                </div>
-                                <?php }else{ ?>
+                                         ?>
 
                                 <div class="card " style=" margin: 10px; width:210px; ">
                                     
@@ -153,39 +109,12 @@
                                     <div class="card-body pt-0">
                                         <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
                                         <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
-                                        <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>' class='btn btn-primary card-link'>Editar</a>
-                                        <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $local["codLocal"]; ?>'>Eliminar</button>
-                                        <!-- Modal que popea cuando aprieta eliminar-->
-                                        <div class='modal fade' id='deleteModal<?php echo $local["codLocal"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                            <div class='modal-dialog' role='document'>
-                                                <div class='modal-content'>
-                                                    <div class='modal-header'>
-                                                        <h5 class='modal-title' id='exampleModalLabel'>¿Está seguro que desea borrar el local?</h5>
-                                                        <button type='button' class='close' data-bs-dismiss='modal' aria-label='Close'>
-                                                            <span aria-hidden='true'>&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class='modal-body'>
-                                                        <p>Nombre: <?php echo $local["nombreLocal"]; ?></p>
-                                                        <p>Ubicación: <?php echo $local["ubicacionLocal"]; ?></p>
-                                                        <p>Rubro: <?php echo $local["rubroLocal"]; ?></p>
-                                                    </div>
-                                                    <div class='modal-footer'>
-                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
-                                                        <button type='button' class='btn btn-danger'>
-                                                            <a href='procesarLocal.php?idEliminar=<?php echo $local["codLocal"];?>' style="text: white; text-decoration:none; ">Confirmar</a>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Modal cierre -->
                                     </div>
                                 </div>
                         
                                 <!-- Tarjeta cierre -->
                     
-                            <?php }}} ?>
+                            <?php }} ?>
                         </div>
                     </div>
                     <div class="row">

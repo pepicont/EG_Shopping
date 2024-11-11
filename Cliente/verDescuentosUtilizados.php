@@ -1,5 +1,5 @@
 <?php 
-    $lugar = "duenoLocal";
+    $lugar = "cliente";
     include_once("../funciones.php");
     include("../header.php");
     $idusuario= $_SESSION["idUsuario"];
@@ -23,6 +23,14 @@
     <link rel="stylesheet" href="../estilos/style1.css">
 </head>
 <body>
+    <div class="row">
+        <div class="col-12">
+            <?php
+            $estoy="verDescuentosUtilizados"; 
+            include("../breadCrumbs.php");
+            ?>
+        </div>
+    </div>
     <div class="row">
         <h1></h1>
         <div class="col-3 filtros d-none d-lg-block"  style="height:fit-content;" >

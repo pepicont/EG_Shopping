@@ -47,6 +47,13 @@ $estoy = "gestionDescuentos";
     }
         
     ?>
+    <div class="row">
+        <div class="col-12">
+            <?php 
+            include("../breadCrumbs.php");
+            ?>
+        </div>
+    </div>
     <div class="row"> 
         <div class="col-lg-3 col-8 mx-auto bot-crear" > 
                 <?php include("agregarDescuento.php"); ?>

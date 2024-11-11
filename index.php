@@ -141,14 +141,14 @@
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
             <a href="duenoLocales/verInformeDescuento.php" class="btn btn-primary w-100">
-                Ver informe de descuentos.
+                Ver informe de descuentos
             </a>
         </div>
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
             <a href="duenoLocales/verSolicitudDescuentos.php" class="btn btn-primary w-100">
-                Ver solicitud de descuentos.
+                Ver solicitud de descuentos
             </a>
         </div>
     </div>
@@ -165,14 +165,14 @@
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
             <a href="Cliente/verDescuentosUtilizados.php" class="btn btn-primary w-100">
-                Ver descuentos utilizados.
+                Ver descuentos utilizados
             </a>
         </div>
     </div>
     <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
             <a href="Cliente/verNovedades.php" class="btn btn-primary w-100">
-                Ver novedades.
+                Ver novedades
             </a>
         </div>
     </div>
