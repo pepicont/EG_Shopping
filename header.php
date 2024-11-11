@@ -88,7 +88,7 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
 
                     <?php } else{?>
-                    
+
                     <?php if($tipoUsuario=="duenoLocal"){?><li class="nav-item ">
                         <a class="nav-link" aria-current="page" href="duenoLocales/gestionDescuentos.php">Gestion de descuentos</a>
                     </li>
@@ -99,7 +99,15 @@ if (isset($_SESSION['tipoUsuario'])){
                         <a class="nav-link" href="duenoLocales/verSolicitudDescuentos.php">Solicitud descuentos</a>
                     </li>
 
-                    <?php } if($tipoUsuario=="administrador"){?><li class="nav-item ">
+                    <?php } if($tipoUsuario=="administrador"){?>
+                    <?php if($lugar=="index")
+                                $ruta="Admin/";
+                            else
+                                $ruta="../"
+
+                            ?>
+
+                    <li class="nav-item ">
                         <a class="nav-link" aria-current="page" href="Admin/gestionarDescuentos.php">Informe descuentos</a>
                     </li>
                     <li class="nav-item">
