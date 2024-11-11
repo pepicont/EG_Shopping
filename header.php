@@ -74,7 +74,7 @@ if (isset($_SESSION['tipoUsuario'])){
                         <a class="nav-link active" aria-current="page" href="#">Locales</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Promocioness</a>
+                        <a class="nav-link" href="#">Promocionesgis</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Acerca de</a>
