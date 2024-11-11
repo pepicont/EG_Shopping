@@ -124,7 +124,7 @@ if (isset($_SESSION['tipoUsuario'])){
                             Cuenta
                         </a>
                         <ul class="dropdown-menu  dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Perfil</a></li>
+                            <li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
                             <li><hr class="dropdown-divider"></li>
 
                             <li><a class="dropdown-item" href="<?php echo("$ruta");?>logOut.php">Cerrar sesión</a></li>

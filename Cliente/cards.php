@@ -48,7 +48,7 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
     <div class="container w-100 d-flex justify-content-center">
         <nav aria-label="..." class="mx-auto" style="width:fit-content">
             <ul class="pagination justify-content-center" style="width:fit-content">
-                <li class="p <!-- Muestra la paginación si hay más de una página -->
+                <li class="p"> <!-- Muestra la paginación si hay más de una página -->
                     <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina - 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Previous</a>
                 </li>
                 <?php

@@ -16,7 +16,7 @@ $resultado = consultaSQL($query);
 if (mysqli_num_rows($resultado) > 0) {
     while ($fila = mysqli_fetch_array($resultado)) {
         echo $fila['cod'] . '<br>';
-    }
+    } 
 }
 
 // Calcular el total de páginas
