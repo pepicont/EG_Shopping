@@ -59,6 +59,7 @@ if(existecookie()) {
 <header>
   <?php
   define('HEADER_INCLUDED', TRUE);
+  $lugar="login";
   include("header.php");
   ?>
 </header>

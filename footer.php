@@ -1,5 +1,5 @@
 <!-- cambiar a form-group-->
-<div class="pie" style="margin-top: 15rem;">
+<div class="pie container" style="margin-top: 15rem;">
 
     <hr style="width: 95%; opacity:100%; height: 1px; background-color: violet; border: none; margin:auto; "/>
 

@@ -61,4 +61,17 @@
                 //echo '<li class="breadcrumb-item active" aria-current="page">Inicio</li>';
             break;
         }
+    }
+    if($tipoUsuario == "noRegistrado"){
+        //Si el usuario es un cliente, dependiendo de que opción haya elegido se le va a mostrar el breadcrumb correspondiente
+        switch($estoy) {
+            case "verDescuentos":
+                echo '<li class="breadcrumb-item active" active aria-current="ver descuentos"><a class="migasDePan" href="verDescuentos.php" >DESCUENTOS</a></li>';
+            break;
+            case "verLocales":
+                echo '<li class="breadcrumb-item active" active aria-current="ver locales"><a class="migasDePan" href="verLocales.php" >LOCALES</a></li>';
+            default:
+                //echo '<li class="breadcrumb-item active" aria-current="page">Inicio</li>';
+            break;
+        }
     } 

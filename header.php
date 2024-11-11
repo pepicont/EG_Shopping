@@ -11,7 +11,9 @@ if (isset($_SESSION['tipoUsuario'])){
     $usuario=$_SESSION['usuario'];
     $login=TRUE;
 } else{
+    $tipoUsuario="noRegistrado";
     $login=FALSE;
+    
 }
 
 
@@ -32,7 +34,7 @@ if (isset($_SESSION['tipoUsuario'])){
         if(!isset($lugar)){
             $lugar="";
         }
-        if($lugar=="admin" or $lugar=="duenoLocal" or $lugar=="cliente")
+        if($lugar=="admin" or $lugar=="duenoLocal" or $lugar=="cliente" or $lugar=="noRegistrado")
             $ruta="../";
         else{
             $ruta="";
@@ -46,6 +48,7 @@ if (isset($_SESSION['tipoUsuario'])){
             <a class="navbar-brand" href="<?php echo("$ruta");?>index.php"><img src= "<?php echo("$ruta");?>assets/Mundo_Shopping.png"alt="Mundo Shopping"></a>
             <?php /* Si el usuario no está logueado, le muestra el botón de igresar sesión */
                 if($login==FALSE){
+                    
 
              ?>
              <?php if (!defined('HEADER_INCLUDED')) { ?> 
@@ -71,11 +74,17 @@ if (isset($_SESSION['tipoUsuario'])){
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-lg-30 mx-auto px-auto  ">
                     <?php if($login==FALSE){
+                        if($lugar=="index" or $lugar=="login" or $lugar=="registra"){
+                        $ruta2="noRegistrado/";}else {
+                        $ruta2="";}
+                        
+                        
+                        
                     ?><li class="nav-item ">
-                        <a class="nav-link" aria-current="page" href="noRegistrado/verLocales.php">Locales</a>
+                        <a class="nav-link" aria-current="page" href="<?php echo $ruta2 ?>verLocales.php">Locales</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="noRegistrado/verDescuentos.php">Descuentos</a>
+                        <a class="nav-link" href="<?php echo $ruta2 ?>verDescuentos.php">Descuentos</a>
                     </li>
 
                     <?php } else{?>

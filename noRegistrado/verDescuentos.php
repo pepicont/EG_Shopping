@@ -1,8 +1,10 @@
 <?php 
-    
+    $lugar="noRegistrado";
     include_once("../funciones.php");
     include("../header.php");
     $idusuario= $_SESSION["idUsuario"];
+    $estoy="verDescuentos";
+    
     
 ?>
 

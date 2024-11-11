@@ -9,6 +9,7 @@
 </head>
 <header>
   <?php
+  $lugar="registra";
   include("header.php");
   include_once("funciones.php");
   ?>
