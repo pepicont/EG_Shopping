@@ -89,45 +89,60 @@ if (isset($_SESSION['tipoUsuario'])){
 
                     <?php } else{?>
 
-                    <?php if($tipoUsuario=="duenoLocal"){?><li class="nav-item ">
-                        <a class="nav-link" aria-current="page" href="duenoLocales/gestionDescuentos.php">Gestion de descuentos</a>
+                    <?php if($tipoUsuario=="duenoLocal"){?>
+                        <?php if($lugar=="index")
+                                $ruta2="duenoLocales/";
+                            else
+                                $ruta2="";
+
+                            ?>
+                    <li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="<?php echo $ruta2; ?>gestionDescuentos.php">Gestion de descuentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="duenoLocales/verInformeDescuento.php">Informe descuentos</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>verInformeDescuento.php">Informe descuentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="duenoLocales/verSolicitudDescuentos.php">Solicitud descuentos</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>verSolicitudDescuentos.php">Solicitud descuentos</a>
                     </li>
 
                     <?php } if($tipoUsuario=="administrador"){?>
                     <?php if($lugar=="index")
-                                $ruta="Admin/";
+                                $ruta2="Admin/";
                             else
-                                $ruta="../"
+                                $ruta2="";
 
                             ?>
 
                     <li class="nav-item ">
-                        <a class="nav-link" aria-current="page" href="Admin/gestionarDescuentos.php">Informe descuentos</a>
+                        <a class="nav-link" aria-current="page" href="<?php echo $ruta2; ?>gestionarDescuentos.php">Informe descuentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Admin/informeDescuentos.php">Gestionar descuentos</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>informeDescuentos.php">Gestionar descuentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Admin/gestionarNovedades.php">Gestionar novedades</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>gestionarNovedades.php">Gestionar novedades</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Admin/gestionarLocales.php">Gestionar locales</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>gestionarLocales.php">Gestionar locales</a>
                     </li>
 
-                    <?php } if($tipoUsuario=="cliente"){?><li class="nav-item ">
-                        <a class="nav-link" aria-current="page" href="Cliente/verDescuentos.php">Descuentos</a>
+                    <?php } if($tipoUsuario=="cliente"){?>
+                        <?php if($lugar=="index")
+                                $ruta2="Cliente/";
+                            else
+                                $ruta2="";
+
+                            ?>
+
+                    <li class="nav-item ">
+                        <a class="nav-link" aria-current="page" href="<?php echo $ruta2; ?>verDescuentos.php">Descuentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Cliente/verDescuentosUtilizados.php">Descuentos utilizados</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>verDescuentosUtilizados.php">Descuentos utilizados</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Cliente/verNovedades.php">Novedades</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>verNovedades.php">Novedades</a>
                     </li>
                     <?php }}?>
                 </ul>
