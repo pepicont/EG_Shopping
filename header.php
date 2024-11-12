@@ -115,10 +115,10 @@ if (isset($_SESSION['tipoUsuario'])){
                             ?>
 
                     <li class="nav-item ">
-                        <a class="nav-link" aria-current="page" href="<?php echo $ruta2; ?>gestionarDescuentos.php">Informe descuentos</a>
+                        <a class="nav-link" aria-current="page" href="<?php echo $ruta2; ?>informeDescuentos.php">Informe descuentos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo $ruta2; ?>informeDescuentos.php">Gestionar descuentos</a>
+                        <a class="nav-link" href="<?php echo $ruta2; ?>gestionarDescuentos.php">Gestionar descuentos</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo $ruta2; ?>gestionarNovedades.php">Gestionar novedades</a>

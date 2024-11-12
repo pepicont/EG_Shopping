@@ -79,7 +79,6 @@
                     <div class="row listado">
             
                             <?php 
-                           
                             $fecha_hoy = date('Y-m-d');
                             $cat = 0;
                             $concat = 0;
@@ -169,6 +168,7 @@
                                     $cont = mysqli_num_rows($resultado2);
                                     $query3 = "SELECT * FROM locales WHERE codLocal = '".$fila["codLocal"]."'";
                                     $resultado3 = consultaSQL($query3);
+                                    
                                     $fila3 = mysqli_fetch_array($resultado3);
                                 ?>
                             

@@ -52,7 +52,6 @@
         </div>
         <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary col-3" >Registrarse</button>
-       
         </div>
       </form>
 </div>
@@ -76,10 +75,16 @@
       }else{
         $categoriaCliente='';
         $estado=1;
+        echo "<form id='hiddenForm' action='index.php' method='POST' style='display:none;'>
+        <input type='hidden' name='asunto' value='Nuevo cliente registrado'>
+        <input type='hidden' name='cuerpo' value='Cliente: $nombre,$apellido. 
+        Su mail es: $mail.
+        Fecha de nacimiento: $fechaNacimiento.'>
+        <input type='hidden' name='lugar' value='registra'>
+        </form>";
+    echo "<script>document.getElementById('hiddenForm').submit();</script>";
       }
-      
       $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	
-
       values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";
       consultaSQL($query) or die (mysqli_error($link));
       echo("Usuario registrado con éxito");
@@ -87,16 +92,12 @@
       } else{
         echo("El mail ingresado ya está registrado");
       }
-      
     }else{
       echo ("Las contraseñas ingresadas no coinciden");
-
     }
-
-   
-
-
   }
+
+      
 
 ?>
 </body>
@@ -106,5 +107,4 @@
   ?>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  
 </html>
