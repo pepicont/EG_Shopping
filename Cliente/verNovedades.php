@@ -42,7 +42,7 @@ $paginacion = "LIMIT $offset, $registros_por_pagina";
     </div>
     <h1 class="text-center my-4">Novedades</h1>
     <?php 
-        $query = "SELECT * FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "'  $paginacion";
+        $query = "SELECT * FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "' AND estado = 'activa'  $paginacion";
         $resultado = consultaSQL($query);
         while ($fila = mysqli_fetch_array($resultado)) {
     ?>  

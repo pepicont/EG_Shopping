@@ -10,11 +10,11 @@ if(!empty($_POST['enviar'])){
    $mail->isSMTP();
    $mail->SMTPDebug = 0; // Set to 0 for no debug output, 1 for errors and messages
    $mail->Host = 'smtp.hostinger.com';
-   $mail->Port = 587; // Use 465 for SSL or 587 for TLS
+   $mail->Port = 465; // Use 465 for SSL or 587 for TLS
    $mail->SMTPAuth = true;
-   $mail->Username = 'eg_shopping@yopmail.com';
-   $mail->Password = 'eg_shopping@yopmail.com';
-   $mail->setFrom('eg_shopping@yopmail.com', 'Mundo Shopping');
+   $mail->Username = 'eg_shopping@egshopping.store';
+   $mail->Password = '6qAGB$Hhtq&@ma+';
+   $mail->setFrom('eg_shopping@egshopping.store', 'Mundo Shopping');
    /*$mail->addReplyTo('EG_SHOPPING@yahoo.com', 'Your Name');*/
    $mail->addAddress($_POST['email'], 'Receiver Name');
    $mail->Subject = $_POST['asunto'];
