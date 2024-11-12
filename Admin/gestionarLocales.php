@@ -43,7 +43,7 @@
                         
                     } elseif($_GET['success']=='creado'){
                         echo '<div class="alert alert-success mt-3 mx-auto" style="width: fit-content" role="alert">
-                        Local dado de baja
+                        Local creado con éxito
                         </div>';}
                 }
                     ?>
