@@ -1,10 +1,9 @@
 <?php
-require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
-
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
 
-if (!empty($_POST['enviar'])) {
+if (!empty($_POST['enviar'])){
     $mail = new PHPMailer(true); // Habilita excepciones
     try {
         // Configuración de servidor SMTP
@@ -37,12 +36,14 @@ if (!empty($_POST['enviar'])) {
             exit();  // Sale del script
         } else {
             header("Location: index.php");  // Redirige a la página principal después de enviar el correo
-            exit();  // Sale del script
+              exit();
+               // Sale del script
         }
-    } catch (Exception $e) {
-        echo 'Error de mail: ' . $mail->ErrorInfo;  // Muestra un mensaje de error si no se pudo enviar
-    }
-}
-if(!empty())
-?>
+    }catch (Exception $e) {
+        echo "Error al enviar el mensaje: {$mail->ErrorInfo}";}
 
+    }
+    
+
+
+?>

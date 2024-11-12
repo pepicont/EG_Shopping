@@ -5,10 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
 include_once("funciones.php");
 existecookie();
 if (isset($_SESSION['tipoUsuario'])){
+    $usuario=$_SESSION['usuario'];
     $tipoUsuario=$_SESSION['tipoUsuario'];
     if ($tipoUsuario=='cliente'){
         $categoriaCliente=$_SESSION['categoriaCliente'];}
-    $usuario=$_SESSION['usuario'];
+    
     $login=TRUE;
 } else{
     $tipoUsuario="noRegistrado";

@@ -58,7 +58,7 @@ require 'vendor/autoload.php';
           
         </div>
         <div class="d-flex justify-content-center">
-        <input type="submit" name="registrarse" class="btn btn-primary col-3" value="registrarse">
+        <input type="submit" name="registrarse" class="btn btn-primary col-3" value="Registrarse">
         </div>
       </form>
 </div>
