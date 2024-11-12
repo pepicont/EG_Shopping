@@ -80,7 +80,6 @@
 
                             </div>
                             <input type="hidden" name="codDueno" value="<?php echo $_SESSION['idUsuario']?>">
-                            <input type="hidden" name="estado" value="activo">
 
                             <div class="form-group mx-auto p-2" style="width: fit-content">
                                     <input type="submit" name="crearLocal" class="btn btn-primary px-4 py-2" value="Crear">
@@ -165,9 +164,9 @@
                                 
                                 
                             ?>
-                                <!-- Esta es la tarjeta común de los locales -->
+                                <!-- Tarjeta para editar locales -->
                                 <div class="card mx-auto" style="width:210px; ">
-                                    <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
+                                    <img src="mostrarImagen.php?codLocal=<?php echo $local['codLocal'] ?>" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
                                     <div class="card-body text-center">
                                         <form action='procesarLocal.php' method='POST'>
                                             <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
@@ -191,10 +190,12 @@
                                 </div>
                                 <?php }else{ ?>
 
+                                <!-- Tarjeta para mostrar locales -->
+
                                 <div class="card " style=" margin: 10px; width:210px; ">
                                     
-                                    <img src="../assets/local.jpg" class="card-img-top" alt="..." style="height:200px; width:200px;">
-                                    <h5><?php echo($local['codLocal']) ?></h5><!-- Acá iría la imagen del local -->
+                                    <img src="mostrarImagen.php?codLocal=<?php echo $local['codLocal'] ?>" class="card-img-top" alt="..." style="height:200px; width:200px;">
+                                    <h5><?php echo($local['codLocal']) ?></h5>
                                     <div class="card-body pt-0">
                                         <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
                                         <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
