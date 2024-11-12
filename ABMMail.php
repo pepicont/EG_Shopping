@@ -31,14 +31,14 @@ if (!empty($_POST['enviar'])){
         // Enviar correo
         $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
         $mail->send();
-        if($_POST['lugar']=='registra'){
-            header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
-            exit();  // Sale del script
-        } else {
-            header("Location: index.php");  // Redirige a la página principal después de enviar el correo
-              exit();
+        //if($_POST['lugar']=='registra'){
+            //header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
+            //exit();  // Sale del script
+        //} else {
+            //header("Location: index.php");  // Redirige a la página principal después de enviar el correo
+              //exit();
                // Sale del script
-        }
+        //}
     }catch (Exception $e) {
         echo "Error al enviar el mensaje: {$mail->ErrorInfo}";}
 
