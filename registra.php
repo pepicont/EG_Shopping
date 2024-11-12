@@ -1,6 +1,8 @@
 <?php 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+// Incluye el archivo de autoload de Composer para cargar PHPMailer
 
 ?>
 <!DOCTYPE html>
@@ -79,9 +81,7 @@ use PHPMailer\PHPMailer\Exception;
         $estado=0;
       }else{
         //Enviamos el mail para que confirme el admin al dueño de local
-        use PHPMailer\PHPMailer\PHPMailer;
-        use PHPMailer\PHPMailer\Exception;
-        require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
+
         $mail = new PHPMailer(true); // Habilita excepciones
         try {
           // Configuración de servidor SMTP
