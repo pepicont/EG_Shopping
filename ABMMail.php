@@ -4,25 +4,42 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 if(!empty($_POST['enviar'])){
+    // Recoger datos del formulario
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $asunto = htmlspecialchars($_POST['asunto']);
+    $cuerpo = htmlspecialchars($_POST['cuerpo']);
 
+    // Validar el email
+    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+        // Configuración de PHPMailer
+        $mail = new PHPMailer(true); // Habilitar excepciones
+        try {
+            // Usar SMTP
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';  // Para Gmail
+            //$mail->Host = 'smtp.hostinger.com';  // Para Hostinger (descomentar si usas Hostinger)
+            $mail->SMTPAuth = true;
+            $mail->Username = 'mundoshoppinga@gmail.com';  // Tu correo Gmail o Hostinger
+            $mail->Password = 'tu_contraseña_de_aplicación';  // Contraseña de aplicación (si usas Gmail) o la contraseña de Hostinger
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;  // Usar SSL
+            $mail->Port = 465;  // Puerto para SSL
 
-   $mail = new PHPMailer();
-   $mail->isSMTP();
-   $mail->SMTPDebug = 0; // Set to 0 for no debug output, 1 for errors and messages
-   $mail->Host = 'smtp.hostinger.com';
-   $mail->Port = 465; // Use 465 for SSL or 587 for TLS
-   $mail->SMTPAuth = true;
-   $mail->Username = 'eg_shopping@egshopping.store';
-   $mail->Password = '6qAGB$Hhtq&@ma+';
-   $mail->setFrom('eg_shopping@egshopping.store', 'Mundo Shopping');
-   /*$mail->addReplyTo('EG_SHOPPING@yahoo.com', 'Your Name');*/
-   $mail->addAddress($_POST['email'], 'Receiver Name');
-   $mail->Subject = $_POST['asunto'];
-   $mail->msgHTML(file_get_contents('message.html'), __DIR__);
-   $mail->Body = $_POST['cuerpo'];
-   //$mail->addAttachment('attachment.txt');
-   if (!$mail->send()) {
-       echo 'Error de mail: ' . $mail->ErrorInfo;
-   } else {
-       exit(header("Location: index.php"));}}
+            // De donde proviene el correo
+            $mail->setFrom('mundoshoppinga@gmail.com', 'Mundo Shopping');
+            $mail->addAddress($email, 'Receiver Name');  // Correo del destinatario
+            $mail->Subject = $asunto;
+            $mail->msgHTML(file_get_contents('message.html'), __DIR__);  // Si tienes un HTML para el mensaje
+            $mail->Body = $cuerpo;  // Cuerpo del mensaje
+
+            // Enviar el correo
+            $mail->send();
+            header("Location: index.php"); // Redirigir al index después de enviar
+            exit();
+        } catch (Exception $e) {
+            echo 'Error de mail: ' . $mail->ErrorInfo;
+        }
+    } else {
+        echo "Correo electrónico inválido.";
+    }
+}
 ?>

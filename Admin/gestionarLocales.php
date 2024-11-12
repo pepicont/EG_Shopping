@@ -54,13 +54,20 @@
                     <!-- div que va a contener el form de crear locales -->
                      <div class="filtros d-md-block d-flex justify-content-center" >
 
-                        <form method="POST" action="procesarLocal.php">
+                        <form method="POST" action="procesarLocal.php" enctype="multipart/form-data">
                             <div class="form-group p-2" style="width: fit-content">
-  
-                                <label for="nombreLocal" style="text-decoration:underline">Nombre: </label>
+    
+                                <label for="codUsuario" style="text-decoration:underline">Código del dueño: </label>
+                                <input type="text" name="codUsuario" class="form-control" id="codUsuario" required>
+
+                            </div>
+                            <div class="form-group p-2" style="width: fit-content">
+    
+                                <label for="nombreLocal" style="text-decoration:underline">Nombre del local: </label>
                                 <input type="text" name="nombreLocal" class="form-control" id="nombreLocal" required>
 
                             </div>
+                            
                             <div class="form-group p-2" style="width: fit-content">
   
                                     <label for="imagenLocal" style="text-decoration:underline">Imagen del local: </label>
@@ -161,7 +168,7 @@
                                     $noHayResultados=false;
                                 while($local=mysqli_fetch_array($resultado)){ 
                                     if(!empty($_GET['idEditar']) && $_GET['idEditar']==$local['codLocal']){
-                                
+                                    
                                 
                             ?>
                                 <!-- Tarjeta para editar locales -->
@@ -188,13 +195,15 @@
                                         
                                     </div>
                                 </div>
-                                <?php }else{ ?>
+                                <?php }else{ echo $local['codLocal'];?>
+                                    
+                                
 
                                 <!-- Tarjeta para mostrar locales -->
 
                                 <div class="card " style=" margin: 10px; width:210px; ">
                                     
-                                    <img src="mostrarImagen.php?codLocal=<?php echo $local['codLocal'] ?>" class="card-img-top" alt="..." style="height:200px; width:200px;">
+                                    <img src="mostrarImagen.php?codLocal=<?php echo $local['codLocal'] ?>" class="card-img-top" alt="Foto del local" style="height:200px; width:200px;">
                                     <h5><?php echo($local['codLocal']) ?></h5>
                                     <div class="card-body pt-0">
                                         <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
