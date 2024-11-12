@@ -20,8 +20,14 @@ if (!empty($_POST['enviar'])) {
         $mail->setFrom('eg_shopping@egshopping.store', 'admin');  // El correo y nombre del remitente
         // Destinatario
         $mail->addAddress('eg_shopping@yahoo.com');  // El correo del destinatario (tomado desde el formulario)
-        $mail->Subject = $_POST['asunto'];  // Asunto (tomado desde el formulario)
-        $mail->Body = $_POST['cuerpo'];  // Cuerpo del mensaje (tomado desde el formulario)
+        $mail->Subject = $_POST['asunto']; // Asunto (tomado desde el formulario)
+        if ($login==true){
+            $correo= $_SESSION['usuario'];
+        }
+        else{
+            $correo= $_POST['email'];
+        }
+        $mail->Body = "Mail: $correo \n Cuerpo: ".$_POST['cuerpo']."";  // Cuerpo del mensaje (tomado desde el formulario)
 
         // Enviar correo
         $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
@@ -37,5 +43,6 @@ if (!empty($_POST['enviar'])) {
         echo 'Error de mail: ' . $mail->ErrorInfo;  // Muestra un mensaje de error si no se pudo enviar
     }
 }
+if(!empty())
 ?>
 

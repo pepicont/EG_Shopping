@@ -1,3 +1,8 @@
+<?php 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,13 +56,13 @@
           
         </div>
         <div class="d-flex justify-content-center">
-        <button type="submit" class="btn btn-primary col-3" >Registrarse</button>
+        <input type="submit" name="registrarse" class="btn btn-primary col-3" >Registrarse</input>
         </div>
       </form>
 </div>
 <?php 
   include_once("funciones.php");
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if(!empty($_POST['registrarse'])) {
     $email=trim($_POST['email']);
     
     $contrasena=trim($_POST['contrasena']);
@@ -73,6 +78,39 @@
         $categoriaCliente='inicial';
         $estado=0;
       }else{
+        //Enviamos el mail para que confirme el admin al dueño de local
+        require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
+        $mail = new PHPMailer(true); // Habilita excepciones
+        try {
+          // Configuración de servidor SMTP
+          $mail->isSMTP();  // Usa SMTP
+          $mail->Host = 'smtp.hostinger.com';  // Servidor SMTP de Hostinger
+          $mail->SMTPAuth = true;  // Habilita autenticación SMTP
+          $mail->Username = 'eg_shopping@egshopping.store';  // Tu correo de Hostinger
+          $mail->Password = '6qAGB$Hhtq&@ma+';  // Tu contraseña o la contraseña de aplicación
+          $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Usa SSL
+          $mail->Port = 465;  // Puerto SMTP para SSL
+  
+          // Remitente
+          $mail->setFrom('eg_shopping@egshopping.store', 'admin');  // El correo y nombre del remitente
+          // Destinatario
+          $mail->addAddress('eg_shopping@yahoo.com');  // El correo del destinatario (tomado desde el formulario)
+          $mail->Subject = "Nueva solicitud de dueño de local";  // Asunto (tomado desde el formulario)
+          $mail->Body = "Nombre: $nombre $apellido \n email: $email";  // Cuerpo del mensaje (tomado desde el formulario)
+  
+          // Enviar correo
+          $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
+          $mail->send();
+          if($_POST['lugar']=='registra'){
+              header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
+              exit();  // Sale del script
+          } else {
+              header("Location: index.php");  // Redirige a la página principal después de enviar el correo
+              exit();  // Sale del script
+          }
+        } catch (Exception $e) {
+            echo 'Error de mail: ' . $mail->ErrorInfo;  // Muestra un mensaje de error si no se pudo enviar
+        }
         $categoriaCliente='';
         $estado=1;
         echo "<form id='hiddenForm' action='index.php' method='POST' style='display:none;'>
@@ -87,6 +125,7 @@
       $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	
       values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";
       consultaSQL($query) or die (mysqli_error($link));
+      
       echo("Usuario registrado con éxito");
       echo ("<A href='index.php'>Iniciar sesión</A>");
       } else{

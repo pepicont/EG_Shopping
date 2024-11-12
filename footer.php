@@ -33,7 +33,12 @@
             <form action="ABMMail.php" method="POST" class="row g-3">
                 <div class="col-12">
                     <label for="email" class="form-label">Email:</label>
+                    <?php 
+                    if($login==true){
+                        echo '<input type="email" class="form-control" name="email" id="email" readonly required value="'.$_SESSION['usuario'].'"';}else{
+                    ?>
                     <input type="email" class="form-control" name="email" id="email" placeholder="juanperez@gmail.com" required>
+                    <?php } ?>
                 </div>
                 <div class="col-12">
                     <label for="asunto" class="form-label">Asunto:</label>

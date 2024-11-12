@@ -95,6 +95,26 @@ body{
     color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
 }
+
+
+
+.btn-inicio{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: rgb(235, 103, 235);
+    border-width: 2px;
+    color:  rgb(255, 255, 255);
+    border-color: rgb(235, 103, 235);
+    font-weight: 600;
+    transition: all 0.5s;
+    
+}
+
+.btn-inicio:hover{ /*fijarse si anda esto de cambiar de color los botones*/
+    background-color: rgb(255, 255, 255);
+    color:  rgb(235, 103, 235);
+    border-color:  rgb(235, 103, 235);
+    
+}
+
 .btn-danger{ /*fijarse si anda esto de cambiar de color los botones*/
     background-color: rgb(255, 255, 255);
     color:  rgba(199, 1, 1, 0.842);
@@ -120,7 +140,7 @@ body{
     color: rgb(255, 255, 255);
     border-color: rgb(255, 255, 255);
     
-}
+}   
 .a{
     border-color:violet;
 }
