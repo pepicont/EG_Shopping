@@ -10,6 +10,7 @@ $totalpromociones= 0;
 
 $muestrafila = array();
 $muestrafila1 = array();
+$busqueda2 = isset($busqueda2) ? $busqueda2 : ''; // Ensure $busqueda2 is defined
 $query = "SELECT * FROM locales WHERE estado = 'activo' $busqueda2";
 $resultado = consultaSQL($query);
 if (mysqli_num_rows($resultado) > 0) {
@@ -21,6 +22,7 @@ if (mysqli_num_rows($resultado) > 0) {
             $resultado2 = consultaSQL($query2);
             if (mysqli_num_rows($resultado2) > 0) {
                 if ($estoy == 'verDescuentosUtilizados') {
+                    echo 'dsakgdlasgda';
                     $encontro = 1;
                     $muestrafila1[] = $fila1;
                     $muestrafila[] = $fila;
@@ -37,9 +39,8 @@ if (mysqli_num_rows($resultado) > 0) {
         }
     }
 }
-
 $total_paginas = ceil($totalpromociones / $limite);
-$promociones_pagina = array_slice($muestrafila1 , $principio, $limite);
+$promociones_pagina = array_slice($muestrafila1, $principio, $limite);
 $fila_pagina = array_slice($muestrafila, $principio, $limite);
 for ($i = 0; $i < count($promociones_pagina); $i++) {
     mostrarcards($promociones_pagina[$i], $fila_pagina[$i], $encontro);
@@ -59,6 +60,7 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
                     echo "\"><a class=\"page-link\" href='" . strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query) . "'>$i</a></li>";
                 }
                 ?>
+                <li class="page-item
                 <li class="page-item <?php if($pagina >= $total_paginas){ echo 'disabled'; } ?>">
                 <a class="page-link" href="<?php if($pagina >= $total_paginas){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina + 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Next</a>
                 </li>
@@ -103,8 +105,12 @@ function mostrarcards($fila, $fila1, $encontro)
             </div>
         </div>
     </div>
-<?php } ?>
+<?php } 
+if($totalpromociones == 0){
+    echo "No hay promociones disponibles";
+}   
 
+?>
 <?php
 /*header("Location: index.php");*/
 ?>

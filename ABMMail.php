@@ -1,45 +1,41 @@
 <?php
-require 'vendor/autoload.php';
+require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-if(!empty($_POST['enviar'])){
-    // Recoger datos del formulario
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $asunto = htmlspecialchars($_POST['asunto']);
-    $cuerpo = htmlspecialchars($_POST['cuerpo']);
+if (!empty($_POST['enviar'])) {
+    $mail = new PHPMailer(true); // Habilita excepciones
+    try {
+        // Configuración de servidor SMTP
+        $mail->isSMTP();  // Usa SMTP
+        $mail->Host = 'smtp.hostinger.com';  // Servidor SMTP de Hostinger
+        $mail->SMTPAuth = true;  // Habilita autenticación SMTP
+        $mail->Username = 'eg_shopping@egshopping.store';  // Tu correo de Hostinger
+        $mail->Password = '6qAGB$Hhtq&@ma+';  // Tu contraseña o la contraseña de aplicación
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Usa SSL
+        $mail->Port = 465;  // Puerto SMTP para SSL
 
-    // Validar el email
-    if(filter_var($email, FILTER_VALIDATE_EMAIL)){
-        // Configuración de PHPMailer
-        $mail = new PHPMailer(true); // Habilitar excepciones
-        try {
-            // Usar SMTP
-            $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com';  // Para Gmail
-            //$mail->Host = 'smtp.hostinger.com';  // Para Hostinger (descomentar si usas Hostinger)
-            $mail->SMTPAuth = true;
-            $mail->Username = 'mundoshoppinga@gmail.com';  // Tu correo Gmail o Hostinger
-            $mail->Password = 'tu_contraseña_de_aplicación';  // Contraseña de aplicación (si usas Gmail) o la contraseña de Hostinger
-            $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;  // Usar SSL
-            $mail->Port = 465;  // Puerto para SSL
+        // Remitente
+        $mail->setFrom('eg_shopping@egshopping.store', 'admin');  // El correo y nombre del remitente
+        // Destinatario
+        $mail->addAddress('eg_shopping@yahoo.com');  // El correo del destinatario (tomado desde el formulario)
+        $mail->Subject = $_POST['asunto'];  // Asunto (tomado desde el formulario)
+        $mail->Body = $_POST['cuerpo'];  // Cuerpo del mensaje (tomado desde el formulario)
 
-            // De donde proviene el correo
-            $mail->setFrom('mundoshoppinga@gmail.com', 'Mundo Shopping');
-            $mail->addAddress($email, 'Receiver Name');  // Correo del destinatario
-            $mail->Subject = $asunto;
-            $mail->msgHTML(file_get_contents('message.html'), __DIR__);  // Si tienes un HTML para el mensaje
-            $mail->Body = $cuerpo;  // Cuerpo del mensaje
-
-            // Enviar el correo
-            $mail->send();
-            header("Location: index.php"); // Redirigir al index después de enviar
-            exit();
-        } catch (Exception $e) {
-            echo 'Error de mail: ' . $mail->ErrorInfo;
+        // Enviar correo
+        $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
+        $mail->send();
+        if($_POST['lugar']=='registra'){
+            header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
+            exit();  // Sale del script
+        } else {
+            header("Location: index.php");  // Redirige a la página principal después de enviar el correo
+            exit();  // Sale del script
         }
-    } else {
-        echo "Correo electrónico inválido.";
+    } catch (Exception $e) {
+        echo 'Error de mail: ' . $mail->ErrorInfo;  // Muestra un mensaje de error si no se pudo enviar
     }
 }
 ?>
+
