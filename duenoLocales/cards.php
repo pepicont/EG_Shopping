@@ -12,13 +12,12 @@ if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
 // Si es la primera vez que se entra a la pagina declara la variable asi despues concatena los codigoa para contar las cards a mostrar
 $codLocalPaginacion = isset($codLocalPaginacion) ? $codLocalPaginacion : "";
 $codPromoPaginacion = isset($codPromoPaginacion) ? $codPromoPaginacion : "";
-
-
+$total_uso_promociones = 0;
+$haypromo = 0;
 include("validaciones.php");
 $idusuario = $_SESSION["idUsuario"];
 $query = "SELECT * FROM locales WHERE codUsuario = $idusuario";
 $vresultado = consultaSQL($query);
-$total_uso_promociones = 0;
 if (mysqli_num_rows($vresultado) > 0) {
     while ($fila = mysqli_fetch_array($vresultado)) {
         $codLocal = $fila["codLocal"];
@@ -28,6 +27,7 @@ if (mysqli_num_rows($vresultado) > 0) {
         $vresultado2 = consultaSQL($query2);
         if (mysqli_num_rows($vresultado2) > 0) {
             while ($fila2 = mysqli_fetch_array($vresultado2)) { 
+                $haypromo++;
                 if ($estoy == "verSolicitudDescuentos") { // si estoy en ver solicitudes de descuentos muestro las solicitudes pendientes
                     $codPromo = $fila2["cod"];
                     $codPromoPaginacion .= " OR codPromo = '".$codPromo."'";
@@ -44,6 +44,7 @@ if (mysqli_num_rows($vresultado) > 0) {
                 }
 
                 if ($estoy == "informeDescuentos") { // si estoy en informe descuentos cuento cuantas veces usaron el descuento
+                    $total_uso_promociones = 1;
                     $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada' ";
                     $vresultado3 = consultaSQL($query3);
                     if (mysqli_num_rows($vresultado3) > 0) {
@@ -54,12 +55,15 @@ if (mysqli_num_rows($vresultado) > 0) {
                     mostrarcards($fila, $fila2, $estoy, $cont);
                 }
                 if ($estoy == "gestionDescuentos") { // si estoy en gestion de descuentos muestro los descuentos activos de los locales propios
+                    $total_uso_promociones = 1;
                     mostrarcards($fila, $fila2, $estoy, $cont);
                 }
             }
         }
     }
-}
+    
+if($haypromo != 0) {
+    if ($total_uso_promociones != 0){
     if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
         $sql_total = "SELECT COUNT(*) AS total FROM promociones WHERE (codLocal = $codLocal $codLocalPaginacion) $busqueda"; //cuenta las cards a msotrar con todos los cod de los locales propios y con los filtors aplicados
         $total_resultado = consultaSQL($sql_total)->fetch_assoc();  //calcula la cantidad de cards a mostrar
@@ -76,7 +80,7 @@ if (mysqli_num_rows($vresultado) > 0) {
             mostrarcards($uso_promociones_pagina[$i], $fila2_pagina[$i], $estoy, $cont_pagina[$i]);
         }
     }
-    
+
     ?>
 
 
@@ -106,7 +110,15 @@ if (mysqli_num_rows($vresultado) > 0) {
     <?php } ?>
     </div>
     <?php
-
+        }else{
+            echo("No hay solicitud de promociones");
+        }
+    } else {    
+        echo("No tienes promociones cargadas");
+    }
+}else{
+    echo("No tienes locales cargados");
+}
 
 
 

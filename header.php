@@ -20,7 +20,7 @@ if (isset($_SESSION['tipoUsuario'])){
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
@@ -178,7 +178,5 @@ if (isset($_SESSION['tipoUsuario'])){
             
             
         </div>
-    </nav>
-
+    </nav>  
     </body>
-</html>

@@ -2,9 +2,11 @@
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
+
 include_once("../funciones.php");
 $idusuario = $_SESSION["idUsuario"];
 if (isset($_POST['submit'])) {
+  
   $query1 = "SELECT * FROM usuarios WHERE codUsuario = '" . $idusuario . "'";
   $vresultado1 = consultaSQL($query1);
   if (mysqli_num_rows($vresultado1) > 0) {
@@ -13,13 +15,14 @@ if (isset($_POST['submit'])) {
     $fechades = $_POST["fechaini"];
     $fechahas = $_POST["fechahas"];
     $categoria = $_POST["categoria"];
-    if (!empty($id) && !empty($text) && !empty($fechades) && !empty($fechahas) && !empty($categoria)) {
+    if (empty($id) && empty($text) && empty($fechades) && empty($fechahas) && empty($categoria)) {
       $seCreo = '2';
     } else {
       if (isset($_POST['dia'])) {
         // Convertir el arreglo a una cadena separada por comas
         $diasSeleccionados = implode(",", $_POST['dia']);
       } else {
+        echo "Debe seleccionar al menos un día de la semana";
         $seCreo = '2';
       }
       $query2 = "SELECT * FROM locales WHERE codUsuario = '" . $idusuario . "' && codLocal = '" . $id . "'";
@@ -30,11 +33,12 @@ if (isset($_POST['submit'])) {
         consultaSQL($query3) or die(mysqli_error($link));
         $seCreo = '1';
       } else {
+        echo "No se encontró el local seleccionado";
         $seCreo = '2';
       }
     } 
     }
-    header("Location: gestionarDescuentos?seCreo=" . $seCreo);
+    header("Location: gestionDescuentos.php?seCreo=" . $seCreo);
     exit();
   }
 ?>

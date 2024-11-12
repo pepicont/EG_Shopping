@@ -5,7 +5,7 @@
     $estoy="gestionarLocales";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,36 +62,36 @@
                             <div class="form-group p-2" style="width: fit-content">
     
                                 <label for="codUsuario" style="text-decoration:underline">Código del dueño: </label>
-                                <input type="text" name="codUsuario" class="form-control" id="codUsuario" required>
+                                <input type="text" name="codUsuario" class="form-control mx-auto" id="codUsuario" required>
 
                             </div>
                             <div class="form-group p-2" style="width: fit-content">
     
                                 <label for="nombreLocal" style="text-decoration:underline">Nombre del local: </label>
-                                <input type="text" name="nombreLocal" class="form-control" id="nombreLocal" required>
+                                <input type="text" name="nombreLocal" class="form-control mx-auto" id="nombreLocal" required>
 
                             </div>
                             
                             <div class="form-group p-2" style="width: fit-content">
   
                                     <label for="imagenLocal" style="text-decoration:underline">Imagen del local: </label>
-                                    <input type="file" name="imagenLocal" class="form-control" id="imagenLocal" required accept="image/*">
+                                    <input type="file" name="imagenLocal" class="form-control mx-auto" id="imagenLocal" required accept="image/*">
 
                             </div>
-                            <div class="form-group p-2" style="width: fit-content">
+                            <div class="form-group p-2 " style="width: fit-content">
   
                                 <label for="ubiacionLocal" style="text-decoration:underline">Ubicación: </label>
-                                <textarea class="form-control" name="ubicacionLocal" id="ubicacionLocal" placeholder="Primer piso, Ala sur" cols="25" rows="3" required style="resize: none; margin-bottom: 10px; margin-left: 10px"></textarea>
+                                <textarea class="form-control mx-auto" name="ubicacionLocal" id="ubicacionLocal" placeholder="Primer piso, Ala sur" cols="25" rows="3" required style="resize: none; margin-bottom: 10px; margin-left: 10px"></textarea>
 
                             </div>
                             <div class="form-group p-2" style="width: fit-content">
   
                                 <label for="rubroLocal" style="text-decoration:underline">Rubro: </label>
-                                <input type="text" name="rubroLocal" class="form-control" id="rubroLocal" required>
+                                <input type="text" name="rubroLocal" class="form-control mx-auto" id="rubroLocal" required>
 
                             </div>
                             <div class="form-group mx-auto p-2" style="width: fit-content">
-                                    <input type="submit" name="crearLocal" class="btn btn-primary px-4 py-2" value="Crear">
+                                    <input type="submit" name="crearLocal" class="btn btn-primary px-4 py-2 mx-auto" value="Crear">
                             </div>
 
                             
@@ -118,19 +118,9 @@
 
                                 
                                 <div class="form-group p-2" style="width: fit-content">
-                                    <label name="rubros"for="rubros" style="text-decoration:underline">Rubros: </label></br>
-                                    <label for="rubros1">Ropa </label>
-                                    <input type="checkbox" name="rubros[]" id="rubros1" value="ropa"> <br>
                                     
-                                    <label for="rubros2">Maquillaje </label>
-                                    <input type="checkbox" name="rubros[]" id="rubros2" value="maquillaje"> <br>
-
-                                    <label for="rubros3">Calzado </label>
-                                    <input type="checkbox" name="rubros[]" id="rubros3" value="calzado"> <br>
-
-                                    <label for="rubros4">perfumeria </label>
-                                    <input type="checkbox" name="rubros[]" id="rubros4"value="perfumeria"> <br>
-
+                                    <label for="rubro" style="text-decoration:underline">Rubro: </label>
+                                    <input type="text" name="rubro" class="form-control" id="rubro" placeholder="indumentaria...">
                                 </div>
 
 

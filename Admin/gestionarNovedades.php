@@ -7,7 +7,7 @@
         $estoy="gestionarNovedades";
     ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,26 @@
             <div class="col-12">
                 <?php 
                 include("../breadCrumbs.php");
+                ?>
+            </div>
+        </div>
+        <div class="row px-auto">
+            <div class="col-12">
+                <?php if(!empty($_GET['success'])){
+                        if($_GET['success']=='1'){
+                            echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
+                                La novedad fue creada con éxito
+                            </div>';
+                        } elseif($_GET['success']=='2'){
+                            echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
+                            La novedad fue editada con éxito
+                            </div>';
+                        } elseif($_GET['success']=='3'){
+                            echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
+                                La novedad fue eliminada
+                            </div>';
+                        }
+                    }
                 ?>
             </div>
         </div>
@@ -140,7 +160,7 @@
                                         while($fila=mysqli_fetch_array($resultados)){
                                             if(!empty($_GET['idEditar']) && $_GET['idEditar'] == $fila['cod']){
                                                 ?>
-                                                <div class='card' style='margin: 15px; width: 18rem;'>
+                                                <div class='card' style='margin: 10px; width: 18rem;'>
                                                     <div class='card-body'>
                                                         <form method='GET' action='procesarNovedad.php'>
                                                             <h5 class='card-title'>
@@ -165,7 +185,7 @@
                                                 <?php
                                             } else { 
                                                 ?>
-                                                <div class='card' style='width: 18rem;'>
+                                                <div class='card' style='width: 18rem;margin: 10px;'>
                                                     <div class='card-body'>
                                                         <h5 class='card-title'><?php echo $fila["nombreNovedad"]; ?></h5>
                                                         <h6 class='card-subtitle mb-2 text-muted'>Categoría cliente: <?php echo $fila["tipoUsuario"]; ?></h6>
@@ -243,22 +263,7 @@
                 </div>
             </div>
         </div>
-        <?php if(!empty($_GET['success'])){
-                    if($_GET['success']=='1'){
-                        echo '<div class="alert alert-primary mt-3" style="width: fit-content" role="alert">
-                            La novedad fue creada con éxito
-                        </div>';
-                    } elseif($_GET['success']=='2'){
-                        echo '<div class="alert alert-secondary mt-3" style="width: fit-content" role="alert">
-                           La novedad fue editada con éxito
-                        </div>';
-                    } elseif($_GET['success']=='3'){
-                        echo '<div class="alert alert-danger mt-3" style="width: fit-content" role="alert">
-                            La novedad fue eliminada
-                        </div>';
-                    }
-                }
-        ?>
+        
                             
     
     </div>    

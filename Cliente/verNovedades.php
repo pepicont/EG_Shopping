@@ -24,7 +24,7 @@ $offset = ($pagina - 1) * $registros_por_pagina;
 $paginacion = "LIMIT $offset, $registros_por_pagina";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
