@@ -17,7 +17,7 @@ if(!empty($_POST['codLocal'])){
     }
 }
 if(!empty($_POST['crearLocal'])){
-    $query="INSERT INTO locales (nombreLocal,ubicacionLocal,rubroLocal,estado,imagen) VALUES ('".$_POST['nombreLocal']."','".$_POST['ubicacionLocal']."','".$_POST['rubroLocal']."','".$_POST['estado']."','".$_POST['imagen']."')";
+    $query="INSERT INTO locales (nombreLocal,ubicacionLocal,rubroLocal,estado,imagen,codUsuario) VALUES ('".$_POST['nombreLocal']."','".$_POST['ubicacionLocal']."','".$_POST['rubroLocal']."','activo','".$_POST['imagen']."','".$_POST['codUsuario']."')";
     $resultado=consultaSQL($query);
     if($resultado){
         header("Location:gestionarLocales.php?success=creado");

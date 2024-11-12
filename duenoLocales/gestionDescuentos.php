@@ -61,7 +61,7 @@ $estoy = "gestionDescuentos";
         <div class="col-lg-3 col-8 mx-auto bot-crear" > 
                 <?php include("agregarDescuento.php"); ?>
         </div>
-        <div class="col-lg-9 col-none"></div>
+        <div class="col-lg-9 d-none"></div>
     </div>
     
     <div class="row">
@@ -78,7 +78,6 @@ $estoy = "gestionDescuentos";
             ?>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <div class=" d-block d-lg-none"> <!-- Boton para abrir filtros en mobile el lg none genera conflicto  -->
     <button class="btn btn-primary fixed-bottom end-0 m-3 bot-filtros" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" >FILTROS:</button>
@@ -94,7 +93,6 @@ $estoy = "gestionDescuentos";
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 <?php include("../footer.php") ?>
 </body>

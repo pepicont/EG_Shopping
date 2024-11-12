@@ -13,7 +13,7 @@ include_once("../funciones.php");
     $query = "UPDATE uso_promociones SET estado='".$estado."' WHERE codPromo='".$codPromo."'";
     $resultados = consultaSQL($query);
     
-    $query = "SELECT * FROM uso_promociones WHERE codCli='".$codcli."'";
+    $query = "SELECT * FROM uso_promociones WHERE codCliente='".$codcli."'";
     $resultados = consultaSQL($query);
     $cant = mysqli_num_rows($resultados);
     $cantAceptadas = 0;
@@ -30,6 +30,6 @@ include_once("../funciones.php");
         $query = "UPDATE usuarios SET estado='premium' WHERE cod='".$codCli."'";
         $resultados = consultaSQL($query);
     }   
-    exit(header("Location: index.php"));
+    exit(header("Location: verSolicitudDescuentos.php"));
     
 ?>

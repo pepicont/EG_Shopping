@@ -1,20 +1,20 @@
 <?php
-      require 'vendor/autoload.php';
-   use PHPMailer\PHPMailer\PHPMailer;
-   use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 if(!empty($_POST['enviar'])){
 
 
-   $mail = new PHPMailer;
+   $mail = new PHPMailer();
    $mail->isSMTP();
-   $mail->SMTPDebug = 2;
-   $mail->Host = 'smtp.yopmail.com';
-   $mail->Port = 30;
+   $mail->SMTPDebug = 0; // Set to 0 for no debug output, 1 for errors and messages
+   $mail->Host = 'smtp.hostinger.com';
+   $mail->Port = 587; // Use 465 for SSL or 587 for TLS
    $mail->SMTPAuth = true;
-   $mail->Username = 'EG_SHOPPING@yahoo.com';
-   $mail->Password = '6qAGB$Hhtq&@ma+';
-   $mail->setFrom('EG_SHOPPING@yopmail.com', 'Mundo Shopping');
+   $mail->Username = 'eg_shopping@yopmail.com';
+   $mail->Password = 'eg_shopping@yopmail.com';
+   $mail->setFrom('eg_shopping@yopmail.com', 'Mundo Shopping');
    /*$mail->addReplyTo('EG_SHOPPING@yahoo.com', 'Your Name');*/
    $mail->addAddress($_POST['email'], 'Receiver Name');
    $mail->Subject = $_POST['asunto'];

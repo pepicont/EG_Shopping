@@ -46,11 +46,11 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
                 }
                 ?>
                 <li class="page-item <?php if($pagina >= $total_paginas){ echo 'disabled'; } ?>">
-                <a class="page-link" href="<?php if($pagina >= $total_paginas){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina + 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Next</a>
+                    <a class="page-link" href="<?php if($pagina >= $total_paginas){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina + 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Next</a>
                 </li>
             </ul>
         </nav>
-</div>
+    </div>
 <?php } ?>
 
 <?php
@@ -85,7 +85,3 @@ function mostrarcards($fila, $fila1)
         </div>
     </div>
 <?php } ?>
-
-<?php
-/*header("Location: index.php");*/
-?>

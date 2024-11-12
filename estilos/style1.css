@@ -159,12 +159,13 @@ body{
 .alert{
     width: fit-content; 
 }
+
 .bot-filtros{
     z-index: 1050; /* Orden de objetos */
     width: 100px; /* Ancho fijo */
-    opacity: 0,5;
-}
+    opacity: 0.5;
 
+}
 #menuPrincipal{
     font-weight: bold;
     color: hsl(242, 68%, 40%);
