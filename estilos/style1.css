@@ -71,6 +71,7 @@ body{
     color:  rgb(235, 103, 235);
     border-color: rgb(235, 103, 235);
     font-weight: 600;
+    transition: all 0.5s;
     
 }
 .btn-primary:hover{ /*fijarse si anda esto de cambiar de color los botones*/

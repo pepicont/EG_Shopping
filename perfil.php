@@ -27,7 +27,7 @@
     $fila = mysqli_fetch_array($resultado);
     ?>
     <div class="row">
-        <div class="col-7">
+        <div class="col-12">
             <h1 class="text-center">Perfil:</h1>
             <div class="card mx-auto" style="max-width: 600px;">
                 <div class="card-body">
@@ -71,11 +71,11 @@
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <!-- <div class="col-4"> comentado porque ya mostramos la categoria con el icono.
             <h2>Información del Cliente:</h2>
             <p>Categoría: <?php // Aquí va la categoría del cliente ?></p>
             <p>Descuentos Usados: <?php // Aquí va la cantidad de descuentos usados ?></p>
-        </div>
+        </div> -->
     </div>
     <?php
     if(isset($_POST['guardar'])){

@@ -52,7 +52,7 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
                     <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else { $query = $_GET; $query['pagina'] = $pagina - 1; echo strtok($_SERVER['REQUEST_URI'], '?') . '?' . http_build_query($query); } ?>">Previous</a>
                 </li>
                 <?php
-                for ($i = 1; $i <= $total_pagnas; $i++) { 
+                for ($i = 1; $i <= $total_paginas; $i++) { 
                     echo "<li class=\"page-item";
                     if ($pagina == $i) echo " active";
                     $query = $_GET; $query['pagina'] = $i;

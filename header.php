@@ -52,7 +52,7 @@ if (isset($_SESSION['tipoUsuario'])){
 
              ?>
              <?php if (!defined('HEADER_INCLUDED')) { ?> 
-                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-lg-none">Iniciar sesión</a>
+                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-lg-none btn-primary">Iniciar sesión</a>
             <?php } ?>
             
             <?php } else{
@@ -148,7 +148,7 @@ if (isset($_SESSION['tipoUsuario'])){
                 </ul>
                 
                 <?php if($login==TRUE){?>
-                <a style="float:right; margin-right: 20px;" href='#' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png");?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
+                <a style="float:right; margin-right: 20px;" href='#' class='user-info ms-auto d-none d-lg-block btn-primary'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png");?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
                 <?php } ?>
                 <ul class="navbar-nav   <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
@@ -172,7 +172,7 @@ if (isset($_SESSION['tipoUsuario'])){
             <?php 
             
             if (!defined('HEADER_INCLUDED')) { ?> 
-                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-none d-lg-block  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
+                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-none d-lg-block btn-primary  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
             <?php } ?> 
             
             
