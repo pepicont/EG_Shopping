@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
       }
     } 
     }
-    header("Location: index.php");
+    header("Location: gestionarDescuentos?seCreo=" . $seCreo);
     exit();
   }
 ?>

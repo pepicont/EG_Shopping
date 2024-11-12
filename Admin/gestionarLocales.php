@@ -175,7 +175,7 @@
                             ?>
                                 <!-- Tarjeta para editar locales -->
                                 <div class="card mx-auto" style="width:210px; ">
-                                    <img src="<?php echo $local['imagen'] ?> ?>" class="card-img-top" alt="..." style="height:200px; width:200px;"><!-- Acá iría la imagen del local -->
+                                    <img src="<?php echo $local['imagen'] ?>" class="card-img-top" alt="..." style="height:200px; width:200px; margin: 5px;"><!-- Acá iría la imagen del local -->
                                     <div class="card-body text-center">
                                         <form action='procesarLocal.php' method='POST'>
                                             <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
@@ -205,7 +205,7 @@
 
                                 <div class="card " style=" margin: 10px; width:210px; ">
                                     
-                                    <img src="<?php echo $local['imagen'] ?>" class="card-img-top" alt="Foto del local" style="height:200px; width:200px;">
+                                    <img src="<?php echo $local['imagen'] ?>" class="card-img-top" alt="Foto del local" style="height:200px; width:200px;margin: 5px;">
                                     <h5><?php echo($local['codLocal']) ?></h5>
                                     <div class="card-body pt-0">
                                         <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>

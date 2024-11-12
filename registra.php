@@ -26,19 +26,19 @@ require 'vendor/autoload.php';
 
 
 <div class="container">
-    <form action="registra.php" method="POST">
+    <form method="POST">
         <div class="form-group">
-          <label for="email" required>Email</label>
-          <input type="email" class="form-control" name="email" id="email" placeholder="Ingrese su email">
+          <label for="email" >Email</label>
+          <input type="email" class="form-control" name="email" id="email" required placeholder="Ingrese su email">
           
         </div>
         <div class="form-group">
-          <label for="contrasena" required>Contraseña</label>
-          <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="*********">
+          <label for="contrasena">Contraseña</label>
+          <input type="password" class="form-control" name="contrasena" required id="contrasena" placeholder="*********">
         </div>
         <div class="form-group">
-          <label for="contrasena2" required>Repetir contraseña</label>
-          <input type="password" class="form-control" name="contrasena2" id="contrasena2" placeholder="*********">
+          <label for="contrasena2">Repetir contraseña</label>
+          <input type="password" class="form-control" name="contrasena2" required id="contrasena2" placeholder="*********">
         </div>
         <div class="form-group">
             <label for="nombre">Nombre </label>
@@ -63,16 +63,14 @@ require 'vendor/autoload.php';
       </form>
 </div>
 <?php 
-  include_once("funciones.php");
   if(!empty($_POST['registrarse'])) {
     $email=trim($_POST['email']);
-    
-    $contrasena=trim($_POST['contrasena']);
-    $contrasena2=trim($_POST['contrasena2']);
+    $contrasena=$_POST['contrasena'];
+    $contrasena2=$_POST['contrasena2'];
     $nombre=trim($_POST['nombre']);
     $apellido=trim($_POST['apellido']);
     $fechaNacimiento=trim($_POST['fechaNacimiento']);
-    $tipoUsuario=trim($_POST['tipoUsuario']);
+    $tipoUsuario=$_POST['tipoUsuario'];
     if ($contrasena==$contrasena2 and $contrasena!=""){
       if (mailExiste($email)==FALSE){
         $contrasenaEncriptada = password_hash($contrasena, PASSWORD_DEFAULT);
@@ -81,7 +79,6 @@ require 'vendor/autoload.php';
         $estado=0;
       }else{
         //Enviamos el mail para que confirme el admin al dueño de local
-
         $mail = new PHPMailer(true); // Habilita excepciones
         try {
           // Configuración de servidor SMTP
@@ -103,26 +100,18 @@ require 'vendor/autoload.php';
           // Enviar correo
           $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
           $mail->send();
-          if($_POST['lugar']=='registra'){
-              header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
-              exit();  // Sale del script
-          } else {
-              header("Location: index.php");  // Redirige a la página principal después de enviar el correo
-              exit();  // Sale del script
-          }
+          //if($_POST['lugar']=='registra'){
+            //  header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
+            //  exit();  // Sale del script
+          //} else {
+            //  header("Location: index.php");  // Redirige a la página principal después de enviar el correo
+            //  exit();  // Sale del script
+          //}
         } catch (Exception $e) {
             echo 'Error de mail: ' . $mail->ErrorInfo;  // Muestra un mensaje de error si no se pudo enviar
         }
         $categoriaCliente='';
         $estado=1;
-        echo "<form id='hiddenForm' action='index.php' method='POST' style='display:none;'>
-        <input type='hidden' name='asunto' value='Nuevo cliente registrado'>
-        <input type='hidden' name='cuerpo' value='Cliente: $nombre,$apellido. 
-        Su mail es: $mail.
-        Fecha de nacimiento: $fechaNacimiento.'>
-        <input type='hidden' name='lugar' value='registra'>
-        </form>";
-    echo "<script>document.getElementById('hiddenForm').submit();</script>";
       }
       $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	
       values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";

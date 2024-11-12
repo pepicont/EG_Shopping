@@ -10,7 +10,7 @@
         $query="UPDATE novedades SET nombreNovedad='".$nombre."' ,tipoUsuario='".$tipo."' ,textoNovedad='".$texto."' WHERE cod='".$cod."'";
         $resultado=consultaSQL($query);
 
-        header("Location: index.php");
+        header("Location: gestionarNovedades.php?success=2");
         exit();
         
         
@@ -20,15 +20,17 @@
         
         $query="UPDATE novedades SET estado='inactiva' WHERE cod='".$_GET['idEliminar']."'";
         $resultados=consultaSQL($query);
-        exit(header("Location: index.php?success=3"));
+        exit(header("Location: gestionarNovedades.php?success=3"));
         }
     if(!empty($_GET['nuevaNovedad'])){
         $nombre=$_GET['nombreNovedad'];
         $tipo=$_GET["tipoUsuario"];
         $texto=$_GET['textoNovedad'];
-        $query="INSERT INTO novedades (nombreNovedad,tipoUsuario,textoNovedad,estado) VALUES ('".$nombre."','".$tipo."','".$texto."','activa')";
+        $fechaDesde=$_GET['fechaDesde'];
+        $fechaHasta=$_GET['fechaHasta'];
+        $query="INSERT INTO novedades (nombreNovedad,tipoUsuario,textoNovedad,estado,fechaDesde,fechaHasta) VALUES ('".$nombre."','".$tipo."','".$texto."','activa','".$fechaDesde."','".$fechaHasta."')";
         $resultado=consultaSQL($query);
-        exit(header("Location: index.php?success=1"));
+        exit(header("Location: gestionarNovedades.php?success=1"));
     }
         
     

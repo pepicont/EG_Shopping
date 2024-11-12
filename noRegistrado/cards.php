@@ -67,6 +67,7 @@ function mostrarcards($fila, $fila1)
                 <p class="card-text">Rubro: <?php echo ($fila1["rubroLocal"]) ?></p>
                 <p class="card-text">Dias de la semana: <?php echo ($fila["diaSemana"]) ?></p>
                 <p class="card-text">Plazo: <?php echo ($fila["fechaDesde"]); echo (" --- "); echo ($fila["fechaHasta"]) ?></p>
+                <p class="card-text">Categoria necesaria: <?php echo ($fila["descuento"]) ?>%</p>
             </div>
         </div>
     </div>
@@ -84,4 +85,7 @@ function mostrarcards($fila, $fila1)
             </div>
         </div>
     </div>
-<?php } ?>
+<?php } 
+if()
+
+?>

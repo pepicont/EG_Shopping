@@ -21,10 +21,10 @@ function consultaSQL($query){
 
 
 function mailExiste($email){
-    $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email' ";
+    $query = "SELECT * FROM usuarios WHERE nombreUsuario='$email'";
     $vResultado = consultaSQL($query);
-      $fila = mysqli_fetch_array($vResultado);
-      if(mysqli_num_rows($vResultado) == 0) {
+      
+    if(mysqli_num_rows($vResultado) == 0) {
       return FALSE;}
       else{
         return TRUE;

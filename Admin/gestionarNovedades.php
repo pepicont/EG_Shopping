@@ -52,6 +52,16 @@
                                 <textarea name="textoNovedad" id="textoNovedad" class="form-control" style="resize: none; vertical-align: top; margin-top: 5px; margin-bottom: 5px;" cols="21" rows="4"></textarea>
 
                             </div>
+                            
+                            <div class="form-group mx-auto " style="width: fit-content">
+                                <label for="fechaDesde">Fecha desde: </label>
+                                <input type="date" name="fechaDesde" id="fechaDesde" class="form-control">
+                            </div>
+
+                            <div class="form-group mx-auto " style="width: fit-content">
+                                <label for="fechaHasta">Fecha hasta: </label>
+                                <input type="date" name="fechaHasta" id="fechaHasta" class="form-control">
+                            </div>
 
                             <div class="form-group mx-auto mx-4 p-2" style="width: fit-content">
                                 <input type="submit" name="nuevaNovedad" class="btn btn-primary px-4 py-2" value="Crear">
