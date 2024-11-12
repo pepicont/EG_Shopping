@@ -1,7 +1,6 @@
 <?php
 $lugar = "duenoLocal";
     include_once("../funciones.php");
-    include("../header.php");
     if($_SESSION["tipoUsuario"] != "duenoLocal"){
         header("Location: ../index.php");
         exit();
@@ -20,6 +19,11 @@ $lugar = "duenoLocal";
     <link rel="stylesheet" href="../estilos/style1.css">
 
 </head>
+<header>
+    <?php
+        include("../header.php");
+    ?>
+</header>
 <body>
     <?php
     $idUsuario= $_SESSION["idUsuario"];
@@ -63,7 +67,8 @@ $lugar = "duenoLocal";
 
 
 </body>
+<footer>
+    <?php include_once("../footer.php"); ?>
+</footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-<?php include_once("../footer.php"); ?>
 </html>

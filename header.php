@@ -19,16 +19,6 @@ if (isset($_SESSION['tipoUsuario'])){
 
 
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=, initial-scale=1.0">
-    <title>Header</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="estilos/style1.css" rel="stylesheet">
-</head>
-<body>
     <?php /* $ruta=__DIR__; 
         $ruta=str_replace("\\", "/", $ruta);
         echo "$ruta"; */
@@ -149,7 +139,7 @@ if (isset($_SESSION['tipoUsuario'])){
                 </ul>
                 
                 <?php if($login==TRUE){?>
-                <a style="float:right; margin-right: 20px;" href='#' class='user-info ms-auto d-none d-lg-block btn-primary'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png");?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
+                <a style="float:right; margin-right: 20px;" href='#' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png");?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
                 <?php } ?>
                 <ul class="navbar-nav   <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
@@ -179,4 +169,3 @@ if (isset($_SESSION['tipoUsuario'])){
             
         </div>
     </nav>  
-    </body>

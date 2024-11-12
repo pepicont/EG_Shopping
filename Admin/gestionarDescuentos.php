@@ -1,7 +1,7 @@
 <?php
     $lugar="admin";
     include_once("../funciones.php");
-    include("../header.php");
+    
     actualizarDescuentos();
     if ($login==true && $tipoUsuario=="administrador"){
         $estoy="gestionarDescuentos";
@@ -15,6 +15,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
+    <header>
+    <?php include("../header.php");?>
+    </header>
 <body>
 
     
@@ -24,6 +27,25 @@
                 <?php 
                 include("../breadCrumbs.php");
                 ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <?php
+                if(!empty($_GET['success'])){
+                        if($_GET['success']=='aceptado'){
+                            echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
+                                Local Editado con éxito
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
+                        } elseif($_GET['success']=='rechazado'){
+                            echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
+                            Local dado de baja
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
+                        
+                    }
+                    ?>
             </div>
         </div>
         <div class="row ">
@@ -192,10 +214,11 @@
     }
 
      ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
 </body>
     <footer>
         <?php include("../footer.php"); ?>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </html>

@@ -1,7 +1,6 @@
 <?php
     $lugar="admin";
     include_once("../funciones.php");
-    include("../header.php");
     actualizarNovedades();
     if ($login==true && $tipoUsuario=="administrador"){
         $estoy="gestionarNovedades";
@@ -15,6 +14,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
+<header>
+<?php
+    include("../header.php");
+    ?>
+</header>
 <body>
 
     
@@ -33,14 +37,17 @@
                         if($_GET['success']=='1'){
                             echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
                                 La novedad fue creada con éxito
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';
                         } elseif($_GET['success']=='2'){
                             echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
                             La novedad fue editada con éxito
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';
                         } elseif($_GET['success']=='3'){
                             echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
                                 La novedad fue eliminada
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';
                         }
                     }

@@ -1,7 +1,6 @@
 <?php
     $lugar="admin";
     include_once("../funciones.php");
-    include("../header.php");
     $estoy="gestionarLocales";
 ?>
 <!DOCTYPE html>
@@ -13,11 +12,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
-<?php if ($login==true && $tipoUsuario=="administrador"){?>
+    
+    <header>
+        <?php include("../header.php"); ?>
+    </header>
     <body>
-        
-    <?php }
-    else{
+    <?php if ($login==true && $tipoUsuario=="administrador"){
+    }else{
         exit(header("Location: index.php"));
     }
     ?>
@@ -35,19 +36,23 @@
                         if($_GET['success']=='editado'){
                             echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
                                 Local Editado con éxito
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';
                         } elseif($_GET['success']=='eliminado'){
                             echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
                             Local dado de baja
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';
                         
                     } elseif($_GET['success']=='creado'){
                         echo '<div class="alert alert-success mt-3 mx-auto" style="width: fit-content" role="alert">
                         Local creado con éxito
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';}
                     elseif($_GET['error']=='usuario'){
                             echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
                             El código de dueño ingresado no existe o no está activo
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';}
                 }
                     ?>
@@ -272,9 +277,10 @@
 
             </div>
         </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    
 </body>
 <footer>
     <?php include("../footer.php") ?>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
