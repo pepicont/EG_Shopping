@@ -35,7 +35,7 @@
                     <label for="email" class="form-label">Email:</label>
                     <?php 
                     if($login==true){
-                        echo '<input type="email" class="form-control" name="email" id="email" readonly required value="'.$_SESSION['usuario'].'"';}else{
+                        echo '<input type="email" class="form-control" name="email" id="email" readonly required value="'.$usuario.'"';}else{
                     ?>
                     <input type="email" class="form-control" name="email" id="email" placeholder="juanperez@gmail.com" required>
                     <?php } ?>

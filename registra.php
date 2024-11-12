@@ -56,7 +56,7 @@ use PHPMailer\PHPMailer\Exception;
           
         </div>
         <div class="d-flex justify-content-center">
-        <input type="submit" name="registrarse" class="btn btn-primary col-3" >Registrarse</input>
+        <input type="submit" name="registrarse" class="btn btn-primary col-3" value="registrarse">
         </div>
       </form>
 </div>
@@ -79,6 +79,8 @@ use PHPMailer\PHPMailer\Exception;
         $estado=0;
       }else{
         //Enviamos el mail para que confirme el admin al dueño de local
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\Exception;
         require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
         $mail = new PHPMailer(true); // Habilita excepciones
         try {
@@ -95,7 +97,7 @@ use PHPMailer\PHPMailer\Exception;
           $mail->setFrom('eg_shopping@egshopping.store', 'admin');  // El correo y nombre del remitente
           // Destinatario
           $mail->addAddress('eg_shopping@yahoo.com');  // El correo del destinatario (tomado desde el formulario)
-          $mail->Subject = "Nueva solicitud de dueño de local";  // Asunto (tomado desde el formulario)
+          $mail->Subject = "Nueva solicitud de dueno de local";  // Asunto (tomado desde el formulario)
           $mail->Body = "Nombre: $nombre $apellido \n email: $email";  // Cuerpo del mensaje (tomado desde el formulario)
   
           // Enviar correo
