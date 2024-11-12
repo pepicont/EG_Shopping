@@ -195,7 +195,7 @@
                                         
                                     </div>
                                 </div>
-                                <?php }else{ echo $local['codLocal'];?>
+                                <?php }else{?>
                                     
                                 
 
