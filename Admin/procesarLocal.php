@@ -24,7 +24,7 @@ if(!empty($_POST['crearLocal'])){
     //file_get_contents($imagen) obtiene el contenido del archivo subido, en este caso la imagen desde su ubicación temporal
     //addslashes() agrega barras invertidas a una cadena en los lugares que haya caracteres especiales
     //en este caso a la imagen para que no haya problemas al insertarla en la base de datos
-    $query="INSERT INTO locales (nombreLocal,ubicacionLocal,rubroLocal,estado,imagen,codUsuario) VALUES ('".$_POST['nombreLocal']."','".$_POST['ubicacionLocal']."','".$_POST['rubroLocal']."','activo','"$imagenSubida"','".$_POST['codUsuario']."')";
+    $query="INSERT INTO locales (nombreLocal,ubicacionLocal,rubroLocal,estado,imagen,codUsuario) VALUES ('".$_POST['nombreLocal']."','".$_POST['ubicacionLocal']."','".$_POST['rubroLocal']."','activo','$imagenSubida','".$_POST['codUsuario']."')";
     $resultado=consultaSQL($query);
     if($resultado){
         header("Location:gestionarLocales.php?success=creado");
