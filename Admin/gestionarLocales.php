@@ -19,7 +19,8 @@
     <body>
     <?php if ($login==true && $tipoUsuario=="administrador"){
     }else{
-        exit(header("Location: index.php"));
+
+        exit(header("Location: ../index.php"));
     }
     ?>
         <div class="container">
@@ -132,6 +133,8 @@
 
                                 <div class="form-group mx-auto p-2" style="width: fit-content">
                                     <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="buscar">
+                                    <input type="reset" value="Restablecer" class="btn btn-secondary ">
+
                                 </div>
 
 

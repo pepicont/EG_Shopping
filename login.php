@@ -70,39 +70,46 @@ if(existecookie()) {
       </div> <?php
       }
       else{
-        if (password_verify($contrasena, $fila['claveUsuario'])){
-          $tipoUsuario=$fila['tipoUsuario'];
-          $idUsuario=$fila['codUsuario'];
-          if ($tipoUsuario=='cliente'){
-            $_SESSION['categoriaCliente'] = $fila['categoriaCliente'];
-            $_SESSION['nombre']=$fila['nombre'];
-          }
-          if($mantenerSesionIniciada=='no'){
-            $_SESSION['usuario'] = $email;
-            $_SESSION['tipoUsuario'] = $tipoUsuario;
-            $_SESSION['idUsuario'] = $idUsuario;
-          }else{
-            setcookie('nombre',$fila['nombre'],time()+(60*60*24*365));
-            setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
-            setcookie('usuario',$email,time()+(60*60*24*365));
-            setcookie('tipoUsuario',$tipoUsuario,time()+(60*60*24*365));
-            setcookie('categoriaCliente',$fila['categoriaCliente'],time()+(60*60*24*365));
-            setcookie('idUsuario',$idUsuario,time()+(60*60*24*365));
-          }
-           /* Esto también lo tenemos que pasar seguro */
-          echo '<meta http-equiv="refresh" content="0;url=index.php">';
-          exit();
+        if($fila['estado']!='1' and $fila['estado']!='2'){
+          if (password_verify($contrasena, $fila['claveUsuario'])){
+            $tipoUsuario=$fila['tipoUsuario'];
+            $idUsuario=$fila['codUsuario'];
+            if ($tipoUsuario=='cliente'){
+              $_SESSION['categoriaCliente'] = $fila['categoriaCliente'];
+              $_SESSION['nombre']=$fila['nombre'];
+            }
+            if($mantenerSesionIniciada=='no'){
+              $_SESSION['usuario'] = $email;
+              $_SESSION['tipoUsuario'] = $tipoUsuario;
+              $_SESSION['idUsuario'] = $idUsuario;
+            }else{
+              setcookie('nombre',$fila['nombre'],time()+(60*60*24*365));
+              setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
+              setcookie('usuario',$email,time()+(60*60*24*365));
+              setcookie('tipoUsuario',$tipoUsuario,time()+(60*60*24*365));
+              setcookie('categoriaCliente',$fila['categoriaCliente'],time()+(60*60*24*365));
+              setcookie('idUsuario',$idUsuario,time()+(60*60*24*365));
+            }
+            /* Esto también lo tenemos que pasar seguro */
+            echo '<meta http-equiv="refresh" content="0;url=index.php">';
+            exit();
         }else{
           ?>
-                <div class="containter" style="display:flex; justify-content: center">
-                <?php echo '<div class="alert alert-danger mt-3"  style="width: fit-content; display:flex; justify-content: center;" role="alert">
+                <div class="containter px-auto" style="display:flex; justify-content: center">
+                <?php echo '<div class="alert alert-danger mx-auto mt-3"  style="width: fit-content; display:flex; justify-content: center;" role="alert">
                     Contraseña incorrecta
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>';?>
                 </div>
       <?php }       
         
-      }}
+      }else{
+        echo '<div class="alert alert-warning mx-auto mt-3"  style="width: fit-content; display:flex; justify-content: center;" role="alert">
+                    Usuario no habilitado, contacte con el administrador
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';
+
+      }}}
     ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

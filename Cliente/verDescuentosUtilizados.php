@@ -54,7 +54,7 @@
         </div>
         <div class="offcanvas-body">
                 <?php 
-                    include("filtrosCLi.php"); 
+                    include("filtrosCli.php"); 
                 ?>
         </div>
     </div>

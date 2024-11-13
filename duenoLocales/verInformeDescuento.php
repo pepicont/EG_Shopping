@@ -3,8 +3,8 @@
     $lugar = "duenoLocal";
     include_once("../funciones.php");
     if($_SESSION["tipoUsuario"] != "duenoLocal"){
-       // header("Location: ../index.php");
-        //exit();
+       header("Location: ../index.php");
+        exit();
     }
     $idUsuario= $_SESSION["idUsuario"];
     $estoy = "informeDescuentos";

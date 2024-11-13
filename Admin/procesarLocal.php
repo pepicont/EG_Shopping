@@ -35,7 +35,9 @@ if(!empty($_POST['crearLocal'])){
     }else{
 
     if ($tipoImagen=="jpg" or $tipoImagen=="jpeg" or $tipoImagen=="png") {//se valida que el archivo subido sea una imagen
-        $query="INSERT INTO locales (nombreLocal,ubicacionLocal,rubroLocal,estado,codUsuario) VALUES ('".$_POST['nombreLocal']."','".$_POST['ubicacionLocal']."','".$_POST['rubroLocal']."','activo','".$_POST['codUsuario']."')";
+        $rubro=trim($_POST['rubroLocal']);
+        $rubro=strtolower($rubro);
+        $query="INSERT INTO locales (nombreLocal,ubicacionLocal,rubroLocal,estado,codUsuario) VALUES ('".$_POST['nombreLocal']."','".$_POST['ubicacionLocal']."','".$rubro."','activo','".$_POST['codUsuario']."')";
         $resultado=consultaSQL($query);
         //Se crea el local pero no se espcifica la ruta de la imagen para tener el id incremental asignado por la base
         $query="SELECT codLocal FROM locales WHERE nombreLocal='".$_POST['nombreLocal']."' AND ubicacionLocal='".$_POST['ubicacionLocal']."' AND rubroLocal='".$_POST['rubroLocal']."' AND codUsuario='".$_POST['codUsuario']."'";

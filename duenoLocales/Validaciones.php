@@ -40,6 +40,7 @@ if(!empty($_GET['filtrar'])){
     }
     if(!empty($_GET['rubroLocal'])){
         $rubro=trim($_GET['rubroLocal']);
+        $rubro=strtolower($rubro);
             $busqueda .= " AND rubroLocal LIKE '%" . $rubro . "%'  ";
         
     }

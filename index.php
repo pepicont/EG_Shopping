@@ -74,17 +74,17 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="row">
                 <div class="col-12 col-md-6 m-2" >
-                    <a href="Admin/informeDescuentos.php" class="btn btn-admin btn-lg" id="menuPrincipal">
+                    <a href="Admin/informeDescuentos.php" class="btn btn-admin btn-lg w-100" id="menuPrincipal">
                         Informe de descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin btn-lg" id="menuPrincipal">
+                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin btn-lg w-100" id="menuPrincipal">
                         Gestionar descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin btn-lg" id="menuPrincipal">
+                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin btn-lg w-100" id="menuPrincipal">
                         Gestionar novedades
                     </a>
                 </div>
@@ -227,9 +227,9 @@
         </div>
     </div>
     <div class="row mb-3 justify-content-center">
-    <div class="col-4 d-flex flex-column justify-content-center">
+    <div class="col-auto d-flex flex-column justify-content-center">
             <div class="container mb-4">
-            <a href="noRegistrado/verLocales.php" class="btn btn-login btn-primary w-100 btn-lg">
+            <a href="noRegistrado/verLocales.php" class="btn btn-primary w-100 btn-lg">
                 Ver locales
             </a>
             </div>
@@ -237,8 +237,6 @@
             <a href="noRegistrado/verDescuentos.php" class="btn btn-primary w-100 btn-lg">
             Ver descuentos
             </a>
-            </div>
-            <div class="container mb-4">
             </div>
         </div>
     </div>

@@ -10,11 +10,11 @@ $totalpromociones = 0;
 
 $muestrafila = array();
 $muestrafila1 = array();
-$query = "SELECT * FROM locales WHERE estado = 'activo'";
+$query = "SELECT * FROM locales WHERE estado = 'activo' $busqueda2";
 $resultado = consultaSQL($query);
 if (mysqli_num_rows($resultado) > 0) {
     while ($fila = mysqli_fetch_array($resultado)) {
-        $query1 = "SELECT * FROM promociones WHERE estadoPromo = 'activa' AND codLocal = '" . $fila['codLocal'] . "'";
+        $query1 = "SELECT * FROM promociones WHERE estadoPromo = 'activa' AND codLocal = '" . $fila['codLocal'] . "' $busqueda";
         $resultado1 = consultaSQL($query1);
         if (mysqli_num_rows($resultado1) > 0) {
             while ($fila1 = mysqli_fetch_array($resultado1)) {

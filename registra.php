@@ -58,7 +58,7 @@ include_once("funciones.php");
           
         </div>
         <div class="d-flex justify-content-center">
-        <input type="submit" name="registrarse" class="btn btn-primary col-3" value="Registrarse">
+        <button type="submit" name="registrarse" class="btn btn-primary col-3">Registrarse</button>
         </div>
       </form>
 </div>
