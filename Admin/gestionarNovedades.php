@@ -1,10 +1,8 @@
-<?php
-    $lugar="admin";
-    include_once("../funciones.php");
-    actualizarNovedades();
-    if ($login==true && $tipoUsuario=="administrador"){
-        $estoy="gestionarNovedades";
-    ?>
+<?
+include_once("../funciones.php");
+actualizarNovedades();
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -16,7 +14,11 @@
 </head>
 <header>
 <?php
+    $lugar="admin";
     include("../header.php");
+    if ($login==true && $tipoUsuario=="administrador"){
+        $estoy="gestionarNovedades";
+    
     ?>
 </header>
 <body>

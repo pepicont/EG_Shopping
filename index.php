@@ -19,8 +19,8 @@
 </header>
     
 <body>
-
-<div id="carouselExampleCaptions" class="carousel slide" ><!-- Carrusel -->
+<div class="row" style="display:flex; justify-content:center">
+<div id="carouselExampleCaptions" class="carousel slide "> <!-- Carrusel -->
     <div class="carousel-indicators" >
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -28,13 +28,13 @@
     </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-            <img src="assets/imagenmain.png" class="d-block w-100" alt="foto de shopping 1" >
+            <img src="assets/carr1.jpg" height="600px" class="d-block w-100" alt="foto de shopping 1" >
         </div>
             <div class="carousel-item">
-            <img src="assets/foto2.jpg" class="d-block w-100" alt="foto de shopping 2">
+            <img src="assets/carr2.jpg" height="600px" class="d-block w-100" alt="foto de shopping 2">
         </div>
             <div class="carousel-item">
-            <img src="assets/foto3.jpg" class="d-block w-100" alt="foto de shopping 3">
+            <img src="assets/carr3.jpg" height="600px" class="d-block w-100" alt="foto de shopping 3">
         </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -46,19 +46,19 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
-
+</div>
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
     <div class="row">
         <div class="col-12">
             <!-- Muestra las alertas cuando se acepta o se rechaza una solicitud -->
             <?php if(!empty($_GET['success'])){
                     if($_GET['success']=='aprobada'){
-                        echo '<div class="alert alert-primary mt-3 mx-auto" style="width:80vh" role="alert">
+                        echo '<div class="alert alert-primary mt-3 mx-auto"  role="alert">
                             Solicitud  aceptada
                             <button type="button" class="btn-close me-auto" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';
                     } elseif($_GET['success']=='rechazada'){
-                        echo '<div class="alert alert-danger mt-3 mx-auto" style="width:80vh" role="alert">
+                        echo '<div class="alert alert-danger mt-3 mx-auto"  role="alert">
                             Solicitud rechazada
                             <button type="button" class="btn-close me-auto" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';
@@ -161,31 +161,51 @@
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="cliente") echo"d-none";?>">
     <div class="row mb-3 justify-content-center">
+        <div class="col-3" >
+            <div class="container mb-3">
+            <a href="Cliente/verDescuentos.php" class="btn btn-login btn-primary w-100 btn-lg">
+            Ver descuentos
+            </a>
+            </div>
+            <div class="container mb-3">
+            <a href="Cliente/verDescuentosUtilizados.php" class="btn btn-primary w-100 btn-lg">
+            Ver descuentos utilizados
+            </a>
+            </div>
+            <div class="container mb-3">
+            <a href="Cliente/verNovedades.php" class="btn btn-primary w-100 btn-lg">
+            Ver novedades
+            </a>
+            </div>
+        </div>
+        <div class="col-8 text-center">
+            <?php include ("Cliente/descMasutilizados.php")?>
+        </div>
+    </div>
+    
+</div>
+
+<div class="container mt-4 justify-content-center <?php if ($login==TRUE){ echo"d-none";}?>">
+    <div class="row mb-3 justify-content-center">
         <div class="col-auto w-100">
-            <a href="Cliente/verDescuentos.php" class="btn btn-login btn-primary w-100">
+            <a href="noRegistrado/verLocales.php" class="btn btn-login btn-primary w-100">
+                Ver locales
+            </a>
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center">
+        <div class="col-auto w-100">
+            <a href="noRegistrado/verDescuentos.php" class="btn btn-login btn-primary w-100">
                 Ver descuentos
             </a>
         </div>
     </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="Cliente/verDescuentosUtilizados.php" class="btn btn-primary w-100">
-                Ver descuentos utilizados
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="Cliente/verNovedades.php" class="btn btn-primary w-100">
-                Ver novedades
-            </a>
-        </div>
-    </div>
 </div>
+
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 <footer>
     <?php 
-      include("footer.php");
+        include("footer.php");
     ?> 
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

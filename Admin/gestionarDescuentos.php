@@ -1,13 +1,9 @@
-<?php
-    $lugar="admin";
+<?php 
     include_once("../funciones.php");
-    
     actualizarDescuentos();
-    if ($login==true && $tipoUsuario=="administrador"){
-        $estoy="gestionarDescuentos";
-    ?>
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +12,12 @@
     <link href="../estilos/style1.css" rel="stylesheet">
 </head>
     <header>
-    <?php include("../header.php");?>
+    <?php 
+    $lugar="admin";
+    include("../header.php");
+    if ($login==true && $tipoUsuario=="administrador"){
+        $estoy="gestionarDescuentos";
+    ?>
     </header>
 <body>
 
@@ -42,7 +43,7 @@
                             echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
                             Descuento rechazado
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>';no 
+                            </div>';
                         
                     }}
                     ?>
@@ -210,7 +211,7 @@
 
     <?php
     }else{
-        exit(header("Location: ../index.php"));
+        //exit(header("Location: ../index.php"));
     }
 
      ?>

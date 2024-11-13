@@ -51,11 +51,11 @@ $paginacion = "LIMIT $offset, $registros_por_pagina";
         $resultado = consultaSQL($query);
         while ($fila = mysqli_fetch_array($resultado)) {
     ?>  
-        <div class="container" style="width: 100%;">
+        <div class="container" style="width: 60%;">
             <div class="card" style="margin: 10px; padding:10px">
             <div style="height:80%">
-                <h5 class="card-title"><b>Nombre:</b> <?php echo($fila["nombreNovedad"]) ?></h5> 
-                <p class="card-text"><b> Descripcion: </b> <?php echo($fila["textoNovedad"]) ?></p>
+                <h5 class="card-title"><b>  </b> <?php echo($fila["nombreNovedad"]) ?></h5> 
+                <p class="card-text"><b>    </b> <?php echo($fila["textoNovedad"]) ?></p>
             </div>
             </div>
         </div>

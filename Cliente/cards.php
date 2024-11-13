@@ -74,7 +74,6 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
 function mostrarcards($fila, $fila1, $encontro)
 { ?>
     <div class="card" style="margin: 15px; width: 18rem;">
-
         <div class="card-body">
             <div style="height:80%">
                 <h5 class="card-title">Cod descuento: <?php echo ($fila["cod"]) ?></h5>

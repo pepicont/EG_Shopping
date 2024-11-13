@@ -8,7 +8,7 @@
 function consultaSQL($query){
   $local=true;
   if($local){
-    $link=mysqli_connect("localhost","root","","u174220854_shopping") or die("Hubo un error al conectarse con la base de datos");
+    $link=mysqli_connect("localhost","root","","shopping") or die("Hubo un error al conectarse con la base de datos");
   } else {
     $link=mysqli_connect("127.0.0.1:3306","u174220854_eg_shopping",'6qAGB$Hhtq&@ma+',"u174220854_shopping") or die("Hubo un error al conectarse con la base de datos");
   }
@@ -39,6 +39,7 @@ function existecookie(){
         $_SESSION['usuario'] = $_COOKIE['usuario'];
         $_SESSION['tipoUsuario'] = $_COOKIE['tipoUsuario'];
         $_SESSION['idUsuario'] = $_COOKIE['idUsuario'];
+        $_SESSION['nombre']= $_COOKIE['nombre'];
         
         if($_COOKIE['tipoUsuario']=='cliente'){
           $_SESSION['categoriaCliente'] = $_COOKIE['categoriaCliente'];

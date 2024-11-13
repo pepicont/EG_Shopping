@@ -1,5 +1,6 @@
 <?php
-$lugar = "duenoLocal";
+    session_start();
+    $lugar = "duenoLocal";
     include_once("../funciones.php");
     if($_SESSION["tipoUsuario"] != "duenoLocal"){
         header("Location: ../index.php");

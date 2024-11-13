@@ -17,12 +17,11 @@ if (isset($_SESSION['tipoUsuario'])){
     
 }
 
-
 ?>
     <?php /* $ruta=__DIR__; 
         $ruta=str_replace("\\", "/", $ruta);
         echo "$ruta"; */
-        if(!isset($lugar)){
+        if(empty($lugar)){
             $lugar="";
         }
         if($lugar=="admin" or $lugar=="duenoLocal" or $lugar=="cliente" or $lugar=="noRegistrado")
@@ -43,7 +42,7 @@ if (isset($_SESSION['tipoUsuario'])){
 
              ?>
              <?php if (!defined('HEADER_INCLUDED')) { ?> 
-                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-lg-none btn-primary">Iniciar sesión</a>
+                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-lg-none ">Iniciar sesión</a>
             <?php } ?>
             
             <?php } else{
@@ -51,11 +50,15 @@ if (isset($_SESSION['tipoUsuario'])){
                    if($tipoUsuario=="duenoLocal")
                         $mostrarUsuario="Dueño de local";
                     if($tipoUsuario=="cliente")
-                        $mostrarUsuario="Cliente";
+                        $mostrarUsuario=$_SESSION['nombre'];
                     if($tipoUsuario=="administrador")
                         $mostrarUsuario="Administrador";
+                    if($lugar=='index' or $lugar=='perfil'){
+                        $ruta3=""; }
+                    else{
+                        $ruta3="../";}
                     ?>
-                    <a href='#' class='user-info ms-auto d-lg-none'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png"); ?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
+                    <a href='<?php echo $ruta3?>perfil.php' class='user-info ms-auto d-lg-none'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png"); ?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
                     <?php
             } ?>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +66,7 @@ if (isset($_SESSION['tipoUsuario'])){
             </button>
             
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-lg-30 mx-auto px-auto  ">
+                <ul class="navbar-nav ms-lg-30 mx-auto px-auto  " >
                     <?php if($login==FALSE){
                         if($lugar=="index" or $lugar=="login" or $lugar=="registra"){
                         $ruta2="noRegistrado/";}else {
@@ -81,7 +84,7 @@ if (isset($_SESSION['tipoUsuario'])){
                     <?php } else{?>
 
                     <?php if($tipoUsuario=="duenoLocal"){?>
-                        <?php if($lugar=="index")
+                        <?php if($lugar=="index" or $lugar=="perfil")
                                 $ruta2="duenoLocales/";
                             else
                                 $ruta2="";
@@ -119,8 +122,9 @@ if (isset($_SESSION['tipoUsuario'])){
                     </li>
 
                     <?php } if($tipoUsuario=="cliente"){?>
-                        <?php if($lugar=="index" or $lugar=="perfil")
+                        <?php if($lugar=="index" or $lugar=="perfil"){
                                 $ruta2="Cliente/";
+                                echo $ruta2;}
                             else
                                 $ruta2="";
 
@@ -138,8 +142,14 @@ if (isset($_SESSION['tipoUsuario'])){
                     <?php }}?>
                 </ul>
                 
-                <?php if($login==TRUE){?>
-                <a style="float:right; margin-right: 20px;" href='#' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png");?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
+                <?php if($login==TRUE){
+                    if($lugar=='index' or $lugar=='perfil')
+                        $ruta3=""; 
+                    else
+                        $ruta3="../";?>
+                  
+                    
+                <a style="float:right; margin-right: 20px;" href='<?php echo $ruta3 ?>perfil.php' class='user-info ms-auto d-none d-lg-block'><?php if($tipoUsuario=="cliente"){?><img src="<?php echo("$ruta"."assets/{$categoriaCliente}img.png");?>" style="max-width:30px; max-height:30px; margin-right:7px;" alt="categoría del cliente"><?php } echo $mostrarUsuario ?></a>
                 <?php } ?>
                 <ul class="navbar-nav   <?php if($login==FALSE){ echo("d-none");} ?>">
                     <li class="nav-item dropdown">
@@ -163,7 +173,7 @@ if (isset($_SESSION['tipoUsuario'])){
             <?php 
             
             if (!defined('HEADER_INCLUDED')) { ?> 
-                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-none d-lg-block btn-primary  <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
+                <a href="<?php echo("$ruta");?>login.php" class="login-button ms-auto d-none d-lg-block   <?php if($login==TRUE){ echo("d-lg-none");} ?>">Iniciar sesión</a>
             <?php } ?> 
             
             

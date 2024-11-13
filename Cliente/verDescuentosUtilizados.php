@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+
     $lugar = "cliente";
     include_once("../funciones.php");
     $idusuario= $_SESSION["idUsuario"];

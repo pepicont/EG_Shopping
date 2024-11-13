@@ -16,6 +16,7 @@ if(existecookie()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="estilos/style1.css" rel="stylesheet">
 </head>
 <header>
   <?php
@@ -43,8 +44,6 @@ if(existecookie()) {
         </div>
         <div class="d-flex justify-content-center">
         <button type="submit" class="btn btn-primary col-3" name="enviar" >Iniciar sesión</button>
-    
-       
         </div>
       </form>
       <a href="registra.php">Crear cuenta</a> <!-- Te lleva a la página de creación de cuenta register.php-->
@@ -62,19 +61,28 @@ if(existecookie()) {
       $vResultado = consultaSQL($query) or die (mysqli_error($link));
       $fila = mysqli_fetch_array($vResultado);
       if(mysqli_num_rows($vResultado) == 0) {
-      echo ("Usuario Inexistente, intentelo de nuevo o registrese <br>");}
+        ?>
+        <div class="container" style="display:flex; justify-content: center">
+        <?php echo '<div class="alert alert-warning mt-3"  style="width: fit-content; display:flex; justify-content: center;" role="alert">
+                    Usuario Inexistente, intentelo de nuevo o registrese 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>';?>
+      </div> <?php
+      }
       else{
         if (password_verify($contrasena, $fila['claveUsuario'])){
           $tipoUsuario=$fila['tipoUsuario'];
           $idUsuario=$fila['codUsuario'];
           if ($tipoUsuario=='cliente'){
             $_SESSION['categoriaCliente'] = $fila['categoriaCliente'];
+            $_SESSION['nombre']=$fila['nombre'];
           }
           if($mantenerSesionIniciada=='no'){
             $_SESSION['usuario'] = $email;
             $_SESSION['tipoUsuario'] = $tipoUsuario;
             $_SESSION['idUsuario'] = $idUsuario;
           }else{
+            setcookie('nombre',$fila['nombre'],time()+(60*60*24*365));
             setcookie('mantenerSesionIniciada','si',time()+(60*60*24*365));
             setcookie('usuario',$email,time()+(60*60*24*365));
             setcookie('tipoUsuario',$tipoUsuario,time()+(60*60*24*365));
@@ -85,12 +93,14 @@ if(existecookie()) {
           echo '<meta http-equiv="refresh" content="0;url=index.php">';
           exit();
         }else{
-          
-                echo '<div class="alert alert-danger mt-3"  style="width: fit-content; display:flex; justify-content: center;" role="alert">
+          ?>
+                <div class="containter" style="display:flex; justify-content: center">
+                <?php echo '<div class="alert alert-danger mt-3"  style="width: fit-content; display:flex; justify-content: center;" role="alert">
                     Contraseña incorrecta
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>';
-        }
+                </div>';?>
+                </div>
+      <?php }       
         
       }}
     ?>
