@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
 </head>
+<header>
+    <?php include("header.php"); ?>
+</header>
 <body>
     <?php session_start(); 
     include_once("funciones.php");
@@ -20,7 +23,6 @@
     }
     $lugar="perfil"; //variable que usamos en el header para saber en que lugar estamos y así asignarle bien las rutas a los links del navbar
     $estoy="perfil";//variable que usamos en los breadCrumbs para lo mismo
-    include("header.php");
     include("breadCrumbs.php");
     $query = "SELECT * FROM usuarios WHERE codUsuario=".$_SESSION['idUsuario'];
     $resultado = consultaSQL($query);
@@ -88,7 +90,6 @@
         exit();
     }
     ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 
 </body>
@@ -97,6 +98,7 @@
 include("footer.php");
 ?>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </html>
 
 

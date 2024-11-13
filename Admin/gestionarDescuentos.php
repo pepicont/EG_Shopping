@@ -34,15 +34,15 @@
                 <?php
                 if(!empty($_GET['success'])){
                         if($_GET['success']=='aceptado'){
-                            echo '<div class="alert alert-primary mt-3 mx-auto" style="width: fit-content" role="alert">
-                                Local Editado con éxito
+                            echo '<div class="alert alert-success mt-3 mx-auto" style="width: fit-content" role="alert">
+                                Descuento aceptado
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';
                         } elseif($_GET['success']=='rechazado'){
-                            echo '<div class="alert alert-secondary mt-3 mx-auto" style="width: fit-content" role="alert">
-                            Local dado de baja
+                            echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
+                            Descuento rechazado
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>';
+                            </div>';no 
                         
                     }
                     ?>

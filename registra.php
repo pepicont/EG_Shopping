@@ -3,7 +3,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';
 // Incluye el archivo de autoload de Composer para cargar PHPMailer
-
+include_once("funciones.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -18,7 +18,6 @@ require 'vendor/autoload.php';
   <?php
   $lugar="registra";
   include("header.php");
-  include_once("funciones.php");
   ?>
   
 </header>
