@@ -45,7 +45,8 @@ if(!empty($_POST['crearLocal'])){
         $resultado=consultaSQL($query);
         $resultado=mysqli_fetch_array($resultado);
         $codigolocal=$resultado['codLocal'];
-        $ruta=$directorio.$codigolocal.".".$tipoImagen;
+        $ruta=$directorio."$codigolocal".".".$tipoImagen;
+        echo $ruta;
 
         $query="UPDATE locales SET imagen='$ruta' WHERE codLocal='$codigolocal'";
         $resultado=consultaSQL($query);
