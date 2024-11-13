@@ -49,6 +49,26 @@
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
     <div class="row">
+        <div class="col-12">
+            <!-- Muestra las alertas cuando se acepta o se rechaza una solicitud -->
+            <?php if(!empty($_GET['success'])){
+                    if($_GET['success']=='aprobada'){
+                        echo '<div class="alert alert-primary mt-3 mx-auto" style="width:80vh" role="alert">
+                            Solicitud  aceptada
+                            <button type="button" class="btn-close me-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
+                    } elseif($_GET['success']=='rechazada'){
+                        echo '<div class="alert alert-danger mt-3 mx-auto" style="width:80vh" role="alert">
+                            Solicitud rechazada
+                            <button type="button" class="btn-close me-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>';
+                    }
+                }
+            ?>
+        </div>
+
+    </div>
+    <div class="row">
         <!-- Div donde van a ir las opciones del admin -->
         <div class="col-12 col-md-6 col-lg-4">
             <div class="row">
@@ -111,24 +131,7 @@
                 
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <!-- Muestra las alertas cuando se acepta o se rechaza una solicitud -->
-                    <?php if(!empty($_GET['success'])){
-                            if($_GET['success']=='aprobada'){
-                                echo '<div class="alert alert-primary mt-3" style="width:80vh" role="alert">
-                                    Solicitud  aceptada
-                                </div>';
-                            } elseif($_GET['success']=='rechazada'){
-                                echo '<div class="alert alert-danger mt-3" style="width:80vh" role="alert">
-                                    Solicitud rechazada
-                                </div>';
-                            }
-                        }
-                    ?>
-                    </div>
-
-            </div>
+            
         </div>
     </div>
 </div>

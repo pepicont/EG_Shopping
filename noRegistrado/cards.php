@@ -86,6 +86,6 @@ function mostrarcards($fila, $fila1)
         </div>
     </div>
 <?php } 
-if()
+
 
 ?>
