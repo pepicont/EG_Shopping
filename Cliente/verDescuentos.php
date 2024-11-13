@@ -61,7 +61,6 @@
             </div>
         </div>
     </div>
-</div>
 <div class="container">
 <?php if(!empty($_GET['success'])){
             if($_GET['success']==1){

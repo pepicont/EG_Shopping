@@ -4,7 +4,7 @@ body{
 }
 
 .footer{
-    align-self:bottom;
+    align-self: flex-end;
 }
 
 
@@ -186,14 +186,14 @@ body{
     opacity: 0.5;
 
 }
-#menuPrincipal{
+.menuPrincipal{
     font-weight: bold;
     color: hsl(242, 68%, 40%);
     background-color: hsl(242, 68%, 90%);
     padding: 10px;
     border-radius: 8px;
 }
-#menuPrincipal:hover{
+.menuPrincipal:hover{
     background-color: hsl(242, 77%, 76%);
 
 }

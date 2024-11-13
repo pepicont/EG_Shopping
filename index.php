@@ -86,22 +86,22 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="row">
                 <div class="col-12 col-md-6 m-2" >
-                    <a href="Admin/informeDescuentos.php" class="btn btn-admin btn-lg w-100" id="menuPrincipal">
+                    <a href="Admin/informeDescuentos.php" class="btn btn-admin btn-lg w-100 menuPrincipal">
                         Informe de descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin btn-lg w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin btn-lg w-100 menuPrincipal">
                         Gestionar descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin btn-lg w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin btn-lg w-100 menuPrincipal">
                         Gestionar novedades
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarLocales.php" class="btn btn-admin  btn-lg w-100 h-100" id="menuPrincipal">
+                    <a href="Admin/gestionarLocales.php" class="btn btn-admin  btn-lg w-100 h-100b menuPrincipal">
                         Gestionar locales
                     </a>
                 </div>
@@ -127,7 +127,7 @@
                         while($usuario=mysqli_fetch_array($resultado)){ 
                     ?>
                         <!-- Tarjetas de solicitud de dueño de local para crearse una cuenta -->
-                        <div class="card" style=" margin: 10px; width:max ">
+                        <div class="card" style=" margin: 10px; width:100% ">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
                                 <h6 class="card-subtitle mb-4 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
@@ -184,7 +184,7 @@
             </div>
             <div class="w-80 w-md-50 texto mx-3">
                 <h2 class="bienvenida text-center">Te esperamos</h2>
-                <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)";>Rosario</b>, 
+                <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)">Rosario</b>, 
                 listos para darte la bienvenida a un mundo donde el buen gusto y la exclusividad son nuestra esencia. Explora, descubre, déjate inspirar.</p>
             </div>
             
@@ -232,7 +232,7 @@
             </div>
             <div class="w-80 w-md-50 texto mx-3">
                 <h2 class="bienvenida text-center">Te esperamos</h2>
-                <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)";>Rosario</b>, 
+                <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)">Rosario</b>, 
                 listos para darte la bienvenida a un mundo donde el buen gusto y la exclusividad son nuestra esencia. Explora, descubre, déjate inspirar.</p>
             </div>
             
@@ -253,6 +253,7 @@
         </div>
     </div>
 </div>
+</body>
 <footer>
     <?php 
         include("footer.php");
