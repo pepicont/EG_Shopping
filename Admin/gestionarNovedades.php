@@ -94,6 +94,7 @@ actualizarNovedades();
 
                             <div class="form-group mx-auto mx-4 p-2" style="width: fit-content">
                                 <input type="submit" name="nuevaNovedad" class="btn btn-primary px-4 py-2" value="Crear">
+                                <input type="reset" value="Restablecer" class="btn btn-secondary ">
                             </div>
                             
                         </form>

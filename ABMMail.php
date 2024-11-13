@@ -3,7 +3,6 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 require 'vendor/autoload.php';  // Incluye el archivo de autoload de Composer para cargar PHPMailer
 
-if (!empty($_POST['enviar'])){
     $mail = new PHPMailer(true); // Habilita excepciones
     try {
         // Configuración de servidor SMTP
@@ -20,6 +19,7 @@ if (!empty($_POST['enviar'])){
         // Destinatario
         $mail->addAddress('eg_shopping@yahoo.com');  // El correo del destinatario (tomado desde el formulario)
         $mail->Subject = $_POST['asunto']; // Asunto (tomado desde el formulario)
+       echo 'entro';
         if ($login==true){
             $correo= $_SESSION['usuario'];
         }
@@ -27,22 +27,24 @@ if (!empty($_POST['enviar'])){
             $correo= $_POST['email'];
         }
         $mail->Body = "Mail: $correo \n Cuerpo: ".$_POST['cuerpo']."";  // Cuerpo del mensaje (tomado desde el formulario)
-
+    echo 'entro';
         // Enviar correo
         $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
         $mail->send();
-        //if($_POST['lugar']=='registra'){
-            //header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
-            //exit();  // Sale del script
-        //} else {
-            //header("Location: index.php");  // Redirige a la página principal después de enviar el correo
-              //exit();
+        if($_POST['enviar']=='confirma'){
+            header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
+            exit();  // Sale del script
+            
+        } else {
+           header("Location: index.php");  // Redirige a la página principal después de enviar el correo
+           exit();
+           
                // Sale del script
-        //}
+        }
     }catch (Exception $e) {
         echo "Error al enviar el mensaje: {$mail->ErrorInfo}";}
 
-    }
+    
     
 
 

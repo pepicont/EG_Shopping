@@ -31,6 +31,7 @@ if (!isset($login)) { ?>
             <div class="row">
                 <div class="col-12">
                     <?php
+                    $estoy="verLocales";
                     include("../breadCrumbs.php");
                     ?>
                 </div>

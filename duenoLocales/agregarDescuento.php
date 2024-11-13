@@ -97,7 +97,8 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="form-group modal-footer">
               <input type="submit" name="submit" value="Crear descuento" class="btn btn-primary w-100 m-1">
-              <a href="gestionDescuentos.php" class="btn btn-primary w-100 m-1">volver</a>
+              <input type="reset" value="Restablecer" class="btn btn-secondary ">
+              
             </div>
           </form>
         </div>

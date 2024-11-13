@@ -26,17 +26,18 @@
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
-        <div class="carousel-inner" height="100vh">
-            <div class="carousel-item active">
-                <img src="assets/carr1.jpg" class="w-100"   alt="foto de shopping 1" >
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="height: 50vh;">
+                <img src="assets/carr1.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;" alt="foto de shopping 1">
             </div>
-            <div class="carousel-item">
-                <img src="assets/carr2.jpg"   alt="foto de shopping 2">
+            <div class="carousel-item" style="height: 50vh;">
+                <img src="assets/carr2.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;" alt="foto de shopping 2">
             </div>
-            <div class="carousel-item">
-                <img src="assets/carr3.jpg"   alt="foto de shopping 3">
+            <div class="carousel-item" style="height: 50vh;">
+                <img src="assets/carr3.jpg" class="d-block w-100" style="height: 100%; object-fit: cover;" alt="foto de shopping 3">
             </div>
         </div>
+
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
@@ -73,22 +74,22 @@
         <div class="col-12 col-md-6 col-lg-4">
             <div class="row">
                 <div class="col-12 col-md-6 m-2" >
-                    <a href="Admin/informeDescuentos.php" class="btn btn-admin w-100" id="menuPrincipal">
+                    <a href="Admin/informeDescuentos.php" class="btn btn-admin btn-lg" id="menuPrincipal">
                         Informe de descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarDescuentos.php" class="btn btn-admin btn-lg" id="menuPrincipal">
                         Gestionar descuentos
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarNovedades.php" class="btn btn-admin btn-lg" id="menuPrincipal">
                         Gestionar novedades
                     </a>
                 </div>
                 <div class="col-12 col-md-6 m-2">
-                    <a href="Admin/gestionarLocales.php" class="btn btn-admin  w-100" id="menuPrincipal">
+                    <a href="Admin/gestionarLocales.php" class="btn btn-admin  btn-lg w-100 h-100" id="menuPrincipal">
                         Gestionar locales
                     </a>
                 </div>
@@ -136,40 +137,50 @@
     </div>
 </div>
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="duenoLocal") echo"d-none";?>">
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="duenoLocales/gestionDescuentos.php" class="btn btn-login btn-primary w-100">
-                Gestion de descuentos
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="duenoLocales/verInformeDescuento.php" class="btn btn-primary w-100">
-                Ver informe de descuentos
-            </a>
-        </div>
-    </div>
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="duenoLocales/verSolicitudDescuentos.php" class="btn btn-primary w-100">
-                Ver solicitud de descuentos
-            </a>
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-4 d-flex flex-column justify-content-center">
+            <div class="w-100">
+                <div class="container mb-3">
+                    <a href="duenoLocales/gestionDescuentos.php" class="btn btn-login btn-primary w-100 btn-lg">
+                        Gestion de descuentos
+                    </a>
+                </div>
+                <div class="container mb-3">
+                    <a href="duenoLocales/verInformeDescuento.php" class="btn btn-login btn-primary w-100 btn-lg">
+                        Ver informe de descuentos
+                    </a>
+                </div>
+                <div class="container mb-3">
+                    <a href="duenoLocales/verSolicitudDescuentos.php" class="btn btn-login btn-primary w-100 btn-lg">
+                        Ver solicitud de descuentos
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+</div>
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="cliente") echo"d-none";?>">
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto ">
-            <h1 class="bienvenida">Bienvenido a Mundo Shopping</h1>
-            <p>Descubre un lugar donde el lujo, la exclusividad y el diseño se encuentran para ofrecerte una experiencia de compras sin igual. 
-                En <b style="color:hsl(242, 68%, 40%); ">Mundo shopping</b>, redefinimos el significado de estilo y sofisticación, reuniendo 
-                las marcas de moda más prestigiosas del mundo, productos únicos y servicios excepcionales</p>
+    <div class="row mb-3 ">
+        <div class="col-auto d-flex flex-column justify-content-center align-items-md-center align-items-start ">
+            <h1 class="bienvenida text-center">Bienvenido a Mundo Shopping</h1>
+            <div class="w-80 w-md-50 texto mx-3">
+                <p class="" style="text-indent: 30px; font-weight:500; font-size:20px;">Descubre un lugar donde el lujo, la exclusividad y el diseño se encuentran para ofrecerte una experiencia de compras sin igual. 
+                    En <b style="color:rgb(235, 103, 235); ">Mundo shopping</b>, redefinimos el significado de estilo y sofisticación, reuniendo 
+                    las marcas de moda más prestigiosas del mundo, productos únicos y servicios excepcionales</p>
+            </div>
+            <div class="w-80 w-md-50 texto mx-3">
+                <h2 class="bienvenida text-center">Te esperamos</h2>
+                <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)";>Rosario</b>, 
+                listos para darte la bienvenida a un mundo donde el buen gusto y la exclusividad son nuestra esencia. Explora, descubre, déjate inspirar.</p>
+            </div>
             
         </div>
     </div>
     <div class="row mb-3 justify-content-center" style="display: flex; flex-wrap: wrap;">
+        <?php include ("Cliente/descMasutilizados.php")?>
+        
         <div class="col-auto d-flex flex-column justify-content-center">
             <div class="container mb-3">
             <a href="Cliente/verDescuentos.php" class="btn btn-login btn-primary w-100 btn-lg">
@@ -186,30 +197,52 @@
                 Ver novedades
             </a>
             </div>
+            <div class="container mb-3">
+            <a href="Cliente/verLocales.php" class="btn btn-primary w-100 btn-lg">
+                Ver locales
+            </a>
+            </div>
         </div>
-            <?php include ("Cliente/descMasutilizados.php")?>
+        
         
     </div>
     
 </div>
 
 <div class="container mt-4 justify-content-center <?php if ($login==TRUE){ echo"d-none";}?>">
-    <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="noRegistrado/verLocales.php" class="btn btn-login btn-primary w-100">
-                Ver locales
-            </a>
+    <div class="row mb-3 ">
+        <div class="col-auto d-flex flex-column justify-content-center align-items-md-center align-items-start ">
+            <h1 class="bienvenida text-center">Bienvenido a Mundo Shopping</h1>
+            <div class="w-80 w-md-50 texto mx-3">
+                <p class="" style="text-indent: 30px; font-weight:500; font-size:20px;">Descubre un lugar donde el lujo, la exclusividad y el diseño se encuentran para ofrecerte una experiencia de compras sin igual. 
+                    En <b style="color:rgb(235, 103, 235); ">Mundo shopping</b>, redefinimos el significado de estilo y sofisticación, reuniendo 
+                    las marcas de moda más prestigiosas del mundo, productos únicos y servicios excepcionales</p>
+            </div>
+            <div class="w-80 w-md-50 texto mx-3">
+                <h2 class="bienvenida text-center">Te esperamos</h2>
+                <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)";>Rosario</b>, 
+                listos para darte la bienvenida a un mundo donde el buen gusto y la exclusividad son nuestra esencia. Explora, descubre, déjate inspirar.</p>
+            </div>
+            
         </div>
     </div>
     <div class="row mb-3 justify-content-center">
-        <div class="col-auto w-100">
-            <a href="noRegistrado/verDescuentos.php" class="btn btn-login btn-primary w-100">
-                Ver descuentos
+    <div class="col-4 d-flex flex-column justify-content-center">
+            <div class="container mb-4">
+            <a href="noRegistrado/verLocales.php" class="btn btn-login btn-primary w-100 btn-lg">
+                Ver locales
             </a>
+            </div>
+            <div class="container mb-4">
+            <a href="noRegistrado/verDescuentos.php" class="btn btn-primary w-100 btn-lg">
+            Ver descuentos
+            </a>
+            </div>
+            <div class="container mb-4">
+            </div>
         </div>
     </div>
 </div>
-<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 <footer>
     <?php 
         include("footer.php");

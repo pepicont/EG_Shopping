@@ -38,8 +38,8 @@ if(!empty($_GET['filtrar'])){
     if(!empty($_GET["ubicacionLocal"])){
         $busqueda .= "AND ubicacionLocal LIKE '%".$_GET["ubicacionLocal"]."%' ";
     }
-    if(!empty($_GET['rubro'])){
-        $rubro=trim($_GET['rubro']);
+    if(!empty($_GET['rubroLocal'])){
+        $rubro=trim($_GET['rubroLocal']);
             $busqueda .= " AND rubroLocal LIKE '%" . $rubro . "%'  ";
         
     }

@@ -246,10 +246,12 @@ li.active a.migasDePan{
 }
 
 .bienvenida{
-    font-size: 2.5rem;
+    font-family: 'Helvetica Neue', 'sans-serif';
+    font-size: 2.5rem; /* Tamaño de la fuente */
     font-weight: bold;
     color: hsl(242, 68%, 40%);
-    text-align: center;
-    margin: 20px 0;
+
+    padding-bottom: 5px;
+    margin-bottom: 20px;
     text-shadow: 2px 2px hsl(242, 68%, 90%);
 }

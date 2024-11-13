@@ -18,6 +18,7 @@ include_once("funciones.php");
   <?php
   $lugar="registra";
   include("header.php");
+  $entro = 0;
   ?>
   
 </header>
@@ -78,55 +79,64 @@ include_once("funciones.php");
         $estado=0;
       }else{
         //Enviamos el mail para que confirme el admin al dueño de local
-        $mail = new PHPMailer(true); // Habilita excepciones
-        try {
-          // Configuración de servidor SMTP
-          $mail->isSMTP();  // Usa SMTP
-          $mail->Host = 'smtp.hostinger.com';  // Servidor SMTP de Hostinger
-          $mail->SMTPAuth = true;  // Habilita autenticación SMTP
-          $mail->Username = 'eg_shopping@egshopping.store';  // Tu correo de Hostinger
-          $mail->Password = '6qAGB$Hhtq&@ma+';  // Tu contraseña o la contraseña de aplicación
-          $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Usa SSL
-          $mail->Port = 465;  // Puerto SMTP para SSL
-  
-          // Remitente
-          $mail->setFrom('eg_shopping@egshopping.store', 'admin');  // El correo y nombre del remitente
-          // Destinatario
-          $mail->addAddress('eg_shopping@yahoo.com');  // El correo del destinatario (tomado desde el formulario)
-          $mail->Subject = "Nueva solicitud de dueno de local";  // Asunto (tomado desde el formulario)
-          $mail->Body = "Nombre: $nombre $apellido \n email: $email";  // Cuerpo del mensaje (tomado desde el formulario)
-  
-          // Enviar correo
-          $mail->SMTPDebug = 2; // Habilita depuración para ver detalles del proceso
-          $mail->send();
-          //if($_POST['lugar']=='registra'){
-            //  header("Location: registra.php");  // Redirige a la página de registro después de enviar el correo
-            //  exit();  // Sale del script
-          //} else {
-            //  header("Location: index.php");  // Redirige a la página principal después de enviar el correo
-            //  exit();  // Sale del script
-          //}
-        } catch (Exception $e) {
-            echo 'Error de mail: ' . $mail->ErrorInfo;  // Muestra un mensaje de error si no se pudo enviar
-        }
+
+        $entro = 1;
         $categoriaCliente='';
         $estado=1;
       }
       $query = "INSERT INTO usuarios (nombreUsuario,claveUsuario,categoriaCliente,tipoUsuario,nombre,apellido,fechaNacimiento,estado)	
       values ('$email','$contrasenaEncriptada', '$categoriaCliente', '$tipoUsuario', '$nombre','$apellido','$fechaNacimiento','$estado')";
-      consultaSQL($query) or die (mysqli_error($link));
-      
-      echo("Usuario registrado con éxito");
-      echo ("<A href='index.php'>Iniciar sesión</A>");
-      } else{
-        echo("El mail ingresado ya está registrado");
+      consultaSQL($query) or die (mysqli_error($link));?>
+      <div class="container d-flex" style="justify-content:center">
+        <?php 
+      echo '<div class="alert alert-success mt-3  " style="width: fit-content" role="alert">
+                                Usuario registrado con éxito. 
+                                <a href="index.php"> Iniciar sesión</a>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div> ';
+      ?>
+    </div> <?php
+      } else{?>
+        <div class="container d-flex" style="justify-content:center">
+          <?php 
+        echo '<div class="alert alert-warning mt-3  " style="width: fit-content" role="alert">
+                                  El mail ingresado ya está registrado 
+                                  
+                                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                              </div> ';
+        ?>
+      </div> <?php
       }
-    }else{
-      echo ("Las contraseñas ingresadas no coinciden");
-    }
+    }else{?>
+    <div class="container d-flex" style="justify-content:center" >
+    <?php echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
+                                Las contraseñas ingresadas no coinciden
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>';
+    ?>
+    </div> 
+    
+    <?php }
   }
 
-      
+if($entro == 1){
+  ?>
+          <form id="autoSubmitForm" action="ABMMail.php" method="post" style="display:none;">
+            <input type="hidden" name="asunto" value="Confirmación de registro de dueño local.">
+            <input type="hidden" name="email" value="<?php echo($email)?>">
+            <input type="hidden" name="cuerpo" value="Se ha registrado un nuevo dueño de local. 
+            De nombre: <?php echo($nombre)?>. 
+            Apellido: <?php echo($apellido)?>. 
+            Fecha de nacimiento: <?php echo($fechaNacimiento)?>.
+            https://egshopping.store/login.php">
+            <input type="submit" name="enviar" value="confirma">
+          </form>
+          <script type="text/javascript">
+            document.getElementById('autoSubmitForm').submit();
+          </script>
+
+<?php
+}
 
 ?>
 </body>

@@ -45,18 +45,18 @@ $paginacion = "LIMIT $offset, $registros_por_pagina";
             ?>
         </div>
     </div>
-    <h1 class="text-center my-4">Novedades</h1>
+    <h1 class="bienvenida text-center my-4">Novedades</h1>
     <?php 
         $query = "SELECT * FROM novedades " . $busqueda . " AND fechaHasta >= '" . date("Y-m-d") . "' AND estado = 'activa'  $paginacion";
         $resultado = consultaSQL($query);
         while ($fila = mysqli_fetch_array($resultado)) {
     ?>  
         <div class="container" style="width: 60%;">
-            <div class="card" style="margin: 10px; padding:10px">
-            <div style="height:80%">
-                <h5 class="card-title"><b>  </b> <?php echo($fila["nombreNovedad"]) ?></h5> 
-                <p class="card-text"><b>    </b> <?php echo($fila["textoNovedad"]) ?></p>
-            </div>
+            <div class="card" style="margin: 10px; padding:10px; border: 1px solid rgb(244, 69, 221)">
+                <div style="height:80%">
+                    <h5 class="card-title" style="  ;padding-bottom: 5px; margin-bottom: 20px;text-shadow: 2px 2px hsl(242, 68%, 90%);"><b>   <?php echo($fila["nombreNovedad"]) ?></b></h5> 
+                    <p class="card-text" style="text-indent: 30px; font-weight:500;font-size:20px;"> <?php echo($fila["textoNovedad"]) ?></p>
+                </div>
             </div>
         </div>
     <?php

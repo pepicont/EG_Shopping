@@ -49,7 +49,8 @@ if($estoy == "verSolicitudDescuentos"){
     <br> 
     <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between">
         <input type="submit" name="submit" value="Aplicar filtros" class="btn btn-primary w-100 m-1">
-        <a href="<?php echo($borrar)?>" class="btn btn-primary w-100 m-1">Borrar filtros</a>
+        <input type="reset" value="Restablecer" class="btn btn-secondary m-1">
+
     </div>
 </form>
 

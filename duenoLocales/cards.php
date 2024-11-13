@@ -18,7 +18,7 @@ if (mysqli_num_rows($vresultado) > 0) {
     while ($fila = mysqli_fetch_array($vresultado)) {
         $codLocal = $fila["codLocal"];
         $codLocalPaginacion .= " OR codLocal = '".$codLocal."'";
-        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal $busqueda "; 
+        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal AND estadoPromo = 'activa' $busqueda "; 
         $cont = 0;
         $vresultado2 = consultaSQL($query2);
         if (mysqli_num_rows($vresultado2) > 0) {
@@ -39,7 +39,6 @@ if (mysqli_num_rows($vresultado) > 0) {
                 }
 
                 if ($estoy == "informeDescuentos") { // si estoy en informe descuentos cuento cuantas veces usaron el descuento
-                    $total_uso_promociones++;
                     $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada' ";
                     $vresultado3 = consultaSQL($query3);
                     if (mysqli_num_rows($vresultado3) > 0) {
@@ -65,6 +64,7 @@ if (mysqli_num_rows($vresultado) > 0) {
 if($haypromo != 0) {
     if ($total_uso_promociones != 0){
     if($estoy == "informeDescuentos" or $estoy == "gestionDescuentos") {
+        
         $total_paginas = ceil($total_uso_promociones / $registros_por_pagina);
         $filaPaMostrar = array_slice($filaPaMostrar, $offset, $registros_por_pagina);
         $fila2PaMostrar = array_slice($fila2PaMostrar, $offset, $registros_por_pagina);
@@ -146,7 +146,6 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
                 <p class="card-text">Del local: <?php echo ($fila["nombreLocal"]) ?></p>
                 <p class="card-text">Dias de la semana: <?php echo($fila2["diaSemana"]) ?></p>
                 <p class="card-text">Plazo: <?php echo($fila2["fechaDesde"]); echo(" --- "); echo($fila2["fechaHasta"]) ?></p> 
-                <p class="card-text">Estado: <?php echo($fila2["estadoPromo"]) ?></p>
             </div>
             <div style="height: 65px;">
                 <button type="button" class="btn btn-danger w-100 m-1 <?php if ($estoy != "gestionDescuentos") echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -155,7 +154,7 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
                 <p class="card-text <?php if ($estoy != "informeDescuentos") echo "d-none" ?>">Se utilizo: <?php echo($cont) ?>  </p>
                 <div class="card-footer d-flex justify-content-between <?php if ($estoy != "verSolicitudDescuentos") echo "d-none" ?>" style="border-top: 0px;">
                     <a href="cambiarEstadoPromo.php?cod=<?php echo("1");?>&promo=<?php echo("".$fila2['cod']."")?>&codCli= <?php echo("".$cont['codCliente']."")?>" class="btn btn-primary m-1">Aceptar solicitud</a>
-                    <a href="cambiarEstadoPromo.php?cod=<?php echo("2"); ?>&promo=<?php echo("".$fila2['cod']."")?>&codCli= <?php echo("".$cont['codCliente']."")?>" class="btn btn-primary m-1">Denegar solicitud</a>
+                    <a href="cambiarEstadoPromo.php?cod=<?php echo("2"); ?>&promo=<?php echo("".$fila2['cod']."")?>&codCli= <?php echo("".$cont['codCliente']."")?>" class="btn btn-danger m-1">Denegar solicitud</a>
                 </div>
             </div>
         </div>
@@ -172,7 +171,7 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
                 </div>
                 <div class="modal-footer mx-auto text-center w-100 p-2 d-flex justify-content-between">
                     <a href="eliminarDescuento.php?cod=<?php echo($fila2['cod']) ?>" class="btn btn-primary m-1">Eliminar descuento</a>
-                    <button type="button" class="btn btn-secundary m-1" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger m-1" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </div>
         </div>

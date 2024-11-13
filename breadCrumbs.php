@@ -57,6 +57,9 @@
             case "verNovedades":
                 echo '<li class="breadcrumb-item active" active aria-current="ver novedades"><a class="migasDePan" href="verNovedades.php" >NOVEDADES</a></li>';
             break;
+            case "verLocales":
+                echo '<li class="breadcrumb-item active" active aria-current="ver locales"><a class="migasDePan" href="verLocales.php" >LOCALES</a></li>';
+            break;
             default:
                 //echo '<li class="breadcrumb-item active" aria-current="page">Inicio</li>';
             break;

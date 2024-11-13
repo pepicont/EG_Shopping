@@ -73,8 +73,8 @@
                                 Domingo: <input type="checkbox" name="dia[]"class="form-checkinput" aria-describedby="helpId" value="domingo"><br>
                             </div>
                             <div class="form-group mx-auto text-center w-100 p-2 d-flex justify-content-between" >
-                                <input type="submit" name="submit" value="Aplicar" class="btn btn-primary w-100 m-1">
-                                <a href="informeDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
+                                <input type="submit" name="submit" value="Aplicar" class="btn btn-primary w-100 ">
+                                <input type="reset" value="Restablecer" class="btn btn-secondary ">
                             </div>
                         </form>
                     </div>
