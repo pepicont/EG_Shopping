@@ -19,11 +19,11 @@ if(isset($_GET["submit"])){
         $numDias = count($_GET['dia']);
         for($i = 0; $i < $numDias; $i++){
             if($i == 0){
-                $busqueda .= "AND ";
+                $busqueda .= "AND diaSemana LIKE  ";
             }else{
                 $busqueda .= "OR ";
             }
-            $busqueda .= "diaSemana LIKE '%" . $_GET['dia'][$i] . "%'  ";
+            $busqueda .= "'%" . $_GET['dia'][$i] . "%'  ";
         }
     }
 }

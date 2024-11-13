@@ -149,7 +149,7 @@
                         <div class="listado px-auto">
                             <?php
                                 // Logica de la paginación
-                                $limite = 6; // cantidad de resultados que se muestran en la página
+                                $limite = 4; // cantidad de resultados que se muestran en la página
                                 if (isset($_GET["pagina"])) {
                                     $pagina  = $_GET["pagina"];
                                 } else {

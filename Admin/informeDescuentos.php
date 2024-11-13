@@ -154,7 +154,7 @@
                             }else{$busqueda = "";}
                         
                             // Logica de la paginación
-                            $limite = 6; // cantidad de resultados que se muestran en la página
+                            $limite = 8; // cantidad de resultados que se muestran en la página
                             if (isset($_GET["pagina"])) {
                                 $pagina  = $_GET["pagina"];
                             } else {

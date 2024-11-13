@@ -14,18 +14,14 @@
     <hr>
     <div class="form-group">
         Fecha desde: <input type="date" id="fechaDes" name="fechaDes"> </br> </br>
-    </div>
-    <div class="form-group">
         Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 
         <hr>
     </div>
     <div class="form-group" style="width: fit-content">
-        Rubros: <br>
-        Ropa: <input type="checkbox" name="rubros[]" value="ropa"> <br>
-        Maquillaje: <input type="checkbox" name="rubros[]" value="maquillaje"> <br>
-        Calzado: <input type="checkbox" name="rubros[]" value="calzado"> <br>
-        Perfumería: <input type="checkbox" name="rubros[]" value="perfumeria"> <br>
+        <label for="rubro" style="text-decoration:underline">Rubro: </label>
+        <input type="text" name="rubro" class="form-control" id="rubro" placeholder="indumentaria...">
     </div>
+
     <div class="form-group" style="width: fit-content">
         Dia de la semana: <br>
         Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
@@ -55,16 +51,10 @@ if($categoria == 'inicial'){
 $busqueda2 = "";
 
 if (isset($_GET["filtrar"])) {
-    if (isset($_GET['rubros']) && !empty($_GET['rubros'])) {
-        $cantRubros = count($_GET['rubros']);
-        for ($t = 0; $t < $cantRubros; $t++) {
-            if ($t == 0) {
-                $busqueda2 .= "AND ";
-            } else {
-                $busqueda2 .= "OR ";
-            }
-            $busqueda2 .= "rubroLocal LIKE '%" . $_GET['rubros'][$t] . "%' ";
-        }
+    if (isset($_GET['rubro']) && !empty($_GET['rubro'])) {
+        $rubro=strtolower($_GET['rubro']);
+        $busqueda2 .= "AND rubroLocal LIKE '%" . $rubro . "%' ";
+    
     }
     if (isset($_GET['nombreLocal']) && !empty($_GET['nombreLocal'])) {
         $busqueda2 .= "AND nombreLocal LIKE '%" . $_GET['nombreLocal'] . "%' ";
@@ -86,14 +76,15 @@ if (isset($_GET["filtrar"])) {
         $numDias = count($_GET['dia']);
         for ($i = 0; $i < $numDias; $i++) {
             if ($i == 0) {
-                $busqueda .= "AND ";
+                $busqueda .= "AND diaSemana LIKE ";
             } else {
                 $busqueda .= "OR ";
             }
-            $busqueda .= "diaSemana LIKE '%" . $_GET['dia'][$i] . "%' ";
+            $busqueda .= "'%" . $_GET['dia'][$i] . "%' ";
         }
     }
 }
+
 ?>
 
 
