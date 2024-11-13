@@ -72,7 +72,7 @@ function mostrarcards($fila, $fila1)
         <div class="card-body">
             <div style="height:80%">
                 <h5 class="card-title">Cod descuento: <?php echo ($fila["cod"]) ?></h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo ($fila["textoPromo"]) ?></h6>
+                <h6 class="card-subtitle  text-body-secondary">Descripcion: <?php echo ($fila["textoPromo"]) ?></h6>
                 <p class="card-text">Del local: <?php echo ($fila1["nombreLocal"]) ?></p>
                 <p class="card-text">Rubro: <?php echo ($fila1["rubroLocal"]) ?></p>
                 <p class="card-text">Dias de la semana: <?php echo ($fila["diaSemana"]) ?></p>

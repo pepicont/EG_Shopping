@@ -139,7 +139,7 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
     <div class="card" style="margin: 15px; width: 18rem;">
         <div class="card-body">
             <div style="height:80%">
-                <h5 class="card-title">Cod descuento: <?php echo($fila2["cod"]) ?></h5>
+                <h5 class="card-title tituloCard">Cod descuento: <?php echo($fila2["cod"]) ?></h5>
                 <h6 class="card-subtitle mb-2 text-body-secondary">Descripcion: <?php echo($fila2["textoPromo"]) ?></h6>
                 <p class="card-text">Categoria de cliente: <?php echo($fila2["categoriaCliente"]) ?></p>
                 <p class="card-text <?php if ($estoy != "verSolicitudDescuentos") echo "d-none" ?>">codigo del cliente: <?php echo($cont["codCliente"]) ?> </p>

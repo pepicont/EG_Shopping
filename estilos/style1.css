@@ -255,3 +255,19 @@ li.active a.migasDePan{
     margin-bottom: 20px;
     text-shadow: 2px 2px hsl(242, 68%, 90%);
 }
+.card-title{
+    font-weight: bold;
+    font-family: 'Helvetica Neue', 'sans-serif';
+    color: hsl(242, 68%, 40%);
+    text-shadow: 2px 2px hsl(242, 68%, 90%);
+}
+.card-subtitle{
+    margin-bottom: 30px;
+}
+
+.tituloCard{
+    font-weight: bold;
+    font-family: 'Helvetica Neue', 'sans-serif';
+    color: hsl(242, 68%, 40%);
+    text-shadow: 2px 2px hsl(242, 68%, 90%);
+}

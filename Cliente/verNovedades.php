@@ -52,7 +52,7 @@ $paginacion = "LIMIT $offset, $registros_por_pagina";
         while ($fila = mysqli_fetch_array($resultado)) {
     ?>  
         <div class="container" style="width: 60%;">
-            <div class="card" style="margin: 10px; padding:10px; border: 1px solid rgb(244, 69, 221)">
+            <div class="card" style="margin: 10px; padding:10px; border: 1px solid rgb(164, 88, 236);">
                 <div style="height:80%">
                     <h5 class="card-title" style="  ;padding-bottom: 5px; margin-bottom: 20px;text-shadow: 2px 2px hsl(242, 68%, 90%);"><b>   <?php echo($fila["nombreNovedad"]) ?></b></h5> 
                     <p class="card-text" style="text-indent: 30px; font-weight:500;font-size:20px;"> <?php echo($fila["textoNovedad"]) ?></p>
