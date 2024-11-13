@@ -102,7 +102,7 @@ if (!isset($login)) { ?>
 
                                     <div class="card " style=" margin: 10px; width:210px; ">
 
-                                        <img src="<?php echo $local['imagen']?>" class="card-img-top" alt="..." style="height:200px; width:200px; margin:5px">
+                                        <img src="<?php echo $local['imagen']?>" class="card-img-top" alt="Imagen del local" style="height:200px; width:200px; margin:5px">
                                         <h5><?php echo ($local['codLocal']) ?></h5><!-- Acá iría la imagen del local -->
                                         <div class="card-body pt-0">
                                             <h5 class="card-title"><?php echo ($local['nombreLocal']) ?></h5>
@@ -167,6 +167,7 @@ if (!isset($login)) { ?>
 
                 </div>
             </div>
+        </div>
     </body>
     <footer>
         <?php include("../footer.php") ?>
