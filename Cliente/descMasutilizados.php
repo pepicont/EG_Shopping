@@ -27,25 +27,32 @@ if (mysqli_num_rows($resultado) > 0) {
 usort($array, function($a, $b) {
     return $b['count'] - $a['count'];
 });
-if (count($array) > 0) {
-    echo '<h5> Descuentos mas populares : </h5>';
-}
 ?>
 
-<div class="container" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: space-around;">
-    <?php foreach ($array as $descuento) { 
-        $query = "SELECT * FROM locales WHERE codLocal = '" . $descuento['promo']['codLocal'] . "'";
-        $resultado = consultaSQL($query);
-        while ($fila = mysqli_fetch_array($resultado)) {
-            $local = $fila['nombreLocal'];
+<div class="col-7 text-center" style="width: 100%; display: flex; flex-wrap: wrap; justify-content: center;">
+    <div class="row">
+        <?php
+        if (count($array) > 0) {
+            echo '<h5 class="bienvenida"> Descuentos mas populares : </h5>';
         }
         ?>
-        <div class="card" style="margin: 10px; padding:10px; width: 300px;">
-            <div style="height:80%">
-                <h5 class="card-title"><b></b> <?php echo htmlspecialchars($descuento['promo']['textoPromo']); ?></h5>
-                <p class="card-text"><b></b> <?php echo htmlspecialchars($local); ?></p>
-                <p class="card-text"><b></b> <?php echo htmlspecialchars($descuento['promo']['diaSemana']); ?></p>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <?php
+        foreach ($array as $descuento) { 
+            $query = "SELECT * FROM locales WHERE codLocal = '" . $descuento['promo']['codLocal'] . "'";
+            $resultado = consultaSQL($query);
+            while ($fila = mysqli_fetch_array($resultado)) {
+                $local = $fila['nombreLocal'];
+            }
+        ?>
+            <div class="card" style="margin: 10px; padding:10px; width: 300px;">
+                <div style="height:80%">
+                    <h5 class="card-title"><b></b> <?php echo htmlspecialchars($descuento['promo']['textoPromo']); ?></h5>
+                    <p class="card-text"><b></b> <?php echo htmlspecialchars($local); ?></p>
+                    <p class="card-text"><b></b> <?php echo htmlspecialchars($descuento['promo']['diaSemana']); ?></p>
+                </div>
             </div>
-        </div>
-    <?php } ?>
+        <?php } ?>
+    </div>
 </div>

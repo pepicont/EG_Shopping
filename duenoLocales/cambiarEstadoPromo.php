@@ -20,7 +20,7 @@ include_once("../funciones.php");
     while($fila = mysqli_fetch_array($resultados)){
         if($fila['estado'] == 'aceptada'){
             $cantAceptadas++;
-        }
+        } 
     }
     if($cantAceptadas == 3){
         $query = "UPDATE usuarios SET estado='medium' WHERE cod='".$codCli."'";

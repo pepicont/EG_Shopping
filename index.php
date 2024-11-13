@@ -20,32 +20,32 @@
     
 <body>
 <div class="row" style="display:flex; justify-content:center">
-<div id="carouselExampleCaptions" class="carousel slide "> <!-- Carrusel -->
-    <div class="carousel-indicators" >
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-        <div class="carousel-inner">
+    <div id="carouselExampleCaptions" class="carousel slide"> <!-- Carrusel -->
+        <div class="carousel-indicators" >
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner" height="100vh">
             <div class="carousel-item active">
-            <img src="assets/carr1.jpg" height="600px" class="d-block w-100" alt="foto de shopping 1" >
-        </div>
+                <img src="assets/carr1.jpg" class="w-100"   alt="foto de shopping 1" >
+            </div>
             <div class="carousel-item">
-            <img src="assets/carr2.jpg" height="600px" class="d-block w-100" alt="foto de shopping 2">
-        </div>
+                <img src="assets/carr2.jpg"   alt="foto de shopping 2">
+            </div>
             <div class="carousel-item">
-            <img src="assets/carr3.jpg" height="600px" class="d-block w-100" alt="foto de shopping 3">
+                <img src="assets/carr3.jpg"   alt="foto de shopping 3">
+            </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
-</div>
 </div>
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="administrador") echo"d-none";?>">
     <div class="row">
@@ -161,7 +161,16 @@
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="cliente") echo"d-none";?>">
     <div class="row mb-3 justify-content-center">
-        <div class="col-3 d-flex flex-column justify-content-center">
+        <div class="col-auto ">
+            <h1 class="bienvenida">Bienvenido a Mundo Shopping</h1>
+            <p>Descubre un lugar donde el lujo, la exclusividad y el diseño se encuentran para ofrecerte una experiencia de compras sin igual. 
+                En <b style="color:hsl(242, 68%, 40%); ">Mundo shopping</b>, redefinimos el significado de estilo y sofisticación, reuniendo 
+                las marcas de moda más prestigiosas del mundo, productos únicos y servicios excepcionales</p>
+            
+        </div>
+    </div>
+    <div class="row mb-3 justify-content-center" style="display: flex; flex-wrap: wrap;">
+        <div class="col-auto d-flex flex-column justify-content-center">
             <div class="container mb-3">
             <a href="Cliente/verDescuentos.php" class="btn btn-login btn-primary w-100 btn-lg">
                 Ver descuentos
@@ -178,9 +187,8 @@
             </a>
             </div>
         </div>
-        <div class="col-8 text-center">
             <?php include ("Cliente/descMasutilizados.php")?>
-        </div>
+        
     </div>
     
 </div>
@@ -201,8 +209,7 @@
         </div>
     </div>
 </div>
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
 <footer>
     <?php 
         include("footer.php");
