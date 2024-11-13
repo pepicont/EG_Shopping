@@ -28,7 +28,8 @@
                         <p class="text-center" style="font-size: 24px; color:rgb(235, 103, 235); font-weight:600;">
                             Formulario de contacto
                         </p>
-                        <form action="ABMMail.php" method="POST" class="row g-3">
+                        
+                        <form action="<?php echo $rutaFooter; ?>ABMMail.php" method="POST" class="row g-3">
                             <div class="col-12">
                                 <label for="email" class="form-label">Email:</label>
                                 <?php 
@@ -56,7 +57,4 @@
 
         </div>
 </div>
-
-
-
 

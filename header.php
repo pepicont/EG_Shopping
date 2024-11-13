@@ -24,10 +24,12 @@ if (isset($_SESSION['tipoUsuario'])){
         if(empty($lugar)){
             $lugar="";
         }
-        if($lugar=="admin" or $lugar=="duenoLocal" or $lugar=="cliente" or $lugar=="noRegistrado")
+        if($lugar=="admin" or $lugar=="duenoLocal" or $lugar=="cliente" or $lugar=="noRegistrado"){
             $ruta="../";
+            $rutaFooter="../";}
         else{
             $ruta="";
+            $rutaFooter="";
         }
 
     ?>
@@ -182,3 +184,4 @@ if (isset($_SESSION['tipoUsuario'])){
             
         </div>
     </nav>  
+

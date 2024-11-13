@@ -10,7 +10,7 @@ $codLocalPaginacion = isset($codLocalPaginacion) ? $codLocalPaginacion : "";
 $codPromoPaginacion = isset($codPromoPaginacion) ? $codPromoPaginacion : "";
 $total_uso_promociones = 0;
 $haypromo = 0;
-include("validaciones.php");
+include("Validaciones.php");
 $idusuario = $_SESSION["idUsuario"];
 $query = "SELECT * FROM locales WHERE codUsuario = $idusuario";
 $vresultado = consultaSQL($query);

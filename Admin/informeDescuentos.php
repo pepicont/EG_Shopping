@@ -229,7 +229,6 @@
                     <?php
                     } else {
                         echo "No se encontraron promociones.";
-                        echo $busqueda;
                     }
                             
                     ?>
