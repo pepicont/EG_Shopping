@@ -6,7 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
 include_once("../funciones.php");
 $idusuario = $_SESSION["idUsuario"];
 if (isset($_POST['submit'])) {
-  
   $query1 = "SELECT * FROM usuarios WHERE codUsuario = '" . $idusuario . "'";
   $vresultado1 = consultaSQL($query1);
   if (mysqli_num_rows($vresultado1) > 0) {
@@ -41,8 +40,16 @@ if (isset($_POST['submit'])) {
     header("Location: gestionDescuentos.php?seCreo=" . $seCreo);
     exit();
   }
+$query = "SELECT * FROM locales WHERE codUsuario = '" . $idusuario . "'";
+$resultados = consultaSQL($query);
+
+if(mysqli_num_rows($resultados)>0){
 ?>
+  
   <button type="button" class="btn btn-primary w-100 " data-bs-toggle="modal" data-bs-target="#exampleModal">Crear descuento</button>
+
+<?php } ?>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -53,13 +60,13 @@ if (isset($_POST['submit'])) {
         <div class="modal-body">
           <form action="agregarDescuento.php" method="POST">
             <div class="form-group">
-              Texto de la promo: <input type="text" required id="textpro" name="textpro">
+              Texto de la promo: <input type="text" class="form-control" required id="textpro" name="textpro">
             </div>
             <div class="form-group">
-              Fecha de inicio: <input type="date" required id="fechaini" name="fechaini">
+              Fecha de inicio: <input type="date" class="form-control" required id="fechaini" name="fechaini">
             </div>
             <div class="form-group">
-              Fecha de fin: <input type="date" required id="fechahas" name="fechahas">
+              Fecha de fin: <input type="date" class="form-control" required id="fechahas" name="fechahas">
             </div>
               <div class="checkbox-group required">
                 Dia de la semana: <br>

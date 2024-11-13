@@ -219,9 +219,9 @@ actualizarNovedades();
                                                                     </div>
                                                                     <div class='modal-footer'>
                                                                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Cerrar</button>
-                                                                        <button type='button' class='btn btn-danger'>
+                                                                        
                                                                             <a href='procesarNovedad.php?idEliminar=<?php echo $fila["cod"]; ?>' class='btn btn-danger'>Confirmar</a>
-                                                                        </button>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -229,18 +229,14 @@ actualizarNovedades();
                                                         <!-- Modal cierre -->
                                                     </div>
                                                 </div>
+                                                
                                                 <?php
                                             }
                                         }
-                                    } else {
-                                        echo "No hay novedades cargadas activas";
-                                    }
+                                     
                                     ?>
                                 </div>
-
-                    </div>           
-                </div>
-                <div class="row">
+                                <div class="row">
                     <nav aria-label="Navegación de páginas"  >
                         <ul class="pagination d-flex justify-content-center">
                             <?php
@@ -270,7 +266,14 @@ actualizarNovedades();
                             </li>
                         </ul>
                     </nav>
+                </div><?php }
+                else {
+                                        echo "No hay novedades cargadas activas";
+                                    }?>
+
+                    </div>           
                 </div>
+               
             </div>
         </div>
         

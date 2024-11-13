@@ -9,12 +9,15 @@
         <input type="text" name="ubicacionLocal" class="form-control" id="ubicacionLocal" placeholder="Ala Sur">
     </div>
     <div class="form-group">
-        Codigo de promo: <input type="text" id="codDes" name="codDes"> </br>
+        <label for="codDes" style="text-decoration:underline">Codigo de promocion: </label>
+        <input type="text" class="form-control" id="codDes" name="codDes"> </br>
     </div>
     <hr>
     <div class="form-group">
-        Fecha desde: <input type="date" id="fechaDes" name="fechaDes"> </br> </br>
-        Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 
+        <label for="fechaDes" style="text-decoration:underline">Fecha desde: </label>
+        <input type="date" id="fechaDes" class="form-control mb-1" name="fechaDes"> 
+        <label for="fechaHas" class="mt-0"style="text-decoration:underline">Fecha hasta: </label>
+        <input type="date" id="fechaHas" name="fechaHas" class="form-control"> 
         <hr>
     </div>
     <div class="form-group" style="width: fit-content">
@@ -23,19 +26,19 @@
     </div>
 
     <div class="form-group" style="width: fit-content">
-        Dia de la semana: <br>
-        Lunes: <input type="checkbox" name="dia[]" value="lunes"> <br>
-        Martes: <input type="checkbox" name="dia[]" value="martes"> <br>
-        Miércoles: <input type="checkbox" name="dia[]" value="miercoles"> <br>
-        Jueves: <input type="checkbox" name="dia[]" value="jueves"> <br>
-        Viernes: <input type="checkbox" name="dia[]" value="viernes"> <br>
-        Sábado: <input type="checkbox" name="dia[]" value="sabado"> <br>
-        Domingo: <input type="checkbox" name="dia[]" value="domingo"> <br>
+        <label for="dia" >Dia de la semana: </label><br></br>
+        <label for="dia[]" >Lunes: </label><input type="checkbox" name="dia[]" value="lunes"> <br>
+        <label for="dia[]" >Martes: </label> <input type="checkbox" name="dia[]" value="martes"> <br>
+        <label for="dia[]" >Miercoles: </label> <input type="checkbox" name="dia[]" value="miercoles"> <br>
+        <label for="dia[]" >Jueves: </label> <input type="checkbox" name="dia[]" value="jueves"> <br>
+        <label for="dia[]" >Viernes: </label> <input type="checkbox" name="dia[]" value="viernes"> <br>
+        <label for="dia[]" >Sábado: </label><input type="checkbox" name="dia[]" value="sabado"> <br>
+        <label for="dia[]" >Domingo: </label><input type="checkbox" name="dia[]" value="domingo"> <br>
     </div>
     <br> 
     <div class="form-group mx-auto" style="width: fit-content">
-        <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="filtrar">
-        <a href="verDescuentos.php" class="btn btn-primary w-100 m-1">Borrar filtros</a>
+        <input type="submit" name="filtrar" class="btn btn-primary form-control px-4 py-2 mx-1 my-1" value="Filtrar">
+        <input type="reset" value="Restablecer" class="btn form-control btn-secondary px-4 py-2 mx-1 my-1">
     </div>
 </form>
 

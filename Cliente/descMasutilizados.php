@@ -33,7 +33,7 @@ usort($array, function($a, $b) {
     <div class="row">
         <?php
         if (count($array) > 0) {
-            echo '<h5 class="bienvenida text-center"> Descuentos mas populares:</h5>';
+            echo '<h5 class="bienvenida text-center"> Descuentos más populares:</h5>';
         }
         ?>
     </div>

@@ -12,6 +12,8 @@ $estoy = "verLocales";
     <title>Locales</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
+    <link rel="icon" href="../assets/favicon-32x32.png">
+
 </head>
 <?php
 if (!isset($login)) { ?>
@@ -65,7 +67,7 @@ if (!isset($login)) { ?>
 
 
                             <div class="form-group mx-auto p-2" style="width: fit-content">
-                                <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="buscar">
+                                <input type="submit" name="filtrar" class="btn btn-primary px-4 py-2" value="Buscar">
                             </div>
 
 

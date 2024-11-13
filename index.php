@@ -7,8 +7,20 @@
     <meta name="keywords" content="HTML,CSS,PHP">
     <title>Mundo Shopping</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="estilos/style1.css" rel="stylesheet">
+    <link href="estilos/style1.css" rel="stylesheet" type="text/css">
+    <link rel="icon" href="assets/favicon-32x32.png">
+    <style>
+        .bienvenida{
+    font-family: 'Helvetica Neue', 'sans-serif';
+    font-size: 2.5rem; /* Tamaño de la fuente */
+    font-weight: bold;
+    color: hsl(242, 68%, 40%);
 
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px hsl(242, 68%, 90%);
+}
+    </style>
 </head>
 <header>
         <?php 
@@ -104,13 +116,13 @@
             </div>
             <div class="row">
             
-                <div class="col-12">
+                <div class="col-12 ">
                     
                     <?php
                         $sql="SELECT * FROM usuarios WHERE estado='1' AND tipoUsuario='duenoLocal'";
                         $resultado=consultaSQL($sql);
                         if(mysqli_num_rows($resultado)==0){
-                            echo("No hay solicitudes de dueños de locales");
+                            echo("<p class='mx-auto'> No hay solicitudes de dueños de locales</p>");
                         }else{
                         while($usuario=mysqli_fetch_array($resultado)){ 
                     ?>
@@ -118,7 +130,7 @@
                         <div class="card" style=" margin: 10px; width:max ">
                             <div class="card-body">
                                 <h5 class="card-title"><?php echo($usuario['nombre']." ".$usuario['apellido']) ?></h5>
-                                <h6 class="card-subtitle mb-2 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
+                                <h6 class="card-subtitle mb-4 text-body-secondary">Código: <?php echo($usuario["codUsuario"]) ?> </h6>
                                 <p class="card-text">Fecha de nacimiento: <?php echo($usuario['fechaNacimiento']) ?> </p>
                                 <div class="listado " style="justify-content:flex-end; margin-bottom:0">
                                     <a href="Admin/ABMSolicitudes.php?idAprobar=<?php echo($usuario['codUsuario'])?>" class="card-link btn btn-primary">Aprobar</a>
