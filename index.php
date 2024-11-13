@@ -161,20 +161,20 @@
 
 <div class="container mt-4 justify-content-center <?php if ($tipoUsuario!="cliente") echo"d-none";?>">
     <div class="row mb-3 justify-content-center">
-        <div class="col-3" >
+        <div class="col-3 d-flex flex-column justify-content-center">
             <div class="container mb-3">
             <a href="Cliente/verDescuentos.php" class="btn btn-login btn-primary w-100 btn-lg">
-            Ver descuentos
+                Ver descuentos
             </a>
             </div>
             <div class="container mb-3">
             <a href="Cliente/verDescuentosUtilizados.php" class="btn btn-primary w-100 btn-lg">
-            Ver descuentos utilizados
+                Ver descuentos utilizados
             </a>
             </div>
             <div class="container mb-3">
             <a href="Cliente/verNovedades.php" class="btn btn-primary w-100 btn-lg">
-            Ver novedades
+                Ver novedades
             </a>
             </div>
         </div>

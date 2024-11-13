@@ -22,7 +22,6 @@ if (mysqli_num_rows($resultado) > 0) {
             $resultado2 = consultaSQL($query2);
             if (mysqli_num_rows($resultado2) > 0) {
                 if ($estoy == 'verDescuentosUtilizados') {
-                    echo 'dsakgdlasgda';
                     $encontro = 1;
                     $muestrafila1[] = $fila1;
                     $muestrafila[] = $fila;

@@ -71,10 +71,10 @@ if (isset($_SESSION['tipoUsuario'])){
                         if($lugar=="index" or $lugar=="login" or $lugar=="registra"){
                         $ruta2="noRegistrado/";}else {
                         $ruta2="";}
-                        
-                        
-                        
-                    ?><li class="nav-item ">
+                           
+                    ?>
+                    
+                    <li class="nav-item ">
                         <a class="nav-link" aria-current="page" href="<?php echo $ruta2 ?>verLocales.php">Locales</a>
                     </li>
                     <li class="nav-item">
@@ -124,7 +124,7 @@ if (isset($_SESSION['tipoUsuario'])){
                     <?php } if($tipoUsuario=="cliente"){?>
                         <?php if($lugar=="index" or $lugar=="perfil"){
                                 $ruta2="Cliente/";
-                                echo $ruta2;}
+                                }
                             else
                                 $ruta2="";
 
