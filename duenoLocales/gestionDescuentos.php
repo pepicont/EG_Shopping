@@ -70,11 +70,13 @@ $estoy = "gestionDescuentos";
             <br>
                 <?php 
                     include("filtros.php"); 
+
                 ?>
         </div>
         <div class="listado d-flex col-lg-8 col-12 mx-auto justify-content-center">
             <?php 
                 $busqueda = "AND estadoPromo != 'eliminado'";
+                include("validaciones.php");
                 include("cards.php");
             ?>
         </div>

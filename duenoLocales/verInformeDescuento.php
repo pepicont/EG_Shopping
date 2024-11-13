@@ -38,14 +38,13 @@
     <div class="row">
         <div class="filtros col-3 d-none d-lg-block " style="height:fit-content;">
             <?php 
-            
-            include("filtros.php");   
+            $busqueda = "";            
+            include("filtros.php");  
             ?>
         </div>
     
         <div class="listado col-lg-8 col-12 d-flex flex-wrap justify-content-center mx-auto">
         <?php 
-            $busqueda = ""; 
             include("cards.php");
         ?>
         </div>

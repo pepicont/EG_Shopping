@@ -11,6 +11,7 @@ actualizarNovedades();
     <title>Gestionar novedades</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
+    <link rel="icon" href="../assets/favicon-32x32.png">
 </head>
 <header>
 <?php
@@ -187,6 +188,7 @@ actualizarNovedades();
                                                                 <input type='text' name='textoNovedad' class='form-group' value='<?php echo $_GET['textoNovedad']; ?>' required>
                                                             </p>
                                                             <input type='hidden' name='cod' value='<?php echo $fila['cod']; ?>'>
+                                                            <input type='hidden' name='pagina' value='<?php echo $pagina; ?>'>
                                                             <input type='submit' name='novedadEditada' class='btn btn-success card-link' value='Guardar'>
                                                             <input type='reset' class='btn btn-warning card-link' value='Limpiar'>
                                                         </form>
@@ -200,7 +202,7 @@ actualizarNovedades();
                                                         <h5 class='card-title'><?php echo $fila["nombreNovedad"]; ?></h5>
                                                         <h6 class='card-subtitle mb-2 text-muted'>Categoría cliente: <?php echo $fila["tipoUsuario"]; ?></h6>
                                                         <p class='card-text'><?php echo $fila["textoNovedad"]; ?></p>
-                                                        <a href='gestionarNovedades.php?idEditar=<?php echo $fila["cod"]; ?>&nombreNovedad=<?php echo $fila["nombreNovedad"]; ?>&tipoUsuario=<?php echo $fila["tipoUsuario"]; ?>&textoNovedad=<?php echo $fila["textoNovedad"]; ?>' class='btn btn-warning card-link'>Editar</a>
+                                                        <a href='gestionarNovedades.php?idEditar=<?php echo $fila["cod"]; ?>&nombreNovedad=<?php echo $fila["nombreNovedad"]; ?>&tipoUsuario=<?php echo $fila["tipoUsuario"]; ?>&textoNovedad=<?php echo $fila["textoNovedad"]; ?>&pagina=<?php echo $pagina; ?>' class='btn btn-warning card-link'>Editar</a>
                                                         <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $fila["cod"]; ?>'>Eliminar</button>
                                                         <!-- Modal -->
                                                         <div class='modal fade' id='deleteModal<?php echo $fila["cod"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -252,13 +254,13 @@ actualizarNovedades();
                             $query_string = http_build_query($query);
                             ?>
                             <li class="page-item <?php if($pagina <= 1){ echo 'disabled'; } ?>"> 
-                            <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else {$paginaAnterior=$pagina-1;;echo("?".$query_string."&pagina=".$paginaAnterior.""); } ?>">Atras</a>
+                            <a class="page-link" href="<?php if($pagina <= 1){ echo '#'; } else {$paginaAnterior=$pagina-1;echo("?".$query_string."&pagina=".$paginaAnterior.""); } ?>">Atras</a>
                             </li>
                             <?php
                             for ($i = 1; $i <= $total_pages; $i++) {
                                 echo "<li class=\"page-item";
                                 if ($pagina == $i) echo " active";
-                                echo "\"><a class=\"page-link\" href='?" . $query_string . "&pagina=$i'>$i</a></li>";
+                                echo "\"><a class=\"page-link\" href='?" . $query_string . "&success=&pagina=$i'>$i</a></li>";
                                 }
                             ?>
                             <li class="page-item <?php if($pagina == $total_pages){ echo 'disabled'; } ?>"> 

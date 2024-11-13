@@ -1,6 +1,6 @@
 <?php 
 include("../funciones.php");
-if(!empty($_GET['idEliminar'])){
+if(isset($_GET['idEliminar'])){
     $query="UPDATE locales SET estado='inactivo' WHERE codLocal='".$_GET['idEliminar']."'";
     $resultado=consultaSQL($query);
     if($resultado){

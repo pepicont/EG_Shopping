@@ -18,7 +18,7 @@ if (mysqli_num_rows($vresultado) > 0) {
     while ($fila = mysqli_fetch_array($vresultado)) {
         $codLocal = $fila["codLocal"];
         $codLocalPaginacion .= " OR codLocal = '".$codLocal."'";
-        $query2 = "SELECT * FROM promociones WHERE codLocal = $codLocal AND estadoPromo = 'activa' $busqueda "; 
+        $query2 = "SELECT * FROM promociones WHERE codLocal = '".$codLocal."' AND estadoPromo = 'activa' $busqueda "; 
         $cont = 0;
         $vresultado2 = consultaSQL($query2);
         if (mysqli_num_rows($vresultado2) > 0) {

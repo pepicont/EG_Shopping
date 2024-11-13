@@ -18,7 +18,7 @@ if (mysqli_num_rows($resultado) > 0) {
         $query1 = "SELECT * FROM promociones WHERE  estadoPromo = 'activa' AND  codLocal =  '".$fila['codLocal']."' $busqueda ";
         $resultado1 = consultaSQL($query1);
         while ($fila1 = mysqli_fetch_array($resultado1)) {
-            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '" . $fila1["cod"] . "' AND estado = 'aceptada'";
+            $query2 = "SELECT * FROM uso_promociones WHERE codPromo = '" . $fila1["cod"] . "' AND codCliente = '" . $_SESSION['idUsuario'] . "'";
             $resultado2 = consultaSQL($query2);
             if (mysqli_num_rows($resultado2) > 0) {
                 if ($estoy == 'verDescuentosUtilizados') {

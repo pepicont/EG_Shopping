@@ -11,6 +11,9 @@
     <title>InformeDescuentos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="../estilos/style1.css" rel="stylesheet">
+    <link rel="icon" href="../assets/favicon-32x32.png">
+
+
 </head>
     
     <header>
@@ -49,20 +52,20 @@
                         echo '<div class="alert alert-success mt-3 mx-auto" style="width: fit-content" role="alert">
                         Local creado con éxito
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>';}
-                    elseif($_GET['error']=='usuario'){
+                        </div>';}}
+                    if($_GET['error']=='usuario'){
                             echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
                             El código de dueño ingresado no existe o no está activo
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';}
-                }
+                
                     ?>
                 </div>
             </div>
             <div class="row">  
                 <div class="col-12 col-md-4 col-lg-3">
                     <!-- div que va a contener el form de crear locales -->
-                     <div class="filtros d-md-block d-flex justify-content-center" >
+                     <div class="filtros d-md-block d-flex justify-content-center mb-1" >
 
                         <form method="POST" action="procesarLocal.php" enctype="multipart/form-data">
                             <div class="form-group p-2" style="width: fit-content">
@@ -126,8 +129,8 @@
                                 
                                 <div class="form-group p-2" style="width: fit-content">
                                     
-                                    <label for="rubro" style="text-decoration:underline">Rubro: </label>
-                                    <input type="text" name="rubro" class="form-control" id="rubro" placeholder="indumentaria...">
+                                    <label for="rubroLocal" style="text-decoration:underline">Rubro: </label>
+                                    <input type="text" name="rubroLocal" class="form-control" id="rubroLocal" placeholder="indumentaria...">
                                 </div>
 
 
@@ -149,7 +152,7 @@
                         <div class="listado px-auto">
                             <?php
                                 // Logica de la paginación
-                                $limite = 4; // cantidad de resultados que se muestran en la página
+                                $limite = 6; // cantidad de resultados que se muestran en la página
                                 if (isset($_GET["pagina"])) {
                                     $pagina  = $_GET["pagina"];
                                 } else {
@@ -174,7 +177,7 @@
                             ?>
                                 <!-- Tarjeta para editar locales -->
                                 <div class="card mx-auto" style="width:210px; ">
-                                    <img src="<?php echo $local['imagen'] ?>" class="card-img-top" alt="..." style="height:200px; width:200px; margin: 5px;"><!-- Acá iría la imagen del local -->
+                                    <img src="<?php echo $local['imagen'] ?>" class="card-img-top" alt="Imagen del local" style="height:200px; width:200px; margin: 5px;"><!-- Acá iría la imagen del local -->
                                     <div class="card-body text-center">
                                         <form action='procesarLocal.php' method='POST'>
                                             <input type='hidden' name='codLocal' value='<?php echo $local["codLocal"]; ?>'>
@@ -209,7 +212,7 @@
                                     <div class="card-body pt-0">
                                         <h5 class="card-title"><?php echo($local['nombreLocal']) ?></h5>
                                         <p class="card-text"><?php echo($local['ubicacionLocal'])?></p>
-                                        <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>' class='btn btn-primary card-link'>Editar</a>
+                                        <a href='gestionarLocales.php?idEditar=<?php echo $local["codLocal"]; ?>&pagina=<?php echo $pagina; ?>' class='btn btn-primary card-link'>Editar</a>
                                         <button type='button' class='btn btn-danger' data-bs-toggle='modal' data-bs-target='#deleteModal<?php echo $local["codLocal"]; ?>'>Eliminar</button>
                                         <!-- Modal que popea cuando aprieta eliminar-->
                                         <div class='modal fade' id='deleteModal<?php echo $local["codLocal"]; ?>' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
