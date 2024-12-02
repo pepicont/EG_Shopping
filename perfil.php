@@ -1,3 +1,4 @@
+<?php include_once("session.php"); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -44,7 +45,7 @@
                     <p class="card-text">Email: <?php echo $fila['nombreUsuario'] ?></p>
                 </div>
                 <button type="button" class="btn btn-primary w-100 m-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Editar perfil:
+                    Editar perfil
                 </button>
             </div>
 

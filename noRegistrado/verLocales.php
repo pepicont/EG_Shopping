@@ -1,4 +1,5 @@
 <?php
+include_once('../session.php');
 $lugar = "noRegistrado";
 include_once("../funciones.php");
 $estoy = "verLocales";
@@ -19,7 +20,6 @@ if (!isset($login)) { ?>
     <header>
         
         <?php
-        
         include("../header.php"); ?>
     </header>
 

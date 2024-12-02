@@ -1,4 +1,5 @@
 <?php
+
 $fecha = date("Y-m-d");
 $array = [];
 $query = "SELECT * FROM promociones WHERE estadoPromo = 'activa' AND fechaDesde <= '$fecha' AND fechaHasta >= '$fecha'";

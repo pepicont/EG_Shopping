@@ -1,3 +1,4 @@
+<?php include_once("../session.php"); ?>
 <?php
     $lugar="admin";
     include_once("../funciones.php");
@@ -53,12 +54,11 @@
                         Local creado con éxito
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>';}}
-                    if($_GET['error']=='usuario'){
+                    if(!empty($_GET['error'])){
                             echo '<div class="alert alert-danger mt-3 mx-auto" style="width: fit-content" role="alert">
                             El código de dueño ingresado no existe o no está activo
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>';}
-                
                     ?>
                 </div>
             </div>

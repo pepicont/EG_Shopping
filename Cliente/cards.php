@@ -1,4 +1,8 @@
 <?php
+if ($_SESSION["tipoUsuario"] != "cliente") {
+    header("Location: ../index.php");
+    exit();
+}
 // Logica de la paginación
 $limite = 6; // cantidad de resultados que se muestran en la página
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; // Página actual
@@ -109,6 +113,4 @@ if($totalpromociones == 0){
 }   
 
 ?>
-<?php
-/*header("Location: index.php");*/
-?>
+

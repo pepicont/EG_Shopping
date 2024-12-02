@@ -1,4 +1,5 @@
 <?php 
+if ($login==true && $tipoUsuario=="administrador"){
 include("../funciones.php");
 if(isset($_GET['idEliminar'])){
     $query="UPDATE locales SET estado='inactivo' WHERE codLocal='".$_GET['idEliminar']."'";
@@ -65,6 +66,8 @@ if(!empty($_POST['crearLocal'])){
     }
 }
 
-
+}else{
+    header("Location: ../index.php");
+}
 
 ?>

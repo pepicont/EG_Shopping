@@ -1,4 +1,8 @@
 <?php
+if ($_SESSION["tipoUsuario"] != "duenoLocal") {
+    header("Location: ../index.php");
+    exit();
+  }
 // variabls para paginacion 
 $registros_por_pagina = 6; // Cantidad de registros por página
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; // Página actual

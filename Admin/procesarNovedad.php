@@ -1,4 +1,5 @@
 <?php 
+    if ($login==true && $tipoUsuario=="administrador"){
     include("../funciones.php");
     if(!empty($_GET['novedadEditada'])){
 
@@ -31,7 +32,9 @@
         $resultado=consultaSQL($query);
         exit(header("Location: gestionarNovedades.php?success=1"));
     }
-        
+}else{
+    header("Location:../index.php");
+}
     
     
 ?>

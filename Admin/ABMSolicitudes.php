@@ -1,4 +1,5 @@
 <?php
+if ($login==true && $tipoUsuario=="administrador"){
 include("../funciones.php");
 if(!empty($_GET['idAprobar'])){
     $id=$_GET['idAprobar'];
@@ -6,6 +7,7 @@ if(!empty($_GET['idAprobar'])){
     $resultado=consultaSQL($query);
     if($resultado){
         header("Location: ../index.php?success=aprobada");
+        exit();
     }
 
 
@@ -16,6 +18,10 @@ if(!empty($_GET['idRechazar'])){
     $resultado=consultaSQL($query);
     if($resultado){
         header("Location: ../index.php?success=rechazada");
+        exit();
     }
+}}else{
+    header("Location: ../index.php");
+    exit();
 }
 ?>

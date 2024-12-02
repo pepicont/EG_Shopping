@@ -1,3 +1,4 @@
+<?php include_once("../session.php"); ?>
 <?php
     $lugar="admin";
     include_once("../funciones.php");

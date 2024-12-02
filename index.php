@@ -1,3 +1,4 @@
+<?php include_once("session.php"); ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -215,10 +216,7 @@
             </a>
             </div>
         </div>
-        
-        
     </div>
-    
 </div>
 
 <div class="container mt-4 justify-content-center <?php if ($login==TRUE){ echo"d-none";}?>">
@@ -255,7 +253,8 @@
 </div>
 </body>
 <footer>
-    <?php 
+    <?php
+         
         include("footer.php");
     ?> 
 </footer>
