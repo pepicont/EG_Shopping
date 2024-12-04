@@ -1,4 +1,6 @@
+<?php include_once("../session.php"); ?>
 <?php 
+    
     $lugar="noRegistrado";
     include_once("../funciones.php");
     $estoy="verDescuentos";

@@ -1,7 +1,7 @@
 <?php
 
 // Verificar si hay una cookie para mantener la sesión iniciada
-  session_start();
+include_once("session.php"); 
 include_once("funciones.php");
 if(existecookie()) {
   header("Location:index.php");
@@ -17,6 +17,7 @@ if(existecookie()) {
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link href="estilos/style1.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="icon" href="assets/favicon-32x32.png">
 </head>
 <header>
@@ -37,7 +38,26 @@ if(existecookie()) {
         </div>
         <div class="form-group">
           <label for="contrasena">Contraseña</label>
-          <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="*********" required>
+            <div class="input-group">
+            <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="*********" required>
+            <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+              <i class="bi bi-eye-slash" id="toggleIcon"></i>
+            </button>
+            </div>
+            <script>
+            const togglePassword = document.querySelector('#togglePassword');
+            const password = document.querySelector('#contrasena');
+            const toggleIcon = document.querySelector('#toggleIcon');
+
+            togglePassword.addEventListener('click', function (e) {
+              // toggle the type attribute
+              const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+              password.setAttribute('type', type);
+              // toggle the icon
+              toggleIcon.classList.toggle('bi-eye');
+              toggleIcon.classList.toggle('bi-eye-slash');
+            });
+            </script>
         </div>
         <div class="form-group form-check">
             <input type="hidden" name="mantenerSesionIniciada" value="no"> <!-- Valor por default del checkbox -->

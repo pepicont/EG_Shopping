@@ -1,5 +1,7 @@
 <?php 
-if ($login==true && $tipoUsuario=="administrador"){
+session_start();
+$tipoUsuario = $_SESSION['tipoUsuario'];
+if ($tipoUsuario=="administrador"){
 include_once("../funciones.php");
 if(!empty($_GET['codAlta'])){
     

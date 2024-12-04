@@ -72,6 +72,20 @@ function actualizarDescuentos(){
   
   }
   }
+function obtenerDiaDeHoy() {
+      $diasSemana = array(
+          'Sunday' => 'domingo',
+          'Monday' => 'lunes',
+          'Tuesday' => 'martes',
+          'Wednesday' => 'miercoles',
+          'Thursday' => 'jueves',
+          'Friday' => 'viernes',
+          'Saturday' => 'sábado'
+      );
+  
+      $diaIngles = date('l'); // Obtiene el día de la semana en inglés
+      return $diasSemana[$diaIngles]; // Devuelve el día de la semana en español
+  }
   
 ?>
 

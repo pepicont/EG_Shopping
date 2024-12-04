@@ -62,7 +62,7 @@ if ($_SESSION["tipoUsuario"] != "duenoLocal") {
             Texto de la promo: <input type="text" class="form-control" required id="textpro" name="textpro">
           </div>
           <div class="form-group">
-            Fecha de inicio: <input type="date" class="form-control" required id="fechaini" name="fechaini">
+            Fecha de inicio: <input type="date" class="form-control" required id="fechaini" name="fechaini" min= "<?php echo date('Y-m-d'); ?>">
           </div>
           <div class="form-group">
             Fecha de fin: <input type="date" class="form-control" required id="fechahas" name="fechahas">

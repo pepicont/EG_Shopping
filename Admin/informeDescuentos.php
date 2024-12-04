@@ -123,7 +123,9 @@
                                 }
                                 if (isset($_GET['categoria'])) {
                                     if($concat > 0 ){
-                                        $busqueda .= " AND ";
+                                        $busqueda .= " AND (";
+                                    } else {
+                                        $busqueda .= "(";
                                     }
                                     
                                     $categorias_seleccionadas = $_GET['categoria'];
@@ -133,14 +135,16 @@
                                         }
                                         $busqueda .= "categoriaCliente = '" . $categoria . "'";
                                     }
-                                    
+                                    $busqueda .= ")";
+                                    $concat++;
                                 }
                                 // Hay que poner lo de los dias que todavia no pusimos los dias en la tabla. 
                                 if(isset($_GET['dia'])){
                                     if($concat > 0){
-                                        $busqueda .= " AND ";
+                                        $busqueda .= " AND (";
+                                    } else {
+                                        $busqueda .= "(";
                                     }
-                                    $busqueda .= "(";
                                     $diasSeleccionados = $_GET['dia'];
                                     $numDias = count($diasSeleccionados);
                                     for($i = 0; $i < $numDias; $i++){
@@ -150,6 +154,7 @@
                                         $busqueda .= "diaSemana LIKE '%" . $diasSeleccionados[$i] . "%'";
                                     }
                                     $busqueda .= ")";
+                                    $concat++;
                                 }
 
                             }else{$busqueda = "";}

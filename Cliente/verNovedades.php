@@ -1,6 +1,6 @@
+<?php include_once("../session.php"); ?>
 <?php
 $lugar ="cliente";
-session_start();
 include_once("../funciones.php");
 actualizarNovedades();
 if ($_SESSION["tipoUsuario"] != "cliente") {

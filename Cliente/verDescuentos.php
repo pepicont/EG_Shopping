@@ -1,5 +1,5 @@
+<?php include_once("../session.php"); ?>
 <?php 
-    session_start();
     $lugar = "cliente";
     include_once("../funciones.php");
     $idusuario= $_SESSION["idUsuario"];
@@ -41,9 +41,9 @@
             <?php include("filtrosCli.php"); ?>
         </div>
         <div class="listado d-flex col-lg-8 col-12 mx-auto justify-content-center">
-        
             <?php 
                 $estoy = 'verDescuentos';
+                
                 include("cards.php"); ?>
         </div>
     </div>

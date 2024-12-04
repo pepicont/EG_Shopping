@@ -1,9 +1,12 @@
 
 <?php
+$fec = "";
 if($estoy == "verSolicitudDescuentos"){
     $borrar = "verSolicitudDescuentos.php";
+    $fec= date('Y-m-d');
 }else{
     $borrar = "gestionDescuentos.php";
+    $fec = date('Y-m-d');
 }
 ?>
     
@@ -17,7 +20,7 @@ if($estoy == "verSolicitudDescuentos"){
         <hr>
     </div>
     <div class="form-group">
-        Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes"> </br> </br>
+        Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes" min="<?php $fec ?>"> </br> </br>
     </div>
     <div class="form-group">
         Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 

@@ -59,7 +59,7 @@
                     <form method="GET" >
                         <div class="form-group p-2">
                         
-                            Fecha  desde:  <input type="date" class="form-control" id="fechaDes" name="fechaDes">
+                            Fecha  desde:  <input type="date" class="form-control" id="fechaDes" name="fechaDes" min="<?php echo date('Y-m-d'); ?>">
                         </div>
                         <div class="form-group p-2">
                             Fecha hasta: <input type="date" class="form-control" id="fechaHas" name="fechaHas"> <br> 

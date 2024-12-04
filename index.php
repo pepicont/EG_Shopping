@@ -233,7 +233,6 @@
                 <p class="" style="text-indent: 30px; font-weight:500;font-size:20px;">Nos encontramos en el corazón de <b style="color:rgb(235, 103, 235)">Rosario</b>, 
                 listos para darte la bienvenida a un mundo donde el buen gusto y la exclusividad son nuestra esencia. Explora, descubre, déjate inspirar.</p>
             </div>
-            
         </div>
     </div>
     <div class="row mb-3 justify-content-center">

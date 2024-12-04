@@ -3,6 +3,7 @@ if ($_SESSION["tipoUsuario"] != "cliente") {
     header("Location: ../index.php");
     exit();
 }
+include_once("../funciones.php");   
 // Logica de la paginación
 $limite = 6; // cantidad de resultados que se muestran en la página
 $pagina = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1; // Página actual
@@ -87,9 +88,15 @@ function mostrarcards($fila, $fila1, $encontro)
                 <p class="card-text">Plazo: <?php echo ($fila["fechaDesde"]); echo (" --- "); echo ($fila["fechaHasta"]) ?></p>
             </div>
             <div style="height: 65px;">
+                <?php if (strpos($fila['diaSemana'],obtenerDiaDeHoy())!==false){ ?>
                 <button type="button" class="btn btn-primary w-100 m-1 <?php if ($encontro != 0) echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Utilizar descuento
                 </button>
+                <?php }else{ ?>
+                    <button type="button" class="btn btn-secondary w-100 m-1 <?php if ($encontro != 0) echo "d-none" ?>">
+                    Vuelve el dia del descuento 
+                </button>
+                <?php } ?>
             </div>
         </div>
     </div>

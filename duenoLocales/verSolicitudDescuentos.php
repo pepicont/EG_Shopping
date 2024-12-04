@@ -1,5 +1,6 @@
+<?php include_once("../session.php"); ?>
 <?php
-    session_start();
+    
     $lugar = "duenoLocal";
     include_once("../funciones.php");
     if($_SESSION["tipoUsuario"] != "duenoLocal"){

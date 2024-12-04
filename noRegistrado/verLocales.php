@@ -55,12 +55,21 @@ if (!isset($login)) { ?>
                             </div>
 
 
-                            <div class="form-group p-2" style="width: fit-content">
-                                
+                            <div class="form-group" style="width: fit-content">
                                 <label for="rubroLocal" style="text-decoration:underline">Rubro: </label>
-                                <input type="text" name="rubroLocal" class="form-control mx-auto" id="rubroLocal" >
-
-
+                                <select class="form-control" name="rubroLocal" id='rubroLocal'>
+                                    <option value="" disabled selected>Seleccione un rubro</option>
+                                    <option value="comida">Comida</option>
+                                    <option value="indumentaria">Indumentaria</option>
+                                    <option value="perfumeria">Perfumeria</option>
+                                    <option value="deporte">Deporte</option>
+                                    <option value="electronica">Electronica</option>
+                                    <option value="libreria">Libreria</option>
+                                    <option value="jugueteria">Jugueteria</option>
+                                    <option value="bazar">Bazar</option>
+                                    <option value="belleza">Belleza</option>
+                                    <option value="otros">Otros</option>
+                                </select>
                             </div>
 
 

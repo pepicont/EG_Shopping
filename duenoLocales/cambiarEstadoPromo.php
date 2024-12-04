@@ -1,4 +1,8 @@
 <?php
+if ($_SESSION["tipoUsuario"] != "duenoLocal") {
+    header("Location: ../index.php");
+    exit();
+  }
 $lugar = "duenoLocal";
 include_once("../funciones.php");
     $cod = $_GET['cod'];

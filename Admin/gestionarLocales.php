@@ -96,7 +96,19 @@
                             <div class="form-group p-2" style="width: fit-content">
   
                                 <label for="rubroLocal" style="text-decoration:underline">Rubro: </label>
-                                <input type="text" name="rubroLocal" class="form-control mx-auto" id="rubroLocal" >
+                                <select class="form-control" name="rubroLocal" id='rubroLocal' required>
+                                    <option value="" disabled selected>Seleccion un rubro:</option>
+                                    <option value="comida">Comida</option>
+                                    <option value="indumentaria">Indumentaria</option>
+                                    <option value="perdumeria">Perfumeria</option>
+                                    <option value="deporte">Deporte</option>
+                                    <option value="electronica">Electronica</option>
+                                    <option value="libreria">Libreria</option>
+                                    <option value="jugueteria">Jugueteria</option>
+                                    <option value="Bazar">Bazar</option>
+                                    <option value="belleza">Belleza</option>
+                                    <option value="otros">Otros</option>
+                                </select>
 
                             </div>
                             <div class="form-group mx-auto p-2" style="width: fit-content">
@@ -128,9 +140,20 @@
 
                                 
                                 <div class="form-group p-2" style="width: fit-content">
-                                    
                                     <label for="rubroLocal" style="text-decoration:underline">Rubro: </label>
-                                    <input type="text" name="rubroLocal" class="form-control" id="rubroLocal" placeholder="indumentaria...">
+                                    <select class="form-control" name="rubroLocal" id='rubroLocal'>
+                                        <option value="" disabled selected>Seleccione un rubro:</option>
+                                        <option value="comida">Comida</option>
+                                        <option value="indumentaria">Indumentaria</option>
+                                        <option value="perdumeria">Perfumeria</option>
+                                        <option value="deporte">Deporte</option>
+                                        <option value="electronica">Electronica</option>
+                                        <option value="libreria">Libreria</option>
+                                        <option value="jugueteria">Jugueteria</option>
+                                        <option value="Bazar">Bazar</option>
+                                        <option value="belleza">Belleza</option>
+                                        <option value="otros">Otros</option>
+                                    </select>
                                 </div>
 
 
@@ -191,7 +214,21 @@
                                             </div>
                                             <div class='form-group'>
                                                 <label for='rubroLocal<?php echo $local["codLocal"]; ?>' class='visually-hidden'>Rubro:</label>
-                                                <input type='text' class='form-control' id='rubroLocal<?php echo $local["codLocal"]; ?>' name='rubroLocal' value='<?php echo $local["rubroLocal"]; ?>'>
+                                                <select class="form-control" name="rubroLocal" id='rubroLocal<?php echo $local["codLocal"]; ?>'>
+                                                    <option value="" disabled selected><?php echo $local['rubroLocal'];?></option>
+                                                    <option value="comida">Comida</option>
+                                                    <option value="indumentaria">Indumentaria</option>
+                                                    <option value="perdumeria">Perfumeria</option>
+                                                    <option value="deporte">Deporte</option>
+                                                    <option value="electronica">Electronica</option>
+                                                    <option value="libreria">Libreria</option>
+                                                    <option value="jugueteria">Jugueteria</option>
+                                                    <option value="Bazar">Bazar</option>
+                                                    <option value="belleza">Belleza</option>
+                                                    <option value="otros">Otros</option>
+                                                </select>
+                                                
+                                                
                                             </div>
                         
                                             <button type='submit' name='editar' class='btn btn-primary'>Guardar</button>

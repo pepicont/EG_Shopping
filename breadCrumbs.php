@@ -1,7 +1,6 @@
 <?php 
     //Variable $tipoUsuario tiene el usuario que esta usando la página actualmente.
     //Se va a utilizar para mostrar los enlaces de navegación correspondientes a cada tipo de usuario.
-
     ?>
     <nav aria-label="migas de pan">
     <ol class="breadcrumb">

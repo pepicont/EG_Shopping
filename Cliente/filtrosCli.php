@@ -15,14 +15,26 @@
     <hr>
     <div class="form-group">
         <label for="fechaDes" style="text-decoration:underline">Fecha desde: </label>
-        <input type="date" id="fechaDes" class="form-control mb-1" name="fechaDes"> 
+        <input type="date" id="fechaDes" class="form-control mb-1" name="fechaDes" min="<?php echo date('Y-m-d'); ?>"> 
         <label for="fechaHas" class="mt-0"style="text-decoration:underline">Fecha hasta: </label>
         <input type="date" id="fechaHas" name="fechaHas" class="form-control"> 
         <hr>
     </div>
     <div class="form-group" style="width: fit-content">
         <label for="rubro" style="text-decoration:underline">Rubro: </label>
-        <input type="text" name="rubro" class="form-control" id="rubro" placeholder="indumentaria...">
+        <select class="form-control" name="rubro" id='rubro'>
+            <option value="" disabled selected>Seleccione un rubro</option>
+            <option value="comida">Comida</option>
+            <option value="indumentaria">Indumentaria</option>
+            <option value="perfumeria">Perfumeria</option>
+            <option value="deporte">Deporte</option>
+            <option value="electronica">Electronica</option>
+            <option value="libreria">Libreria</option>
+            <option value="jugueteria">Jugueteria</option>
+            <option value="bazar">Bazar</option>
+            <option value="belleza">Belleza</option>
+            <option value="otros">Otros</option>
+        </select>
     </div>
 
     <div class="form-group" style="width: fit-content">
