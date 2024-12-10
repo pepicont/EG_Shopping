@@ -9,21 +9,21 @@ if($estoy == "verSolicitudDescuentos"){
     $fec = date('Y-m-d');
 }
 ?>
-    
+     
     
         <br>
     <form method="GET" >
         <input type="hidden" name="form_type" value="aplicar_filtros">    
     <h3>Filtros:  </h3>
     <div class="form-group ">
-        Codigo de promo: <input type="text" id="codDes" name="codDes" > </br> 
+        Codigo de promo: <input class="form-control" type="text" id="codDes" name="codDes" > </br> 
         <hr>
     </div>
     <div class="form-group">
-        Fecha  desde:  <input type="date" id="fechaDes" name="fechaDes" min="<?php $fec ?>"> </br> </br>
+        Fecha  desde:  <input class="form-control" type="date" id="fechaDes" name="fechaDes" min="<?php $fec ?>"> </br> </br>
     </div>
     <div class="form-group">
-        Fecha hasta: <input type="date" id="fechaHas" name="fechaHas"> <br> 
+        Fecha hasta: <input class="form-control" type="date" id="fechaHas" name="fechaHas"> <br> 
         <hr>
     </div>
     <div class="form-group">
