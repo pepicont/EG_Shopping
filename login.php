@@ -50,10 +50,11 @@ if(existecookie()) {
             const toggleIcon = document.querySelector('#toggleIcon');
 
             togglePassword.addEventListener('click', function (e) {
-              // toggle the type attribute
+              // Cambia el atributo type del input de password a text, de esta manera cuando sea password
+              // se van a poner los asteríscos
               const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
               password.setAttribute('type', type);
-              // toggle the icon
+              // Cambia el icono del ojo, dando a entender si se muestra o no la contraseña
               toggleIcon.classList.toggle('bi-eye');
               toggleIcon.classList.toggle('bi-eye-slash');
             });
