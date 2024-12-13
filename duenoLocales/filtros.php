@@ -8,6 +8,10 @@ if($estoy == "verSolicitudDescuentos"){
     $borrar = "gestionDescuentos.php";
     $fec = date('Y-m-d');
 }
+if ($estoy == 'informeDescuentos'){
+    $fec = "";
+}
+
 ?>
      
     
@@ -15,6 +19,16 @@ if($estoy == "verSolicitudDescuentos"){
     <form method="GET" >
         <input type="hidden" name="form_type" value="aplicar_filtros">    
     <h3>Filtros:  </h3>
+<<<<<<< HEAD
+    <div class="form-group " style="margin:0px; padding:0px">
+        Codigo de promo: <input class="form-control" type="text" id="codDes" name="codDes" > </br> 
+        <hr>
+    </div>
+    <div class="form-group" style="margin:0px; padding:0px">
+        Fecha  desde:  <input type="date" class="form-control" id="fechaDes" name="fechaDes" min="<?php echo $fec ?>"> </br> 
+    </div>
+    <div class="form-group" style="margin:0px; padding:0px">
+=======
     <div class="form-group ">
         Codigo de promo: <input class="form-control" type="text" id="codDes" name="codDes" > </br> 
         <hr>
@@ -23,6 +37,7 @@ if($estoy == "verSolicitudDescuentos"){
         Fecha  desde:  <input class="form-control" type="date" id="fechaDes" name="fechaDes" min="<?php $fec ?>"> </br> </br>
     </div>
     <div class="form-group">
+>>>>>>> 00edd1ac870f527af4e72e9d9400acaa1c7769a7
         Fecha hasta: <input class="form-control" type="date" id="fechaHas" name="fechaHas"> <br> 
         <hr>
     </div>

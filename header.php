@@ -5,8 +5,29 @@ if (isset($_SESSION['tipoUsuario'])){
     $usuario=$_SESSION['usuario'];
     $tipoUsuario=$_SESSION['tipoUsuario'];
     if ($tipoUsuario=='cliente'){
+        $query = "SELECT * FROM uso_promociones WHERE codCliente='".$_SESSION['idUsuario']."'";
+        $resultados = consultaSQL($query);
+        $cant = mysqli_num_rows($resultados);
+        $cantAceptadas = 0;
+        while($fila = mysqli_fetch_array($resultados)){
+            if($fila['estado'] == 'aceptada'){
+                $cantAceptadas++;
+            } 
+        }
+        if($cantAceptadas > 3){
+            $query = "UPDATE usuarios SET categoriaCliente = 'medium' WHERE codUsuario='".$codCli."'";
+            $resultados = consultaSQL($query);
+            $_SESSION['categoriaCliente']='medium';
+            setcookie('categoriaCliente','medium',time()+(60*60*24*365));
+            
+        }
+        if($cantAceptadas > 5){
+            $query = "UPDATE usuarios SET categoriaCliente = 'premium' WHERE codUsuario='".$codCli."'";
+            $resultados = consultaSQL($query);
+            $_SESSION['categoriaCliente']='premium';
+            setcookie('categoriaCliente','premium',time()+(60*60*24*365));
+        }
         $categoriaCliente=$_SESSION['categoriaCliente'];}
-    
     $login=TRUE;
 } else{
     $tipoUsuario="noRegistrado";

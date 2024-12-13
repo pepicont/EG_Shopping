@@ -1,4 +1,5 @@
 <?php
+include_once("../session.php");
 if ($_SESSION["tipoUsuario"] != "duenoLocal") {
     header("Location: ../index.php");
 }else{

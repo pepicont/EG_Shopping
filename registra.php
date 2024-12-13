@@ -93,7 +93,7 @@ include_once("funciones.php");
         <?php 
       echo '<div class="alert alert-success mt-3  " style="width: fit-content" role="alert">
                                 Usuario registrado con éxito. 
-                                <a href="index.php"> Iniciar sesión</a>
+                                <a href="login.php"> Iniciar sesión</a>
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div> ';
       ?>

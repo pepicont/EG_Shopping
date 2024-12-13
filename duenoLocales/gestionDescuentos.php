@@ -66,7 +66,7 @@ $estoy = "gestionDescuentos";
     </div>
     
     <div class="row">
-        <div class="col-3 filtros d-none d-lg-block"  style="height:fit-content;" action="card.php">
+        <div class="col-3 filtros d-none d-lg-block "  style="height:fit-content; " action="card.php">
             <br>
                 <?php 
                     include("filtros.php"); 

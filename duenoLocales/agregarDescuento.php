@@ -91,7 +91,7 @@ if ($_SESSION["tipoUsuario"] != "duenoLocal") {
             <select name="id" id="id" class="form-control" required>
               <option value="" disabled selected>Ingrese el local:</option>
               <?php 
-              $query = "SELECT * FROM locales WHERE codUsuario = '" . $idusuario . "'";
+              $query = "SELECT * FROM locales WHERE codUsuario = '" . $idusuario . "' and estado='activo'";
               $resultados = consultaSQL($query);
               if (mysqli_num_rows($resultados) > 0) {
                 while ($fila = mysqli_fetch_array($resultados)) {

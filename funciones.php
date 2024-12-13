@@ -3,7 +3,7 @@
 <?php 
 /* Documento que contiene funciones frecuentemente utilizadas */
 function consultaSQL($query){
-  $local=true;
+  $local=false;
   if($local){
     $link=mysqli_connect("localhost","root","","shopping") or die("Hubo un error al conectarse con la base de datos");
   } else {

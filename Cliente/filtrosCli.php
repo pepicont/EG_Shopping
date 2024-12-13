@@ -15,7 +15,7 @@
     <hr>
     <div class="form-group">
         <label for="fechaDes" style="text-decoration:underline">Fecha desde: </label>
-        <input type="date" id="fechaDes" class="form-control mb-1" name="fechaDes" min="<?php echo date('Y-m-d'); ?>"> 
+        <input type="date" id="fechaDes" class="form-control mb-1" name="fechaDes" <?php if($estoy =='verDescuentos'){?>min="<?php echo date('Y-m-d');} ?>"> 
         <label for="fechaHas" class="mt-0"style="text-decoration:underline">Fecha hasta: </label>
         <input type="date" id="fechaHas" name="fechaHas" class="form-control"> 
         <hr>

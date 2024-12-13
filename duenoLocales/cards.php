@@ -43,7 +43,7 @@ if (mysqli_num_rows($vresultado) > 0) {
                 }
 
                 if ($estoy == "informeDescuentos") { // si estoy en informe descuentos cuento cuantas veces usaron el descuento
-                    $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada' ";
+                    $query3 = "SELECT * FROM uso_promociones WHERE codPromo = '".$fila2["cod"]."' AND estado = 'aceptada'";
                     $vresultado3 = consultaSQL($query3);
                     if (mysqli_num_rows($vresultado3) > 0) {
                         while ($fila3 = mysqli_fetch_array($vresultado3)) {
@@ -171,7 +171,6 @@ function mostrarcards($fila, $fila2, $estoy, $cont) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <p>aca va toda la informacion de el descuento a eliminar</p>
                 </div>
                 <div class="modal-footer mx-auto text-center w-100 p-2 d-flex justify-content-between">
                     <a href="eliminarDescuento.php?cod=<?php echo($fila2['cod']) ?>" class="btn btn-primary m-1">Eliminar descuento</a>

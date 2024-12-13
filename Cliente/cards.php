@@ -27,7 +27,8 @@ if (mysqli_num_rows($resultado) > 0) {
             $resultado2 = consultaSQL($query2);
             if (mysqli_num_rows($resultado2) > 0) {
                 if ($estoy == 'verDescuentosUtilizados') {
-                    $encontro = 1;
+                    $fila3 = mysqli_fetch_array($resultado2);
+                    $encontro[] = $fila3['estado'] ;
                     $muestrafila1[] = $fila1;
                     $muestrafila[] = $fila;
                     $totalpromociones++;
@@ -37,7 +38,7 @@ if (mysqli_num_rows($resultado) > 0) {
                     $muestrafila1[] = $fila1;
                     $muestrafila[] = $fila;
                     $totalpromociones++;
-                    $encontro = 0;
+                    $encontro[] = 0;
                 }
             }
         }
@@ -47,7 +48,7 @@ $total_paginas = ceil($totalpromociones / $limite);
 $promociones_pagina = array_slice($muestrafila1, $principio, $limite);
 $fila_pagina = array_slice($muestrafila, $principio, $limite);
 for ($i = 0; $i < count($promociones_pagina); $i++) {
-    mostrarcards($promociones_pagina[$i], $fila_pagina[$i], $encontro);
+    mostrarcards($promociones_pagina[$i], $fila_pagina[$i], $encontro[$i]);
 }
 if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una página -->
     <div class="container w-100 d-flex justify-content-center">
@@ -75,23 +76,24 @@ if ($total_paginas > 1) { ?> <!-- Muestra la paginación si hay más de una pág
 
 <?php
 
-function mostrarcards($fila, $fila1, $encontro)
-{ ?>
+function mostrarcards($fila, $fila1, $encontro){ ?>
     <div class="card" style="margin: 15px; width: 18rem;">
         <div class="card-body">
             <div style="height:80%">
-                <h5 class="card-title tituloCard">Cod descuento: <?php echo ($fila["cod"]) ?></h5>
+                <h5 class="card-title tituloCard">Cod descuento: <?php echo ($fila['cod']) ?></h5>
                 <h6 class="card-subtitle text-body-secondary">Descripcion: <?php echo ($fila["textoPromo"]) ?></h6>
                 <p class="card-text">Del local: <?php echo ($fila1["nombreLocal"]) ?></p>
                 <p class="card-text">Rubro: <?php echo ($fila1["rubroLocal"]) ?></p>
                 <p class="card-text">Dias de la semana: <?php echo ($fila["diaSemana"]) ?></p>
                 <p class="card-text">Plazo: <?php echo ($fila["fechaDesde"]); echo (" --- "); echo ($fila["fechaHasta"]) ?></p>
+                <p class="card-text <?php if($encontro == 0){echo "d-none";} ?>">Estado: <?php echo $encontro;?></p>
             </div>
             <div style="height: 65px;">
                 <?php if (strpos($fila['diaSemana'],obtenerDiaDeHoy())!==false){ ?>
-                <button type="button" class="btn btn-primary w-100 m-1 <?php if ($encontro != 0) echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                <button type="button" class="btn btn-primary w-100 m-1 <?php if ($encontro != 0) echo "d-none" ?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop<?php echo $fila['cod'];?>">
                     Utilizar descuento
                 </button>
+                
                 <?php }else{ ?>
                     <button type="button" class="btn btn-secondary w-100 m-1 <?php if ($encontro != 0) echo "d-none" ?>">
                     Vuelve el dia del descuento 
@@ -100,7 +102,7 @@ function mostrarcards($fila, $fila1, $encontro)
             </div>
         </div>
     </div>
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal fade" id="staticBackdrop<?php echo $fila['cod'];?>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -114,7 +116,9 @@ function mostrarcards($fila, $fila1, $encontro)
             </div>
         </div>
     </div>
-<?php } 
+<?php 
+    
+} 
 if($totalpromociones == 0){
     echo "No hay promociones disponibles";
 }   
